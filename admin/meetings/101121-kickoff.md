@@ -13,9 +13,6 @@
 Present:
 - Brett
 
-Not Present:
-- Start
-
 ## Agenda Items
 Item | Description
 ---- | ----
