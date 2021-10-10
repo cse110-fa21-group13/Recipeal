@@ -33,6 +33,7 @@ Team Contract | Everyone | notes |
 | No | Make Team Video | Everyone | Thursday, October 13 | 
 | No | Set Slack Icon to Represent Team Brand | Brett | Thursday, October 13 |
 | Yes| Set up team GitHub | Brett | Thursday, October 13 |
+| No | Add Project Description to README | ? | Thursday, October 13 |
 
 ## Other Notes & Information
 N/A
