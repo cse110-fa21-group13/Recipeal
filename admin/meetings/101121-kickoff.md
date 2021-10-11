@@ -1,7 +1,7 @@
 # Team 13 Kickoff Meeting
 
 ## Meeting Information
-**Date & Time**: 11 October 2021, 1:00-2:30 P.M.
+**Date & Time**: 12 October 2021, 1:00-2:30 P.M.
 
 **Objective**: To establish a team brand, define roles within the team, and create a team contract.
 
