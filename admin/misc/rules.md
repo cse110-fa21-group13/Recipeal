@@ -32,4 +32,4 @@
    - Next step if required: bring it to TA
    - Next step if required: bring it to Professor Powell
 
-## **Team Signatures**
+## **Signature**
