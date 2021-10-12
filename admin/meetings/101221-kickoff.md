@@ -22,7 +22,7 @@ Team Brand | • Logo, Mascot, Color, etc. <br>• [Team Page](https://github.co
 ## Discussion Items
 Item | Who | Notes |
 ---- | ---- | ---- |
-Team Brand | Everyone | notes |
+Team Brand | Everyone | 1. Name: Team cupcakes!! |
 Team Contract | Everyone | notes |
 
 ## Action Items
