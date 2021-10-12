@@ -4,7 +4,7 @@
 
 ## **Group Identification**
    - TA -  Sai Ashritha Kandiraju
-   - Team Name - TBD
+   - Team Name - The Cupcakes
    - Team Member Info (Name / Email / Phone):
       * Brett Beattie / <bbeattie@ucsd.edu> / (805)-535-9247
       * Sirisha Munukutle / <smunukutla@ucsd.edu> / (408)701-8433
