@@ -1,4 +1,4 @@
-# Cupcakes
+# The Cupcakes
 
 ## Team Brand
 - Cupcakes!!!
@@ -19,3 +19,4 @@
 
 - Role: Co-Lead
 - Bio: Loves running, cooking, hiking, playing video games and hanging out with friends!
+- Github: https://github.com/brettbeat
