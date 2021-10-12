@@ -14,17 +14,17 @@
     - Github --> single source of truth
     
 ## **Meeting Scheduling & Attendance**
-    - Show up to meetings you commit to
-    - Meetings will be scheduled the week before
-    - Notify Team Leads early if you cannot make it to a meeting you committed to
-    - Be prepared
+   - Show up to meetings you commit to
+   - Meetings will be scheduled the week before
+   - Notify Team Leads early if you cannot make it to a meeting you committed to
+   - Be prepared
 
 ## **General Expectations for All Team Members**
-    - Respect everyone and be understanding
-    - Open communication
-    - Start/communicate early and often
-    - Show up on time
-    - Write clean, readable code, use meaningful variable names, and write comments
+   - Respect everyone and be understanding
+   - Open communication
+   - Start/communicate early and often
+   - Show up on time
+   - Write clean, readable code, use meaningful variable names, and write comments
     
 ## **Conflict Resolution**
    - If there is a conflict, try and work it out with the team member first
