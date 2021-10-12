@@ -10,8 +10,8 @@
       * Sirisha Munukutle / <smunukutla@ucsd.edu> / (408)701-8433
 
 ## **Primary Means of Communication**
-    - Slack --> check twice a day(morning and evening)
-    - Github --> single source of truth
+   - Slack --> check twice a day(morning and evening)
+   - Github --> single source of truth
     
 ## **Meeting Scheduling & Attendance**
    - Show up to meetings you commit to
