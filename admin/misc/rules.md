@@ -8,6 +8,7 @@
    - Team Member Info (Name / Email / Phone):
       * Brett Beattie / <bbeattie@ucsd.edu> / (805)-535-9247
       * Sirisha Munukutle / <smunukutla@ucsd.edu> / (408)701-8433
+      * Khiem Pham / <k7pham@ucsd.edu> / (703)720-0313
 
 ## **Primary Means of Communication**
    - Slack --> check twice a day(morning and evening)
