@@ -23,7 +23,7 @@
 
 ### Khiem Pham
 
-<img src="https://drive.google.com/uc?export=view&id=1vvGZMcMMudghTjA5nyM0GCfayQGMzjSj" style="width: 125px;"/>
+<img src="https://lh3.googleusercontent.com/unCIfQEOcDsmjOQPDQNzYiVqDztLfg4BKgpCEuVvs4BLSlUva45naMq08yOEsWZEKJi3g56GyvOvbHKRyzsVRRh_nPJRsrvXLbV5SN2pGWBpDGKpI63x7Yea2iTDjguS3bE09kIJ=w2400" style="width: 125px;"/>
 
 - Bio: I'm a fourth-year Cognitive Science w/ Spec. in Design and Interaction Major with a Computer Science and Design Minor. I love playing video games and customizing computers/keyboards.
 - Favorite Cupcake Flavor: Red Velvet
