@@ -32,6 +32,7 @@
 ### Darren Yeung
 
 <img src ="https://drive.google.com/uc?export=view&id=1FhTfGmCSyg7lNFNFtgmMXbRxeKnEsVfZ" style="width: 125px;"/>
+
 - Bio: Hello! I am a third year CS major. I love working on compeitive programming problems, reading about economics, and playing video games (CSGO and League of Legends). 
-- Favorite Cupcake Flavor: Red velvet
-- Personal Github: https://github.com/randsem
+- Favorite Cupcake Flavor: Red velvet 
+- Personal Github: https://github.com/randsem 
