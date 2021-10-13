@@ -26,7 +26,7 @@
 
 <img src="https://lh3.googleusercontent.com/unCIfQEOcDsmjOQPDQNzYiVqDztLfg4BKgpCEuVvs4BLSlUva45naMq08yOEsWZEKJi3g56GyvOvbHKRyzsVRRh_nPJRsrvXLbV5SN2pGWBpDGKpI63x7Yea2iTDjguS3bE09kIJ=w2400" style="width: 125px;"/>
 
-- Bio: I'm a fourth-year Cognitive Science w/ Spec. in Design and Interaction Major with a Computer Science and Design Minor. I love playing video games and customizing computers/keyboards.
+- Bio: I'm a fourth year Cognitive Science w/ Spec. in Design and Interaction Major with a Computer Science and Design Minor. I love playing video games and customizing computers/keyboards.
 - Favorite Cupcake Flavor: Red Velvet
 - Github: https://github.com/kpham841
 
@@ -37,3 +37,12 @@
 - Bio: Hello! I am a third year CS major. I love working on compeitive programming problems, reading about economics, and playing video games (CSGO and League of Legends). 
 - Favorite Cupcake Flavor: Red velvet 
 - Personal Github: https://github.com/randsem 
+https://github.com/bananasnowcones?tab=repositories
+
+### Michael Yap
+
+<img src ="https://photos.google.com/album/AF1QipPt1qz0hpSklVIOgbvKVL_zY8pq-ny8N7FwfO1s/photo/AF1QipNZeKFvPN3s2OQmtk_cEhh3jla8Szfkwki0kgHC" style="width: 125px;"/>
+
+- Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my passions in life is to get married at the age of 21 (I am 20 right now). 
+- Favorite Cupcake Flavor: Carrot cake (with less cream)
+- Personal Github: https://github.com/bananasnowcones
