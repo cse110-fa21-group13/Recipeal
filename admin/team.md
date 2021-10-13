@@ -28,3 +28,10 @@
 - Bio: I'm a fourth-year Cognitive Science w/ Spec. in Design and Interaction Major with a Computer Science and Design Minor. I love playing video games and customizing computers/keyboards.
 - Favorite Cupcake Flavor: Red Velvet
 - Github: https://github.com/kpham841
+
+### Darren Yeung
+
+<img src ="https://drive.google.com/uc?export=view&id=1FhTfGmCSyg7lNFNFtgmMXbRxeKnEsVfZ" style="width: 125px;"/>
+- Bio: Hello! I am a third year CS major. I love working on compeitive programming problems, reading about economics, and playing video games (CSGO and League of Legends). 
+- Favorite Cupcake Flavor: Red velvet
+- Personal Github: https://github.com/randsem
