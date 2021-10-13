@@ -18,7 +18,8 @@
 <img src="https://ucsdtritons.com/images/2021/9/1/Beattie_Brett.png?width=125" style="display: inline"/>
 
 - Role: Co-Lead
-- Bio: Loves running, cooking, hiking, playing video games and hanging out with friends!
+- Bio: I'm a fourth year Math-CS major. I compete on the UCSD Cross Country and Track & Field teams. Some of my hobbies include running, cooking, hiking, playing video games and hanging out with friends!
+- Favorite Cupcake Flavor: Carrot cake
 - Github: https://github.com/brettbeat
 
 ### Khiem Pham
