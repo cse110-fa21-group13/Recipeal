@@ -43,6 +43,6 @@ https://github.com/bananasnowcones?tab=repositories
 
 <img src ="https://photos.google.com/album/AF1QipPt1qz0hpSklVIOgbvKVL_zY8pq-ny8N7FwfO1s/photo/AF1QipNZeKFvPN3s2OQmtk_cEhh3jla8Szfkwki0kgHC" style="width: 125px;"/>
 
-- Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my passions in life is to get married at the age of 21 (I am 20 right now). 
+- Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my goals and passions in life is to get married at the age of 21 (I am 20 right now). 
 - Favorite Cupcake Flavor: Carrot cake (with less cream)
 - Personal Github: https://github.com/bananasnowcones
