@@ -20,3 +20,11 @@
 - Role: Co-Lead
 - Bio: Loves running, cooking, hiking, playing video games and hanging out with friends!
 - Github: https://github.com/brettbeat
+
+### Khiem Pham
+
+<img src="https://drive.google.com/uc?export=view&id=1vvGZMcMMudghTjA5nyM0GCfayQGMzjSj" style="width: 125px;"/>
+
+- Bio: I'm a fourth-year Cognitive Science w/ Spec. in Design and Interaction Major with a Computer Science and Design Minor. I love playing video games and customizing computers/keyboards.
+- Favorite Cupcake Flavor: Red Velvet
+- Github: https://github.com/kpham841
