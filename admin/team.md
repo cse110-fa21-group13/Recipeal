@@ -59,7 +59,7 @@
 
 ### Zeyu Cao
 
-<img src ="https://drive.google.com/file/d/1WOyz-qYKhLjl7uSvfPkHPFgKG7ZHJ2xN/view?usp=sharing" style="width: 125px;"/>
+<img src ="https://drive.google.com/uc?export=view&id=1WOyz-qYKhLjl7uSvfPkHPFgKG7ZHJ2xN" style="width: 125px;"/>
 
 - Bio: Hi! I'm a third year CS major and a management science minor. I enjoy playing boardgames and videogames and hanging out with my friends.
 - Favorite Cupcake Flaor: Mocha
