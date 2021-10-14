@@ -1,10 +1,12 @@
 # The Cupcakes
 
 ## Team Brand
+
 - Cupcakes!!!
 - Mascot: Red velvet cupcake with cream cheese frosting and candles writing out "13" with a chef's hat on the "3" candle
 
 ## Team Values
+
 1. Set due dates **EARLY**
 2. Open communication
 3. Humility, respect, and trust
@@ -34,16 +36,16 @@
 
 <img src ="https://drive.google.com/uc?export=view&id=1FhTfGmCSyg7lNFNFtgmMXbRxeKnEsVfZ" style="width: 125px;"/>
 
-- Bio: Hello! I am a third year CS major. I love working on compeitive programming problems, reading about economics, and playing video games (CSGO and League of Legends). 
-- Favorite Cupcake Flavor: Red velvet 
-- Personal Github: https://github.com/randsem 
-https://github.com/bananasnowcones?tab=repositories
+- Bio: Hello! I am a third year CS major. I love working on compeitive programming problems, reading about economics, and playing video games (CSGO and League of Legends).
+- Favorite Cupcake Flavor: Red velvet
+- Personal Github: https://github.com/randsem
+  https://github.com/bananasnowcones?tab=repositories
 
 ### Michael Yap
 
 <img src ="https://photos.google.com/album/AF1QipPt1qz0hpSklVIOgbvKVL_zY8pq-ny8N7FwfO1s/photo/AF1QipNZeKFvPN3s2OQmtk_cEhh3jla8Szfkwki0kgHC" style="width: 125px;"/>
 
-- Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my goals and passions in life is to get married at the age of 21 (I am 20 right now). 
+- Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my goals and passions in life is to get married at the age of 21 (I am 20 right now).
 - Favorite Cupcake Flavor: Carrot cake (with less cream)
 - Personal Github: https://github.com/bananasnowcones
 
@@ -54,3 +56,11 @@ https://github.com/bananasnowcones?tab=repositories
 - Bio: Hi! I'm a third year CS major and some of my hobbies/interests include cars, technology (PCs/Keyboards), food/cooking, basketball, and travelling.
 - Favorite Cupcake Flavor: Red Velvet
 - Github: https://github.com/jasonwin20000
+
+### Zeyu Cao
+
+<img src ="https://drive.google.com/file/d/1WOyz-qYKhLjl7uSvfPkHPFgKG7ZHJ2xN/view?usp=sharing" style="width: 125px;"/>
+
+- Bio: Hi! I'm a third year CS major and a management science minor. I enjoy playing boardgames and videogames and hanging out with my friends.
+- Favorite Cupcake Flaor: Mocha
+- Personal Github: https://github.com/Daniel-1-Cao
