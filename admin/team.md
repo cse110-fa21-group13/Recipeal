@@ -46,3 +46,11 @@ https://github.com/bananasnowcones?tab=repositories
 - Bio: Heya! I am a third year Math-CS major. I'm a Christian who loves to go to church(RGC) loves studying the Bible! One of my goals and passions in life is to get married at the age of 21 (I am 20 right now). 
 - Favorite Cupcake Flavor: Carrot cake (with less cream)
 - Personal Github: https://github.com/bananasnowcones
+
+### Jason Win
+
+<img src ="https://drive.google.com/file/d/1_3VwsmRVRFRFMB0t4quZhUqEIau1FcJW/view?usp=sharing" style="width: 125px;"/>
+
+- Bio: Hi! I'm a third year CS major and some of my hobbies/interests include cars, technology (PCs/Keyboards), food/cooking, basketball, and travelling.
+- Favorite Cupcake Flavor: Red Velvet
+- Github: https://github.com/jasonwin20000
