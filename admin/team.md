@@ -64,3 +64,12 @@
 - Bio: Hi! I'm a third year CS major and a management science minor. I enjoy playing boardgames and videogames and hanging out with my friends.
 - Favorite Cupcake Flaor: Mocha
 - Personal Github: https://github.com/Daniel-1-Cao
+
+### Gurpreet Singh
+
+<img src ="https://drive.google.com/file/d/1TTcWBenTmLMIyAhiUGpzj3kp6-swviL8/view?usp=sharing" style="width: 125px;"/>
+
+-Bio: Hey! I'm a fourth year CS major that likes to stay as far away from a computer in his spare time! You can expect to spot me at the beach, cooking, or watching a movie. Currently I'm really into watching squid game and baking _cupcakes_.
+
+- Favorite Cupcake flavor: Red velvet cupcake with cream cheese frosting!
+- Github: https://github.com/1tsGurpreet

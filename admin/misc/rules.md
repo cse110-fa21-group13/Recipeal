@@ -13,6 +13,7 @@
   - Darren Yeung / <dyeung@ucsd.edu> / (626)757-5463
   - Michael Yap / <mwyap@ucsd.edu> / (818)203-8270
   - Jason Win / <jwin@ucsd.edu> / (408)643-5550
+  - Gurpreet Singh / <g6singh@ucsd.edu> / (818)310-0377
   - Zeyu Cao / <z4cao@ucsd.edu> / (503)781-6657
 
 ## **Primary Means of Communication**
