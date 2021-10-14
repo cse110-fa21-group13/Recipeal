@@ -49,7 +49,7 @@ https://github.com/bananasnowcones?tab=repositories
 
 ### Jason Win
 
-<img src ="https://drive.google.com/file/d/1_3VwsmRVRFRFMB0t4quZhUqEIau1FcJW/view?usp=sharing" style="width: 125px;"/>
+<img src ="https://drive.google.com/uc?export=view&id=1ZiWCtFhNuUzwaDnxe4n-1y_hrC4N0RzY" style="width: 125px;"/>
 
 - Bio: Hi! I'm a third year CS major and some of my hobbies/interests include cars, technology (PCs/Keyboards), food/cooking, basketball, and travelling.
 - Favorite Cupcake Flavor: Red Velvet
