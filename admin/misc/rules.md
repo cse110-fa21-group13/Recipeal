@@ -11,6 +11,7 @@
       * Khiem Pham / <k7pham@ucsd.edu> / (703)720-0313
       * Darren Yeung / <dyeung@ucsd.edu> / (626)757-5463
       * Michael Yap / <mwyap@ucsd.edu> / (818)203-8270
+      * Jason Win / <jwin@ucsd.edu> / (408)643-5550
 
 
 ## **Primary Means of Communication**
