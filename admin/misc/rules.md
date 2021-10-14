@@ -10,6 +10,8 @@
       * Sirisha Munukutle / <smunukutla@ucsd.edu> / (408)701-8433
       * Khiem Pham / <k7pham@ucsd.edu> / (703)720-0313
       * Darren Yeung / <dyeung@ucsd.edu> / (626)757-5463
+      * Michael Yap / <mwyap@ucsd.edu> / (818)203-8270
+
 
 ## **Primary Means of Communication**
    - Slack --> check twice a day(morning and evening)
