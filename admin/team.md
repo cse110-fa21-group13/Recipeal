@@ -54,3 +54,12 @@ https://github.com/bananasnowcones?tab=repositories
 - Bio: Hi! I'm a third year CS major and some of my hobbies/interests include cars, technology (PCs/Keyboards), food/cooking, basketball, and travelling.
 - Favorite Cupcake Flavor: Red Velvet
 - Github: https://github.com/jasonwin20000
+
+### Gurpreet Singh
+
+<img src ="https://drive.google.com/file/d/1TTcWBenTmLMIyAhiUGpzj3kp6-swviL8/view?usp=sharing" style="width: 125px;"/>
+
+-Bio: Hey! I'm a fourth year CS major that likes to stay as far away from a computer in his spare time! You can expect to spot me at the beach, cooking, or watching a movie. Currently I'm really into watching squid game and baking *cupcakes*.
+- Favorite Cupcake flavor: Red velvet cupcake with cream cheese frosting!
+- Github: https://github.com/1tsGurpreet
+
