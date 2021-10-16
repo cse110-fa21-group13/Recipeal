@@ -73,3 +73,12 @@
 
 - Favorite Cupcake flavor: Red velvet cupcake with cream cheese frosting!
 - Github: https://github.com/1tsGurpreet
+
+### Songyu Lu
+
+<img src ="http://triton-ai.eng.ucsd.edu/team/lu.jpg" style="width: 125px;"/>
+
+-Bio: Hey! I am a 3rd year CE major with a focus on software dev and testing, computer architecter and DSP. I love travelling, hiking and off-road actvitivies. 
+
+- Favorite Cupcake flavor: cookie and cream
+- Github: https://github.com/Lu-Songyu
