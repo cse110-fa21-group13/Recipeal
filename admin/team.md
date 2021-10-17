@@ -82,3 +82,11 @@
 
 - Favorite Cupcake flavor: cookie and cream
 - Github: https://github.com/Lu-Songyu
+
+### Yibo Wei
+
+<img src ="https://1drv.ms/u/s!AvX4MO-Y5QUzgeYTj_ynIQyAcuyXHQ" style="width: 125px;">
+
+- Bio: Hi! My name is Yibo or David. I'm a 3rd CSE major (what I'm 3rd year!? Where's my 2nd year!!) in revelle. I'm a software developer, Linux user, clarintist, composer, beginner-level astronomy enthusiast, and beginner-level photographer.
+- Favorite Cupcake flavor: Vanilla. 
+- Github: https://github.com/Microwave-WYB (My profile image is Linus Torvalds)
