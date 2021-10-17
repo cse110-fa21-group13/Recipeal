@@ -24,6 +24,13 @@
 - Favorite Cupcake Flavor: Carrot cake
 - Github: https://github.com/brettbeat
 
+### Sirisha Munukutla
+
+- Role: Co-Lead
+- Bio: I'm a fourth year CS major. I enjoy include reading thriller novels, baking cookies and cakes, and playing and trying different sports!
+- Favorite Cupcake Flavor: Lemon
+- Github: https://github.com/munukutlas/
+
 ### Khiem Pham
 
 <img src="https://lh3.googleusercontent.com/unCIfQEOcDsmjOQPDQNzYiVqDztLfg4BKgpCEuVvs4BLSlUva45naMq08yOEsWZEKJi3g56GyvOvbHKRyzsVRRh_nPJRsrvXLbV5SN2pGWBpDGKpI63x7Yea2iTDjguS3bE09kIJ=w2400" style="width: 125px;"/>
