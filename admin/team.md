@@ -87,6 +87,6 @@
 
 <img src ="https://snz04pap002files.storage.live.com/y4mok-CdIcKXIBhMB54v5SY6pig28pTqBTYyTuZbQRbk_Bb5hxOr7gicrFMfs0VYbslwAPhUKdoRrMZqwIuftssZRI-kxYfwAZNiATWR1GPv-agzkFxHR6itwJLrhqUVprbnxI91y_VwDzLsW5eJqQHCqkx0rEGz0n4_h8PyxkZEPV_TKUyH7dmlWxIFx_IAlol?width=4480&height=6720&cropmode=none" style="width: 125px;">
 
-- Bio: Hi! My name is Yibo or David. I'm a 3rd CSE major (what I'm 3rd year!? Where's my 2nd year!!) in revelle. I'm a software developer, Linux user, clarintist, composer, beginner-level astronomy enthusiast, and beginner-level photographer.
+- Bio: Hi! My name is Yibo or David. I'm a 3rd year CSE major (what I'm 3rd year!? Where's my 2nd year!!) in revelle. I'm a Chinese, software developer, Linux user, clarintist, composer, beginner-level astronomy enthusiast, and beginner-level photographer.
 - Favorite Cupcake flavor: Vanilla. 
 - Github: https://github.com/Microwave-WYB (My profile image is Linus Torvalds)
