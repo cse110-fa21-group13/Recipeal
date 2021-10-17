@@ -26,6 +26,8 @@
 
 ### Sirisha Munukutla
 
+<img src="https://drive.google.com/file/d/10Q-uh3C7OsvH2ilX1QovP8FAco5dMrot/view?usp=sharing">
+
 - Role: Co-Lead
 - Bio: I'm a fourth year CS major. I enjoy include reading thriller novels, baking cookies and cakes, and playing and trying different sports!
 - Favorite Cupcake Flavor: Lemon
