@@ -85,7 +85,7 @@
 
 ### Yibo Wei
 
-<img src ="https://1drv.ms/u/s!AvX4MO-Y5QUzgeYTj_ynIQyAcuyXHQ" style="width: 125px;">
+<img src ="https://grhdfg.sn.files.1drv.com/y4pYKlsFw2fNZQ9KFIGYgbbak3UVpJ7knuawWJWOOw8LbszeLFSAurEb8nRczLnp3j6P-QRFRL5GZy60AEPkt86SdDoPypwCa_roMXtF-1Uv3FLAFLvSXF_gyAKx1z0gf6-uEMjI4KNZbMTrteIb1zQu79tBBOHR4OkpL5Dagk2EV3qeJuIX-5qmCCnNHE9vi2JXKurKq1klhWSj_N_zTU76FaUepvmlN4IJOab8CmL-TA/DT9A2616~.jpg?psid=1" style="width: 125px;">
 
 - Bio: Hi! My name is Yibo or David. I'm a 3rd CSE major (what I'm 3rd year!? Where's my 2nd year!!) in revelle. I'm a software developer, Linux user, clarintist, composer, beginner-level astronomy enthusiast, and beginner-level photographer.
 - Favorite Cupcake flavor: Vanilla. 
