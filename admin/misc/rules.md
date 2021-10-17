@@ -16,6 +16,7 @@
   - Gurpreet Singh / <g6singh@ucsd.edu> / (818)310-0377
   - Zeyu Cao / <z4cao@ucsd.edu> / (503)781-6657
   - Songyu Lu/ <sol009@ucsd.edu> /(336)-847-5334
+  - Yibo Wei/ <y2wei@ucsd.edu> / (858)-642-5282
 
 ## **Primary Means of Communication**
 
