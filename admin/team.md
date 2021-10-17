@@ -85,7 +85,7 @@
 
 ### Yibo Wei
 
-<img src ="https://snz04pap002files.storage.live.com/y4p_mUAwewoyksRZmZmBlEbUb7Hj4AsxrqXPKYlgMcujhULKIpUKPpmWyfzhyc_qQLqpZ-9ytY9hFWUjJfnqVGbrLMm1FmjueS8cjd-r60V_45L1yOx2lk3Y4BIUROy12YcL28yJbY5Rbj5EOh7n3TNSTyk8caz7zOMIjblHfHnAK94PF53xyjTGJkF-VZw46mJTMdFnYn9JRCowKRtukeG3R7HtZS94tq7qMy-BQilKeU/DT9A2616~.jpg?psid=1&width=688&height=1031" style="width: 125px;">
+<img src ="https://snz04pap002files.storage.live.com/y4mok-CdIcKXIBhMB54v5SY6pig28pTqBTYyTuZbQRbk_Bb5hxOr7gicrFMfs0VYbslwAPhUKdoRrMZqwIuftssZRI-kxYfwAZNiATWR1GPv-agzkFxHR6itwJLrhqUVprbnxI91y_VwDzLsW5eJqQHCqkx0rEGz0n4_h8PyxkZEPV_TKUyH7dmlWxIFx_IAlol?width=4480&height=6720&cropmode=none" style="width: 125px;">
 
 - Bio: Hi! My name is Yibo or David. I'm a 3rd CSE major (what I'm 3rd year!? Where's my 2nd year!!) in revelle. I'm a software developer, Linux user, clarintist, composer, beginner-level astronomy enthusiast, and beginner-level photographer.
 - Favorite Cupcake flavor: Vanilla. 
