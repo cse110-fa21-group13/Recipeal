@@ -85,6 +85,12 @@ Features:
 - History
 - Easy editing for recipes 
 
+TO DO:
+Scouting other recipe managers
+baseline features
+stretch features
+extras
+Designers/all
 
 
 
