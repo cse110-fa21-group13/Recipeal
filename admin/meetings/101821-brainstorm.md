@@ -7,7 +7,16 @@
 
 ## Attendees
 People who attended:
-- Person A
+- Brett
+- Srisha
+- Michael
+- Yibo
+- Daniel
+- Jason
+- Khiem
+- Darren
+- Songyu
+- Grupreet
 
 ## Agenda Items
 
@@ -19,8 +28,7 @@ Features | • Required <br>• Stretch <br>• Extras
 Theme/Mood | • How do we want to present the app?
 
 ## Discussion Items
-1. a
-2. B
+
 
 
 ## Action Items
