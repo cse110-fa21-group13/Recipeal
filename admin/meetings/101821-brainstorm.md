@@ -46,23 +46,43 @@ Users
 Features:
 - Mobile friendly design
 - Search function: Tags, Filter, Sort by
-  - Time
-  - Ingredients
-  - Name
-  - Type of Cuisine
-  - Nutrition / Calories
-  - Custom tags
-  - Difficulties
-  - Dietary restrictions
-  - Tools required
-  - Serving size
+    - Time
+    - Ingredients
+    - Name
+    - Type of Cuisine
+    - Nutrition / Calories
+    - Custom tags
+    - Difficulties
+    - Dietary restrictions
+    - Tools required
+    - Serving size
 - Voice assistance
 - Time-based steps
 - Export recipe
 - Display options
-  - View one step at a time
-  - View ingredients / directions
-  - Border resizing
+    - View one step at a time
+    - View ingredients / directions
+    - Border resizing
+    - Hide-able sections
+- Import recipes (QR Code)
+    - From other sites
+    - From friends
+- Groceries
+    - Add all ingredients of a recipe to list
+    - Current groceries list
+    - Add notes function
+- Libraries and Folders
+- Favorites
+- Tabs: Multiple tabs vs split screen
+- User profiles
+- Visual imports
+    - Robust video + picture customization/editing
+    - Photo icons
+    - Thumbnails
+    - Short descriptions
+- Calendar within app
+- Recent recipes
+- History
 - 
 
 
