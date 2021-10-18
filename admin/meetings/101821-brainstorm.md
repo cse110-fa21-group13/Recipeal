@@ -28,6 +28,44 @@ Features | • Required <br>• Stretch <br>• Extras
 Theme/Mood | • How do we want to present the app?
 
 ## Discussion Items
+Users 
+- Home chef's
+- Everyday normal use
+- Time crunches (Working people)
+
+- Use cases: tablets, phones vs laptops in kitchen settings
+- Serving size
+- Nutrition / Dietary Restrictions
+- Time constraints
+- Hands full (can't use device)
+- Groceries
+- Kitchen tools / Measurements
+- Pictures/Documentation
+- Social aspect
+
+Features:
+- Mobile friendly design
+- Search function: Tags, Filter, Sort by
+  - Time
+  - Ingredients
+  - Name
+  - Type of Cuisine
+  - Nutrition / Calories
+  - Custom tags
+  - Difficulties
+  - Dietary restrictions
+  - Tools required
+  - Serving size
+- Voice assistance
+- Time-based steps
+- Export recipe
+- Display options
+  - View one step at a time
+  - View ingredients / directions
+  - Border resizing
+- 
+
+
 
 
 
