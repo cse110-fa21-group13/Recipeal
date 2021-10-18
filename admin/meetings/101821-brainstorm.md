@@ -83,7 +83,7 @@ Features:
 - Calendar within app
 - Recent recipes
 - History
-- 
+- Easy editing for recipes 
 
 
 
