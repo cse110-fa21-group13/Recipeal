@@ -8,7 +8,6 @@ Each person will take their turn answering these 3 questions:
 
 ## Attendance
 Present:
-- Brett
 
 ## Meeting
 Who | Yesterday | Today | Blocks |
