@@ -33,5 +33,11 @@ item | who | notes |
 | ---- | ---- | ---- | ---- |
 | | item | who | due_date |
 
+• meet with partner
+• Talk about their work, familiar technologies, etc. basically how they want to work together 
+• work style
+• get assigned work done
+• Thursday standup
+
 ## Other Notes & Information
 N/A
