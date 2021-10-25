@@ -1,8 +1,12 @@
 # Meeting Minutes
 ## Meeting Information
+
 **Meeting Date/Time:** 10/25/2021, 9AM - 10AM
+
 **Meeting Purpose:** Brainstorming wrap-up
+
 **Meeting Location:** Warren tent + zoom
+
 **Note Taker:** Sirisha Munukutla 
 
 ## Attendees
@@ -27,15 +31,20 @@ item | who | notes |
 
 
 ## Action Items
-| Done? | Item | Responsible | Due Date |
-| ---- | ---- | ---- | ---- |
-| | item | who | due_date |
+| Item | Responsible | Due Date |
+| ---- | ---- | ---- |
+| item | who | due_date |
 
 • meet with partner
+
 • Talk about their work, familiar technologies, etc. basically how they want to work together 
+
 • work style
+
 • get assigned work done
+
 • Thursday standup
+
 • Roadmap
 
 ## Other Notes & Information
@@ -45,30 +54,34 @@ item | who | notes |
   - Backend: Darren and Khiem
   - Frontend: Michael and Daniel
 - Splitting up features - MVP (CRUD)
-  - Create - List of ingredients, list of steps, name
-  - Read - List of recipes and ability to open one
-  - Update - Ability to edit recipe
-  - Delete - Ability to delete recipe
+  - Create 
+    - List of ingredients, list of steps, name
+  - Read 
+    - List of recipes and ability to open one
+  - Update
+    - Ability to edit recipe
+  - Delete
+    - Ability to delete recipe
 - Splitting up features - Additional features
   - Create:
-  - Add media
-  - Notes
-  - Description
-  - Tags
-  - Upload pictures of recipes
-  - Insert web link
+    - Add media
+    - Notes
+    - Description
+    - Tags
+    - Upload pictures of recipes
+    - Insert web link
   - Read:
-  - Search bar
-  - Folder
-  - Favorites
-  - Try later folder
-  - Sorting/filtering
+    - Search bar
+    - Folder
+    - Favorites
+    - Try later folder
+    - Sorting/filtering
   - Update:
-  - Editing media and notes
-  - Adding tags
-  - Editing organizational folder
+    - Editing media and notes
+    - Adding tags
+    - Editing organizational folder
   - Delete:
-  - Confirm delete button
+    - Confirm delete button
 - Splitting up features - Stretch features
   - Top priority
   - Timer
