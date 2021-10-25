@@ -38,6 +38,7 @@ item | who | notes |
 • work style
 • get assigned work done
 • Thursday standup
+• Roadmap
 
 ## Other Notes & Information
 - Miro: questions or comments?
@@ -70,4 +71,16 @@ item | who | notes |
   - Editing organizational folder
   - Delete:
   - Confirm delete button
-  - 
+- Splitting up features - Stretch features
+  - Top priority
+  - Timer
+  - Condensing steps
+  - Voice feature
+  - Recycle bin
+  - Calendar
+  - Later priorities:
+  - Cross-platform
+  - Built-in browser
+  - Grocery list
+  - Nutrition info
+- Action Item Discussion
