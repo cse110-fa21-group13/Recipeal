@@ -1,15 +1,13 @@
 # Meeting Minutes
 ## Meeting Information
-**Meeting Date/Time:** meeting_date, meeting_time  
-**Meeting Purpose:** meeting_purpose  
-**Meeting Location:** meeting_location  
-**Note Taker:** note_taker  
+**Meeting Date/Time:** 10/25/2021, 9AM - 10AM
+**Meeting Purpose:** Brainstorming wrap-up
+**Meeting Location:** Warren tent + zoom
+**Note Taker:** Sirisha Munukutla 
 
 ## Attendees
 People who attended:
-- Person A
-- Person B
-- Person C
+- Full team
 
 ## Agenda Items
 
