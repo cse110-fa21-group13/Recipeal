@@ -40,4 +40,34 @@ item | who | notes |
 • Thursday standup
 
 ## Other Notes & Information
-N/A
+- Miro: questions or comments?
+  - Are essential features finalized? --> will be done in this meeting
+- Splitting up dev team
+  - Backend: Darren and Khiem
+  - Frontend: Michael and Daniel
+- Splitting up features - MVP (CRUD)
+  - Create - List of ingredients, list of steps, name
+  - Read - List of recipes and ability to open one
+  - Update - Ability to edit recipe
+  - Delete - Ability to delete recipe
+- Splitting up features - Additional features
+  - Create:
+  - Add media
+  - Notes
+  - Description
+  - Tags
+  - Upload pictures of recipes
+  - Insert web link
+  - Read:
+  - Search bar
+  - Folder
+  - Favorites
+  - Try later folder
+  - Sorting/filtering
+  - Update:
+  - Editing media and notes
+  - Adding tags
+  - Editing organizational folder
+  - Delete:
+  - Confirm delete button
+  - 
