@@ -10,18 +10,7 @@ Each person will take their turn answering these 3 questions:
 Present:
 
 ## Meeting
-Who | Yesterday | Today | Blocks |
----- | ---- | ---- | ---- |
-Brett | yesterday | today | block |
-Sirisha | yesterday | today | block |
-Michael | yesterday | today | block |
-Jason | yesterday | today | block |
-Khiem | yesterday | today | block |
-Darren | yesterday | today | block |
-Lu | yesterday | today | block |
-Daniel | yesterday | today | block |
-Gurpreet | yesterday | today | block |
-Yibo | yesterday | today | block |
+Brett: Based on the last couple lectures, feels like the team has fallen a little bit behind. Team leads are responsible for that, should have been more diligent in assigning clear tasks for everyone to complete instead of just generally listing out what needed to be done. From now on, the leads will be better about assigning specific tasks for each role-group to complete so we can stay on track with the project.
 
 * Designers
   * Update
@@ -35,7 +24,7 @@ Yibo | yesterday | today | block |
     * Finalize UI Design
 * Front-end
   * Update
-    * Met with daniel
+    * Michael: Met with daniel
     * Updated roadmap
     * Frameworks
   * Weekend
@@ -43,7 +32,7 @@ Yibo | yesterday | today | block |
     * CRUD Features vs Extra Features 
 * Back-end
   * Update
-    * Met with khiem
+    * Darren: Met with khiem
     * talked about frameworks, how to store reciopes
     * cloud databases : firebase, mongoDB 
   * Weekend
@@ -53,7 +42,7 @@ Yibo | yesterday | today | block |
     * locally
 * QA
   * Update
-    * Met with Lu
+    * Jason: Met with Lu
     * Cypress testing framework
     * Look into other possible framework
   * Weekend
@@ -62,4 +51,3 @@ Yibo | yesterday | today | block |
       * Basic Hello World    
 * Everyone:
   * Look at timeline, give feedback
-  *  
