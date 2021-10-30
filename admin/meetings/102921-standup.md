@@ -50,4 +50,4 @@ Brett: Based on the last couple lectures, feels like the team has fallen a littl
     * Start setting up Cypress testing framework
       * Basic Hello World    
 * Everyone:
-  * Look at timeline, give feedback
+  * Look at Miro timeline on the roadmap, give feedback
