@@ -1,13 +1,19 @@
 # Team 13 Stand-Up Meeting
 
 ## Structure
-Each person will take their turn answering these 3 questions:
-1. What did I work on yesterday?
-2. What am I working on today?
+Each group will take their turn answering these 3 questions:
+1. What did we work on before?
+2. What am I working currently?
 3. What issues are blocking me?
 
 ## Attendance
 Present:
+- Brett
+- Sirisha
+- Michael
+- Gurpreet
+- Jason
+- Darren
 
 ## Meeting
 Brett: Based on the last couple lectures, feels like the team has fallen a little bit behind. Team leads are responsible for that, should have been more diligent in assigning clear tasks for everyone to complete instead of just generally listing out what needed to be done. From now on, the leads will be better about assigning specific tasks for each role-group to complete so we can stay on track with the project.
