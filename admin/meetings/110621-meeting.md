@@ -91,19 +91,18 @@ Wireframes | • Designers add home icon button, and focus mode button <br>
       - Structure of Create, edit, and individual recipe page
       - Search bar & filtering for 'my recipe' and 'favorites' pages
 
-ToDo:
-- Designers
-  - Finalizing
-  - Yibo add in icon (doubles as home button)
-- Front-end
-  - HTML files
-    - Start on home page
-    - Create recipe page
-- Back-end
-  -  
-
-- QA
-  - Work on CI/CD pipeline 
+- ToDo:
+  - Designers
+    - Finalizing Design/Theme of app
+    - Yibo add in icon (doubles as home button)
+  - Front-end
+    - HTML files
+      - Start on home page
+      - Create recipe page
+  - Back-end
+    - Start implementing CRUD Features 
+  - QA
+    - Work on CI/CD pipeline 
 
 
 ## Action Items
