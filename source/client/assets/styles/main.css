@@ -1,0 +1,80 @@
+/* main.css */
+
+* {
+  font-family: sans-serif;
+}
+
+body,
+main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+img.flipped {
+  margin-left: -116px !important;
+  transform: rotate(180deg);
+}
+
+section:not(section.shown) {
+  display: none;
+}
+
+.button--horizontal-line {
+  border-top: 1px solid rgb(223, 225, 229);
+  position: absolute;
+  margin: -16.5px 0 0 30px;
+  width: 696px;
+  z-index: 1;
+}
+
+.button--wrapper {
+  display: grid;
+  justify-items: center;
+  margin: 20px 0 0 30px;
+  width: 696px;
+}
+
+.button--wrapper > button {
+  background-color: white;
+  border: 1px solid rgb(223, 225, 229);
+  border-radius: 40px;
+  padding: 8px 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.button--wrapper > button:hover {
+  cursor: pointer;
+  filter: brightness(96%);
+}
+
+.button--wrapper > img {
+  filter: opacity(0.7);
+  margin-left: -120px;
+  margin-top: 11px;
+  position: absolute;
+  width: 13px;
+  z-index: 3;
+}
+
+.hidden {
+  display: none;
+}
+
+.recipe-cards--wrapper {
+  column-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 30px 0 0 30px;
+  max-width: 700px;
+  row-gap: 30px;
+  width: 100%;
+}
+
+.section--recipe-expand {
+  height: 100%;
+  width: 100%;
+}
