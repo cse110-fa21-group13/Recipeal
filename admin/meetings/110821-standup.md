@@ -13,6 +13,7 @@ Present:
 - Updates
   - Daily, asynchronous slack standup
   - Zoom vs in-person meetings
+  - Crunch time!!
 
 - Designers
   - Update
