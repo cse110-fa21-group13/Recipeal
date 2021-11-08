@@ -13,6 +13,7 @@ Present:
 - Updates
   - Daily, asynchronous slack standup
   - Zoom vs in-person meetings
+  - Create issues on GitHub for yourself to work on/complete this week
   - Crunch time!!
 
 - Designers
