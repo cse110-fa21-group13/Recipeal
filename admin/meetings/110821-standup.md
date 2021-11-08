@@ -8,6 +8,14 @@ Each person will take their turn answering these 3 questions:
 
 ## Attendance
 Present:
+- Brett
+- Darren
+- Michael
+- Gurpreet
+- Jason
+- Lu
+- Khiem
+- Daniel
 
 ## Meeting
 - Updates
@@ -18,13 +26,33 @@ Present:
 
 - Designers
   - Update
+    - No updates 
   - ToDo
+    - Mood board, finalizing design
+    - Finalize design by Monday!
+  - Blockers
+    - No blockers  
 - Front-end
   - Update
+    - Met yesterday, Daniel set up skeleton for the front end. 
+    - Trying to get home page done this week 
+    - Nav bar done
   - ToDo
+    - Listing user recipes on My Recipes
+    - Create Recipe button
+  - Blockers
+    - No blockers 
 - Back-end
   - Update
+    - Same as front end 
   - ToDo
+    - Same as front end
+    - Implement local storage 
+  - Blockers
+    - No Blockers 
 - QA
   - Update
-  - ToDo     
+    - Discussed more about CI/CD pipeline 
+    - Today's discussion will go more in depth about CI/CD pipeline
+  - ToDo 
+    - Get CI/CD pipeline done this week    
