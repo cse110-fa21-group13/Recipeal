@@ -1,13 +1,6 @@
 import { Router } from "./Router.js";
 
-const recipes = [
-  "https://introweb.tech/assets/json/ghostCookies.json",
-  "https://introweb.tech/assets/json/birthdayCake.json",
-  "https://introweb.tech/assets/json/chocolateChip.json",
-  "https://introweb.tech/assets/json/stuffing.json",
-  "https://introweb.tech/assets/json/turkey.json",
-  "https://introweb.tech/assets/json/pumpkinPie.json",
-];
+const recipes = [];
 const recipeData = {};
 
 const router = new Router(function () {
