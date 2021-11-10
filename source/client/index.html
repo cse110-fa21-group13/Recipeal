@@ -82,11 +82,11 @@
               function handleImageUpload() {
                 let image = document.getElementById("upload").files[0];
                 let fileReader = new FileReader();
-                reader.onload = function(e) {
+                fileReader.onload = function(e) {
                   document.getElementById("display-image").src = e.target.result;
                 }
                 if(image) {
-                  reader.readAsDataUrl(image);
+                  fileReader.readAsDataURL(image);
                 }
               }
             </script>
