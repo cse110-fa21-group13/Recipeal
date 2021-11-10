@@ -78,3 +78,64 @@ section:not(section.shown) {
   height: 100%;
   width: 100%;
 }
+
+/* Create Recipe CSS */
+.create-rep-1 {
+  position: absolute;
+  width: 400px;
+
+  background: #b2b3c4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+#create-recipe-image {
+  height: 300px;
+  left: 200px;
+  top: 128px;;
+}
+
+#create-recipe-name {
+  height: 123px;
+  left: 200px;
+  top: 458px;
+}
+
+#create-recipe-desc {
+  height: 155px;
+  left: 200px;
+  top: 611px;
+}
+
+#create-recipe-time {
+  height: 102px;
+  left: 200px;
+  top: 795px;
+}
+
+#create-recipe-ingred {
+  position: absolute;
+  width: 370px;
+  height: 912px;
+  left: 630px;
+  top: 128px;
+
+  background: #b2b3c4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.create-rep-paragraphs {
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+  
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.02em;
+}

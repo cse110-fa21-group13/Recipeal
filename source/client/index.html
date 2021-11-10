@@ -75,20 +75,45 @@
         </section>
         <section class="section--create-recipe">
           <!--TODO: create recipe page-->
-          <div class ="create-recipe-image">
-            <img src="404image" onerror="this.src='images/not_found.png';" />
+          <div id ="create-recipe-image" class = "create-rep-1">
+            <input id="upload" type="file" onChange="handleImageUpload()" />
+            <img id="display-image" src="source/client/assets/images/add_image_icon.png" />
+            <script>
+              function handleImageUpload() {
+                let image = document.getElementById("upload").files[0];
+                let fileReader = new FileReader();
+                reader.onload = function(e) {
+                  document.getElementById("display-image").src = e.target.result;
+                }
+                if(image) {
+                  reader.readAsDataUrl(image);
+                }
+              }
+            </script>
           </div>
-          <div class ="create-recipe-name">
-
+          <div id="create-recipe-name" class="create-rep-1">
+            Name:
+            <p class="create-recipe-para">
+              This is a paragraph
+            </p>
           </div>
-          <div class ="create-recipe-desc">
-
+          <div id="create-recipe-desc" class="create-rep-1">
+            Description:
+            <p class="create-recipe-para">
+              
+            </p>
           </div>
-          <div class ="create-recipe-time">
-
+          <div id="create-recipe-time" class="create-rep-1">
+            Time:
+            <p>
+              
+            </p>
           </div>
-          <div class ="create-recipe-ingred">
-
+          <div id="create-recipe-ingred" class="create-rep-2">
+            Ingredients:
+            <p>
+              
+            </p>
           </div>
         </section>
         <button
