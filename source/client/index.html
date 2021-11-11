@@ -76,10 +76,10 @@
         <section class="section--create-recipe">
           <!--TODO: create recipe page-->
           <div id ="create-recipe-image" class = "create-rep-1">
-            <label class="custom-file-upload">
-              <input id="upload" type="file" onChange="handleImageUpload()" />
-              <img id="display-image" src="source/client/assets/images/add_image_icon.png" />
+            <label for="upload" class="custom-file-upload">
+              <img id="display-image" src="https://toppng.com/uploads/preview/file-upload-image-icon-115632290507ftgixivqp.png" />
             </label>
+            <input id="upload" type="file" onChange="handleImageUpload()" />
             <script>
               function handleImageUpload() {
                 let image = document.getElementById("upload").files[0];
