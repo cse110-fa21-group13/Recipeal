@@ -22,6 +22,16 @@ section:not(section.shown) {
   display: none;
 }
 
+#recipe-cards {
+  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  max-width: 660px;
+  row-gap: 10px;
+  width: 100%;
+}
+
 /** CREATE RECIPE SECTION **/
 
 .section--create-recipe {
