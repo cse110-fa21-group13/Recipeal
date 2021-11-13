@@ -50,8 +50,8 @@
           <script>
             // List of recipes 
             const recipes = [
-              'assets/recipes/burrito.json', 
-              'assets/recipes/soup.json', 
+              'assets/recipes/burrito.json',
+              'assets/recipes/soup.json',
               'assets/recipes/curry.json'
             ];
             const recipeData = {};
@@ -75,7 +75,7 @@
                     .then(response => response.json())
                     .then(data => {
                       recipeData[recipes[i]] = data;
-                      if(Object.keys(recipeData).length == recipes.length){
+                      if (Object.keys(recipeData).length == recipes.length) {
                         resolve(true);
                       }
                     })
@@ -85,7 +85,7 @@
             // This function will set the data for each new recipe card (see RecipeCard.js under components for details)
             // and append it to the recipe cards section
             function createRecipeCards() {
-              for(let i = 0; i < 3; i++) {
+              for (let i = 0; i < 3; i++) {
                 let newCard = document.createElement('recipe-card');
                 let mainSec = document.getElementById('recipe-cards');
                 console.log(recipeData[recipes[i]]);
@@ -133,7 +133,10 @@
                   let image = document.getElementById('input-img').files[0]
                   let fileReader = new FileReader()
                   fileReader.onload = function (e) {
+                    // convert file to base64 String
+                    const base64String = fileReader.result.replace('data:', '').replace(/^.+,/, '')
                     document.getElementById('display-image').src = e.target.result
+                    console.log(e.target.result)
                   }
                   if (image) {
                     fileReader.readAsDataURL(image)
@@ -316,9 +319,114 @@
               <button class="add-btn" type="button" onclick="addNewStep()">+</button>
               <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
             </div>
+
+            <!-- SAVE DATA FROM INPUTS INTO LOCAL STORAGE-->
+            <script>
+              /*
+              * Function to see if a recipe exists
+              * Returns true if exists, false if it doesn't
+              */
+              function recipeExists(recipeName) {
+                for (let i = 0; i < localStorage.length; i++) {
+                  if (localStorage.key(i) == recipeName) {
+                    return true
+                  }
+                }
+                return false
+              }
+
+              /***** CREATE *****/
+
+              /* Insert initial object for local storage to save data */
+              const initial = {}
+              localStorage.setItem('user', JSON.stringify(initial))
+
+              /*
+               * Function to save the data from the input fields
+               * and store them in local storage when check button
+               * is clicked
+               */
+              function saveData() {
+                let checkName = document.getElementById('input-name').value.toLowerCase()
+                // Check if recipe has already been made
+                if (recipeExists(checkName)) {
+                  alert('Recipe already exists')
+                }
+                // Else, create new recipe object
+                else {
+                  var newRecipe = {
+                    name: '',
+                    description: '',
+                    time: '',
+                    tags: [],
+                    ingredients: [],
+                    directions: [],
+                    thumbnail: '',
+                    favorites: 0
+                  }
+
+                  // Create new recipe out of the recipeTemplate
+                  //let newRecipe = Object.create(recipeTemplate)
+
+                  // Get name and store it in the object
+                  let name = document.getElementById('input-name').value
+                  newRecipe.name = name
+
+                  // Get description and store it in the object
+                  let desc = document.getElementById('input-desc').value
+                  newRecipe.description = desc
+
+                  // Get time and store it in the object
+                  let time = document.getElementById('input-time').value
+                  newRecipe.time = time
+
+                  var i = 1;
+                  var j = 1;
+                  var k = 1;
+
+                  // Loop through all tag inputs and push them to array
+                  while (i <= tagCounter) {
+                    let tagsValue = document.getElementById('input-tags' + i).value
+                    newRecipe.tags.push(tagsValue)
+                    i++;
+                  }
+
+                  // Loop through all ings inputs and push them to array
+                  while (j <= ingCounter) {
+                    let ingsValue = document.getElementById('input-ings' + j).value
+                    newRecipe.ingredients.push(ingsValue)
+                    j++;
+                  }
+
+                  // Loop through all dir inputs and push them to array
+                  while (k <= stepCounter) {
+                    let stepsValue = document.getElementById('input-steps' + k).value
+                    newRecipe.directions.push(stepsValue)
+                    k++;
+                  }
+
+                  // Get image and store in in the object as a string
+                  let img = document.getElementById('display-image')
+                  newRecipe.thumbnail = img.src
+
+                  // Put the object into storage
+                  localStorage.setItem(
+                    newRecipe.name.toLowerCase(),
+                    JSON.stringify(newRecipe)
+                  )
+                  alert('Recipe saved!')
+                }
+              }
+            </script>
+
+            <!-- Save Button -->
+            <button class="save-btn" onclick="saveData()">Save Recipe</button>
           </div>
 
         </div>
+
+
+
 
 
         <!--TODO: create recipe page -->
@@ -378,6 +486,8 @@
       <button class="show-create-button btn btn-primary" onclick="changeView(event)"
         style="bottom: 10px; right: 10px; position: absolute">
         <i class="bi bi-plus-lg"></i>
+
+
       </button>
     </section>
   </main>

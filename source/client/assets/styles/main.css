@@ -176,6 +176,28 @@ button.add-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
+button.save-btn {
+  display: block;
+  margin: 0px auto;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.save-btn:focus {
+  outline: none;
+}
+
+button.save-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
 /*
 .button--horizontal-line {
   border-top: 1px solid rgb(223, 225, 229);
