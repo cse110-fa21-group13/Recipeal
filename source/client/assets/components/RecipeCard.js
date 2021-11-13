@@ -65,7 +65,6 @@ class RecipeCard extends HTMLElement {
     const card = document.createElement("article");
     card.className = "card";
 
-
     const image = document.createElement("img");
     image.setAttribute("class", "card-img-top");
     image.setAttribute("src", data.image);

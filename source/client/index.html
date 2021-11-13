@@ -48,7 +48,11 @@
         <!-- Recipes Added Here -->
         <script>
           // List of recipes 
-          const recipes = ['assets/recipes/burrito.json', 'assets/recipes/soup.json'];
+          const recipes = [
+            'assets/recipes/burrito.json', 
+            'assets/recipes/soup.json', 
+            'assets/recipes/curry.json'
+          ];
           const recipeData = {};
           window.addEventListener('DOMContentLoaded', init);
           async function init() {
@@ -70,7 +74,9 @@
                   .then(response => response.json())
                   .then(data => {
                     recipeData[recipes[i]] = data;
-                    resolve(true);
+                    if(Object.keys(recipeData).length == recipes.length){
+                      resolve(true);
+                    }
                   })
               }
             });
@@ -78,9 +84,11 @@
           // This function will set the data for each new recipe card (see RecipeCard.js under components for details)
           // and append it to the recipe cards section
           function createRecipeCards() {
-            for(let i = 0; i < 2; i++) {
+            //console.log(recipeData[recipes[1]]);
+            for(let i = 0; i < 3; i++) {
               let newCard = document.createElement('recipe-card');
               let mainSec = document.getElementById('recipe-cards');
+              console.log(recipeData[recipes[i]]);
               newCard.data = recipeData[recipes[i]];
               mainSec.appendChild(newCard);
             }
