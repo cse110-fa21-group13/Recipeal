@@ -47,12 +47,19 @@ section:not(section.shown) {
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
+/* Input card for ings */
+
+.input-card-ings {
+  margin-top: 20px;
+}
+
 /* Input card for steps */
 
 .input-card-steps {
   background-color: #F6F6F6;
   border-radius: 20px;
   padding: 20px;
+  margin-top: 20px;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 

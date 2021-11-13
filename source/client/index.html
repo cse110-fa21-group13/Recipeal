@@ -46,6 +46,46 @@
       <section class="recipe-cards--wrapper shown">
         My recipes
         <!-- Recipes Added Here -->
+        <script>
+          // List of recipes 
+          const recipes = ['assets/recipes/burrito.json', 'assets/recipes/soup.json'];
+          const recipeData = {};
+          window.addEventListener('DOMContentLoaded', init);
+          async function init() {
+            // fetch the recipes and wait for them to load
+            let fetchSuccessful = await fetchRecipes();
+            // if they didn't successfully load, quit the function
+            if (!fetchSuccessful) {
+              console.log('Recipe fetch unsuccessful');
+              return;
+            };
+            // Add the first three recipe cards to the page
+            createRecipeCards();
+          }
+          // This function will fetch the recipes and store their json data in recipeData[]
+          async function fetchRecipes() {
+            return new Promise((resolve, reject) => {
+              for (let i = 0; i < recipes.length; i++) {
+                fetch(recipes[i])
+                  .then(response => response.json())
+                  .then(data => {
+                    recipeData[recipes[i]] = data;
+                    resolve(true);
+                  })
+              }
+            });
+          }
+          // This function will set the data for each new recipe card (see RecipeCard.js under components for details)
+          // and append it to the recipe cards section
+          function createRecipeCards() {
+            for (let i = 0; i < 2; i++) {
+              let newCard = document.createElement('recipe-card');
+              let mainSec = document.getElementById('recipe-cards');
+              newCard.data = recipeData[recipes[i]];
+              mainSec.appendChild(newCard);
+            }
+          }
+        </script>
       </section>
 
       <section class="explore container-fluid">
@@ -117,18 +157,40 @@
             <div class="input-card">
               <div id="tag-wrapper">
                 <label for="input-tags">Tags</label><br>
+                <input type="text" id="input-tags1" class="tags" name="input-tags1">
+
               </div>
 
               <script>
                 // Keep track of number of ingredient inputs
-                let tagCounter = 0;
+                let tagCounter = 1;
+
+                // Array to store tags to repopulate tags later
+                let prevTags = []
 
                 // Add label and new input
                 function addNewTag() {
-                  tagCounter++;
-                  document.getElementById('tag-wrapper').innerHTML += `<span>
-                    <input type="text" id="input-tags${String(tagCounter)}" class="tags" name="input-tags${String(tagCounter)}">
-                    </span>`
+
+                  // Save prev tags in array
+                  for (let i = 1; i <= tagCounter; i++) {
+                    let value = document.getElementById(`input-tags${i}`).value
+                    prevTags.push(value)
+                  }
+
+                  document.getElementById('tag-wrapper').innerHTML += `
+                    <input type="text" id="input-tags${String(tagCounter + 1)}" class="tags" name="input-tags${String(tagCounter + 1)}">
+                    `
+                  tagCounter++
+                  // After new tag has been created, repopulate previous tags
+                  for (let i = 1; i <= tagCounter - 1; i++) {
+                    document.getElementById(`input-tags${i}`).value = prevTags[i - 1]
+                  }
+
+                  // Empty array
+                  while (prevTags.length > 0) {
+                    prevTags.pop();
+                  }
+
                 }
               </script>
               <br>
@@ -143,22 +205,48 @@
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
               <div id="ing-wrapper">
-                <label for="input-ings">Ingredients</label><br><br>
+                <label>Ingredients</label><br><br>
+                <label for="input-ings1">1.</label>
+                <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
 
               <script>
                 // Keep track of number of ingredient inputs
-                let ingCounter = 0;
+                let ingCounter = 1;
+
+                // Array to store tags to repopulate tags later
+                let prevIngs = []
 
                 // Add label and new input
                 function addNewIngredient() {
-                  ingCounter++;
-                  document.getElementById('ing-wrapper').innerHTML += `<span>
-                    <label for="input-ings${String(ingCounter)}">${String(ingCounter)}.</label>
-                    <input type="text" id="input-ings${String(ingCounter)}"  class="ings" name="input-ings${String(ingCounter)}"><br><br><br>
-                    </span>`
+
+                  // Save prev tags in array
+                  for (let i = 1; i <= ingCounter; i++) {
+                    let value = document.getElementById(`input-ings${i}`).value
+                    prevIngs.push(value)
+                    console.log(prevIngs)
+                  }
+
+                  document.getElementById('ing-wrapper').innerHTML += `<div class="input-card-ings">
+                    <label for="input-ings${String(ingCounter + 1)}">${String(ingCounter + 1)}.</label>
+                    <input type="text" id="input-ings${String(ingCounter + 1)}"  class="ings" name="input-ings${String(ingCounter + 1)}">
+                 </div>`
+
+                  ingCounter++
+
+                  // After new tag has been created, repopulate previous tags
+                  for (let i = 1; i <= ingCounter - 1; i++) {
+                    document.getElementById(`input-ings${i}`).value = prevIngs[i - 1]
+                  }
+
+                  // Empty array
+                  while (prevIngs.length > 0) {
+                    prevIngs.pop();
+                  }
                 }
               </script>
+
+              <br>
 
               <!-- Create new ingredient button-->
               <button class="add-btn" type="button" onclick="addNewIngredient()">+</button>
@@ -170,21 +258,49 @@
             <div class="input-card" id="step-card">
 
               <div id="step-wrapper">
-                <!--<label for="input-steps">Steps</label><br><br>-->
+                <label>Steps</label><br>
+                <div class="input-card-steps">
+                  <label for="input-steps1">1.</label>
+                  <input type="text" id="input-steps1" class="steps" name="input-steps1">
+                </div>
               </div>
+              <br><br>
 
               <script>
-                // Keep track of number of ingredient inputs
-                let stepCounter = 0;
+                // Keep track of number of step inputs
+                let stepCounter = 1;
+
+                // Array to store tags to repopulate tags later
+                let prevSteps = []
 
                 // Add label and new input
                 function addNewStep() {
-                  stepCounter++;
+
+                  // Save prev tags in array
+                  for (let i = 1; i <= stepCounter; i++) {
+                    let value = document.getElementById(`input-steps${i}`).value
+                    prevSteps.push(value)
+                    console.log(prevSteps)
+                  }
+
                   document.getElementById('step-wrapper').innerHTML += `<div class="input-card-steps">
-                    <label for="input-steps${String(stepCounter)}">${String(stepCounter)}.</label>
-                    <input type="text" id="input-steps${String(stepCounter)}" class="steps" name="input-steps${String(stepCounter)}">
-                    </div><br>`
+                    <label for="input-steps${String(stepCounter + 1)}">${String(stepCounter + 1)}.</label>
+                    <input type="text" id="input-steps${String(stepCounter + 1)}" class="steps" name="input-steps${String(stepCounter + 1)}">
+                    </div>`
+
+                  stepCounter++
+                  // After new tag has been created, repopulate previous tags
+                  for (let i = 1; i <= stepCounter - 1; i++) {
+                    document.getElementById(`input-steps${i}`).value = prevSteps[i - 1]
+                  }
+
+                  // Empty array
+                  while (prevSteps.length > 0) {
+                    prevSteps.pop();
+                  }
+
                 }
+
               </script>
 
               <!-- Create new step button-->
