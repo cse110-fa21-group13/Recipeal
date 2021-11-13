@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe card demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,500&display=swap');
+        .card {
+            display: flexbox;
+            position: relative;
+            font-family: 'Work Sans', sans-serif;
+            width: 260px;
+            height: 420px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            border-radius: 16px;
+            transition: all ease-out 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .image-box {
+            width: 260px;
+            height: 260px;
+        }
+
+        .image-box img, .image-box h1{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .image-box h1 {
+            width: auto;
+            padding: 0px 9px;
+        }
+
+        .image-box .card-title {
+            position: absolute;
+            margin: 0;
+            top: 200px;
+            font-size: 24px;
+            font-weight: bolder;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .textbox {
+            border-top: solid 4px #FFC148;
+            height: 160px;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        .textbox p{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            margin: 0;
+            padding: 12px 9px;
+        }
+
+        .card button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7)
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="image-box">
+            <img src="cupcake.jpg">
+            <div class="card-title">
+                <h1>Cupcake</h1>
+            </div>
+        </div>
+        <div class="textbox">
+            <p>This is where your description goes. If there's no description, just show the steps here.</p>
+        </div>
+        <button class="fav-button">
+            <span class="material-icons">
+                favorite
+            </span>
+        </button>
+    </div>
+</body>
+</html>
