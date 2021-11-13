@@ -4,23 +4,162 @@
   font-family: sans-serif;
 }
 
-body,
-main {
+body, main {
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
+/*
 img.flipped {
   margin-left: -116px !important;
   transform: rotate(180deg);
 }
+*/
 
 section:not(section.shown) {
   display: none;
 }
 
+/** CREATE RECIPE SECTION **/
+
+.section--create-recipe {
+  width: 70%;
+  margin: auto;
+}
+
+#create-recipe--input-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 100px;
+}
+
+/* Cards for all inputs */
+
+.input-card {
+  margin-top: 20px;
+  background-color: #F6F6F6;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Input card for steps */
+
+.input-card-steps {
+  background-color: #F6F6F6;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Card for display image */
+
+#img-card {
+  padding: 70px;
+}
+
+#display-image {
+  cursor: pointer;
+  height: 170px;
+  margin: auto;
+  left: 200px;
+  top: 128px;
+}
+
+/* Card for ingredients */
+
+#ing-card {
+  height: 98%;
+  width: 500px;
+}
+
+/* Card for steps */
+
+#step-card {
+  height: 98%;
+  width: 500px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Input */
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: var(--p-font);
+  border: 3px solid #ccc;
+  resize: none;
+  width: 90%;
+}
+
+input.tags {
+  width: 100px;
+  margin: 5px;
+}
+
+/*
+#input-desc {
+  padding: none;
+  height: 200px;
+}
+*/
+
+input[type="text"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+}
+
+input[type="number"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+input[type="number"]:focus {
+  border: 3px solid #555;
+}
+
+/* Button */
+
+button.add-btn {
+  display: block;
+  margin: 0px auto;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.add-btn:focus {
+  outline: none;
+}
+
+button.add-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+/*
 .button--horizontal-line {
   border-top: 1px solid rgb(223, 225, 229);
   position: absolute;
@@ -36,7 +175,7 @@ section:not(section.shown) {
   width: 696px;
 }
 
-.button--wrapper > button {
+.button--wrapper>button {
   background-color: white;
   border: 1px solid rgb(223, 225, 229);
   border-radius: 40px;
@@ -45,12 +184,12 @@ section:not(section.shown) {
   z-index: 2;
 }
 
-.button--wrapper > button:hover {
+.button--wrapper>button:hover {
   cursor: pointer;
   filter: brightness(96%);
 }
 
-.button--wrapper > img {
+.button--wrapper>img {
   filter: opacity(0.7);
   margin-left: -120px;
   margin-top: 11px;
@@ -79,11 +218,11 @@ section:not(section.shown) {
   width: 100%;
 }
 
-/* Create Recipe CSS */
+/* Create Recipe CSS 
+
 .create-rep-1 {
   position: absolute;
   width: 400px;
-
   background: #b2b3c4;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
@@ -92,7 +231,8 @@ section:not(section.shown) {
 #create-recipe-image {
   height: 300px;
   left: 200px;
-  top: 128px;;
+  top: 128px;
+  ;
 }
 
 .create-rep-1 label {
@@ -135,23 +275,21 @@ input[type="file"] {
   height: 912px;
   left: 630px;
   top: 128px;
-
   background: #b2b3c4;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 }
 
 .create-rep-paragraphs {
-
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
-  /* identical to box height */
-  
+   identical to box height 
   display: flex;
   align-items: center;
   text-align: center;
   letter-spacing: -0.02em;
 }
+*/

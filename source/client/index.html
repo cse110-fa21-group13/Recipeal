@@ -1,209 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe App</title>
 
-    <!-- Web Components -->
-    <script src="assets/components/RecipeCard.js" type="module"></script>
-    <!-- <script src="assets/components/RecipeExpand.js" type="module"></script> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe App</title>
 
-    <!-- Service Worker
+  <!-- Web Components -->
+  <script src="assets/components/RecipeCard.js" type="module"></script>
+  <!-- <script src="assets/components/RecipeExpand.js" type="module"></script> -->
+
+  <!-- Service Worker
   <script src="sw.js" type="module"></script> -->
 
-    <!-- Router -->
-    <script src="assets/scripts/Router.js" type="module"></script>
+  <!-- Router -->
+  <script src="assets/scripts/Router.js" type="module"></script>
 
-    <!-- Main Stylesheet & Scripts -->
-    <link rel="stylesheet" href="assets/styles/main.css" />
-    <script src="assets/scripts/main.js" type="module"></script>
+  <!-- Main Stylesheet & Scripts -->
+  <link rel="stylesheet" href="assets/styles/main.css" />
+  <script type="text/javascript" src="../client/assets/scripts/main.js"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
-  </head>
+</head>
 
-  <body>
-    <main>
-      <section class="section--recipe-cards shown">
-        <nav class="navbar navbar-light bg-dark">
-          <span class="navbar-brand mb-0 h1 text-white">Navbar</span>
-          <div class="navbar-nav mx-auto d-flex flex-row">
-            <button
-              class="nav-item btn btn-light mr-3"
-              onclick="changeView(event)"
-            >
-              My Recipes
-            </button>
-            <button class="nav-item btn btn-dark" onclick="changeView(event)">
-              Explore
-            </button>
-          </div>
-        </nav>
+<body>
+  <main>
+    <section class="section--recipe-cards shown">
+      <nav class="navbar navbar-light bg-dark">
+        <span class="navbar-brand mb-0 h1 text-white">Navbar</span>
+        <div class="navbar-nav mx-auto d-flex flex-row">
+          <button class="nav-item btn btn-light mr-3" onclick="changeView(event)">
+            My Recipes
+          </button>
+          <button class="nav-item btn btn-dark" onclick="changeView(event)">
+            Explore
+          </button>
+        </div>
+      </nav>
 
-        <section class="recipe-cards--wrapper shown">
-          My recipes
-          <!-- Recipes Added Here -->
-        </section>
-
-        <section class="explore container-fluid">
-          <div class="row visible-xs-*">
-            <div class="col xs0"></div>
-            <div class="col xs1"></div>
-          </div>
-          <div class="row visible-sm-*">
-            <div class="col sm0"></div>
-            <div class="col sm1"></div>
-            <div class="col sm2"></div>
-          </div>
-          <div class="row hidden-xs hidden-sm" style="height: 300px">
-            <div class="col lg0"></div>
-            <div class="col lg1"></div>
-            <div class="col lg2"></div>
-            <div class="col lg3"></div>
-          </div>
-        </section>
-        <section class="section--create-recipe">
-          <!--TODO: create recipe page-->
-          <div id ="create-recipe-image" class = "create-rep-1">
-            <label for="upload" class="custom-file-upload">
-              <img id="display-image" src="https://toppng.com/uploads/preview/file-upload-image-icon-115632290507ftgixivqp.png" />
-            </label>
-            <input id="upload" type="file" onChange="handleImageUpload()" />
-            <script>
-              function handleImageUpload() {
-                let image = document.getElementById("upload").files[0];
-                let fileReader = new FileReader();
-                fileReader.onload = function(e) {
-                  document.getElementById("display-image").src = e.target.result;
-                }
-                if(image) {
-                  fileReader.readAsDataURL(image);
-                }
-              }
-            </script>
-          </div>
-          <div id="create-recipe-name" class="create-rep-1">
-            Name:
-            <p class="create-recipe-para">
-              This is a paragraph
-            </p>
-          </div>
-          <div id="create-recipe-desc" class="create-rep-1">
-            Description:
-            <p class="create-recipe-para">
-              
-            </p>
-          </div>
-          <div id="create-recipe-time" class="create-rep-1">
-            Time:
-            <p>
-              
-            </p>
-          </div>
-          <div id="create-recipe-ingred" class="create-rep-2">
-            Ingredients:
-            <p>
-              
-            </p>
-          </div>
-        </section>
-        <button
-          class="show-create-button btn btn-primary"
-          onclick="changeView(event)"
-          style="bottom: 10px; right: 10px; position: absolute"
-        >
-          <i class="bi bi-plus-lg"></i>
-        </button>
+      <section class="recipe-cards--wrapper shown">
+        My recipes
+        <!-- Recipes Added Here -->
       </section>
-      
-    </main>
-    <script>
-      function changeView(e) {
-        var myRecipes = document.querySelector(".recipe-cards--wrapper");
-        var explore = document.querySelector(".explore");
-        var createRecipe = document.querySelector(".section--create-recipe");
-        var button = document.querySelector(".show-create-button");
 
-        if (e.target.innerText === "My Recipes") {
-          myRecipes.classList.add("shown");
-          explore.classList.remove("shown");
-          createRecipe.classList.remove("shown");
-          button.classList.remove("hidden");
-          button.classList.add("btn");
-          [...document.querySelectorAll(".col")].forEach((element) => {
-            element.innerHTML = "";
-          });
-        } else if (e.target.innerText === "Explore") {
-          myRecipes.classList.remove("shown");
-          createRecipe.classList.remove("shown");
-          explore.classList.add("shown");
-          button.classList.add("hidden");
-          button.classList.remove("btn");
-          fetchApiRecipes();
-        } else {
-          console.log(button);
-          myRecipes.classList.remove("shown");
-          explore.classList.remove("shown");
-          createRecipe.classList.add("shown");
-          button.classList.add("hidden");
-          button.classList.remove("btn");
-        }
-        switchHighlight(e.target);
-      }
-      function switchHighlight(target) {
-        var nav = document.querySelector(".navbar-nav");
-        var buttons = nav.getElementsByTagName("*");
-        var e;
-        for (var i = 0; i < buttons.length; i++) {
-          e = buttons[i];
-          if (e === target) {
-            e.classList.remove("btn-dark");
-            e.classList.add("btn-white");
-          } else {
-            e.classList.add("btn-dark");
-            e.classList.remove("btn-white");
-          }
-        }
-      }
-      async function fetchApiRecipes() {
-        const API_KEY = "b24485ab3d4a47f696151e7134433592";
-        const response = await fetch(
-          `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
-        );
+      <section class="explore container-fluid">
+        <div class="row visible-xs-*">
+          <div class="col xs0"></div>
+          <div class="col xs1"></div>
+        </div>
+        <div class="row visible-sm-*">
+          <div class="col sm0"></div>
+          <div class="col sm1"></div>
+          <div class="col sm2"></div>
+        </div>
+        <div class="row hidden-xs hidden-sm" style="height: 300px">
+          <div class="col lg0"></div>
+          <div class="col lg1"></div>
+          <div class="col lg2"></div>
+          <div class="col lg3"></div>
+        </div>
+      </section>
 
-        // Storing data in form of JSON
-        var data = await response.json();
-        data.recipes.forEach((element, i) => {
-          console.log(element);
-          const recipeData = {
-            image: element.image,
-            title: element.title,
-            description: element.summary,
-          };
-          const recipeCard = document.createElement("recipe-card");
-          recipeCard.data = recipeData;
+      <!-- CREATE RECIPE PAGE -->
+      <section class="section--create-recipe">
+        <div id="create-recipe--input-wrapper">
 
-          document.querySelector(`.xs${i % 2}`).appendChild(recipeCard);
-          document.querySelector(`.sm${i % 3}`).appendChild(recipeCard);
-          document.querySelector(`.lg${i % 4}`).appendChild(recipeCard);
-          console.log(
-            String(`.xs${i % 2}`),
-            document.querySelector(`.xs${i % 2}`),
-            document.querySelector(`.explore`)
-          );
+          <!-- FIRST COLUMN -->
+          <div class="input-wrapper--column">
+            <div class="input-card" id="img-card">
+              <label for="input-img" class="custom-file-upload">
+                <img id="display-image"
+                  src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />
+              </label>
+
+              <script>
+                // Get image to preview it 
+                function handleImageUpload() {
+                  let image = document.getElementById('input-img').files[0]
+                  let fileReader = new FileReader()
+                  fileReader.onload = function (e) {
+                    document.getElementById('display-image').src = e.target.result
+                  }
+                  if (image) {
+                    fileReader.readAsDataURL(image)
+                  }
+                }
+              </script>
+
+              <input id="input-img" type="file" onchange="handleImageUpload()" style="display: none" />
+            </div>
+
+            <!-- Name -->
+            <div class="input-card">
+              <label for="input-name">Name</label><br>
+              <input type="text" id="input-name" name="input-name">
+            </div>
+
+            <!-- Description -->
+            <div class="input-card">
+              <label for="input-desc">Description</label><br>
+              <input type="text" id="input-desc" name="input-desc">
+            </div>
+
+            <!-- Time -->
+            <div class="input-card">
+              <label for="input-time">Time (in minutes)</label><br>
+              <input type="number" id="input-time" name="input-time">
+            </div>
+
+            <!-- Tags -->
+            <div class="input-card">
+              <div id="tag-wrapper">
+                <label for="input-tags">Tags</label><br>
+              </div>
+
+              <script>
+                // Keep track of number of ingredient inputs
+                let tagCounter = 0;
+
+                // Add label and new input
+                function addNewTag() {
+                  tagCounter++;
+                  document.getElementById('tag-wrapper').innerHTML += `<span>
+                    <input type="text" id="input-tags${String(tagCounter)}" class="tags" name="input-tags${String(tagCounter)}">
+                    </span>`
+                }
+              </script>
+              <br>
+
+              <!-- Create new tag input button-->
+              <button class="add-btn" type="button" onclick="addNewTag()">+</button>
+            </div>
+          </div>
+
+          <!-- SECOND COLUMN -->
+          <div class="input-wrapper--column">
+            <!-- Ingredients -->
+            <div class="input-card" id="ing-card">
+              <div id="ing-wrapper">
+                <label for="input-ings">Ingredients</label><br><br>
+              </div>
+
+              <script>
+                // Keep track of number of ingredient inputs
+                let ingCounter = 0;
+
+                // Add label and new input
+                function addNewIngredient() {
+                  ingCounter++;
+                  document.getElementById('ing-wrapper').innerHTML += `<span>
+                    <label for="input-ings${String(ingCounter)}">${String(ingCounter)}.</label>
+                    <input type="text" id="input-ings${String(ingCounter)}"  class="ings" name="input-ings${String(ingCounter)}"><br><br><br>
+                    </span>`
+                }
+              </script>
+
+              <!-- Create new ingredient button-->
+              <button class="add-btn" type="button" onclick="addNewIngredient()">+</button>
+            </div>
+          </div>
+
+          <!-- THIRD COLUMN -->
+          <div class="input-wrapper--column">
+            <div class="input-card" id="step-card">
+
+              <div id="step-wrapper">
+                <!--<label for="input-steps">Steps</label><br><br>-->
+              </div>
+
+              <script>
+                // Keep track of number of ingredient inputs
+                let stepCounter = 0;
+
+                // Add label and new input
+                function addNewStep() {
+                  stepCounter++;
+                  document.getElementById('step-wrapper').innerHTML += `<div class="input-card-steps">
+                    <label for="input-steps${String(stepCounter)}">${String(stepCounter)}.</label>
+                    <input type="text" id="input-steps${String(stepCounter)}" class="steps" name="input-steps${String(stepCounter)}">
+                    </div><br>`
+                }
+              </script>
+
+              <!-- Create new step button-->
+              <button class="add-btn" type="button" onclick="addNewStep()">+</button>
+              <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!--TODO: create recipe page -->
+        <!--
+        <div id="create-recipe-image" class="create-rep-1">
+          <label for="upload" class="custom-file-upload">
+            <img id="display-image"
+              src="https://toppng.com/uploads/preview/file-upload-image-icon-115632290507ftgixivqp.png" />
+          </label>
+          <input id="upload" type="file" onChange="handleImageUpload()" />
+          <script>
+            function handleImageUpload() {
+              let image = document.getElementById("upload").files[0];
+              let fileReader = new FileReader();
+              fileReader.onload = function (e) {
+                document.getElementById("display-image").src = e.target.result;
+              }
+              if (image) {
+                fileReader.readAsDataURL(image);
+              }
+            }
+          </script>
+        </div>
+        -->
+
+        <!--
+        <div id="create-recipe-name" class="create-rep-1">
+          Name:
+          <p class="create-recipe-para">
+            This is a paragraph
+          </p>
+        </div>
+        -->
+
+        <!--
+        <div id="create-recipe-desc" class="create-rep-1">
+          Description:
+          <p class="create-recipe-para">
+
+          </p>
+        </div>
+        <div id="create-recipe-time" class="create-rep-1">
+          Time:
+          <p>
+
+          </p>
+        </div>
+        <div id="create-recipe-ingred" class="create-rep-2">
+          Ingredients:
+          <p>
+
+          </p>
+        </div>
+        -->
+      </section>
+
+      <button class="show-create-button btn btn-primary" onclick="changeView(event)"
+        style="bottom: 10px; right: 10px; position: absolute">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </section>
+  </main>
+  <script>
+    function changeView(e) {
+      var myRecipes = document.querySelector(".recipe-cards--wrapper");
+      var explore = document.querySelector(".explore");
+      var createRecipe = document.querySelector(".section--create-recipe");
+      var button = document.querySelector(".show-create-button");
+
+      if (e.target.innerText === "My Recipes") {
+        myRecipes.classList.add("shown");
+        explore.classList.remove("shown");
+        createRecipe.classList.remove("shown");
+        button.classList.remove("hidden");
+        button.classList.add("btn");
+        [...document.querySelectorAll(".col")].forEach((element) => {
+          element.innerHTML = "";
         });
+      } else if (e.target.innerText === "Explore") {
+        myRecipes.classList.remove("shown");
+        createRecipe.classList.remove("shown");
+        explore.classList.add("shown");
+        button.classList.add("hidden");
+        button.classList.remove("btn");
+        fetchApiRecipes();
+      } else {
+        console.log(button);
+        myRecipes.classList.remove("shown");
+        explore.classList.remove("shown");
+        createRecipe.classList.add("shown");
+        button.classList.add("hidden");
+        button.classList.remove("btn");
       }
-    </script>
-  </body>
+      switchHighlight(e.target);
+    }
+    function switchHighlight(target) {
+      var nav = document.querySelector(".navbar-nav");
+      var buttons = nav.getElementsByTagName("*");
+      var e;
+      for (var i = 0; i < buttons.length; i++) {
+        e = buttons[i];
+        if (e === target) {
+          e.classList.remove("btn-dark");
+          e.classList.add("btn-white");
+        } else {
+          e.classList.add("btn-dark");
+          e.classList.remove("btn-white");
+        }
+      }
+    }
+    async function fetchApiRecipes() {
+      const API_KEY = "b24485ab3d4a47f696151e7134433592";
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+      );
+
+      // Storing data in form of JSON
+      var data = await response.json();
+      data.recipes.forEach((element, i) => {
+        console.log(element);
+        const recipeData = {
+          image: element.image,
+          title: element.title,
+          description: element.summary,
+        };
+        const recipeCard = document.createElement("recipe-card");
+        recipeCard.data = recipeData;
+
+        document.querySelector(`.xs${i % 2}`).appendChild(recipeCard);
+        document.querySelector(`.sm${i % 3}`).appendChild(recipeCard);
+        document.querySelector(`.lg${i % 4}`).appendChild(recipeCard);
+        console.log(
+          String(`.xs${i % 2}`),
+          document.querySelector(`.xs${i % 2}`),
+          document.querySelector(`.explore`)
+        );
+      });
+    }
+  </script>
+</body>
+
 </html>
