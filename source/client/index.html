@@ -48,50 +48,56 @@
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
           <script>
-            // List of recipes 
-            const recipes = [
-              'assets/recipes/burrito.json',
-              'assets/recipes/soup.json',
-              'assets/recipes/curry.json'
-            ];
-            const recipeData = {};
-            window.addEventListener('DOMContentLoaded', init);
-            async function init() {
-              // fetch the recipes and wait for them to load
-              let fetchSuccessful = await fetchRecipes();
-              // if they didn't successfully load, quit the function
-              if (!fetchSuccessful) {
-                console.log('Recipe fetch unsuccessful');
-                return;
-              };
-              // Add the first three recipe cards to the page
-              createRecipeCards();
-            }
-            // This function will fetch the recipes and store their json data in recipeData[]
-            async function fetchRecipes() {
-              return new Promise((resolve, reject) => {
-                for (let i = 0; i < recipes.length; i++) {
-                  fetch(recipes[i])
-                    .then(response => response.json())
-                    .then(data => {
-                      recipeData[recipes[i]] = data;
-                      if (Object.keys(recipeData).length == recipes.length) {
-                        resolve(true);
-                      }
-                    })
-                }
-              });
-            }
-            // This function will set the data for each new recipe card (see RecipeCard.js under components for details)
-            // and append it to the recipe cards section
-            function createRecipeCards() {
-              for (let i = 0; i < 3; i++) {
-                let newCard = document.createElement('recipe-card');
-                let mainSec = document.getElementById('recipe-cards');
-                console.log(recipeData[recipes[i]]);
-                newCard.data = recipeData[recipes[i]];
-                mainSec.appendChild(newCard);
+            function newCard(name) {
+              // List of recipes
+              console.log(name);
+              let recipe = JSON.parse(localStorage.getItem(name));
+              console.log(recipe);
+              let newCard = document.createElement('recipe-card');
+              let mainSec = document.getElementById('recipe-cards');
+              newCard.data = recipe;
+              mainSec.appendChild(newCard);
+              /*
+              const recipeData = {};
+              window.addEventListener('DOMContentLoaded', init);
+              async function init() {
+                // fetch the recipes and wait for them to load
+                let fetchSuccessful = await fetchRecipes();
+                // if they didn't successfully load, quit the function
+                if (!fetchSuccessful) {
+                  console.log('Recipe fetch unsuccessful');
+                  return;
+                };
+                // Add the first three recipe cards to the page
+                createRecipeCards();
               }
+              // This function will fetch the recipes and store their json data in recipeData[]
+              async function fetchRecipes() {
+                return new Promise((resolve, reject) => {
+                  for (let i = 0; i < recipes.length; i++) {
+                    fetch(recipes[i])
+                      .then(response => response.json())
+                      .then(data => {
+                        recipeData[recipes[i]] = data;
+                        if (Object.keys(recipeData).length == recipes.length) {
+                          resolve(true);
+                        }
+                      })
+                  }
+                });
+              }
+              // This function will set the data for each new recipe card (see RecipeCard.js under components for details)
+              // and append it to the recipe cards section
+              function createRecipeCards() {
+                for (let i = 0; i < 3; i++) {
+                  let newCard = document.createElement('recipe-card');
+                  let mainSec = document.getElementById('recipe-cards');
+                  console.log(recipeData[recipes[i]]);
+                  newCard.data = recipeData[recipes[i]];
+                  mainSec.appendChild(newCard);
+                }
+              }
+              */
             }
           </script>
         </div>
@@ -414,13 +420,15 @@
                     newRecipe.name.toLowerCase(),
                     JSON.stringify(newRecipe)
                   )
+                  // Creates a recipe card & displays it on the 'My Recipes' page
+                  newCard(newRecipe.name.toLowerCase());
                   alert('Recipe saved!')
                 }
               }
             </script>
 
             <!-- Save Button -->
-            <button class="save-btn" onclick="saveData()">Save Recipe</button>
+            <button class="save-btn" onclick="saveData(); changeView(event)">Save Recipe</button>
           </div>
 
         </div>
@@ -498,7 +506,7 @@
       var createRecipe = document.querySelector(".section--create-recipe");
       var button = document.querySelector(".show-create-button");
 
-      if (e.target.innerText === "My Recipes") {
+      if (e.target.innerText === "My Recipes" || e.target.innerText === "Save Recipe") {
         myRecipes.classList.add("shown");
         explore.classList.remove("shown");
         createRecipe.classList.remove("shown");
