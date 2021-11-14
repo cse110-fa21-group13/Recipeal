@@ -4,12 +4,12 @@ class RecipeCard extends HTMLElement {
 
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
-    let shadow = this.attachShadow({ mode: 'open' })
+    let shadow = this.attachShadow({ mode: 'open' });
   }
 
   set data (data) {
     // if (!data) return;
-    const styleElem = document.createElement('style')
+    const styleElem = document.createElement('style');
     const styles = `
       * {
         font-family: sans-serif;
@@ -56,33 +56,33 @@ class RecipeCard extends HTMLElement {
         font-size: 12px;
       }
     `
-    styleElem.innerHTML = styles
+    styleElem.innerHTML = styles;
 
-    const card = document.createElement('article')
-    card.className = 'card'
+    const card = document.createElement('article');
+    card.className = 'card';
 
-    const image = document.createElement('img')
-    image.setAttribute('class', 'card-img-top')
-    image.setAttribute('src', data.thumbnail)
+    const image = document.createElement('img');
+    image.setAttribute('class', 'card-img-top');
+    image.setAttribute('src', data.thumbnail);
 
-    const title = document.createElement('p')
-    title.setAttribute('class', 'card-title')
-    title.textContent = data.name
+    const title = document.createElement('p');
+    title.setAttribute('class', 'card-title');
+    title.textContent = data.name;
 
-    const description = document.createElement('p')
-    description.setAttribute('class', 'card-description')
-    description.textContent = data.description
+    const description = document.createElement('p');
+    description.setAttribute('class', 'card-description');
+    description.textContent = data.description;
 
-    const time = document.createElement('time')
-    time.textContent += data.time
+    const time = document.createElement('time');
+    time.textContent += data.time + ' '+ 'min';
 
-    card.appendChild(image)
-    card.appendChild(title)
-    card.appendChild(description)
-    card.appendChild(time)
+    card.appendChild(image);
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(time);
 
-    this.shadowRoot.appendChild(card)
-    this.shadowRoot.appendChild(styleElem)
+    this.shadowRoot.appendChild(card);
+    this.shadowRoot.appendChild(styleElem);
   }
 }
-customElements.define('recipe-card', RecipeCard)
+customElements.define('recipe-card', RecipeCard);

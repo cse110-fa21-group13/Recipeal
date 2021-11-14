@@ -44,7 +44,7 @@ section:not(section.shown) {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 100px;
+  gap: 10px;
 }
 
 /* Cards for all inputs */
