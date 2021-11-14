@@ -2,7 +2,6 @@ import { changeView } from './navigate.js';
 
 // Given a recipe name, creates a recipe card from that recipe in localStorage. 
 export function newCard(name) {
-    // List of recipes
     if(localStorage.getItem(name)) {
         let recipe = JSON.parse(localStorage.getItem(name));
         let newCard = document.createElement('recipe-card');
@@ -29,6 +28,7 @@ function initCards () {
   }
 }
 
+// Sets the recipe-expand element to have the data of whatever recipe card was clicked
 function bindRecipeCard(recipeCard, recipeData) {
     recipeCard.addEventListener('click', e => {
         document.querySelector('recipe-expand').data = recipeData;
