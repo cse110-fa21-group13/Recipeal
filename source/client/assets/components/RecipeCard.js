@@ -63,7 +63,7 @@ class RecipeCard extends HTMLElement {
 
     const image = document.createElement('img')
     image.setAttribute('class', 'card-img-top')
-    image.setAttribute('src', data.image)
+    image.setAttribute('src', data.thumbnail)
 
     const title = document.createElement('p')
     title.setAttribute('class', 'card-title')
