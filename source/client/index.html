@@ -139,9 +139,7 @@
                   let image = document.getElementById('input-img').files[0]
                   let fileReader = new FileReader()
                   fileReader.onload = function (e) {
-                    // convert file to base64 String
-                    const base64String = fileReader.result.replace('data:', '').replace(/^.+,/, '')
-                    document.getElementById('display-image').src = `data:image/png;base64,${base64String}`
+                    document.getElementById('display-image').src = e.target.result
                     console.log(e.target.result)
                   }
                   if (image) {
@@ -342,10 +340,6 @@
               }
 
               /***** CREATE *****/
-
-              /* Insert initial object for local storage to save data */
-              const initial = {}
-              localStorage.setItem('user', JSON.stringify(initial))
 
               /*
                * Function to save the data from the input fields
