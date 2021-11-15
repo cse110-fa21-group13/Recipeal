@@ -1,14 +1,14 @@
 class ExpandRecipe extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
+  constructor () {
+    super()
+    this.attachShadow({ mode: 'open' })
 
-        // Create styles and root element
-        const styles = document.createElement('style');
-        const article = document.createElement('article');
+    // Create styles and root element
+    const styles = document.createElement('style')
+    const article = document.createElement('article')
 
-        // Fill in styles and root element
-        styles.innerHTML = `
+    // Fill in styles and root element
+    styles.innerHTML = `
             article {
                 background-color: white;
                 box-shadow: 0 0 10px rgb(0 0 0 / 15%);
@@ -125,14 +125,13 @@ class ExpandRecipe extends HTMLElement {
             ul li:not(:first-child) {
                 margin-top: 8px;
             }
-        `;
-        article.innerHTML = `
+        `
+    article.innerHTML = `
             <header>
                 <h1></h1>
                 <div class="meta--wrapper">
-                <p>yield: <span class="meta--yield"></span></p>
                 <p>total time: <time class="meta--total-time"></time></p>
-                <p>categories: <span class="meta--categories"></span></p>
+                <p>tags: <span class="meta--tags"></span></p>
                 </div>
                 <p class="description"></p>
                 <img src="" alt="" class="thumbnail" />
@@ -152,80 +151,79 @@ class ExpandRecipe extends HTMLElement {
                 <ol></ol>
                 </section>
             </main>
-        `;
+        `
 
-        // Append elements to the shadow root
-        this.shadowRoot.append(styles, article);
-    }
+    // Append elements to the shadow root
+    this.shadowRoot.append(styles, article)
+  }
 
-    /**
-     * Sets the data for the recipe that will be put inside the <recipe-expand> element.
-     * Overwrites the previously expanded recipe.
-     */
-    set data(data) {
-        this.json = data;
+  /**
+   * Sets the data for the recipe that will be put inside the <recipe-expand> element.
+   * Overwrites the previously expanded recipe.
+   */
+  set data (data) {
+    this.json = data
 
-        this.shadowRoot.querySelector('article').innerHTML = `
-            <header>
-                <h1></h1>
-                <div class="meta--wrapper">
-                <p>yield: <span class="meta--yield"></span></p>
-                <p>total time: <time class="meta--total-time"></time></p>
-                <p>categories: <span class="meta--categories"></span></p>
-                </div>
-                <p class="description"></p>
-                <img src="" alt="" class="thumbnail" />
-            </header>
-            <main>
-                <div class="rating--wrapper">
-                <span class="rating--value"></span>
-                <img src="" alt="" class="rating--star-img" />
-                <span class="rating--total"></span>
-                </div>
-                <section class="section--ingredients">
-                <h2>INGREDIENTS</h2>
-                <ul></ul>
-                </section>
-                <section class="section--instructions">
-                <h2>INSTRUCTIONS</h2>
-                <ol></ol>
-                </section>
-            </main>
-        `;
+    this.shadowRoot.querySelector('article').innerHTML = `
+        <header>
+        <h1></h1>
+        <div class="meta--wrapper">
+        <p>total time: <time class="meta--total-time"></time></p>
+        <p>tags: <span class="meta--tags"></span></p>
+        </div>
+        <p class="description"></p>
+        <img src="" alt="" class="thumbnail" />
+    </header>
+    <main>
+        <div class="rating--wrapper">
+        <span class="rating--value"></span>
+        <img src="" alt="" class="rating--star-img" />
+        <span class="rating--total"></span>
+        </div>
+        <section class="section--ingredients">
+        <h2>INGREDIENTS</h2>
+        <ul></ul>
+        </section>
+        <section class="section--instructions">
+        <h2>INSTRUCTIONS</h2>
+        <ol></ol>
+        </section>
+    </main>
+        `
 
-        // Set title
-        this.shadowRoot.querySelector('header > h1').innerHTML = data.name;
+    // Set title
+    this.shadowRoot.querySelector('header > h1').innerHTML = data.name
 
-        // Set image
-        const image = this.shadowRoot.querySelector('img.thumbnail')
-        image.setAttribute('src', data.thumbnail);
+    // Set image
+    const image = this.shadowRoot.querySelector('img.thumbnail')
+    image.setAttribute('src', data.thumbnail)
 
-        // Set description
-        this.shadowRoot.querySelector('p.description').innerHTML = data.description;
+    // Set description
+    this.shadowRoot.querySelector('p.description').innerHTML = data.description
 
-        // Set tags
-        const tags = data.tags.join(', ');
-        this.shadowRoot.querySelector('.meta--categories').innerHTML = tags;
+    // Set tags
+    const tags = data.tags.join(', ')
+    this.shadowRoot.querySelector('.meta--tags').innerHTML = tags
 
-        // Set time
-        this.shadowRoot.querySelector('.meta--total-time').innerHTML = data.time;
+    // Set time
+    this.shadowRoot.querySelector('.meta--total-time').innerHTML = data.time
 
-        // Set ingredients
-        const ingredients = data.ingredients;
-        ingredients.forEach(ingredient => {
-            const item = document.createElement('li');
-            item.innerHTML = ingredient;
-            this.shadowRoot.querySelector('.section--ingredients > ul').append(item);
-        });
+    // Set ingredients
+    const ingredients = data.ingredients
+    ingredients.forEach(ingredient => {
+      const item = document.createElement('li')
+      item.innerHTML = ingredient
+      this.shadowRoot.querySelector('.section--ingredients > ul').append(item)
+    })
 
-        // Set directions
-        const directions = data.directions;
-        directions.forEach(step => {
-            const item = document.createElement('li');
-            item.innerHTML = step;
-            this.shadowRoot.querySelector('.section--instructions > ol').append(item);
-        }); 
-    }
+    // Set directions
+    const directions = data.directions
+    directions.forEach(step => {
+      const item = document.createElement('li')
+      item.innerHTML = step
+      this.shadowRoot.querySelector('.section--instructions > ol').append(item)
+    })
+  }
 }
 
-customElements.define('recipe-expand', ExpandRecipe);
+customElements.define('recipe-expand', ExpandRecipe)

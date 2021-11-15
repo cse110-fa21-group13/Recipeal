@@ -47,7 +47,7 @@ export function changeView (e) {
     expandRecipe.classList.remove('shown')
     explore.classList.add('shown')
     button.classList.add('hidden')
-    button.classList.remove('btn')
+    //button.classList.remove('btn')
     fetchApiRecipes()
   } else if (
     e.target.id === 'create-recipe-btn' ||
@@ -59,14 +59,14 @@ export function changeView (e) {
     //expandRecipe.classList.remove('shown')
     createRecipe.classList.add('shown')
     button.classList.add('hidden')
-    button.classList.remove('btn')
+    //button.classList.remove('btn')
   } else {
     myRecipes.classList.remove('shown')
     explore.classList.remove('shown')
     createRecipe.classList.remove('shown')
     expandRecipe.classList.add('shown')
     button.classList.add('hidden')
-    button.classList.remove('btn')
+    //button.classList.remove('btn')
   }
   switchHighlight(e.target)
 }
@@ -179,8 +179,13 @@ function reset () {
  */
 function saveData (pageChange) {
   let checkName = document.getElementById('input-name').value.toLowerCase()
+
+  // Check if user has inputted name field
+  if (checkName == '') {
+    return alert('Please add at least a recipe name to save the recipe.')
+  }
   // Check if recipe has already been made
-  if (recipeExists(checkName)) {
+  else if (recipeExists(checkName)) {
     return alert('Recipe already exists')
   }
   // Else, create new recipe object
