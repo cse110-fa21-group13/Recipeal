@@ -8,6 +8,7 @@
       "puppeteer": "^11.0.0"
     },
     "scripts": {
+      "start": "navigate.js",
       "test": "jest"
     },
     "jest": {
