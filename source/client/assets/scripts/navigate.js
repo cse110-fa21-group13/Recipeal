@@ -1,6 +1,6 @@
 import { newCard } from './RecipeCardCreate.js'
 
-// BUTTONS
+/** BUTTONS **/
 let saveButton = document.querySelector('button.save-btn')
 saveButton.addEventListener('click', e => {
   saveData(e)
@@ -18,6 +18,9 @@ exploreButton.addEventListener('click', e => {
   changeView(e)
 })
 
+/*
+ * Function to switch pages
+ */
 export function changeView (e) {
   var myRecipes = document.querySelector('.recipe-cards--wrapper')
   var explore = document.querySelector('.explore')
@@ -65,6 +68,9 @@ export function changeView (e) {
   switchHighlight(e.target)
 }
 
+/*
+ * Function to change button highlight
+ */
 function switchHighlight (target) {
   var nav = document.querySelector('.navbar-nav')
   var buttons = nav.getElementsByTagName('*')
@@ -81,6 +87,9 @@ function switchHighlight (target) {
   }
 }
 
+/*
+ * Function to fecth recipes from spoonacular and populate explore page
+ */
 async function fetchApiRecipes () {
   const API_KEY = 'b24485ab3d4a47f696151e7134433592'
   const response = await fetch(
@@ -111,8 +120,9 @@ async function fetchApiRecipes () {
 }
 
 /*
- * Function to see if a recipe exists
+ * Function for to see if a recipe exists
  * Returns true if exists, false if it doesn't
+ * @param recipeName - name of recipe that function will check
  */
 function recipeExists (recipeName) {
   for (let i = 0; i < localStorage.length; i++) {
@@ -123,12 +133,46 @@ function recipeExists (recipeName) {
   return false
 }
 
-/***** CREATE *****/
+/*
+ * Function to clear input fields after saving
+ */
+function reset () {
+  document.getElementById('input-name').value = ''
+  document.getElementById('input-desc').value = ''
+  document.getElementById('input-time').value = ''
+
+  var i = 1
+  var j = 1
+  var k = 1
+
+  // Loop through all tag inputs and make them empty
+  while (i <= tagCounter) {
+    document.getElementById('input-tags' + i).value = ''
+    i++
+  }
+
+  // Loop through all ings inputs and make them empty
+  while (j <= ingCounter) {
+    document.getElementById('input-ings' + j).value = ''
+    j++
+  }
+
+  // Loop through all dir inputs and make them empty
+  while (k <= stepCounter) {
+    document.getElementById('input-steps' + k).value = ''
+    k++
+  }
+
+  // Set image to default
+  img.src =
+    'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
+}
 
 /*
  * Function to save the data from the input fields
  * and store them in local storage when check button
  * is clicked
+ * @param pageChange - current page the user is on(?)
  */
 function saveData (pageChange) {
   let checkName = document.getElementById('input-name').value.toLowerCase()
@@ -159,10 +203,12 @@ function saveData (pageChange) {
     // Get description and store it in the object
     let desc = document.getElementById('input-desc').value
     newRecipe.description = desc
+    desc = ' '
 
     // Get time and store it in the object
     let time = document.getElementById('input-time').value
     newRecipe.time = time
+    time = ' '
 
     var i = 1
     var j = 1
@@ -172,6 +218,7 @@ function saveData (pageChange) {
     while (i <= tagCounter) {
       let tagsValue = document.getElementById('input-tags' + i).value
       newRecipe.tags.push(tagsValue)
+      tagsValue = ' '
       i++
     }
 
@@ -179,6 +226,7 @@ function saveData (pageChange) {
     while (j <= ingCounter) {
       let ingsValue = document.getElementById('input-ings' + j).value
       newRecipe.ingredients.push(ingsValue)
+      ingsValue = ' '
       j++
     }
 
@@ -186,21 +234,27 @@ function saveData (pageChange) {
     while (k <= stepCounter) {
       let stepsValue = document.getElementById('input-steps' + k).value
       newRecipe.directions.push(stepsValue)
+      stepsValue = ' '
       k++
     }
 
     // Get image and store in in the object as a string
     let img = document.getElementById('display-image')
     newRecipe.thumbnail = img.src
+    img.src =
+      'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
 
     // Put the object into storage
     localStorage.setItem(
       newRecipe.name.toLowerCase(),
       JSON.stringify(newRecipe)
     )
+
     // Creates a recipe card & displays it on the 'My Recipes' page
     newCard(newRecipe.name.toLowerCase())
     alert('Recipe saved!')
     changeView(pageChange)
+
+    reset()
   }
 }
