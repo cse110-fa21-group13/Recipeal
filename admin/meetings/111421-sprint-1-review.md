@@ -8,8 +8,9 @@
   - Yibo
   - Sirisha
 
-What we accomplished:  
--CI/CD Pipeline
+What we accomplished: 
+
+- CI/CD Pipeline
   - Basic setup is done
   - Will run whenever push/pull from main 
   - Tests run before it allows any code to change
@@ -18,6 +19,8 @@ What we accomplished:
   - Designers made a style sheet for desingers to reference when styling elements
   - There is also an HTML Template example that they made for a more concrete example
   - Yibo: Look more into absolute vs relative positioning
+- Figma Prototype
+  - Functional prototype for how we'd like our final product to look/function 
 - The App itself
   - We got a lot done! We demo'd what we have so far to the entire team
   - CRUD Features
