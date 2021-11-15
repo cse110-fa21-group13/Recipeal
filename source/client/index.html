@@ -17,6 +17,7 @@
   <!-- Router -->
   <script src="assets/scripts/Router.js" type="module"></script>
   <script src="assets/scripts/navigate.js" type="module"></script>
+  <script src="assets/scripts/CreateRecipe.js" type="module"></script>
 
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/main.css" />
@@ -90,22 +91,7 @@
                   src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />
               </label>
 
-              <script>
-                // Get image to preview it 
-                function handleImageUpload() {
-                  let image = document.getElementById('input-img').files[0]
-                  let fileReader = new FileReader()
-                  fileReader.onload = function (e) {
-                    document.getElementById('display-image').src = e.target.result
-                    console.log(e.target.result)
-                  }
-                  if (image) {
-                    fileReader.readAsDataURL(image)
-                  }
-                }
-              </script>
-
-              <input id="input-img" type="file" onchange="handleImageUpload()" style="display: none" />
+              <input id="input-img" type="file" style="display: none" />
             </div>
 
             <!-- Name -->
@@ -133,43 +119,10 @@
                 <input type="text" id="input-tags1" class="tags" name="input-tags1">
 
               </div>
-
-              <script>
-                // Keep track of number of ingredient inputs
-                let tagCounter = 1;
-
-                // Array to store tags to repopulate tags later
-                let prevTags = []
-
-                // Add label and new input
-                function addNewTag() {
-
-                  // Save prev tags in array
-                  for (let i = 1; i <= tagCounter; i++) {
-                    let value = document.getElementById(`input-tags${i}`).value
-                    prevTags.push(value)
-                  }
-
-                  document.getElementById('tag-wrapper').innerHTML += `
-                    <input type="text" id="input-tags${String(tagCounter + 1)}" class="tags" name="input-tags${String(tagCounter + 1)}">
-                    `
-                  tagCounter++
-                  // After new tag has been created, repopulate previous tags
-                  for (let i = 1; i <= tagCounter - 1; i++) {
-                    document.getElementById(`input-tags${i}`).value = prevTags[i - 1]
-                  }
-
-                  // Empty array
-                  while (prevTags.length > 0) {
-                    prevTags.pop();
-                  }
-
-                }
-              </script>
               <br>
 
               <!-- Create new tag input button-->
-              <button class="add-btn" type="button" onclick="addNewTag()">+</button>
+              <button class="add-btn tag-btn" type="button">+</button>
             </div>
           </div>
 
@@ -183,46 +136,10 @@
                 <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
 
-              <script>
-                // Keep track of number of ingredient inputs
-                let ingCounter = 1;
-
-                // Array to store tags to repopulate tags later
-                let prevIngs = []
-
-                // Add label and new input
-                function addNewIngredient() {
-
-                  // Save prev tags in array
-                  for (let i = 1; i <= ingCounter; i++) {
-                    let value = document.getElementById(`input-ings${i}`).value
-                    prevIngs.push(value)
-                    console.log(prevIngs)
-                  }
-
-                  document.getElementById('ing-wrapper').innerHTML += `<div class="input-card-ings">
-                    <label for="input-ings${String(ingCounter + 1)}">${String(ingCounter + 1)}.</label>
-                    <input type="text" id="input-ings${String(ingCounter + 1)}"  class="ings" name="input-ings${String(ingCounter + 1)}">
-                 </div>`
-
-                  ingCounter++
-
-                  // After new tag has been created, repopulate previous tags
-                  for (let i = 1; i <= ingCounter - 1; i++) {
-                    document.getElementById(`input-ings${i}`).value = prevIngs[i - 1]
-                  }
-
-                  // Empty array
-                  while (prevIngs.length > 0) {
-                    prevIngs.pop();
-                  }
-                }
-              </script>
-
               <br>
 
               <!-- Create new ingredient button-->
-              <button class="add-btn" type="button" onclick="addNewIngredient()">+</button>
+              <button class="add-btn ing-btn" type="button">+</button>
             </div>
           </div>
 
@@ -239,45 +156,8 @@
               </div>
               <br><br>
 
-              <script>
-                // Keep track of number of step inputs
-                let stepCounter = 1;
-
-                // Array to store tags to repopulate tags later
-                let prevSteps = []
-
-                // Add label and new input
-                function addNewStep() {
-
-                  // Save prev tags in array
-                  for (let i = 1; i <= stepCounter; i++) {
-                    let value = document.getElementById(`input-steps${i}`).value
-                    prevSteps.push(value)
-                    console.log(prevSteps)
-                  }
-
-                  document.getElementById('step-wrapper').innerHTML += `<div class="input-card-steps">
-                    <label for="input-steps${String(stepCounter + 1)}">${String(stepCounter + 1)}.</label>
-                    <input type="text" id="input-steps${String(stepCounter + 1)}" class="steps" name="input-steps${String(stepCounter + 1)}">
-                    </div>`
-
-                  stepCounter++
-                  // After new tag has been created, repopulate previous tags
-                  for (let i = 1; i <= stepCounter - 1; i++) {
-                    document.getElementById(`input-steps${i}`).value = prevSteps[i - 1]
-                  }
-
-                  // Empty array
-                  while (prevSteps.length > 0) {
-                    prevSteps.pop();
-                  }
-
-                }
-
-              </script>
-
               <!-- Create new step button-->
-              <button class="add-btn" type="button" onclick="addNewStep()">+</button>
+              <button class="add-btn step-btn" type="button">+</button>
               <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
             </div>
 
@@ -285,65 +165,7 @@
             <button class="save-btn">Save Recipe</button>
 
           </div>
-
         </div>
-
-
-
-
-
-        <!--TODO: create recipe page -->
-        <!--
-        <div id="create-recipe-image" class="create-rep-1">
-          <label for="upload" class="custom-file-upload">
-            <img id="display-image"
-              src="https://toppng.com/uploads/preview/file-upload-image-icon-115632290507ftgixivqp.png" />
-          </label>
-          <input id="upload" type="file" onChange="handleImageUpload()" />
-          <script>
-            function handleImageUpload() {
-              let image = document.getElementById("upload").files[0];
-              let fileReader = new FileReader();
-              fileReader.onload = function (e) {
-                document.getElementById("display-image").src = e.target.result;
-              }
-              if (image) {
-                fileReader.readAsDataURL(image);
-              }
-            }
-          </script>
-        </div>
-        -->
-
-        <!--
-        <div id="create-recipe-name" class="create-rep-1">
-          Name:
-          <p class="create-recipe-para">
-            This is a paragraph
-          </p>
-        </div>
-        -->
-
-        <!--
-        <div id="create-recipe-desc" class="create-rep-1">
-          Description:
-          <p class="create-recipe-para">
-
-          </p>
-        </div>
-        <div id="create-recipe-time" class="create-rep-1">
-          Time:
-          <p>
-
-          </p>
-        </div>
-        <div id="create-recipe-ingred" class="create-rep-2">
-          Ingredients:
-          <p>
-
-          </p>
-        </div>
-        -->
       </section>
 
       <button id="create-recipe-btn" class="show-create-button btn btn-primary"

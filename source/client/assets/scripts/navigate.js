@@ -1,10 +1,13 @@
-import { newCard } from './RecipeCardCreate.js'
+// Contains functions for navigating between pages
 
 /** BUTTONS **/
+
+/*
 let saveButton = document.querySelector('button.save-btn')
 saveButton.addEventListener('click', e => {
   saveData(e)
 })
+*/
 let createRecipeButton = document.getElementById('create-recipe-btn')
 createRecipeButton.addEventListener('click', e => {
   changeView(e)
@@ -120,149 +123,4 @@ async function fetchApiRecipes () {
       document.querySelector(`.explore`)
     )
   })
-}
-
-/*
- * Function for to see if a recipe exists
- * Returns true if exists, false if it doesn't
- * @param recipeName - name of recipe that function will check
- */
-function recipeExists (recipeName) {
-  for (let i = 0; i < localStorage.length; i++) {
-    if (localStorage.key(i) == recipeName) {
-      return true
-    }
-  }
-  return false
-}
-
-/*
- * Function to clear input fields after saving
- */
-function reset () {
-  document.getElementById('input-name').value = ''
-  document.getElementById('input-desc').value = ''
-  document.getElementById('input-time').value = ''
-
-  var i = 1
-  var j = 1
-  var k = 1
-
-  // Loop through all tag inputs and make them empty
-  while (i <= tagCounter) {
-    document.getElementById('input-tags' + i).value = ''
-    i++
-  }
-
-  // Loop through all ings inputs and make them empty
-  while (j <= ingCounter) {
-    document.getElementById('input-ings' + j).value = ''
-    j++
-  }
-
-  // Loop through all dir inputs and make them empty
-  while (k <= stepCounter) {
-    document.getElementById('input-steps' + k).value = ''
-    k++
-  }
-
-  // Set image to default
-  document.getElementById('display-image').src =
-    'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
-}
-
-/*
- * Function to save the data from the input fields
- * and store them in local storage when check button
- * is clicked
- * @param pageChange - current page the user is on(?)
- */
-function saveData (pageChange) {
-  let checkName = document.getElementById('input-name').value.toLowerCase()
-
-  // Check if user has inputted name field
-  if (checkName == '') {
-    return alert('Please add at least a recipe name to save the recipe.')
-  }
-  // Check if recipe has already been made
-  else if (recipeExists(checkName)) {
-    return alert('Recipe already exists')
-  }
-  // Else, create new recipe object
-  else {
-    var newRecipe = {
-      name: '',
-      description: '',
-      time: '',
-      tags: [],
-      ingredients: [],
-      directions: [],
-      thumbnail: '',
-      favorites: 0
-    }
-
-    // Create new recipe out of the recipeTemplate
-    //let newRecipe = Object.create(recipeTemplate)
-
-    // Get name and store it in the object
-    let name = document.getElementById('input-name').value
-    newRecipe.name = name
-
-    // Get description and store it in the object
-    let desc = document.getElementById('input-desc').value
-    newRecipe.description = desc
-    desc = ' '
-
-    // Get time and store it in the object
-    let time = document.getElementById('input-time').value
-    newRecipe.time = time
-    time = ' '
-
-    var i = 1
-    var j = 1
-    var k = 1
-
-    // Loop through all tag inputs and push them to array
-    while (i <= tagCounter) {
-      let tagsValue = document.getElementById('input-tags' + i).value
-      newRecipe.tags.push(tagsValue)
-      tagsValue = ' '
-      i++
-    }
-
-    // Loop through all ings inputs and push them to array
-    while (j <= ingCounter) {
-      let ingsValue = document.getElementById('input-ings' + j).value
-      newRecipe.ingredients.push(ingsValue)
-      ingsValue = ' '
-      j++
-    }
-
-    // Loop through all dir inputs and push them to array
-    while (k <= stepCounter) {
-      let stepsValue = document.getElementById('input-steps' + k).value
-      newRecipe.directions.push(stepsValue)
-      stepsValue = ' '
-      k++
-    }
-
-    // Get image and store in in the object as a string
-    let img = document.getElementById('display-image')
-    newRecipe.thumbnail = img.src
-    img.src =
-      'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
-
-    // Put the object into storage
-    localStorage.setItem(
-      newRecipe.name.toLowerCase(),
-      JSON.stringify(newRecipe)
-    )
-
-    // Creates a recipe card & displays it on the 'My Recipes' page
-    newCard(newRecipe.name.toLowerCase())
-    alert('Recipe saved!')
-    changeView(pageChange)
-
-    reset()
-  }
 }
