@@ -49,11 +49,14 @@ export function changeView (e) {
     button.classList.add('hidden')
     button.classList.remove('btn')
     fetchApiRecipes()
-  } else if (e.target.id === 'create-recipe-btn') {
+  } else if (
+    e.target.id === 'create-recipe-btn' ||
+    e.target.id === 'create-recipe-btn-plus'
+  ) {
     console.log(button)
     myRecipes.classList.remove('shown')
     explore.classList.remove('shown')
-    expandRecipe.classList.remove('shown')
+    //expandRecipe.classList.remove('shown')
     createRecipe.classList.add('shown')
     button.classList.add('hidden')
     button.classList.remove('btn')
@@ -164,7 +167,7 @@ function reset () {
   }
 
   // Set image to default
-  img.src =
+  document.getElementById('display-image').src =
     'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
 }
 
