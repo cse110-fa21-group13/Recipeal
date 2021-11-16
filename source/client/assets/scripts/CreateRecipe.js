@@ -54,7 +54,7 @@ function handleImageUpload () {
 
 /* TAGS */
 
-// Keep track of number of ingredient inputs
+// Keep track of number of tag inputs
 let tagCounter = 1
 
 // Array to store tags to repopulate tags later
@@ -104,10 +104,12 @@ function addNewIngredient () {
 
   document.getElementById(
     'ing-wrapper'
-  ).innerHTML += `<div class="input-card-ings">
-    <label for="input-ings${String(ingCounter + 1)}">${String(
+  ).innerHTML += `<div class="input-card-ings" id=card-ing${String(
     ingCounter + 1
-  )}.</label>
+  )}>
+    <label for="input-ings${String(ingCounter + 1)}" id=label-ings${String(
+    ingCounter + 1
+  )}>${String(ingCounter + 1)}.</label>
     <input type="text" id="input-ings${String(
       ingCounter + 1
     )}"  class="ings" name="input-ings${String(ingCounter + 1)}">
@@ -145,13 +147,15 @@ function addNewStep () {
 
   document.getElementById(
     'step-wrapper'
-  ).innerHTML += `<div class="input-card-steps">
-    <label for="input-steps${String(stepCounter + 1)}">${String(
+  ).innerHTML += `<div class="input-card-steps" id=card-step${String(
     stepCounter + 1
-  )}.</label>
+  )}>
+  <label for="input-steps${String(stepCounter + 1)}" id=label-steps${String(
+    stepCounter + 1
+  )}>${String(stepCounter + 1)}.</label>
     <input type="text" id="input-steps${String(
       stepCounter + 1
-    )}" class="steps" name="input-steps${String(stepCounter + 1)}">
+    )}"  class="steps" name="input-steps${String(stepCounter + 1)}">
     </div>`
 
   stepCounter++
@@ -171,7 +175,7 @@ function addNewStep () {
 /*
  * Function for to see if a recipe exists
  * Returns true if exists, false if it doesn't
- * @param recipeName - name of recipe that function will check
+ * @param {string} recipeName - name of recipe that function will check
  */
 function recipeExists (recipeName) {
   for (let i = 0; i < localStorage.length; i++) {
@@ -194,21 +198,29 @@ function reset () {
   var j = 1
   var k = 1
 
-  // Loop through all tag inputs and make them empty
+  document.getElementById('input-tags' + i).value = ''
+  document.getElementById('input-ings' + j).value = ''
+  document.getElementById('input-steps' + k).value = ''
+
+  i++
+  j++
+  k++
+
+  // Loop through all tag inputs and remove them
   while (i <= tagCounter) {
-    document.getElementById('input-tags' + i).value = ''
+    document.getElementById('input-tags' + i).remove()
     i++
   }
 
-  // Loop through all ings inputs and make them empty
+  // Loop through all ings inputs and remove them
   while (j <= ingCounter) {
-    document.getElementById('input-ings' + j).value = ''
+    document.getElementById('card-ing' + j).remove()
     j++
   }
 
-  // Loop through all dir inputs and make them empty
+  // Loop through all dir inputs and remove them
   while (k <= stepCounter) {
-    document.getElementById('input-steps' + k).value = ''
+    document.getElementById('card-step' + k).remove()
     k++
   }
 
