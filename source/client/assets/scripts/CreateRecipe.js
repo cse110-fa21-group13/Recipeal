@@ -192,7 +192,8 @@ function recipeExists (recipeName) {
 function reset () {
   document.getElementById('input-name').value = ''
   document.getElementById('input-desc').value = ''
-  document.getElementById('input-time').value = ''
+  document.getElementById('input-hours').value = ''
+  document.getElementById('input-mins').value = ''
 
   var i = 1
   var j = 1

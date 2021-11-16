@@ -215,10 +215,23 @@ class ExpandRecipe extends HTMLElement {
     const tags = data.tags.join(', ')
     this.shadowRoot.querySelector('.meta--tags').innerHTML = tags
 
+    // Detect if time or minute needs to be plural or not
+    let time = ''
+    if (data.time.hours === '1') {
+      time += `${data.time.hours} hour `
+    } else {
+      time += `${data.time.hours} hours `
+    }
+
+    // Minutes
+    if (data.time.minutes === '1') {
+      time += `${data.time.minutes} minute`
+    } else {
+      time += `${data.time.minutes} minutes`
+    }
+
     // Set time
-    this.shadowRoot.querySelector(
-      '.meta--total-time'
-    ).innerHTML = `${data.time.hours} hours ${data.time.minutes} minutes`
+    this.shadowRoot.querySelector('.meta--total-time').innerHTML = time
 
     // Set ingredients
     const ingredients = data.ingredients

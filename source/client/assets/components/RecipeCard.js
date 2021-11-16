@@ -74,7 +74,20 @@ class RecipeCard extends HTMLElement {
     description.textContent = data.description
 
     const time = document.createElement('time')
-    time.textContent += `${data.time.hours} hours ${data.time.minutes} minutes`
+
+    // Hours
+    if (data.time.hours === '1') {
+      time.textContent += `${data.time.hours} hour `
+    } else {
+      time.textContent += `${data.time.hours} hours `
+    }
+
+    // Minutes
+    if (data.time.minutes === '1') {
+      time.textContent += `${data.time.minutes} minute`
+    } else {
+      time.textContent += `${data.time.minutes} minutes`
+    }
 
     card.appendChild(image)
     card.appendChild(title)
