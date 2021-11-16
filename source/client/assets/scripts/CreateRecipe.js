@@ -251,7 +251,7 @@ function saveData (pageChange) {
     var newRecipe = {
       name: '',
       description: '',
-      time: '',
+      time: { hours: '', minutes: '' },
       tags: [],
       ingredients: [],
       directions: [],
@@ -269,12 +269,12 @@ function saveData (pageChange) {
     // Get description and store it in the object
     let desc = document.getElementById('input-desc').value
     newRecipe.description = desc
-    desc = ' '
 
     // Get time and store it in the object
-    let time = document.getElementById('input-time').value
-    newRecipe.time = time
-    time = ' '
+    let hours = document.getElementById('input-hours').value
+    let mins = document.getElementById('input-mins').value
+    newRecipe.time.hours = hours
+    newRecipe.time.minutes = mins
 
     var i = 1
     var j = 1
@@ -284,7 +284,6 @@ function saveData (pageChange) {
     while (i <= tagCounter) {
       let tagsValue = document.getElementById('input-tags' + i).value
       newRecipe.tags.push(tagsValue)
-      tagsValue = ' '
       i++
     }
 
@@ -292,7 +291,6 @@ function saveData (pageChange) {
     while (j <= ingCounter) {
       let ingsValue = document.getElementById('input-ings' + j).value
       newRecipe.ingredients.push(ingsValue)
-      ingsValue = ' '
       j++
     }
 
@@ -300,7 +298,6 @@ function saveData (pageChange) {
     while (k <= stepCounter) {
       let stepsValue = document.getElementById('input-steps' + k).value
       newRecipe.directions.push(stepsValue)
-      stepsValue = ' '
       k++
     }
 
@@ -318,7 +315,7 @@ function saveData (pageChange) {
 
     // Creates a recipe card & displays it on the 'My Recipes' page
     newCard(newRecipe.name.toLowerCase())
-    document.querySelector('recipe-expand').data = newRecipe;
+    document.querySelector('recipe-expand').data = newRecipe
     alert('Recipe saved!')
     changeView(pageChange)
 

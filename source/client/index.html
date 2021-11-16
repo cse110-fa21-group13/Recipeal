@@ -126,8 +126,14 @@
 
             <!-- Time -->
             <div class="input-card">
-              <label for="input-time">Time (in minutes)</label><br>
-              <input type="number" id="input-time" name="input-time">
+              <label for="input-time">Time</label><br>
+              <div id="time-inputs">
+                <label for="input-hours">Hours:</label>
+                <input type="number" class="input-hours-mins" id="input-hours" name="input-hours">
+                <label for="input-minutes">Minutes:</label>
+                <input type="number" class="input-hours-mins" id="input-mins" name="input-mins">
+              </div>
+
             </div>
 
             <!-- Tags -->

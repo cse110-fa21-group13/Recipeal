@@ -4,8 +4,7 @@
   font-family: sans-serif;
 }
 
-body,
-main {
+body, main {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -120,6 +119,11 @@ input.tags {
   margin: 5px;
 }
 
+input.input-hours-mins {
+  width: 60px;
+  margin: 5px;
+}
+
 /*
 #input-desc {
   padding: none;
@@ -202,6 +206,7 @@ button.save-btn:hover {
 .hidden {
   display: none;
 }
+
 /*
 .button--horizontal-line {
   border-top: 1px solid rgb(223, 225, 229);
