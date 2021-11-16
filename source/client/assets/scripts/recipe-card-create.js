@@ -1,6 +1,12 @@
 import { changeView } from './navigate.js';
 
-// Given a recipe name, creates a recipe card from that recipe in localStorage. 
+/**
+ * @method newCard
+ *  If passed recipe exists in localStorage, creates a new recipe
+ *  card with the expanded recipe page bound to it.
+ * 
+ * @param {string} name - name of the recipe
+ */
 export function newCard(name) {
     if(localStorage.getItem(name)) {
         let recipe = JSON.parse(localStorage.getItem(name));
@@ -15,8 +21,12 @@ export function newCard(name) {
 // Listener that triggers when the page is reloaded/refreshed
 window.addEventListener('DOMContentLoaded', initCards);
 
-// Iterates through localStorage, creating a new recipe card and appending it to the 'My Recipes' page
-// for each recipe card. Only called when the page is reloaded/refreshed
+/**
+ * @method initCards
+ *  When page is reloaded/refreshed, creates a new recipe card
+ *  for each recipe in localStorage and binds the expanded
+ *  recipe page to it
+ */
 function initCards () {
   for(let i = 0; i < localStorage.length; i++) {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
@@ -28,7 +38,15 @@ function initCards () {
   }
 }
 
-// Sets the recipe-expand element to have the data of whatever recipe card was clicked
+/**
+ * @method bindRecipeCard
+ *  Adds an event listener to each recipe card which, when
+ *  clicked, sets the expand recipe page to the recipe card's
+ *  data and navigates to said recipe page.
+ * 
+ * @param {HTMLElement} recipeCard 
+ * @param {object} recipeData 
+ */
 function bindRecipeCard(recipeCard, recipeData) {
     recipeCard.addEventListener('click', e => {
         document.querySelector('recipe-expand').data = recipeData;
