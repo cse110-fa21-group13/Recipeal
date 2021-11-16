@@ -2,12 +2,6 @@
 
 /** BUTTONS **/
 
-/*
-let saveButton = document.querySelector('button.save-btn')
-saveButton.addEventListener('click', e => {
-  saveData(e)
-})
-*/
 let createRecipeButton = document.getElementById('create-recipe-btn');
 createRecipeButton.addEventListener('click', e => {
   changeView(e);
