@@ -1,12 +1,12 @@
 class ExpandRecipe extends HTMLElement {
   constructor () {
-    super()
+    super();
     this.attachShadow({ mode: 'open' }).innerHTML = `
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`;
 
     // Create styles and root element
-    const styles = document.createElement('style')
-    const article = document.createElement('article')
+    const styles = document.createElement('style');
+    const article = document.createElement('article');
 
     // Fill in styles and root element
     styles.innerHTML = `
@@ -126,7 +126,7 @@ class ExpandRecipe extends HTMLElement {
             ul li:not(:first-child) {
                 margin-top: 8px;
             }
-        `
+        `;
     article.innerHTML = `
             <header>
                 <h1></h1>
@@ -158,10 +158,10 @@ class ExpandRecipe extends HTMLElement {
                     <i class="bi bi-pencil-square"></i>
             </button>
                 
-        `
+        `;
 
     // Append elements to the shadow root
-    this.shadowRoot.append(styles, article)
+    this.shadowRoot.append(styles, article);
   }
 
   /**
@@ -169,7 +169,7 @@ class ExpandRecipe extends HTMLElement {
    * Overwrites the previously expanded recipe.
    */
   set data (data) {
-    this.json = data
+    this.json = data;
 
     this.shadowRoot.querySelector('article').innerHTML = `
         <header>
@@ -209,56 +209,56 @@ class ExpandRecipe extends HTMLElement {
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-        `
+        `;
 
     // Set title
-    this.shadowRoot.querySelector('header > h1').innerHTML = data.name
+    this.shadowRoot.querySelector('header > h1').innerHTML = data.name;
 
     // Set image
-    const image = this.shadowRoot.querySelector('img.thumbnail')
-    image.setAttribute('src', data.thumbnail)
+    const image = this.shadowRoot.querySelector('img.thumbnail');
+    image.setAttribute('src', data.thumbnail);
 
     // Set description
-    this.shadowRoot.querySelector('p.description').innerHTML = data.description
+    this.shadowRoot.querySelector('p.description').innerHTML = data.description;
 
     // Set tags
-    const tags = data.tags.join(', ')
-    this.shadowRoot.querySelector('.meta--tags').innerHTML = tags
+    const tags = data.tags.join(', ');
+    this.shadowRoot.querySelector('.meta--tags').innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not
-    let time = ''
+    let time = '';
     if (data.time.hours === '1') {
-      time += `${data.time.hours} hour `
+      time += `${data.time.hours} hour `;
     } else {
-      time += `${data.time.hours} hours `
+      time += `${data.time.hours} hours `;
     }
 
     // Minutes
     if (data.time.minutes === '1') {
-      time += `${data.time.minutes} minute`
+      time += `${data.time.minutes} minute`;
     } else {
-      time += `${data.time.minutes} minutes`
+      time += `${data.time.minutes} minutes`;
     }
 
     // Set time
-    this.shadowRoot.querySelector('.meta--total-time').innerHTML = time
+    this.shadowRoot.querySelector('.meta--total-time').innerHTML = time;
 
     // Set ingredients
-    const ingredients = data.ingredients
+    const ingredients = data.ingredients;
     ingredients.forEach(ingredient => {
-      const item = document.createElement('li')
-      item.innerHTML = ingredient
-      this.shadowRoot.querySelector('.section--ingredients > ul').append(item)
+      const item = document.createElement('li');
+      item.innerHTML = ingredient;
+      this.shadowRoot.querySelector('.section--ingredients > ul').append(item);
     })
 
     // Set directions
-    const directions = data.directions
+    const directions = data.directions;
     directions.forEach(step => {
-      const item = document.createElement('li')
-      item.innerHTML = step
-      this.shadowRoot.querySelector('.section--instructions > ol').append(item)
+      const item = document.createElement('li');
+      item.innerHTML = step;
+      this.shadowRoot.querySelector('.section--instructions > ol').append(item);
     })
   }
 }
 
-customElements.define('recipe-expand', ExpandRecipe)
+customElements.define('recipe-expand', ExpandRecipe);

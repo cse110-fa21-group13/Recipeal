@@ -1,39 +1,39 @@
 // Contains the functions involved in creating a new recipe
 
-import { newCard } from './recipe-card-create.js'
-import { changeView } from './navigate.js'
+import { newCard } from './recipe-card-create.js';
+import { changeView } from './navigate.js';
 
 /** ELEMENTS **/
 
 // Image
-let imageUpload = document.querySelector('input#input-img')
+let imageUpload = document.querySelector('input#input-img');
 imageUpload.addEventListener('change', e => {
-  handleImageUpload(e)
-})
+  handleImageUpload(e);
+});
 
 // Tags
-let addTags = document.querySelector('button.tag-btn')
+let addTags = document.querySelector('button.tag-btn');
 addTags.addEventListener('click', e => {
-  addNewTag(e)
-})
+  addNewTag(e);
+});
 
 // Ingredients
-let addIngs = document.querySelector('button.ing-btn')
+let addIngs = document.querySelector('button.ing-btn');
 addIngs.addEventListener('click', e => {
-  addNewIngredient(e)
-})
+  addNewIngredient(e);
+});
 
 // Directions
-let addSteps = document.querySelector('button.step-btn')
+let addSteps = document.querySelector('button.step-btn');
 addSteps.addEventListener('click', e => {
-  addNewStep(e)
-})
+  addNewStep(e);
+});
 
 // Save Button
-let saveButton = document.querySelector('button.save-btn')
+let saveButton = document.querySelector('button.save-btn');
 saveButton.addEventListener('click', e => {
-  saveData(e)
-})
+  saveData(e);
+});
 
 /** FUNCTIONS **/
 
@@ -41,65 +41,65 @@ saveButton.addEventListener('click', e => {
 
 // Get image to preview it
 function handleImageUpload () {
-  let image = document.getElementById('input-img').files[0]
-  let fileReader = new FileReader()
+  let image = document.getElementById('input-img').files[0];
+  let fileReader = new FileReader();
   fileReader.onload = function (e) {
-    document.getElementById('display-image').src = e.target.result
-    console.log(e.target.result)
-  }
+    document.getElementById('display-image').src = e.target.result;
+    console.log(e.target.result);
+  };
   if (image) {
-    fileReader.readAsDataURL(image)
+    fileReader.readAsDataURL(image);
   }
 }
 
 /* TAGS */
 
 // Keep track of number of tag inputs
-let tagCounter = 1
+let tagCounter = 1;
 
 // Array to store tags to repopulate tags later
-let prevTags = []
+let prevTags = [];
 
 // Add label and new input
 function addNewTag () {
   // Save prev tags in array
   for (let i = 1; i <= tagCounter; i++) {
-    let value = document.getElementById(`input-tags${i}`).value
-    prevTags.push(value)
+    let value = document.getElementById(`input-tags${i}`).value;
+    prevTags.push(value);
   }
 
   document.getElementById('tag-wrapper').innerHTML += `
       <input type="text" id="input-tags${String(
         tagCounter + 1
       )}" class="tags" name="input-tags${String(tagCounter + 1)}">
-      `
-  tagCounter++
+      `;
+  tagCounter++;
   // After new tag has been created, repopulate previous tags
   for (let i = 1; i <= tagCounter - 1; i++) {
-    document.getElementById(`input-tags${i}`).value = prevTags[i - 1]
+    document.getElementById(`input-tags${i}`).value = prevTags[i - 1];
   }
 
   // Empty array
   while (prevTags.length > 0) {
-    prevTags.pop()
+    prevTags.pop();
   }
 }
 
 /* INGREDIENTS */
 
 // Keep track of number of ingredient inputs
-let ingCounter = 1
+let ingCounter = 1;
 
 // Array to store tags to repopulate tags later
-let prevIngs = []
+let prevIngs = [];
 
 // Add label and new input
 function addNewIngredient () {
   // Save prev tags in array
   for (let i = 1; i <= ingCounter; i++) {
-    let value = document.getElementById(`input-ings${i}`).value
-    prevIngs.push(value)
-    console.log(prevIngs)
+    let value = document.getElementById(`input-ings${i}`).value;
+    prevIngs.push(value);
+    console.log(prevIngs);
   }
 
   document.getElementById(
@@ -113,36 +113,36 @@ function addNewIngredient () {
     <input type="text" id="input-ings${String(
       ingCounter + 1
     )}"  class="ings" name="input-ings${String(ingCounter + 1)}">
- </div>`
+ </div>`;
 
-  ingCounter++
+  ingCounter++;
 
   // After new tag has been created, repopulate previous tags
   for (let i = 1; i <= ingCounter - 1; i++) {
-    document.getElementById(`input-ings${i}`).value = prevIngs[i - 1]
+    document.getElementById(`input-ings${i}`).value = prevIngs[i - 1];
   }
 
   // Empty array
   while (prevIngs.length > 0) {
-    prevIngs.pop()
+    prevIngs.pop();
   }
 }
 
 /* DIRECTIONS */
 
 // Keep track of number of step inputs
-let stepCounter = 1
+let stepCounter = 1;
 
 // Array to store tags to repopulate tags later
-let prevSteps = []
+let prevSteps = [];
 
 // Add label and new input
 function addNewStep () {
   // Save prev tags in array
   for (let i = 1; i <= stepCounter; i++) {
-    let value = document.getElementById(`input-steps${i}`).value
-    prevSteps.push(value)
-    console.log(prevSteps)
+    let value = document.getElementById(`input-steps${i}`).value;
+    prevSteps.push(value);
+    console.log(prevSteps);
   }
 
   document.getElementById(
@@ -156,17 +156,17 @@ function addNewStep () {
     <input type="text" id="input-steps${String(
       stepCounter + 1
     )}"  class="steps" name="input-steps${String(stepCounter + 1)}">
-    </div>`
+    </div>`;
 
-  stepCounter++
+  stepCounter++;
   // After new tag has been created, repopulate previous tags
   for (let i = 1; i <= stepCounter - 1; i++) {
-    document.getElementById(`input-steps${i}`).value = prevSteps[i - 1]
+    document.getElementById(`input-steps${i}`).value = prevSteps[i - 1];
   }
 
   // Empty array
   while (prevSteps.length > 0) {
-    prevSteps.pop()
+    prevSteps.pop();
   }
 }
 
@@ -180,54 +180,54 @@ function addNewStep () {
 function recipeExists (recipeName) {
   for (let i = 0; i < localStorage.length; i++) {
     if (localStorage.key(i) == recipeName) {
-      return true
+      return true;
     }
   }
-  return false
+  return false;
 }
 
 /*
  * Function to clear input fields after saving
  */
 function reset () {
-  document.getElementById('input-name').value = ''
-  document.getElementById('input-desc').value = ''
-  document.getElementById('input-hours').value = ''
-  document.getElementById('input-mins').value = ''
+  document.getElementById('input-name').value = '';
+  document.getElementById('input-desc').value = '';
+  document.getElementById('input-hours').value = '';
+  document.getElementById('input-mins').value = '';
 
-  var i = 1
-  var j = 1
-  var k = 1
+  var i = 1;
+  var j = 1;
+  var k = 1;
 
-  document.getElementById('input-tags' + i).value = ''
-  document.getElementById('input-ings' + j).value = ''
-  document.getElementById('input-steps' + k).value = ''
+  document.getElementById('input-tags' + i).value = '';
+  document.getElementById('input-ings' + j).value = '';
+  document.getElementById('input-steps' + k).value = '';
 
-  i++
-  j++
-  k++
+  i++;
+  j++;
+  k++;
 
   // Loop through all tag inputs and remove them
   while (i <= tagCounter) {
-    document.getElementById('input-tags' + i).remove()
-    i++
+    document.getElementById('input-tags' + i).remove();
+    i++;
   }
 
   // Loop through all ings inputs and remove them
   while (j <= ingCounter) {
-    document.getElementById('card-ing' + j).remove()
-    j++
+    document.getElementById('card-ing' + j).remove();
+    j++;
   }
 
   // Loop through all dir inputs and remove them
   while (k <= stepCounter) {
-    document.getElementById('card-step' + k).remove()
-    k++
+    document.getElementById('card-step' + k).remove();
+    k++;
   }
 
   // Set image to default
   document.getElementById('display-image').src =
-    'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
+    'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png';
 }
 
 /*
@@ -237,15 +237,15 @@ function reset () {
  * @param pageChange - current page the user is on(?)
  */
 function saveData (pageChange) {
-  let checkName = document.getElementById('input-name').value.toLowerCase()
+  let checkName = document.getElementById('input-name').value.toLowerCase();
 
   // Check if user has inputted name field
   if (checkName == '') {
-    return alert('Please add at least a recipe name to save the recipe.')
+    return alert('Please add at least a recipe name to save the recipe.');
   }
   // Check if recipe has already been made
   else if (recipeExists(checkName)) {
-    return alert('Recipe already exists')
+    return alert('Recipe already exists');
   }
   // Else, create new recipe object
   else {
@@ -258,68 +258,68 @@ function saveData (pageChange) {
       directions: [],
       thumbnail: '',
       favorites: 0
-    }
+    };
 
     // Create new recipe out of the recipeTemplate
     //let newRecipe = Object.create(recipeTemplate)
 
     // Get name and store it in the object
-    let name = document.getElementById('input-name').value
-    newRecipe.name = name
+    let name = document.getElementById('input-name').value;
+    newRecipe.name = name;
 
     // Get description and store it in the object
-    let desc = document.getElementById('input-desc').value
-    newRecipe.description = desc
+    let desc = document.getElementById('input-desc').value;
+    newRecipe.description = desc;
 
     // Get time and store it in the object
-    let hours = document.getElementById('input-hours').value
-    let mins = document.getElementById('input-mins').value
-    newRecipe.time.hours = hours
-    newRecipe.time.minutes = mins
+    let hours = document.getElementById('input-hours').value;
+    let mins = document.getElementById('input-mins').value;
+    newRecipe.time.hours = hours;
+    newRecipe.time.minutes = mins;
 
-    var i = 1
-    var j = 1
-    var k = 1
+    var i = 1;
+    var j = 1;
+    var k = 1;
 
     // Loop through all tag inputs and push them to array
     while (i <= tagCounter) {
-      let tagsValue = document.getElementById('input-tags' + i).value
-      newRecipe.tags.push(tagsValue)
-      i++
+      let tagsValue = document.getElementById('input-tags' + i).value;
+      newRecipe.tags.push(tagsValue);
+      i++;
     }
 
     // Loop through all ings inputs and push them to array
     while (j <= ingCounter) {
-      let ingsValue = document.getElementById('input-ings' + j).value
-      newRecipe.ingredients.push(ingsValue)
-      j++
+      let ingsValue = document.getElementById('input-ings' + j).value;
+      newRecipe.ingredients.push(ingsValue);
+      j++;
     }
 
     // Loop through all dir inputs and push them to array
     while (k <= stepCounter) {
-      let stepsValue = document.getElementById('input-steps' + k).value
-      newRecipe.directions.push(stepsValue)
-      k++
+      let stepsValue = document.getElementById('input-steps' + k).value;
+      newRecipe.directions.push(stepsValue);
+      k++;
     }
 
     // Get image and store in in the object as a string
-    let img = document.getElementById('display-image')
-    newRecipe.thumbnail = img.src
+    let img = document.getElementById('display-image');
+    newRecipe.thumbnail = img.src;
     img.src =
-      'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png'
+      'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png';
 
     // Put the object into storage
     localStorage.setItem(
       newRecipe.name.toLowerCase(),
       JSON.stringify(newRecipe)
-    )
+    );
 
     // Creates a recipe card & displays it on the 'My Recipes' page
-    newCard(newRecipe.name.toLowerCase())
-    document.querySelector('recipe-expand').data = newRecipe
-    alert('Recipe saved!')
-    changeView(pageChange)
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector('recipe-expand').data = newRecipe;
+    alert('Recipe saved!');
+    changeView(pageChange);
 
-    reset()
+    reset();
   }
 }

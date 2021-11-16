@@ -33,5 +33,5 @@ function bindRecipeCard(recipeCard, recipeData) {
     recipeCard.addEventListener('click', e => {
         document.querySelector('recipe-expand').data = recipeData;
         changeView(e);
-    })
+    });
 }
