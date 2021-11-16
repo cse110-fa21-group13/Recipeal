@@ -270,12 +270,6 @@ function reset () {
  * @param {e} pageChange - current page the user is on(?)
  * @returns none
  */
-/*
- * Function to save the data from the input fields
- * and store them in local storage when check button
- * is clicked
- * @param pageChange - current page the user is on(?)
- */
 function saveData (pageChange) {
   let checkName = document.getElementById('input-name').value.toLowerCase();
 
