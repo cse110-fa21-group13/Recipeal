@@ -5,7 +5,7 @@ Currently we have testing set up in a similar fashion to Lab 8, utilzing the fra
 ## Codacy Analysis CLI 
 Currently, we are exploring utilizing Codacy as a code quality checker. It runs via GitHub Actions and analyzes every push to check for code quality and for any issues that may be found within our code. The workflow will automatically fail if it detects any issue.
 ## Pull Requests
-After pushing code to the dev branch and the code successfully passes the workflow checks, a pull request can be setup for review and to allow for merging to main.
+After pushing code to the dev branch and the code successfully passes the workflow checks, a pull request can be setup for a team member to review and to allow for merging to main.
 ## Works in Progress
 - Adding more testing 
   - Additional Frameworks? (Cypress, Postman)
