@@ -318,6 +318,7 @@ function saveData (pageChange) {
 
     // Creates a recipe card & displays it on the 'My Recipes' page
     newCard(newRecipe.name.toLowerCase())
+    document.querySelector('recipe-expand').data = newRecipe;
     alert('Recipe saved!')
     changeView(pageChange)
 
