@@ -2,6 +2,7 @@ describe('Basic user flow for Website', () => {
     // First, visit the app
     beforeAll(async () => {
       await page.goto('https://clever-ramanujan-0633a7.netlify.app/');
+      
     });
 
     // sample test
