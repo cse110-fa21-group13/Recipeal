@@ -4,7 +4,8 @@
   font-family: sans-serif;
 }
 
-body, main {
+body,
+main {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -51,7 +52,7 @@ section:not(section.shown) {
 
 .input-card {
   margin-top: 20px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
@@ -66,7 +67,7 @@ section:not(section.shown) {
 /* Input card for steps */
 
 .input-card-steps {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 20px;
   padding: 20px;
   margin-top: 20px;
@@ -183,7 +184,7 @@ button.save-btn {
   height: 50px;
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -198,6 +199,9 @@ button.save-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
+.hidden {
+  display: none;
+}
 /*
 .button--horizontal-line {
   border-top: 1px solid rgb(223, 225, 229);
@@ -237,9 +241,7 @@ button.save-btn:hover {
   z-index: 3;
 }
 
-.hidden {
-  display: none;
-}
+
 
 .recipe-cards--wrapper {
   column-gap: 30px;
