@@ -157,6 +157,7 @@ class ExpandRecipe extends HTMLElement {
                 style="bottom: 10px; right: 10px; position: absolute">
                     <i class="bi bi-pencil-square"></i>
                 </button>
+                
         `
 
     // Append elements to the shadow root
@@ -199,6 +200,15 @@ class ExpandRecipe extends HTMLElement {
                 style="bottom: 10px; right: 10px; position: absolute">
                     <i class="bi bi-pencil-square"></i>
                 </button>
+
+                <button id="delete-btn" class="btn btn-primary" style="bottom: 60px; right: 10px; position: absolute">
+                <i class="bi bi-trash"></i>
+              </button>
+
+              <button id="return-btn" style="top: 66px; left: 10px; position: absolute"
+        onclick="returnToHomePage()">
+        <i class="bi bi-arrow-return-left"></i>
+      </button>
         `
 
     // Set title

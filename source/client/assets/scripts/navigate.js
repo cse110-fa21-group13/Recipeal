@@ -71,7 +71,6 @@ export function changeView (e) {
     explore.classList.remove('shown')
     createRecipe.classList.remove('shown')
     expandRecipe.classList.add('shown')
-    switchButtonView(createButton)
     switchButtonView(returnButton)
   }
   switchHighlight(e.target)

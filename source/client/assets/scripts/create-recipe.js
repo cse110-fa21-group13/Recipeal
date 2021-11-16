@@ -1,6 +1,6 @@
 // Contains the functions involved in creating a new recipe
 
-import { newCard } from './RecipeCardCreate.js'
+import { newCard } from './recipe-card-create.js'
 import { changeView } from './navigate.js'
 
 /** ELEMENTS **/
