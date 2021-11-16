@@ -14,13 +14,13 @@
   <!-- Service Worker
   <script src="sw.js" type="module"></script> -->
 
-  <!-- Router -->
-  <script src="assets/scripts/Router.js" type="module"></script>
+  <!-- Router 
+  <script src="assets/scripts/Router.js" type="module"></script> -->
 
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/main.css" />
   <script type="module" src="../client/assets/scripts/recipe-card-create.js"></script>
-  <script type="text/javascript" src="../client/assets/scripts/main.js"></script>
+  <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-recipe.js" type="module"></script>
 
@@ -186,7 +186,7 @@
             </div>
 
             <!-- Save Button -->
-            <button class="save-btn btn btn-primary" style="bottom: 10px; right: 10px; position: absolute">
+            <button class="save-btn btn btn-primary" style="bottom: 10px; right: 10px; position: fixed">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -194,14 +194,14 @@
         </div>
       </section>
 
-      <button id="create-recipe-btn" class="btn btn-primary" style="bottom: 10px; right: 10px; position: absolute">
+      <button id="create-recipe-btn" class="btn btn-primary" style="bottom: 10px; right: 10px; position: fixed">
         <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
       </button>
       <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute"
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-      <button id="delete-btn" class="btn btn-primary" style="bottom: 60px; right: 10px; position: absolute">
+      <button id="delete-btn" class="btn btn-primary" style="bottom: 60px; right: 10px; position: fixed">
         <i class="bi bi-trash"></i>
       </button>
 

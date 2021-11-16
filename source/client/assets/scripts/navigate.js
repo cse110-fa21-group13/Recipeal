@@ -35,7 +35,7 @@ export function changeView (e) {
 
   const innerText = typeof e === 'string' ? e : e.target.innerText
 
-  if (innerText === 'My Recipes' || innerText === 'Save Recipe') {
+  if (innerText === 'My Recipes') {
     myRecipes.classList.add('shown')
     explore.classList.remove('shown')
     createRecipe.classList.remove('shown')
@@ -72,6 +72,7 @@ export function changeView (e) {
     createRecipe.classList.remove('shown')
     expandRecipe.classList.add('shown')
     switchButtonView(returnButton)
+    createButton.className = 'hidden'
   }
   switchHighlight(e.target)
 }

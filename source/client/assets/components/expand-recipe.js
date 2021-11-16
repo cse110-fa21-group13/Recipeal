@@ -154,9 +154,9 @@ class ExpandRecipe extends HTMLElement {
                 
             </main>
             <button id="edit-btn" class="btn btn-primary"
-                style="bottom: 10px; right: 10px; position: absolute">
+                style="bottom: 10px; right: 10px; position: fixed">
                     <i class="bi bi-pencil-square"></i>
-                </button>
+            </button>
                 
         `
 
