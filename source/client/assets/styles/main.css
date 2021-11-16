@@ -16,13 +16,14 @@ section:not(section.shown) {
 }
 
 #recipe-cards {
-  column-gap: 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
+  margin-top: 50px;
+  gap: 50px;
   height: auto;
-  max-width: 660px;
-  row-gap: 10px;
-  width: 100%;
+  max-width: 60%;
 }
 
 /** CREATE RECIPE SECTION **/
