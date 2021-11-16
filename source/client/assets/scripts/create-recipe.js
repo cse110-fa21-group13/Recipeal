@@ -39,7 +39,13 @@ saveButton.addEventListener('click', e => {
 
 /* IMAGE */
 
-// Get image to preview it
+/**
+ * @method handleImageUpload
+ *  Converts image to dataUrl to preview it
+ * 
+ * @param none
+ * @returns none
+ */
 function handleImageUpload () {
   let image = document.getElementById('input-img').files[0];
   let fileReader = new FileReader();
@@ -60,7 +66,13 @@ let tagCounter = 1;
 // Array to store tags to repopulate tags later
 let prevTags = [];
 
-// Add label and new input
+/**
+ * @method addNewTag
+ *  Adds new input for tags
+ * 
+ * @param none
+ * @returns none
+ */
 function addNewTag () {
   // Save prev tags in array
   for (let i = 1; i <= tagCounter; i++) {
@@ -93,7 +105,13 @@ let ingCounter = 1;
 // Array to store tags to repopulate tags later
 let prevIngs = [];
 
-// Add label and new input
+/**
+ * @method addNewIngredient
+ *  Adds label and new input field for ingredients
+ * 
+ * @param none
+ * @returns none
+ */
 function addNewIngredient () {
   // Save prev tags in array
   for (let i = 1; i <= ingCounter; i++) {
@@ -136,7 +154,13 @@ let stepCounter = 1;
 // Array to store tags to repopulate tags later
 let prevSteps = [];
 
-// Add label and new input
+/**
+ * @method addNewStep
+ *  Adds label and new input field for steps
+ * 
+ * @param none
+ * @returns none
+ */
 function addNewStep () {
   // Save prev tags in array
   for (let i = 1; i <= stepCounter; i++) {
@@ -172,10 +196,13 @@ function addNewStep () {
 
 /* SAVE DATA */
 
-/*
- * Function for to see if a recipe exists
- * Returns true if exists, false if it doesn't
- * @param {string} recipeName - name of recipe that function will check
+/**
+ * @method recipeExists
+ *  Checks to see if a recipe exists in local storage
+ *  by checking the name
+ * 
+ * @param {string} recipeName - name of recipe to check
+ * @returns {boolean} - true if exists, false if doesn't exist
  */
 function recipeExists (recipeName) {
   for (let i = 0; i < localStorage.length; i++) {
@@ -186,8 +213,12 @@ function recipeExists (recipeName) {
   return false;
 }
 
-/*
- * Function to clear input fields after saving
+/**
+ * @method reset
+ *  Clears input fields after saving
+ * 
+ * @param none
+ * @returns none
  */
 function reset () {
   document.getElementById('input-name').value = '';
@@ -230,6 +261,15 @@ function reset () {
     'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png';
 }
 
+/**
+ * @method saveData
+ *  Saves data in input fields to local storage
+ *  Resets the input field values
+ *  Changes screen to expanded recipe page of saved recipe
+ * 
+ * @param {e} pageChange - current page the user is on(?)
+ * @returns none
+ */
 /*
  * Function to save the data from the input fields
  * and store them in local storage when check button
@@ -259,9 +299,6 @@ function saveData (pageChange) {
       thumbnail: '',
       favorites: 0
     };
-
-    // Create new recipe out of the recipeTemplate
-    //let newRecipe = Object.create(recipeTemplate)
 
     // Get name and store it in the object
     let name = document.getElementById('input-name').value;
@@ -305,8 +342,6 @@ function saveData (pageChange) {
     // Get image and store in in the object as a string
     let img = document.getElementById('display-image');
     newRecipe.thumbnail = img.src;
-    img.src =
-      'https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png';
 
     // Put the object into storage
     localStorage.setItem(
