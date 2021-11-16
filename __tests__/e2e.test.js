@@ -6,19 +6,12 @@ describe('Basic user flow for Website', () => {
 
     // sample test
     it('Initial Home Page - Check if is on the right page', async () => {
-        console.log('Checking page title');
+        console.log('Checking my recipes page');
 
-        const myRecipesButtons = await page.$$('button');
-        const btnclass1 = await myRecipesButtons[0].getProperty('innerHTML');
-        const btnclass2 = await myRecipesButtons[1].getProperty('innerHTML');
-        const text1 = btnclass1['_remoteObject'].value;
-        const text2 = btnclass2['_remoteObject'].value;
+        const pages = await page.$$('section');
+        const homePage = await pages[1].getProperty('innerHTML');
+        const homePageText = homePage['_remoteObject'].value;
 
-        //const classText = await myRecipesButtons[0].getProperty('class');
-        //console.log(classText['_remoteObject']);
-        expect(text1).toBe('My Recipes');
-        expect(text2).toBe('Explore');
+        expect(homePageText).toContain('My recipes');
       });
-  
-    
   });
