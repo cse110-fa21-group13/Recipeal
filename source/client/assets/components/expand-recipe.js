@@ -10,155 +10,212 @@ class ExpandRecipe extends HTMLElement {
 
     // Fill in styles and root element
     styles.innerHTML = `
-            article {
-                background-color: white;
-                box-shadow: 0 0 10px rgb(0 0 0 / 15%);
-                margin: 30px auto;
-                max-width: 720px;
-                padding: 25px;
-                transition: all 0.2s ease;
-                width: 80%;
-            }
+        /** CREATE RECIPE SECTION **/
 
-            div.rating--wrapper {
-                align-items: center;
-                column-gap: 5px;
-                display: flex;
-                justify-items: center;
-                margin-top: 10px;
-            }
-            
-            div.rating--wrapper > img {
-                height: auto;
-                display: inline-block;
-                object-fit: scale-down;
-                width: 78px;
-            }
+        .section--create-recipe {
+            width: 70%;
+            margin: auto;
+        }
+        
+        #create-recipe--input-wrapper {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Cards for all inputs */
+        
+        .input-card:not(#img-card) {
+            margin-top: 20px;
+            background-color: #f6f6f6;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Input card for ings */
+        
+        .input-card-ings {
+            margin-top: 20px;
+        }
+        
+        /* Input card for steps */
+        
+        .input-card-steps {
+            background-color: #f6f6f6;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Card for display image */
+        
+        #img-card {
+            margin-top: 20px;
+            background-color: #f6f6f6;
+            border-radius: 20px;
+            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+        }
+        
+        #display-image {
+            height: 170px;
+            margin: auto;
+            left: 200px;
+            top: 128px;
+        }
+        
+        /* Card for ingredients */
+        
+        #ing-card {
+            height: 98%;
+            width: 500px;
+        }
+        
+        /* Card for steps */
+        
+        #step-card {
+            height: 98%;
+            width: 500px;
+            background-color: transparent;
+            box-shadow: none;
+        }
+        
+        /* Input */
+        
+        input {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: var(--p-font);
+            border: 3px solid #ccc;
+            resize: none;
+            width: 90%;
+        }
+        
+        input.tags {
+            width: 100px;
+            margin: 5px;
+        }
+        
+        input.input-hours-mins {
+            width: 60px;
+            margin: 5px;
+        }
+        
+        p.text {
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            border-radius: 5px;
+            font-size: 15px;
+            padding: 10px;
+        }
+        
+        #input-name:focus {
+            border: 3px solid #555;
+        }
+        
+        input[type="number"] {
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            border-radius: 5px;
+            font-size: 15px;
+            padding: 10px;
+        }
+        
+        input[type="number"]:focus {
+            border: 3px solid #555;
+        }
 
-            header {
-                align-items: flex-start;
-                column-gap: 10px;
-                display: grid;
-                grid-template-areas:
-                'title title img'
-                'meta meta img'
-                'desc desc img';
-            }
+        ol, ul {
+            margin-top: 10px;
+        }
 
-            header p {
-                margin: 0;
-            }
+        ol li:not(:first-child) {
+            margin-top: 15px;
+        }
 
-            header > h1 {
-                font-size: 2rem;
-                font-weight: 500;
-                grid-area: title;
-                margin: -10px 0 0 0;
-                padding: 0;
-            }
+        ol li::marker {
+        padding-right: 5px;
+        }
+        
+        ul li {
+        padding-left: 2px;
+        }
 
-            h2 {
-                font-size: 1.5rem;
-                font-weight: 500;
-                margin: 35px 0 0 0;
-            }
-
-            header > div.meta--wrapper {
-                display: grid;
-                grid-area: meta;
-                margin: 10px 0;
-                row-gap: 4px;
-            }
-
-            header > div.meta--wrapper p,
-            main > div.rating--wrapper {
-                color: gray;
-                font-style: italic;
-            }
-
-            header > div.meta--wrapper 
-            :is(.meta--yield, .meta--total-time, .meta--categories) {
-                color: black;
-                font-style: normal;
-                font-weight: 600;
-            }
-
-            header img.thumbnail {
-                aspect-ratio: 1;
-                grid-area: img;
-                object-fit: cover;
-                overflow: hidden;
-                width: 230px;
-            }
-
-            header p.description {
-                height: 62px;
-                line-height: 20px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            main > .section--ingredients,
-            main > .section--instructions {
-                font-size: 1.1rem;
-            }
-
-            span.rating-total {
-                margin-left: -2px;
-            }
-
-            ol, ul {
-                margin-top: 10px;
-            }
-
-            ol li:not(:first-child) {
-                margin-top: 15px;
-            }
-
-            ol li::marker {
-                padding-right: 5px;
-            }
-
-            ul li {
-                padding-left: 2px;
-            }
-
-            ul li:not(:first-child) {
-                margin-top: 8px;
-            }
-        `;
+        ul li:not(:first-child) {
+        margin-top: 8px;
+        }
+    `;
     article.innerHTML = `
-            <header>
-                <h1></h1>
-                <div class="meta--wrapper">
-                <p>total time: <time class="meta--total-time"></time></p>
-                <p>tags: <span class="meta--tags"></span></p>
+    <div id="create-recipe--input-wrapper">
+        <!-- FIRST COLUMN -->
+        <div class="input-wrapper--column">
+            <div class="input-card" id="img-card">
+                <img id="display-image"
+                src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />  
+            </div>
+
+            <!-- Name -->
+            <div class="input-card">
+                <p class="text" id="input-name"></p>
+            </div>
+
+            <!-- Description -->
+            <div class="input-card">
+                <p class="text" id="input-desc"></p>
+            </div>
+
+            <!-- Time -->
+            <div class="input-card">
+                <label for="input-time">Time</label><br>
+                <div id="time-inputs">
+                    <p class="input-hours-mins" id="input-hours">
                 </div>
-                <p class="description"></p>
-                <img src="" alt="" class="thumbnail" />
-            </header>
-            <main>
-                <div class="rating--wrapper">
-                <span class="rating--value"></span>
-                <img src="" alt="" class="rating--star-img" />
-                <span class="rating--total"></span>
+            </div>
+
+            <!-- Tags -->
+            <div class="input-card">
+                <div id="tag-wrapper">
+                    <label for="input-tags">Tags</label><br>
+                    <p class="text" id="input-tags1" class="tags"></p>
                 </div>
-                <section class="section--ingredients">
-                <h2>INGREDIENTS</h2>
-                <ul></ul>
-                </section>
-                <section class="section--instructions">
-                <h2>INSTRUCTIONS</h2>
-                <ol></ol>
-                </section>
-                
-            </main>
-            <button id="edit-btn" class="btn btn-primary"
-                style="bottom: 10px; right: 10px; position: fixed">
-                    <i class="bi bi-pencil-square"></i>
-            </button>
-                
-        `;
+                <br>
+            </div>
+        </div>
+
+        <!-- SECOND COLUMN -->
+        <div class="input-wrapper--column">
+            <!-- Ingredients -->
+            <div class="input-card" id="ing-card">
+                <div id="ing-wrapper">
+                    <label>Ingredients</label><br><br>
+                    <ul id="ing-list"></ul>
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <!-- THIRD COLUMN -->
+        <div class="input-wrapper--column">
+            <div class="input-card" id="step-card">
+                <div id="step-wrapper">
+                    <label>Steps</label><br>
+                    <ol id="step-list"></ol>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <button id="edit-btn" class="btn btn-primary"
+        style="bottom: 10px; right: 10px; position: fixed">
+            <i class="bi bi-pencil-square"></i>
+    </button>      
+    `;
 
     // Append elements to the shadow root
     this.shadowRoot.append(styles, article);
@@ -172,58 +229,84 @@ class ExpandRecipe extends HTMLElement {
     this.json = data;
 
     this.shadowRoot.querySelector('article').innerHTML = `
-        <header>
-        <h1></h1>
-        <div class="meta--wrapper">
-        <p>total time: <time class="meta--total-time"></time></p>
-        <p>tags: <span class="meta--tags"></span></p>
+    <div id="create-recipe--input-wrapper">
+        <!-- FIRST COLUMN -->
+        <div class="input-wrapper--column">
+            <div class="input-card" id="img-card">
+                <img id="display-image"
+                src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />  
+            </div>
+
+            <!-- Name -->
+            <div class="input-card">
+                <p class="text" id="input-name"></p>
+            </div>
+
+            <!-- Description -->
+            <div class="input-card">
+                <p class="text" id="input-desc"></p>
+            </div>
+
+            <!-- Time -->
+            <div class="input-card">
+                <label for="input-time">Time</label><br>
+                <div id="time-inputs">
+                    <p class="input-hours-mins" id="input-hours">
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="input-card">
+                <div id="tag-wrapper">
+                    <label for="input-tags">Tags</label><br>
+                    <p class="text" id="input-tags1" class="tags"></p>
+                </div>
+                <br>
+            </div>
         </div>
-        <p class="description"></p>
-        <img src="" alt="" class="thumbnail" />
-    </header>
-    <main>
-        <div class="rating--wrapper">
-        <span class="rating--value"></span>
-        <img src="" alt="" class="rating--star-img" />
-        <span class="rating--total"></span>
+
+        <!-- SECOND COLUMN -->
+        <div class="input-wrapper--column">
+            <!-- Ingredients -->
+            <div class="input-card" id="ing-card">
+                <div id="ing-wrapper">
+                    <label>Ingredients</label><br><br>
+                    <ul id="ing-list"></ul>
+                </div>
+                <br>
+            </div>
         </div>
-        <section class="section--ingredients">
-        <h2>INGREDIENTS</h2>
-        <ul></ul>
-        </section>
-        <section class="section--instructions">
-        <h2>INSTRUCTIONS</h2>
-        <ol></ol>
-        </section>
-    </main>
+
+        <!-- THIRD COLUMN -->
+        <div class="input-wrapper--column">
+            <div class="input-card" id="step-card">
+                <div id="step-wrapper">
+                    <label>Steps</label><br>
+                    <ol id="step-list"></ol>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
     <button id="edit-btn" class="btn btn-primary"
-                style="bottom: 10px; right: 10px; position: absolute">
-                    <i class="bi bi-pencil-square"></i>
-                </button>
-
-                <button id="delete-btn" class="btn btn-primary" style="bottom: 60px; right: 10px; position: absolute">
-                <i class="bi bi-trash"></i>
-              </button>
-
-              <button id="return-btn" style="top: 66px; left: 10px; position: absolute"
-        onclick="returnToHomePage()">
-        <i class="bi bi-arrow-return-left"></i>
-      </button>
-        `;
+        style="bottom: 10px; right: 10px; position: fixed">
+            <i class="bi bi-pencil-square"></i>
+    </button>
+    `;
 
     // Set title
-    this.shadowRoot.querySelector('header > h1').innerHTML = data.name;
+    this.shadowRoot.querySelector('p.text').innerHTML = data.name;
 
     // Set image
-    const image = this.shadowRoot.querySelector('img.thumbnail');
+    const image = this.shadowRoot.getElementById('display-image');
     image.setAttribute('src', data.thumbnail);
 
     // Set description
-    this.shadowRoot.querySelector('p.description').innerHTML = data.description;
+    this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
 
     // Set tags
     const tags = data.tags.join(', ');
-    this.shadowRoot.querySelector('.meta--tags').innerHTML = tags;
+    this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not
     let time = '';
@@ -239,25 +322,25 @@ class ExpandRecipe extends HTMLElement {
     } else {
       time += `${data.time.minutes} minutes`;
     }
-
     // Set time
-    this.shadowRoot.querySelector('.meta--total-time').innerHTML = time;
+    this.shadowRoot.querySelector('p.input-hours-mins').innerHTML = time;
 
     // Set ingredients
     const ingredients = data.ingredients;
     ingredients.forEach(ingredient => {
       const item = document.createElement('li');
       item.innerHTML = ingredient;
-      this.shadowRoot.querySelector('.section--ingredients > ul').append(item);
+      this.shadowRoot.getElementById("ing-list").append(item);
     })
-
+    
     // Set directions
     const directions = data.directions;
     directions.forEach(step => {
       const item = document.createElement('li');
       item.innerHTML = step;
-      this.shadowRoot.querySelector('.section--instructions > ol').append(item);
+      this.shadowRoot.getElementById("step-list").append(item);
     })
+    
   }
 }
 

@@ -65,7 +65,9 @@ export function changeView (e) {
     explore.classList.remove('shown');
     createRecipe.classList.remove('shown');
     expandRecipe.classList.add('shown');
-    switchButtonView(returnButton);
+    //switchButtonView(returnButton);
+    returnButton.className = 'btn btn-primary';
+    deleteButton.className = 'btn btn-primary';
     createButton.className = 'hidden';
   }
   switchHighlight(e.target);
