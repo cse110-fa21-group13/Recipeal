@@ -1,15 +1,17 @@
 class RecipeCard extends HTMLElement {
-  constructor () {
+  constructor() {
     super(); // Inheret everything from HTMLElement
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
-    let shadow = this.attachShadow({ mode: 'open' });
-    shadow.innerHTML = `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`;
+    let shadow = this.attachShadow({ mode: "open" });
+    shadow.innerHTML = `
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`;
   }
 
-  set data (data) {
+  set data(data) {
     // if (!data) return;
-    const styles = document.createElement('style');
+
+    const styles = document.createElement("style");
     styles.innerHTML = `
       article {
         display: flexbox;
@@ -71,45 +73,47 @@ class RecipeCard extends HTMLElement {
           margin: 0;
           padding: 12px 9px;
       }
+      .hidden {
+        display: none;
+      }
     `;
 
-    const card = document.createElement('article');
-    card.className = 'card';
+    const card = document.createElement("article");
+    card.className = "card";
 
-    const imageBox = document.createElement('div');
-    imageBox.setAttribute('class', 'image-box');
-    const image = document.createElement('img');
-    image.setAttribute('src', data.thumbnail);
-    const cardTitle = document.createElement('div');
-    cardTitle.setAttribute('class', 'card-title');
-    const title = document.createElement('h1');
+    const imageBox = document.createElement("div");
+    imageBox.setAttribute("class", "image-box");
+    const image = document.createElement("img");
+    image.setAttribute("src", data.thumbnail);
+    const cardTitle = document.createElement("div");
+    cardTitle.setAttribute("class", "card-title");
+    const title = document.createElement("h1");
     title.textContent = data.name;
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
     imageBox.appendChild(cardTitle);
 
-    const desBox = document.createElement('div');
-    desBox.setAttribute('class', 'textbox');
-    const description = document.createElement('p');
+    const desBox = document.createElement("div");
+    desBox.setAttribute("class", "textbox");
+    const description = document.createElement("p");
     description.textContent = data.description;
     desBox.appendChild(description);
 
-    const time = document.createElement('time');
+    const time = document.createElement("time");
 
     // Hours
-    if (data.time.hours === '1') {
+    if (data.time.hours === "1") {
       time.textContent += `${data.time.hours} hour `;
     } else {
       time.textContent += `${data.time.hours} hours `;
     }
 
     // Minutes
-    if (data.time.minutes === '1') {
+    if (data.time.minutes === "1") {
       time.textContent += `${data.time.minutes} minute`;
     } else {
       time.textContent += `${data.time.minutes} minutes`;
     }
-
 
     card.appendChild(imageBox);
     card.appendChild(desBox);
@@ -118,4 +122,4 @@ class RecipeCard extends HTMLElement {
     this.shadowRoot.append(styles, card);
   }
 }
-customElements.define('recipe-card', RecipeCard);
+customElements.define("recipe-card", RecipeCard);
