@@ -49,7 +49,11 @@ function initCards() {
  */
 function bindRecipeCard(recipeCard, recipeData) {
   recipeCard.addEventListener("click", (e) => {
-    document.querySelector("recipe-expand").data = recipeData;
-    changeView(e);
+    if (
+      e.target.shadowRoot.querySelector(".delbut").classList.contains("hidden")
+    ) {
+      document.querySelector("recipe-expand").data = recipeData;
+      changeView("Recipe Expand");
+    }
   });
 }

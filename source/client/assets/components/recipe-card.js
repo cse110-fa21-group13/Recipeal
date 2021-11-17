@@ -5,12 +5,13 @@ class RecipeCard extends HTMLElement {
     // The shadow root will help us keep everything separated
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = `
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`;
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" /> 
+    `;
   }
 
   set data(data) {
     // if (!data) return;
-
+    this.id = `${data.name}`;
     const styles = document.createElement("style");
     styles.innerHTML = `
       article {
@@ -76,11 +77,60 @@ class RecipeCard extends HTMLElement {
       .hidden {
         display: none;
       }
+
+      .delete-modal {
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+      }
+
+      .delete-modal-content {
+        margin: 15% auto; 
+        padding: 20px;
+      }
     `;
+
+    const modal = document.createElement("div");
+    modal.className = `${data.name} hidden delete-modal`;
+    modal.innerHTML = `<div class="card delete-modal-content" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Are you sure you want to delete this recipe?</h5>
+      <button id="modal-close${data.name}" class="btn btn-secondary">Close</button>
+      <button id="modal-delete${data.name}" class="btn btn-primary ${data.name}">Delete</button>
+    </div>
+  </div>`;
+    this.shadowRoot.appendChild(modal);
+    const closeBut = this.shadowRoot.getElementById(`modal-close${data.name}`);
+    const delBut = this.shadowRoot.getElementById(`modal-delete${data.name}`);
+    closeBut.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+    delBut.addEventListener("click", (event) => {
+      const curCardId = event.target.classList[2];
+      const curCard = document.getElementById(curCardId);
+      curCard.parentNode.removeChild(curCard);
+      localStorage.removeItem(curCardId);
+      modal.classList.add("hidden");
+    });
 
     const card = document.createElement("article");
     card.className = "card";
-
+    const deleteBut = document.createElement("button");
+    deleteBut.className = `delbut hidden btn-primary`;
+    deleteBut.setAttribute(
+      "style",
+      "position: absolute; top: 0; left:0; padding: 2px 6px"
+    );
+    deleteBut.innerHTML = "<i class='bi bi-x'></i>";
+    deleteBut.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
     const imageBox = document.createElement("div");
     imageBox.setAttribute("class", "image-box");
     const image = document.createElement("img");
@@ -115,6 +165,7 @@ class RecipeCard extends HTMLElement {
       time.textContent += `${data.time.minutes} minutes`;
     }
 
+    card.appendChild(deleteBut);
     card.appendChild(imageBox);
     card.appendChild(desBox);
     //card.appendChild(time);

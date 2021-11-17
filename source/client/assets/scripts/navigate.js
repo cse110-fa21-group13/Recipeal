@@ -27,6 +27,8 @@ export function changeView(e) {
   var returnButton = document.getElementById("return-btn");
   var deleteButton = document.getElementById("delete-btn");
   var expandRecipe = document.querySelector(".section--recipe-expand");
+  const delbutIcon = document.getElementById("delbut-icon");
+  const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -42,9 +44,10 @@ export function changeView(e) {
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
     });
+    switchHighlight(e.target);
   }
   // navigating to explore page
-  else if (innerText === "Explore") {
+  else if (innerText === "Explore" && !deleteMode) {
     myRecipes.classList.remove("shown");
     createRecipe.classList.remove("shown");
     expandRecipe.classList.remove("shown");
@@ -53,11 +56,13 @@ export function changeView(e) {
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     fetchApiRecipes();
+    switchHighlight(e.target);
   }
   // navigating to create recipe page
   else if (
-    e.target.id === "create-recipe-btn" ||
-    e.target.id === "create-recipe-btn-plus"
+    (e.target.id === "create-recipe-btn" ||
+      e.target.id === "create-recipe-btn-plus") &&
+    !deleteMode
   ) {
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
@@ -68,7 +73,7 @@ export function changeView(e) {
     switchButtonView(deleteButton);
   }
   // navigating to recipe expand page
-  else {
+  else if (innerText === "Recipe Expand") {
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -78,7 +83,6 @@ export function changeView(e) {
     deleteButton.className = "btn btn-primary";
     createButton.className = "hidden";
   }
-  switchHighlight(e.target);
 }
 
 // switch between shown and hidden for button
@@ -154,4 +158,25 @@ window.showTags = function () {
     newTagBut.textContent = element;
     divTag.appendChild(newTagBut);
   });
+};
+
+// Show delete buttons for each card when click delete on home page
+window.showDeleteButtons = function () {
+  const recipeCards = document.getElementsByTagName("recipe-card");
+  for (let recipeCard of recipeCards) {
+    const delbut = recipeCard.shadowRoot.querySelector(".delbut");
+    if (delbut.classList.contains("hidden")) {
+      delbut.classList.remove("hidden");
+      delbut.classList.add("btn");
+    } else {
+      delbut.classList.add("hidden");
+      delbut.classList.remove("btn");
+    }
+  }
+
+  const delbutIcon = document.getElementById("delbut-icon");
+  delbutIcon.className =
+    delbutIcon.className === "bi bi-trash"
+      ? "bi bi-arrow-return-left"
+      : "bi bi-trash";
 };
