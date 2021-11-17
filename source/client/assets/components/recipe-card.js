@@ -5,7 +5,10 @@ class RecipeCard extends HTMLElement {
     // The shadow root will help us keep everything separated
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = `
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" /> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     `;
   }
 
@@ -56,6 +59,10 @@ class RecipeCard extends HTMLElement {
           font-weight: bolder;
           color: white;
           text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+      }
+      
+      .card-title {
+        width: 300px;
       }
 
       .textbox {
@@ -121,6 +128,7 @@ class RecipeCard extends HTMLElement {
 
     const card = document.createElement("article");
     card.className = "card";
+    card.setAttribute("style", "border-radius: 16px;");
     const deleteBut = document.createElement("button");
     deleteBut.className = `delbut hidden btn-primary`;
     deleteBut.setAttribute(
@@ -138,7 +146,9 @@ class RecipeCard extends HTMLElement {
     const cardTitle = document.createElement("div");
     cardTitle.setAttribute("class", "card-title");
     const title = document.createElement("h1");
-    title.textContent = data.name;
+    title.textContent =
+      data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
+    title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
     imageBox.appendChild(cardTitle);

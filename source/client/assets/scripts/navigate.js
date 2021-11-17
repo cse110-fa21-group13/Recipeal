@@ -58,6 +58,17 @@ export function changeView(e) {
     fetchApiRecipes();
     switchHighlight(e.target);
   }
+  // navigating to recipe expand page
+  else if (innerText === "Recipe Expand") {
+    myRecipes.classList.remove("shown");
+    explore.classList.remove("shown");
+    createRecipe.classList.remove("shown");
+    expandRecipe.classList.add("shown");
+    //switchButtonView(returnButton);
+    returnButton.className = "btn btn-primary";
+    deleteButton.className = "btn btn-primary";
+    createButton.className = "hidden";
+  }
   // navigating to create recipe page
   else if (
     (e.target.id === "create-recipe-btn" ||
@@ -71,17 +82,6 @@ export function changeView(e) {
     switchButtonView(createButton);
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
-  }
-  // navigating to recipe expand page
-  else if (innerText === "Recipe Expand") {
-    myRecipes.classList.remove("shown");
-    explore.classList.remove("shown");
-    createRecipe.classList.remove("shown");
-    expandRecipe.classList.add("shown");
-    //switchButtonView(returnButton);
-    returnButton.className = "btn btn-primary";
-    deleteButton.className = "btn btn-primary";
-    createButton.className = "hidden";
   }
 }
 
