@@ -119,9 +119,8 @@ class RecipeCard extends HTMLElement {
       modal.classList.add("hidden");
     });
     delBut.addEventListener("click", (event) => {
-      const curCardId = event.target.classList[2];
-      const curCard = document.getElementById(curCardId);
-      curCard.parentNode.removeChild(curCard);
+      const curCardId = this.id;
+      this.parentNode.removeChild(this);
       localStorage.removeItem(curCardId);
       modal.classList.add("hidden");
     });

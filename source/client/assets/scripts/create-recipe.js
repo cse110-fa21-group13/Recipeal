@@ -347,7 +347,7 @@ function saveData() {
     newCard(newRecipe.name.toLowerCase());
     document.querySelector("recipe-expand").data = newRecipe;
     alert("Recipe saved!");
-    changeView("My Recipes");
+    changeView("Recipe Expand");
 
     reset();
   }
