@@ -55,7 +55,7 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" class="form-control" placeholder="Search..." style="height: 45px;" />
+          <input type="text" id = "search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..." style="height: 45px;" />
           <div class="accordion-item ml-3">
             <button class="btn btn-primary accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">
@@ -65,6 +65,43 @@
               <div id="existingTags" class="accordion-body">
               </div>
             </div>
+            <script>
+              /* 
+              * Function to search for recipe cards in search bar
+              */
+
+              function searchRecipe() {
+                var input = document.getElementById("search-bar");
+                var filter = input.value.toLowerCase();
+                var recipeCardsElement = document.getElementById('recipe-cards'); 
+                var allRecipes = recipeCardsElement.children; 
+                
+                for (let i = 0; i < allRecipes.length; i++) {
+                  let currentRecipe = allRecipes[i]; 
+                  let name = currentRecipe.getElementsByClassName('card-title')[0]; 
+                  console.log(name);
+                  let lowerConverted = name.toLowerCase();
+                  if (lowerConverted.indexOf(filter) > -1) {
+                    currentRecipe.style.display = ""; 
+                  } else {
+                    currentRecipe.style.display = "none"; 
+                  }
+                }
+
+                // delete later (w3 schools) 
+                /*
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+                */
+              }
+            </script>
           </div>
         </div>
 
