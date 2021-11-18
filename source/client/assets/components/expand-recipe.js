@@ -12,11 +12,6 @@ class ExpandRecipe extends HTMLElement {
     styles.innerHTML = `
         /** CREATE RECIPE SECTION **/
 
-        .section--create-recipe {
-            width: 70%;
-            margin: auto;
-        }
-        
         #create-recipe--input-wrapper {
             margin-top: 30px;
             display: flex;
@@ -84,27 +79,6 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: none;
         }
         
-        /* Input */
-        
-        input {
-            border-radius: 5px;
-            padding: 5px;
-            font-family: var(--p-font);
-            border: 3px solid #ccc;
-            resize: none;
-            width: 90%;
-        }
-        
-        input.tags {
-            width: 100px;
-            margin: 5px;
-        }
-        
-        input.input-hours-mins {
-            width: 60px;
-            margin: 5px;
-        }
-        
         p.text {
             -webkit-transition: 0.5s;
             transition: 0.5s;
@@ -112,24 +86,7 @@ class ExpandRecipe extends HTMLElement {
             border-radius: 5px;
             font-size: 15px;
             padding: 10px;
-        }
-        
-        #input-name:focus {
-            border: 3px solid #555;
-        }
-        
-        input[type="number"] {
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-            border-radius: 5px;
-            font-size: 15px;
-            padding: 10px;
-        }
-        
-        input[type="number"]:focus {
-            border: 3px solid #555;
-        }
+        }  
 
         ol, ul {
             margin-top: 10px;
@@ -282,7 +239,10 @@ class ExpandRecipe extends HTMLElement {
             <div class="input-card" id="step-card">
                 <div id="step-wrapper">
                     <label>Steps</label><br>
-                    <ol id="step-list"></ol>
+                    <div class="input-card-steps">
+                        <label for="input-steps1">1.</label>
+                        <p type="text" id="input-steps1" class="steps">
+                    </div>
                 </div>
                 <br><br>
             </div>
