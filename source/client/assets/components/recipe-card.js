@@ -21,7 +21,7 @@ class RecipeCard extends HTMLElement {
         display: flexbox;
         position: relative;
         font-family: 'Work Sans', sans-serif;
-        width: 225px;
+        width: 250px;
         height: 325px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         border-radius: 16px;
@@ -34,7 +34,7 @@ class RecipeCard extends HTMLElement {
       }
 
       .image-box {
-        width: 225px;
+        width: 248px;
         height: 200px;
       }
 
@@ -63,6 +63,7 @@ class RecipeCard extends HTMLElement {
       
       .card-title {
         width: 300px;
+        word-break: break-all;
       }
 
       .textbox {

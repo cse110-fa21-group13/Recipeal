@@ -239,10 +239,7 @@ class ExpandRecipe extends HTMLElement {
             <div class="input-card" id="step-card">
                 <div id="step-wrapper">
                     <label>Steps</label><br>
-                    <div class="input-card-steps">
-                        <label for="input-steps1">1.</label>
-                        <p type="text" id="input-steps1" class="steps">
-                    </div>
+                    <ol id="step-list"></ol>
                 </div>
                 <br><br>
             </div>
