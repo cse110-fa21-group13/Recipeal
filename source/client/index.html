@@ -78,8 +78,7 @@
                 
                 for (let i = 0; i < allRecipes.length; i++) {
                   let currentRecipe = allRecipes[i]; 
-                  let name = currentRecipe.getElementsByClassName('card-title')[0]; 
-                  console.log(name);
+                  let name = currentRecipe.shadowRoot.querySelector('h1').textContent; 
                   let lowerConverted = name.toLowerCase();
                   if (lowerConverted.indexOf(filter) > -1) {
                     currentRecipe.style.display = ""; 
