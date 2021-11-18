@@ -23,6 +23,7 @@
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-recipe.js" type="module"></script>
+  <script src="assets/scripts/searchbar.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -65,42 +66,6 @@
               <div id="existingTags" class="accordion-body">
               </div>
             </div>
-            <script>
-              /* 
-              * Function to search for recipe cards in search bar
-              */
-
-              function searchRecipe() {
-                var input = document.getElementById("search-bar");
-                var filter = input.value.toLowerCase();
-                var recipeCardsElement = document.getElementById('recipe-cards'); 
-                var allRecipes = recipeCardsElement.children; 
-                
-                for (let i = 0; i < allRecipes.length; i++) {
-                  let currentRecipe = allRecipes[i]; 
-                  let name = currentRecipe.shadowRoot.querySelector('h1').textContent; 
-                  let lowerConverted = name.toLowerCase();
-                  if (lowerConverted.indexOf(filter) > -1) {
-                    currentRecipe.style.display = ""; 
-                  } else {
-                    currentRecipe.style.display = "none"; 
-                  }
-                }
-
-                // delete later (w3 schools) 
-                /*
-                for (i = 0; i < li.length; i++) {
-                    a = li[i].getElementsByTagName("a")[0];
-                    txtValue = a.textContent || a.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        li[i].style.display = "";
-                    } else {
-                        li[i].style.display = "none";
-                    }
-                }
-                */
-              }
-            </script>
           </div>
         </div>
 
