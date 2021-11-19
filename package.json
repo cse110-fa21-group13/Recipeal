@@ -1,22 +1,24 @@
 {
     "devDependencies": {
-      "@babel/core": "^7.16.0",
-      "@babel/preset-env": "^7.16.0",
-      "babel-jest": "^27.3.1",
-      "jest": "^27.3.1",
-      "jest-puppeteer": "^6.0.0",
-      "puppeteer": "^11.0.0"
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.0",
+        "babel-jest": "^27.3.1",
+        "jest": "^27.3.1",
+        "jest-puppeteer": "^6.0.0",
+        "jsdoc": "^3.6.7",
+        "puppeteer": "^11.0.0"
     },
     "scripts": {
-      "start": "navigate.js",
-      "test": "jest"
+        "start": "navigate.js",
+        "test": "jest",
+        "doc": "jsdoc -c jsdoc.json"
     },
     "jest": {
-      "preset": "jest-puppeteer",
-      "verbose": true
+        "preset": "jest-puppeteer",
+        "verbose": true
     },
     "engines": {
-      "node": "14.18.1",
-      "npm": "6.14.15"
-    } 
-  }
+        "node": "14.18.1",
+        "npm": "6.14.15"
+    }
+}
