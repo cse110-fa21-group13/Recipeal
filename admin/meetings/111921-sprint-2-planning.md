@@ -4,6 +4,7 @@
     - Edit functionality
     - Finish up any pipeline functionality
   - Additional Features
+    - Filter functionality 
     - Explore Page
     - Favorites functionality
     - "Cook Mode"
