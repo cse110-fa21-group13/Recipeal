@@ -160,6 +160,7 @@ window.showTags = function () {
   });
 };
 
+
 // Show delete buttons for each card when click delete on home page
 window.showDeleteButtons = function () {
   const recipeCards = document.getElementsByTagName("recipe-card");
