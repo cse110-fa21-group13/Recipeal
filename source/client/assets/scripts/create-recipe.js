@@ -1,4 +1,4 @@
-// Contains the functions involved in creating a new recipe
+// Contains the functions involved in creating and editing a new recipe
 
 import { newCard } from "./recipe-card-create.js";
 import { changeView, switchButtonView } from "./navigate.js";
@@ -342,19 +342,13 @@ function saveData() {
         newRecipe.name.toLowerCase(),
         JSON.stringify(newRecipe)
       );
-
-      console.log(newRecipe)
   
       // Creates a recipe card & displays it on the 'My Recipes' page
       newCard(newRecipe.name.toLowerCase());
       document.querySelector("recipe-expand").data = newRecipe;
       alert("Recipe saved!");
-      
       changeView("Recipe Expand");
-  
       reset();
-
-      
     }
     else {
       return
@@ -432,28 +426,25 @@ function saveData() {
   }
 }
 
-
 /**
- * Edit recipe
+ * Creates edit recipe page that contains data for a recipe in the inputs
  * @param {e} -  event
  * @returns none 
  */
  export function navEdit (e) {
 
-  var createRecipe = document.querySelector(".section--create-recipe");
-  var deleteButton = document.getElementById("delete-btn");
-  var expandRecipe = document.querySelector(".section--recipe-expand");
-
-
-  var recipeExpand = document.querySelector('recipe-expand');
+  let createRecipe = document.querySelector(".section--create-recipe");
+  let deleteButton = document.getElementById("delete-btn");
+  let expandRecipe = document.querySelector(".section--recipe-expand");
+  let recipeExpand = document.querySelector('recipe-expand');
   let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase()
-
   let recipe = JSON.parse(window.localStorage.getItem(name));
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
   
   if (innerText === "Edit Recipe") {
     
+    // Hide and show pages
     expandRecipe.classList.remove("shown");
     createRecipe.classList.add("shown");
     switchButtonView(deleteButton);
@@ -480,7 +471,6 @@ function saveData() {
 
     // Create inputs for tags
     for (i = 2; i <= recipe.tags.length; i++) {
-      
       document.getElementById("tag-wrapper").innerHTML += `
       <input type="text" id="input-tags${i}" class="tags" name="input-tags${i}">
       `;
@@ -492,7 +482,6 @@ function saveData() {
     for (i = 1; i <= recipe.tags.length; i++) {
       document.getElementById(`input-tags${i}`).value = recipe.tags[i-1] ;
     }
-
 
     // Create inputs for ings
     for (j = 2; j <= recipe.ingredients.length; j++) {
@@ -510,10 +499,8 @@ function saveData() {
       document.getElementById(`input-ings${j}`).value = recipe.ingredients[j-1]
     }
 
-
     // Create inputs for steps
     for (k=2; k<= recipe.directions.length; k++) {
-
       document.getElementById(
         "step-wrapper"
       ).innerHTML += `<div class="input-card-steps" id=card-step${k}>
