@@ -308,6 +308,10 @@ function saveData() {
     newRecipe.time.hours = hours;
     newRecipe.time.minutes = mins;
 
+    if(hours < 1 || mins < 1) {
+      return alert("Please input positive times");
+    }
+
     var i = 1;
     var j = 1;
     var k = 1;

@@ -30,22 +30,6 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
         
-        /* Input card for ings */
-        
-        .input-card-ings {
-            margin-top: 20px;
-        }
-        
-        /* Input card for steps */
-        
-        .input-card-steps {
-            background-color: #f6f6f6;
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
-        }
-        
         /* Card for display image */
         
         #img-card {
@@ -79,7 +63,7 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: none;
         }
         
-        p.text {
+        p.text:not(#input-name) {
             -webkit-transition: 0.5s;
             transition: 0.5s;
             outline: none;
@@ -87,6 +71,10 @@ class ExpandRecipe extends HTMLElement {
             font-size: 15px;
             padding: 10px;
         }  
+
+        #input-name {
+            font-size: 35px;
+        }
 
         ol, ul {
             margin-top: 10px;
