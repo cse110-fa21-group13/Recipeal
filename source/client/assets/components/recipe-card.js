@@ -62,7 +62,6 @@ class RecipeCard extends HTMLElement {
       }
       
       .card-title {
-        width: 300px;
         word-break: break-all;
       }
 
