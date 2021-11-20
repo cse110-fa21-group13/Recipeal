@@ -167,11 +167,7 @@ class ExpandRecipe extends HTMLElement {
                 <br><br>
             </div>
         </div>
-    </div>
-    <button id="edit-btn" class="btn btn-primary"
-        style="bottom: 10px; right: 10px; position: fixed">
-            <i class="bi bi-pencil-square"></i>
-    </button>      
+    </div> 
     `;
 
     // Append elements to the shadow root
@@ -245,10 +241,6 @@ class ExpandRecipe extends HTMLElement {
             </div>
         </div>
     </div>
-    <button id="edit-btn" class="btn btn-primary"
-        style="bottom: 10px; right: 10px; position: fixed">
-            <i class="bi bi-pencil-square"></i>
-    </button>
     `;
 
     // Set title
