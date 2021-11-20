@@ -53,6 +53,13 @@
 
       <!-- RECIPE CARDS -->
       <section class="recipe-cards--wrapper shown">
+        <script>
+          window.onload = function () {
+            if(window.localStorage.length == 0) {
+              alert("It looks like you don't have any recipes saved. Create a new recipe by clicking the plus button!");
+            }
+          };
+        </script>
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">

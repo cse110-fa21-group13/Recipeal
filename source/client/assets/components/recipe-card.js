@@ -34,7 +34,7 @@ class RecipeCard extends HTMLElement {
       }
 
       .image-box {
-        width: 248px;
+        width: 298px;
         height: 200px;
       }
 
