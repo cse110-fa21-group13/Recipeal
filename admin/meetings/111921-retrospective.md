@@ -1,5 +1,16 @@
 ## Sprint 1 Retrospective
 
+- Attendence:
+  - Brett
+  - Sirisha
+  - Khiem
+  - Gurpreet
+  - Michael
+  - Darren
+  - Lu
+  - Jason
+
+
 - Team Radar
   - Started with a work happiness radar survey as a warmup to get people thinking.
   - Overall, our team health is pretty good, with most scores in the 3.5-4 / 5 range
