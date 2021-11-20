@@ -13,3 +13,13 @@
   - Unit testing
 
 We will be meeting on Monday to do a codebase review to get everyone caught up, and then from there we will assign people tasks to complete.
+
+- Attendence:
+  - Brett
+  - Sirisha
+  - Khiem
+  - Gurpreet
+  - Michael
+  - Darren
+  - Lu
+  - Jason
