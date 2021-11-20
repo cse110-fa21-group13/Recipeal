@@ -143,7 +143,8 @@ async function fetchApiRecipes() {
 
 // Function for return to home page
 window.returnToHomePage = function () {
-  changeView("My Recipes");
+  location.reload();
+  //changeView("My Recipes");
 };
 
 // Show tags when pressing filter button

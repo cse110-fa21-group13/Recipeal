@@ -342,11 +342,14 @@ function saveData() {
         newRecipe.name.toLowerCase(),
         JSON.stringify(newRecipe)
       );
+
+      console.log(newRecipe)
   
       // Creates a recipe card & displays it on the 'My Recipes' page
       newCard(newRecipe.name.toLowerCase());
       document.querySelector("recipe-expand").data = newRecipe;
       alert("Recipe saved!");
+      
       changeView("Recipe Expand");
   
       reset();
@@ -429,11 +432,6 @@ function saveData() {
   }
 }
 
-/* BUGS:
- * Doesn't show expand page after updating
- * Still has the old card on the recipes page
- * Doesn't let you add more tags, ings, and steps
- * Doesn't let you save
 
 /**
  * Edit recipe
@@ -457,9 +455,7 @@ function saveData() {
   if (innerText === "Edit Recipe") {
     
     expandRecipe.classList.remove("shown");
-    expandRecipe.classList.add("hidden");
     createRecipe.classList.add("shown");
-    createRecipe.classList.remove("hidden");
     switchButtonView(deleteButton);
 
     // Hide edit button

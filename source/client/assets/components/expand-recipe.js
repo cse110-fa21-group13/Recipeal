@@ -12,13 +12,20 @@ class ExpandRecipe extends HTMLElement {
     styles.innerHTML = `
         /** CREATE RECIPE SECTION **/
 
+        .input-card {
+            inline-size: 300px;
+            overflow-wrap: break-word
+        }
+
         #create-recipe--input-wrapper {
             margin-top: 30px;
+            margin-bottom: 30px;
             display: flex;
             flex-direction: row;
             justify-content: center;
             gap: 10px;
-        }
+          }
+          
         
         /* Cards for all inputs */
         
