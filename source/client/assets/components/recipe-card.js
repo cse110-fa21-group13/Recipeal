@@ -21,7 +21,7 @@ class RecipeCard extends HTMLElement {
         display: flexbox;
         position: relative;
         font-family: 'Work Sans', sans-serif;
-        width: 250px;
+        width: 300px;
         height: 325px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         border-radius: 16px;
@@ -34,7 +34,7 @@ class RecipeCard extends HTMLElement {
       }
 
       .image-box {
-        width: 248px;
+        width: 298px;
         height: 200px;
       }
 
@@ -62,7 +62,6 @@ class RecipeCard extends HTMLElement {
       }
       
       .card-title {
-        width: 300px;
         word-break: break-all;
       }
 
@@ -169,14 +168,14 @@ class RecipeCard extends HTMLElement {
     desBox.appendChild(description);
 
     const time = document.createElement("time");
-    
+
     // Hours
     if (data.time.hours === "") {
       time.textContent += `${data.time.hours}`;
     } else if (data.time.hours === "1") {
       time.textContent += `${data.time.hours} hour `;
     } else {
-      time.textContent += `${data.time.hours} hours `; 
+      time.textContent += `${data.time.hours} hours `;
     }
 
     // Minutes
@@ -185,17 +184,16 @@ class RecipeCard extends HTMLElement {
     } else if (data.time.minutes === "1") {
       time.textContent += `${data.time.minutes} minute`;
     } else {
-      time.textContent += `${data.time.minutes} minutes`; 
+      time.textContent += `${data.time.minutes} minutes`;
     }
 
-    if(data.time.minutes != "" || data.time.hours != "") {
+    if (data.time.minutes != "" || data.time.hours != "") {
       desBox.appendChild(time);
     }
 
     card.appendChild(deleteBut);
     card.appendChild(imageBox);
     card.appendChild(desBox);
-    
 
     this.shadowRoot.append(styles, card);
   }

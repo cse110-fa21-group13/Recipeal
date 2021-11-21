@@ -46,7 +46,6 @@ export function changeView(e) {
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
     });
-    switchHighlight(e.target);
     editButton.style.display = "none"
   }
   // navigating to explore page
@@ -59,7 +58,6 @@ export function changeView(e) {
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     fetchApiRecipes();
-    switchHighlight(e.target);
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
@@ -89,6 +87,7 @@ export function changeView(e) {
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
   }
+  switchHighlight(innerText);
 }
 
 // switch between shown and hidden for button
@@ -99,13 +98,13 @@ export function switchButtonView(but) {
 /*
  * Function to change button highlight
  */
-function switchHighlight(target) {
+function switchHighlight(innerText) {
   let nav = document.querySelector(".navbar-nav");
   let buttons = nav.getElementsByTagName("*");
   let e;
   for (var i = 0; i < buttons.length; i++) {
     e = buttons[i];
-    if (e === target) {
+    if (e.innerText === innerText) {
       e.classList.remove("btn-dark");
       e.classList.add("btn-white");
     } else {
@@ -129,8 +128,9 @@ async function fetchApiRecipes() {
   data.recipes.forEach((element, i) => {
     const recipeData = {
       thumbnail: element.image,
-      title: element.title,
+      name: element.title,
       description: element.summary,
+      time: { hours: "1", minutes: "1" },
     };
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
@@ -167,26 +167,48 @@ window.showTags = function () {
   });
 };
 
-
 // Show delete buttons for each card when click delete on home page
 window.showDeleteButtons = function () {
-  const recipeCards = document.getElementsByTagName("recipe-card");
-  for (let recipeCard of recipeCards) {
-    const delbut = recipeCard.shadowRoot.querySelector(".delbut");
-    if (delbut.classList.contains("hidden")) {
-      delbut.classList.remove("hidden");
-      delbut.classList.add("btn");
-    } else {
-      delbut.classList.add("hidden");
-      delbut.classList.remove("btn");
+  const expandSection = document.querySelector(".section--recipe-expand");
+  if (expandSection.classList.contains("shown")) {
+    const expandModal = document.querySelector(".delete-modal-expand");
+    expandModal.classList.remove("hidden");
+  } else {
+    const recipeCards = document.getElementsByTagName("recipe-card");
+    for (let recipeCard of recipeCards) {
+      const delbut = recipeCard.shadowRoot.querySelector(".delbut");
+      if (delbut.classList.contains("hidden")) {
+        delbut.classList.remove("hidden");
+        delbut.classList.add("btn");
+      } else {
+        delbut.classList.add("hidden");
+        delbut.classList.remove("btn");
+      }
     }
-  }
 
-  const delbutIcon = document.getElementById("delbut-icon");
-  delbutIcon.className =
-    delbutIcon.className === "bi bi-trash"
-      ? "bi bi-arrow-return-left"
-      : "bi bi-trash";
+    const delbutIcon = document.getElementById("delbut-icon");
+    delbutIcon.className =
+      delbutIcon.className === "bi bi-trash"
+        ? "bi bi-arrow-return-left"
+        : "bi bi-trash";
+  }
+};
+
+window.cancelDelete = function () {
+  const expandModal = document.querySelector(".delete-modal-expand");
+  expandModal.classList.add("hidden");
+};
+
+window.confirmDelete = function () {
+  const expandRecipe = document.getElementsByTagName("recipe-expand");
+  const curCardId =
+    expandRecipe[0].shadowRoot.getElementById("input-name").textContent;
+  localStorage.removeItem(curCardId.toLowerCase());
+  cancelDelete();
+  const recipeCardDiv = document.getElementById("recipe-cards");
+  const deletedRecipe = document.getElementById(curCardId);
+  recipeCardDiv.removeChild(deletedRecipe);
+  changeView("My Recipes");
 };
 
 
