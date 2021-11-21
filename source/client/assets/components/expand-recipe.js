@@ -12,13 +12,20 @@ class ExpandRecipe extends HTMLElement {
     styles.innerHTML = `
         /** CREATE RECIPE SECTION **/
 
+        .input-card {
+            inline-size: 300px;
+            overflow-wrap: break-word
+        }
+
         #create-recipe--input-wrapper {
             margin-top: 30px;
+            margin-bottom: 30px;
             display: flex;
             flex-direction: row;
             justify-content: center;
             gap: 10px;
-        }
+          }
+          
         
         /* Cards for all inputs */
         
@@ -155,11 +162,7 @@ class ExpandRecipe extends HTMLElement {
                 <br><br>
             </div>
         </div>
-    </div>
-    <button id="edit-btn" class="btn btn-primary"
-        style="bottom: 10px; right: 10px; position: fixed">
-            <i class="bi bi-pencil-square"></i>
-    </button>      
+    </div> 
     `;
 
     // Append elements to the shadow root
@@ -233,10 +236,6 @@ class ExpandRecipe extends HTMLElement {
             </div>
         </div>
     </div>
-    <button id="edit-btn" class="btn btn-primary"
-        style="bottom: 10px; right: 10px; position: fixed">
-            <i class="bi bi-pencil-square"></i>
-    </button>
     `;
 
     // Set title

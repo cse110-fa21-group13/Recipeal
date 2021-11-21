@@ -223,6 +223,21 @@
           </div>
         </div>
       </div>
+
+      <button id="edit-btn" class="btn btn-primary"
+        style="bottom: 100px; right: 10px; position: fixed; display: none">
+            <i class="bi bi-pencil-square"></i>
+      </button>
+    
+      <script type="module">
+        import { navEdit } from "../client/assets/scripts/create-recipe.js";
+
+        document.getElementById('edit-btn').onclick = function(){
+          navEdit('Edit Recipe');
+        }
+
+      </script>
+
       
     </section>
   </main>

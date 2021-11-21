@@ -1,5 +1,6 @@
 // Contains functions for navigating between pages
 
+
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -25,6 +26,7 @@ export function changeView(e) {
   var createRecipe = document.querySelector(".section--create-recipe");
   var createButton = document.getElementById("create-recipe-btn");
   var returnButton = document.getElementById("return-btn");
+  var editButton = document.getElementById("edit-btn");
   var deleteButton = document.getElementById("delete-btn");
   var expandRecipe = document.querySelector(".section--recipe-expand");
   const delbutIcon = document.getElementById("delbut-icon");
@@ -44,6 +46,7 @@ export function changeView(e) {
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
     });
+    editButton.style.display = "none"
   }
   // navigating to explore page
   else if (innerText === "Explore" && !deleteMode) {
@@ -66,6 +69,9 @@ export function changeView(e) {
     returnButton.className = "btn btn-primary";
     deleteButton.className = "btn btn-primary";
     createButton.className = "hidden";
+
+    // make edit button visible so user can click it
+    editButton.style.display = "block"
   }
   // navigating to create recipe page
   else if (
@@ -85,7 +91,7 @@ export function changeView(e) {
 }
 
 // switch between shown and hidden for button
-function switchButtonView(but) {
+export function switchButtonView(but) {
   but.className = but.className === "hidden" ? "btn btn-primary" : "hidden";
 }
 
@@ -137,7 +143,8 @@ async function fetchApiRecipes() {
 
 // Function for return to home page
 window.returnToHomePage = function () {
-  changeView("My Recipes");
+  location.reload();
+  //changeView("My Recipes");
 };
 
 // Show tags when pressing filter button
@@ -203,3 +210,5 @@ window.confirmDelete = function () {
   recipeCardDiv.removeChild(deletedRecipe);
   changeView("My Recipes");
 };
+
+
