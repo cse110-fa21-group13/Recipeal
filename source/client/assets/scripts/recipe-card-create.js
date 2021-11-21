@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", initCards);
  *  for each recipe in localStorage and binds the expanded
  *  recipe page to it
  */
-function initCards() {
+export function initCards() {
   for (let i = 0; i < localStorage.length; i++) {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
     let newCard = document.createElement("recipe-card");

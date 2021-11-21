@@ -1,7 +1,7 @@
-// Contains the functions involved in creating a new recipe
+// Contains the functions involved in creating and editing a new recipe
 
 import { newCard } from "./recipe-card-create.js";
-import { changeView } from "./navigate.js";
+import { changeView, switchButtonView } from "./navigate.js";
 
 /** ELEMENTS **/
 
@@ -87,7 +87,7 @@ function addNewTag() {
       `;
   tagCounter++;
   // After new tag has been created, repopulate previous tags
-  for (let i = 1; i <= tagCounter - 1; i++) {
+  for (let i = 1; i < tagCounter; i++) {
     document.getElementById(`input-tags${i}`).value = prevTags[i - 1];
   }
 
@@ -136,7 +136,7 @@ function addNewIngredient() {
   ingCounter++;
 
   // After new tag has been created, repopulate previous tags
-  for (let i = 1; i <= ingCounter - 1; i++) {
+  for (let i = 1; i < ingCounter; i++) {
     document.getElementById(`input-ings${i}`).value = prevIngs[i - 1];
   }
 
@@ -184,7 +184,7 @@ function addNewStep() {
 
   stepCounter++;
   // After new tag has been created, repopulate previous tags
-  for (let i = 1; i <= stepCounter - 1; i++) {
+  for (let i = 1; i < stepCounter; i++) {
     document.getElementById(`input-steps${i}`).value = prevSteps[i - 1];
   }
 
@@ -279,7 +279,95 @@ function saveData() {
   }
   // Check if recipe has already been made
   else if (recipeExists(checkName)) {
-    return alert("Recipe already exists");
+    if (confirm("Recipe already exists. Would you like to update it?")) {
+      // Delete old recipe 
+      localStorage.removeItem(checkName)
+
+      var newRecipe = {
+        name: "",
+        description: "",
+        time: { hours: "", minutes: "" },
+        tags: [],
+        ingredients: [],
+        directions: [],
+        thumbnail: "",
+        favorites: 0,
+      };
+  
+      // Get name and store it in the object
+      let name = document.getElementById("input-name").value;
+      newRecipe.name = name;
+  
+      // Get description and store it in the object
+      let desc = document.getElementById("input-desc").value;
+      newRecipe.description = desc;
+  
+      // Get time and store it in the object
+      let hours = document.getElementById("input-hours").value;
+      let mins = document.getElementById("input-mins").value;
+      newRecipe.time.hours = hours;
+      newRecipe.time.minutes = mins;
+  
+      var i = 1;
+      var j = 1;
+      var k = 1;
+  
+      // Loop through all tag inputs and push them to array
+      while (i <= tagCounter) {
+        let tagsValue = document.getElementById("input-tags" + i).value;
+        if(tagsValue == "") {
+          i++;
+          continue;
+        } else {
+          newRecipe.tags.push(tagsValue);
+          i++;
+        }
+      }
+  
+      // Loop through all ings inputs and push them to array
+      while (j <= ingCounter) {
+        let ingsValue = document.getElementById("input-ings" + j).value;
+        if(ingsValue == "") {
+          j++;
+          continue;
+        } else {
+          newRecipe.ingredients.push(ingsValue);
+          j++;
+        }
+      }
+  
+      // Loop through all dir inputs and push them to array
+      while (k <= stepCounter) {
+        let stepsValue = document.getElementById("input-steps" + k).value;
+        if(stepsValue == "") {
+          k++;
+          continue;
+        } else {
+          newRecipe.directions.push(stepsValue);
+          k++;
+        }
+      }
+  
+      // Get image and store in in the object as a string
+      let img = document.getElementById("display-image");
+      newRecipe.thumbnail = img.src;
+  
+      // Put the object into storage
+      localStorage.setItem(
+        newRecipe.name.toLowerCase(),
+        JSON.stringify(newRecipe)
+      );
+  
+      // Creates a recipe card & displays it on the 'My Recipes' page
+      newCard(newRecipe.name.toLowerCase());
+      document.querySelector("recipe-expand").data = newRecipe;
+      alert("Recipe saved!");
+      changeView("Recipe Expand");
+      reset();
+    }
+    else {
+      return
+    }
   }
   // Else, create new recipe object
   else {
@@ -308,6 +396,10 @@ function saveData() {
     newRecipe.time.hours = hours;
     newRecipe.time.minutes = mins;
 
+    if(hours < 0 || mins < 0 || hours > 24 || mins > 60) {
+      return alert("Please input correct times");
+    }
+
     var i = 1;
     var j = 1;
     var k = 1;
@@ -315,22 +407,37 @@ function saveData() {
     // Loop through all tag inputs and push them to array
     while (i <= tagCounter) {
       let tagsValue = document.getElementById("input-tags" + i).value;
-      newRecipe.tags.push(tagsValue);
-      i++;
+      if(tagsValue == "") {
+        i++;
+        continue;
+      } else {
+        newRecipe.tags.push(tagsValue);
+        i++;
+      }
     }
 
     // Loop through all ings inputs and push them to array
     while (j <= ingCounter) {
       let ingsValue = document.getElementById("input-ings" + j).value;
-      newRecipe.ingredients.push(ingsValue);
-      j++;
+      if(ingsValue == "") {
+        j++;
+        continue;
+      } else {
+        newRecipe.ingredients.push(ingsValue);
+        j++;
+      }
     }
 
     // Loop through all dir inputs and push them to array
     while (k <= stepCounter) {
       let stepsValue = document.getElementById("input-steps" + k).value;
-      newRecipe.directions.push(stepsValue);
-      k++;
+      if(stepsValue == "") {
+        k++;
+        continue;
+      } else {
+        newRecipe.directions.push(stepsValue);
+        k++;
+      }
     }
 
     // Get image and store in in the object as a string
@@ -352,3 +459,98 @@ function saveData() {
     reset();
   }
 }
+
+/**
+ * Creates edit recipe page that contains data for a recipe in the inputs
+ * @param {e} -  event
+ * @returns none 
+ */
+ export function navEdit (e) {
+
+  let createRecipe = document.querySelector(".section--create-recipe");
+  let deleteButton = document.getElementById("delete-btn");
+  let expandRecipe = document.querySelector(".section--recipe-expand");
+  let recipeExpand = document.querySelector('recipe-expand');
+  let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase()
+  let recipe = JSON.parse(window.localStorage.getItem(name));
+
+  const innerText = typeof e === "string" ? e : e.target.innerText;
+  
+  if (innerText === "Edit Recipe") {
+    
+    // Hide and show pages
+    expandRecipe.classList.remove("shown");
+    createRecipe.classList.add("shown");
+    switchButtonView(deleteButton);
+
+    // Hide edit button
+    document.getElementById("edit-btn").style.display = 'none'
+
+    // Set Image
+    document.getElementById('display-image').src = recipe.thumbnail;
+
+    // Set Name
+    document.getElementById('input-name').value = recipe.name;
+
+    // Set Description
+    document.getElementById('input-desc').value = recipe.description
+
+    // Set Hour and Min
+    document.getElementById('input-hours').value = recipe.time.hours
+    document.getElementById('input-mins').value = recipe.time.minutes
+
+    let i;
+    let j;
+    let k;
+
+    // Create inputs for tags
+    for (i = 2; i <= recipe.tags.length; i++) {
+      document.getElementById("tag-wrapper").innerHTML += `
+      <input type="text" id="input-tags${i}" class="tags" name="input-tags${i}">
+      `;
+      tagCounter++;
+      
+    }
+    
+    // Set values for tags
+    for (i = 1; i <= recipe.tags.length; i++) {
+      document.getElementById(`input-tags${i}`).value = recipe.tags[i-1] ;
+    }
+
+    // Create inputs for ings
+    for (j = 2; j <= recipe.ingredients.length; j++) {
+      document.getElementById(
+        "ing-wrapper"
+      ).innerHTML += `<div class="input-card-ings" id=card-ing${j}>
+        <label for="input-ings${j}" id=label-ings${j}>${j}.</label>
+        <input type="text" id="input-ings${j}"  class="ings" name="input-ings${j}">
+     </div>`;
+     ingCounter++;
+    }
+
+    // Set values for ings
+    for (j=1; j <= recipe.ingredients.length; j++) {
+      document.getElementById(`input-ings${j}`).value = recipe.ingredients[j-1]
+    }
+
+    // Create inputs for steps
+    for (k=2; k<= recipe.directions.length; k++) {
+      document.getElementById(
+        "step-wrapper"
+      ).innerHTML += `<div class="input-card-steps" id=card-step${k}>
+      <label for="input-steps${k}" id=label-steps${k}>${k}.</label>
+        <input type="text" id="input-steps${k}"  class="steps" name="input-steps${k}">
+        </div>`;
+        stepCounter++;
+       
+    }
+
+    // Set values for steps
+    for (k=1; k <= recipe.directions.length; k++) {
+      document.getElementById(`input-steps${k}`).value = recipe.directions[k-1]
+    }
+  }
+}
+
+
+
