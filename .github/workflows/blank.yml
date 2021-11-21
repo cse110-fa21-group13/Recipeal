@@ -34,3 +34,5 @@ jobs:
         
       - name: run jsDoc auto generation
         run: npm run doc
+
+    
