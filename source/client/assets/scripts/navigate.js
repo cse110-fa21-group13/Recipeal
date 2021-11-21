@@ -1,6 +1,5 @@
 // Contains functions for navigating between pages
 
-
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -39,14 +38,14 @@ export function changeView(e) {
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
-    createButton.className = "btn btn-primary";
-    deleteButton.className = "btn btn-primary";
+    createButton.className = "btn btn-light";
+    deleteButton.className = "btn btn-light";
     returnButton.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
     });
-    editButton.style.display = "none"
+    editButton.style.display = "none";
   }
   // navigating to explore page
   else if (innerText === "Explore" && !deleteMode) {
@@ -66,12 +65,12 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     expandRecipe.classList.add("shown");
     //switchButtonView(returnButton);
-    returnButton.className = "btn btn-primary";
-    deleteButton.className = "btn btn-primary";
+    returnButton.className = "btn btn-light";
+    deleteButton.className = "btn btn-light";
     createButton.className = "hidden";
 
     // make edit button visible so user can click it
-    editButton.style.display = "block"
+    editButton.style.display = "block";
   }
   // navigating to create recipe page
   else if (
@@ -92,7 +91,7 @@ export function changeView(e) {
 
 // switch between shown and hidden for button
 export function switchButtonView(but) {
-  but.className = but.className === "hidden" ? "btn btn-primary" : "hidden";
+  but.className = but.className === "hidden" ? "btn btn-light" : "hidden";
 }
 
 /*
@@ -210,5 +209,3 @@ window.confirmDelete = function () {
   recipeCardDiv.removeChild(deletedRecipe);
   changeView("My Recipes");
 };
-
-

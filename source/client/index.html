@@ -65,7 +65,7 @@
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
           <input type="text" id = "search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..." style="height: 45px;" />
           <div class="accordion-item ml-3">
-            <button class="btn btn-primary accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">
               <i class="bi bi-funnel-fill"></i>
             </button>
@@ -194,7 +194,7 @@
             </div>
 
             <!-- Save Button -->
-            <button class="save-btn btn btn-primary" style="bottom: 10px; right: 10px; position: fixed">
+            <button class="save-btn btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -202,14 +202,14 @@
         </div>
       </section>
 
-      <button id="create-recipe-btn" class="btn btn-primary" style="bottom: 10px; right: 10px; position: fixed">
+      <button id="create-recipe-btn" class="btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
         <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
       </button>
-      <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute"
+      <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute; border-radius: 20px;"
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-      <button id="delete-btn" class="btn btn-primary" style="bottom: 60px; right: 10px; position: fixed" onclick="showDeleteButtons()"
+      <button id="delete-btn" class="btn btn-light" style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()"
       >
         <i id="delbut-icon" class="bi bi-trash"></i>
       </button>
@@ -224,8 +224,8 @@
         </div>
       </div>
 
-      <button id="edit-btn" class="btn btn-primary"
-        style="bottom: 100px; right: 10px; position: fixed; display: none">
+      <button id="edit-btn" class="btn btn-light"
+        style="bottom: 100px; right: 10px; position: fixed; display: none; border-radius: 20px;">
             <i class="bi bi-pencil-square"></i>
       </button>
     
