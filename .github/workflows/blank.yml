@@ -35,8 +35,4 @@ jobs:
       - name: run jsDoc auto generation
         run: npm run doc
 
-      - name: codecov
-        uses: codecov/codecov-action@v2
-        with: 
-          token: b597cf4e-848f-4367-b5c6-17726b103118
-          flags: unittests
+    
