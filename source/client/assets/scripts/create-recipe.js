@@ -315,22 +315,37 @@ function saveData() {
       // Loop through all tag inputs and push them to array
       while (i <= tagCounter) {
         let tagsValue = document.getElementById("input-tags" + i).value;
-        newRecipe.tags.push(tagsValue);
-        i++;
+        if(tagsValue == "") {
+          i++;
+          continue;
+        } else {
+          newRecipe.tags.push(tagsValue);
+          i++;
+        }
       }
   
       // Loop through all ings inputs and push them to array
       while (j <= ingCounter) {
         let ingsValue = document.getElementById("input-ings" + j).value;
-        newRecipe.ingredients.push(ingsValue);
-        j++;
+        if(ingsValue == "") {
+          j++;
+          continue;
+        } else {
+          newRecipe.ingredients.push(ingsValue);
+          j++;
+        }
       }
   
       // Loop through all dir inputs and push them to array
       while (k <= stepCounter) {
         let stepsValue = document.getElementById("input-steps" + k).value;
-        newRecipe.directions.push(stepsValue);
-        k++;
+        if(stepsValue == "") {
+          k++;
+          continue;
+        } else {
+          newRecipe.directions.push(stepsValue);
+          k++;
+        }
       }
   
       // Get image and store in in the object as a string
@@ -388,22 +403,37 @@ function saveData() {
     // Loop through all tag inputs and push them to array
     while (i <= tagCounter) {
       let tagsValue = document.getElementById("input-tags" + i).value;
-      newRecipe.tags.push(tagsValue);
-      i++;
+      if(tagsValue == "") {
+        i++;
+        continue;
+      } else {
+        newRecipe.tags.push(tagsValue);
+        i++;
+      }
     }
 
     // Loop through all ings inputs and push them to array
     while (j <= ingCounter) {
       let ingsValue = document.getElementById("input-ings" + j).value;
-      newRecipe.ingredients.push(ingsValue);
-      j++;
+      if(ingsValue == "") {
+        j++;
+        continue;
+      } else {
+        newRecipe.ingredients.push(ingsValue);
+        j++;
+      }
     }
 
     // Loop through all dir inputs and push them to array
     while (k <= stepCounter) {
       let stepsValue = document.getElementById("input-steps" + k).value;
-      newRecipe.directions.push(stepsValue);
-      k++;
+      if(stepsValue == "") {
+        k++;
+        continue;
+      } else {
+        newRecipe.directions.push(stepsValue);
+        k++;
+      }
     }
 
     // Get image and store in in the object as a string
