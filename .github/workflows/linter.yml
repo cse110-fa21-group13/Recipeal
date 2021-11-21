@@ -23,3 +23,9 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: codecov
+        uses: codecov/codecov-action@v2
+        with: 
+          token: b597cf4e-848f-4367-b5c6-17726b103118
+          flags: unittests
