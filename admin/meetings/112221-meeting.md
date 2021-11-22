@@ -3,13 +3,17 @@
 **Meeting Date/Time:** 22 November 2021, 9:00 a.m.  <br>
 **Meeting Purpose:** Codebase Review, Discuss MVP, Assign tasks for next sprint <br>
 **Meeting Location:** Zoom <br>
-**Note Taker:** note_taker  <br>
+**Note Taker:** Brett  <br>
 
 ## Attendees
 People who attended:
-- Person A
-- Person B
-- Person C
+- Sirisha
+- Brett
+- Jason
+- Michael
+- Yibo
+- Daniel
+- Darren
 
 ## Agenda Items
 
