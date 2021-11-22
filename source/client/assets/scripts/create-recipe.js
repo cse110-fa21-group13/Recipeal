@@ -1,7 +1,7 @@
 // Contains the functions involved in creating and editing a new recipe
 
-import { newCard } from "/assets/scripts/recipe-card-create.js";
-import { changeView, switchButtonView } from "/assets/scripts/navigate.js";
+import { newCard } from "../scripts/recipe-card-create.js";
+import { changeView, switchButtonView } from "../scripts/navigate.js";
 
 /** ELEMENTS **/
 

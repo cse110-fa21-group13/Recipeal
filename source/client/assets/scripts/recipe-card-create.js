@@ -1,4 +1,4 @@
-import { changeView } from "/assets/scripts/navigate.js";
+import { changeView } from "../scripts/navigate.js";
 
 /**
  * @method newCard
