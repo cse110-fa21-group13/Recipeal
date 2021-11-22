@@ -48,7 +48,7 @@ class RecipeCard extends HTMLElement {
 
       .image-box h1 {
           width: auto;
-          padding: 0px 9px;
+          padding: 0px 7px;
       }
 
       .image-box .card-title {
@@ -63,6 +63,10 @@ class RecipeCard extends HTMLElement {
       
       .card-title {
         word-break: break-all;
+        width: 100%;
+        height: 25%;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
       }
 
       .textbox {
@@ -70,7 +74,8 @@ class RecipeCard extends HTMLElement {
           height: 118px;
           position: relative;
           vertical-align: middle;
-          overflow: hidden;
+          overflow: hidden !important;
+          text-overflow: ellipsis;
       }
 
       .textbox p{
