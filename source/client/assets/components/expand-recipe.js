@@ -268,21 +268,24 @@ class ExpandRecipe extends HTMLElement {
     let time = '';
     if (!data.time.hours && !data.time.minutes) {
         time += `None`;
-    }
-    else {
+    } else {
         // Hours
         if (data.time.hours === '1') {
             time += `${data.time.hours} hour `;
-    } else {
-        time += `${data.time.hours} hours `;
-    }
+        } else if (!data.time.hours) {
+
+        } else {
+            time += `${data.time.hours} hours `;
+        }
         // Minutes
         if (data.time.minutes === '1') {
             time += `${data.time.minutes} minute`;
-    } else {
-        time += `${data.time.minutes} minutes`;
+        } else if (!data.time.minutes) {
+
+        } else {
+            time += `${data.time.minutes} minutes`;
+        }
     }
-}
 
     // Set time
     this.shadowRoot.querySelector('p.input-hours-mins').innerHTML = time;
