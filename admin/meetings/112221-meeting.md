@@ -19,13 +19,13 @@ People who attended:
 
 Item | Description
 ---- | ----
-Code base Review | • Review the code base to get everyone caught up<br>
+Code Review | • Review the code base to get everyone caught up<br>
 MVP | • Done! <br>
 Sprint Tasks | • Assign sprint tasks to pairs <br>
 Team Update Video | • What we need to do <br>
 
 ## Discussion Items
-- Codebase Review: Pushed to later meeting to get more people present
+- Code Review: Pushed to later meeting to get more people present
 - MVP: Good to go!
 - Sprint Tasks:
   - Additional Features
