@@ -1,9 +1,9 @@
 # Meeting Minutes
 ## Meeting Information
-**Meeting Date/Time:** 22 November 2021, 9:00 a.m.  
-**Meeting Purpose:** Codebase Review, Discuss MVP, Assign tasks for next sprint 
-**Meeting Location:** Zoom 
-**Note Taker:** note_taker  
+**Meeting Date/Time:** 22 November 2021, 9:00 a.m.  <br>
+**Meeting Purpose:** Codebase Review, Discuss MVP, Assign tasks for next sprint <br>
+**Meeting Location:** Zoom <br>
+**Note Taker:** note_taker  <br>
 
 ## Attendees
 People who attended:
