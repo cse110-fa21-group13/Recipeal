@@ -19,7 +19,7 @@ People who attended:
 
 Item | Description
 ---- | ----
-Code Review | • Review the code base to get everyone caught up<br>
+Code Review | • Review the code to get everyone caught up<br>
 MVP | • Done! <br>
 Sprint Tasks | • Assign sprint tasks to pairs <br>
 Team Update Video | • What we need to do <br>
