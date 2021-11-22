@@ -44,14 +44,12 @@ class ExpandRecipe extends HTMLElement {
             background-color: #f6f6f6;
             border-radius: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
-            padding: 50px;
+            padding: 20px;
         }
         
         #display-image {
-            height: 170px;
+            width: 250px;
             margin: auto;
-            left: 200px;
-            top: 128px;
         }
         
         /* Card for ingredients */
@@ -76,7 +74,6 @@ class ExpandRecipe extends HTMLElement {
             outline: none;
             border-radius: 5px;
             font-size: 15px;
-            padding: 10px;
         }  
 
         #input-name {
@@ -192,6 +189,7 @@ class ExpandRecipe extends HTMLElement {
 
             <!-- Description -->
             <div class="input-card">
+                <label for="input-desc">Description</label><br>
                 <p class="text" id="input-desc"></p>
             </div>
 
@@ -218,7 +216,8 @@ class ExpandRecipe extends HTMLElement {
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
                 <div id="ing-wrapper">
-                    <label>Ingredients</label><br><br>
+                    <label>Ingredients</label><br>
+                    <p id="ing-none"></p>
                     <ul id="ing-list"></ul>
                 </div>
                 <br>
@@ -230,6 +229,7 @@ class ExpandRecipe extends HTMLElement {
             <div class="input-card" id="step-card">
                 <div id="step-wrapper">
                     <label>Steps</label><br>
+                    <p id="step-none"></p>
                     <ol id="step-list"></ol>
                 </div>
                 <br><br>
@@ -246,45 +246,70 @@ class ExpandRecipe extends HTMLElement {
     image.setAttribute('src', data.thumbnail);
 
     // Set description
-    this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
-
+    if (!data.description) {
+        this.shadowRoot.getElementById('input-desc').innerHTML = "None";
+    }
+    else {
+        this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
+    }
+    
     // Set tags
-    const tags = data.tags.join(', ');
+    let tags = data.tags;
+    if (tags.length === 0) {
+        tags.push("None");
+    }
+    else {
+        tags += tags.join(', ');
+    }
+    console.log(tags)
     this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not
     let time = '';
-    if (data.time.hours === '1') {
-      time += `${data.time.hours} hour `;
-    } else {
-      time += `${data.time.hours} hours `;
+    if (!data.time.hours && !data.time.minutes) {
+        time += `None`;
     }
+    else {
+        // Hours
+        if (data.time.hours === '1') {
+            time += `${data.time.hours} hour `;
+    } else {
+        time += `${data.time.hours} hours `;
+    }
+        // Minutes
+        if (data.time.minutes === '1') {
+            time += `${data.time.minutes} minute`;
+    } else {
+        time += `${data.time.minutes} minutes`;
+    }
+}
 
-    // Minutes
-    if (data.time.minutes === '1') {
-      time += `${data.time.minutes} minute`;
-    } else {
-      time += `${data.time.minutes} minutes`;
-    }
     // Set time
     this.shadowRoot.querySelector('p.input-hours-mins').innerHTML = time;
 
     // Set ingredients
     const ingredients = data.ingredients;
-    ingredients.forEach(ingredient => {
-      const item = document.createElement('li');
-      item.innerHTML = ingredient;
-      this.shadowRoot.getElementById("ing-list").append(item);
+    if (ingredients.length === 0) {
+        this.shadowRoot.getElementById("ing-none").innerHTML = "None";
+    } else {
+        ingredients.forEach(ingredient => {
+        const item = document.createElement('li');
+        item.innerHTML = ingredient;
+        this.shadowRoot.getElementById("ing-list").append(item);
     })
+}
     
     // Set directions
     const directions = data.directions;
-    directions.forEach(step => {
-      const item = document.createElement('li');
-      item.innerHTML = step;
-      this.shadowRoot.getElementById("step-list").append(item);
-    })
-    
+    if (directions.length === 0) {
+        this.shadowRoot.getElementById("step-none").innerHTML = "None";
+    } else {
+        directions.forEach(step => {
+        const item = document.createElement('li');
+        item.innerHTML = step;
+        this.shadowRoot.getElementById("step-list").append(item);
+        })
+    }
   }
 }
 

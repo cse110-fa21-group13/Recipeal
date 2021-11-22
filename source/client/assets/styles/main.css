@@ -67,15 +67,13 @@ section:not(section.shown) {
 /* Card for display image */
 
 #img-card {
-  padding: 70px;
+  padding: 20px;
 }
 
 #display-image {
   cursor: pointer;
-  height: 170px;
   margin: auto;
-  left: 200px;
-  top: 128px;
+  width: 250px;
 }
 
 /* Card for ingredients */
