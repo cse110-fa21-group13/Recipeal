@@ -15,19 +15,43 @@ People who attended:
 
 Item | Description
 ---- | ----
-Codebase Review | • <br>
-MVP | • <br> 
-Sprint Tasks | • <br>
+Codebase Review | • Review the code base to get everyone caught up<br>
+MVP | • Done! <br> 
+Sprint Tasks | • Assign sprint tasks to pairs <br>
 Team Update Video | • What we need to do <br>
 
 ## Discussion Items
+- Codebase Review: Pushed to later meeting to get more people present
+- MVP: Good to go!
+- Sprint Tasks:
+  - Additional Features
+    - Filter functionality 
+    - Explore Page (Developers) - Spoonacular API
+      - Need to discuss details for this
+      - More targeted recommendations
+      - Refresh recipes button
+      - 'Show more' button
+      - "add to recipes" button that will take them to the create/edit recipe page with that recipes information pre-filled
+      - "Featured recipes" section header
+      - Tag that differentiates user-created recipes and spoonacular recipes
+      - Search bar (queries spoonacular for those recipes) 
+    - Favorites functionality (Yibo, Gurpreet)
+      - Favorite buttons on recipe cards and expanded recipe page
+      - Favorites page
+    - "Cook Mode" (Sirisha, Brett)
+      - Button on expanded recipe page that leads to "cook mode page"
+        - Just ingredients and steps
+        - Timer
+        - TTS for each step
+    - Unit testing (Jason, Lu)
+  - Implementation Goal Date: Friday, December 3rd
+  - Remember to make a separate branch for your features! 
+- Team Status Video
+  - 3 components 
+    - Retrospective 
+    - Demo MVP 
+    - Demo CI/CD pipeline 
 
-
-
-## Action Items
-| Done? | Item | Responsible | Due Date |
-| ---- | ---- | ---- | ---- |
-| | item | who | due_date |
 
 ## Other Notes & Information
 N/A
