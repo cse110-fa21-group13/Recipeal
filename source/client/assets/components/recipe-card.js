@@ -47,8 +47,10 @@ class RecipeCard extends HTMLElement {
       }
 
       .image-box h1 {
-          width: auto;
-          padding: 0px 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
       }
 
       .image-box .card-title {
