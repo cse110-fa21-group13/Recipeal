@@ -8,6 +8,7 @@
   <title>Recipe App</title>
 
   <!-- Web Components -->
+  <script src="assets/components/cook-mode.js" type="module"></script>
   <script src="assets/components/recipe-card.js" type="module"></script>
   <script src="assets/components/expand-recipe.js" type="module"></script>
 
@@ -79,6 +80,11 @@
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
         </div>
+      </section>
+
+      <!-- COOK MODE PAGE -->
+      <section class="section--cook-mode">
+        <cook-mode></cook-mode>
       </section>
 
       <!-- EXPAND RECIPES PAGE-->
@@ -209,9 +215,11 @@
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-      <button id="delete-btn" class="btn btn-light" style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()"
-      >
+      <button id="delete-btn" class="btn btn-light" style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
         <i id="delbut-icon" class="bi bi-trash"></i>
+      </button>
+      <button id="cook-mode-btn" class="btn btn-light" style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
+        <i id="cook-mode-icon" class="bi bi-play"></i>
       </button>
 
       <div class="delete-modal-expand hidden">

@@ -14,6 +14,10 @@ let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
   changeView(e);
 });
+let cookModeBtn = document.getElementById("cook-mode-btn");
+cookModeBtn.addEventListener("click", (e) => {
+  changeView(e);
+});
 
 /*
  * Function to switch pages
@@ -30,6 +34,8 @@ export function changeView(e) {
   var expandRecipe = document.querySelector(".section--recipe-expand");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
+  const cookModeBut = document.getElementById("cook-mode-btn");
+  const cookMode = document.querySelector(".section--cook-mode");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -41,6 +47,7 @@ export function changeView(e) {
     createButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
     returnButton.className = "hidden";
+    cookModeBut.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
@@ -56,6 +63,7 @@ export function changeView(e) {
     returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
     fetchApiRecipes();
   }
   // navigating to recipe expand page
@@ -67,10 +75,19 @@ export function changeView(e) {
     //switchButtonView(returnButton);
     returnButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
+    cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
+  }
+  // navigating to cook mode page
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
+    cookMode.classList.add("shown");
+    expandRecipe.classList.remove("shown");
+    deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
   }
   // navigating to create recipe page
   else if (
@@ -85,6 +102,7 @@ export function changeView(e) {
     switchButtonView(createButton);
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
+    cookModeBut.className = "hidden";
   }
   switchHighlight(innerText);
 }

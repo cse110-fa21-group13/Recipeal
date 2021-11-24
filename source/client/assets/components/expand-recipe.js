@@ -261,7 +261,6 @@ class ExpandRecipe extends HTMLElement {
     else {
         tags += tags.join(', ');
     }
-    console.log(tags)
     this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not
@@ -296,11 +295,11 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("ing-none").innerHTML = "None";
     } else {
         ingredients.forEach(ingredient => {
-        const item = document.createElement('li');
-        item.innerHTML = ingredient;
-        this.shadowRoot.getElementById("ing-list").append(item);
-    })
-}
+            const item = document.createElement('li');
+            item.innerHTML = ingredient;
+            this.shadowRoot.getElementById("ing-list").append(item);
+        })
+    }
     
     // Set directions
     const directions = data.directions;
@@ -308,9 +307,9 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("step-none").innerHTML = "None";
     } else {
         directions.forEach(step => {
-        const item = document.createElement('li');
-        item.innerHTML = step;
-        this.shadowRoot.getElementById("step-list").append(item);
+            const item = document.createElement('li');
+            item.innerHTML = step;
+            this.shadowRoot.getElementById("step-list").append(item);
         })
     }
   }

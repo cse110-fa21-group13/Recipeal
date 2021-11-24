@@ -471,6 +471,7 @@ function saveData() {
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");
   let recipeExpand = document.querySelector('recipe-expand');
+  let cookModeBtn = document.getElementById("cook-mode-btn");
   let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase()
   let recipe = JSON.parse(window.localStorage.getItem(name));
 
@@ -482,6 +483,7 @@ function saveData() {
     expandRecipe.classList.remove("shown");
     createRecipe.classList.add("shown");
     switchButtonView(deleteButton);
+    switchButtonView(cookModeBtn);
 
     // Hide edit button
     document.getElementById("edit-btn").style.display = 'none'
