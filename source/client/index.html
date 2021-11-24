@@ -22,7 +22,7 @@
   <script type="module" src="../client/assets/scripts/recipe-card-create.js"></script>
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
-  <script src="assets/scripts/create-recipe.js" type="module"></script>
+  <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
   <script src="assets/scripts/searchbar.js"></script>
 
   <!-- Bootstrap -->
@@ -193,8 +193,13 @@
               <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
             </div>
 
-            <!-- Save Button -->
-            <button class="save-btn btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+            <!-- Save Button for Create Recipe -->
+            <button class="save-btn-create btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
+              <i class="bi bi-check-lg"></i>
+            </button>
+
+            <!-- Save Button for Edit Recipe -->
+            <button class="save-btn-edit btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -230,7 +235,7 @@
       </button>
     
       <script type="module">
-        import { navEdit } from "../client/assets/scripts/create-recipe.js";
+        import { navEdit } from "../client/assets/scripts/create-edit-recipe.js";
 
         document.getElementById('edit-btn').onclick = function(){
           navEdit('Edit Recipe');

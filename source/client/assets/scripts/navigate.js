@@ -28,6 +28,7 @@ export function changeView(e) {
   var editButton = document.getElementById("edit-btn");
   var deleteButton = document.getElementById("delete-btn");
   var expandRecipe = document.querySelector(".section--recipe-expand");
+  var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
 
@@ -85,6 +86,7 @@ export function changeView(e) {
     switchButtonView(createButton);
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
+    saveButtonCreate.style.display="block";
   }
   switchHighlight(innerText);
 }

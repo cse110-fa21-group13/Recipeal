@@ -261,7 +261,6 @@ class ExpandRecipe extends HTMLElement {
     else {
         tags += tags.join(', ');
     }
-    console.log(tags)
     this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not

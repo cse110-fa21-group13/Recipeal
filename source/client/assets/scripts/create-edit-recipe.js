@@ -29,11 +29,12 @@ addSteps.addEventListener("click", (e) => {
   addNewStep(e);
 });
 
-// Save Button
-let saveButton = document.querySelector("button.save-btn");
-saveButton.addEventListener("click", () => {
-  saveData();
+// Save Button Create
+let saveButtonCreate = document.querySelector("button.save-btn-create");
+saveButtonCreate.addEventListener("click", () => {
+  saveDataCreate();
 });
+
 
 /** FUNCTIONS **/
 
@@ -262,15 +263,12 @@ function reset() {
 }
 
 /**
- * @method saveData
+ * @method saveDataCreate
  *  Saves data in input fields to local storage
  *  Resets the input field values
  *  Changes screen to expanded recipe page of saved recipe
- *
- * @param {e} pageChange - current page the user is on(?)
- * @returns none
  */
-function saveData() {
+function saveDataCreate() {
   let checkName = document.getElementById("input-name").value.toLowerCase();
 
   // Check if user has inputted name field
@@ -461,9 +459,211 @@ function saveData() {
 }
 
 /**
- * Creates edit recipe page that contains data for a recipe in the inputs
+ * @method saveDataEdit
+ *  Saves edited data in input fields to local storage and deletes old recipe
+ *  Resets the input field values
+ *  Changes screen to expanded recipe page of saved recipe
+ *
+ * @param {String} originalName - original name of recipe used for deletion
+ */
+ function saveDataEdit(originalName) {
+  let checkName = document.getElementById("input-name").value.toLowerCase();
+
+  // Check if user has inputted name field
+  if (checkName == "") {
+    return alert("Please add at least a recipe name to save the recipe.");
+  }
+  // Check if recipe has already been made
+  else if (recipeExists(checkName)) {
+    if (confirm("Recipe already exists. Would you like to update it?")) {
+      // Delete old recipe 
+      localStorage.removeItem(checkName)
+
+      var newRecipe = {
+        name: "",
+        description: "",
+        time: { hours: "", minutes: "" },
+        tags: [],
+        ingredients: [],
+        directions: [],
+        thumbnail: "",
+        favorites: 0,
+      };
+  
+      // Get name and store it in the object
+      let name = document.getElementById("input-name").value;
+      newRecipe.name = name;
+  
+      // Get description and store it in the object
+      let desc = document.getElementById("input-desc").value;
+      newRecipe.description = desc;
+  
+      // Get time and store it in the object
+      let hours = document.getElementById("input-hours").value;
+      let mins = document.getElementById("input-mins").value;
+      newRecipe.time.hours = hours;
+      newRecipe.time.minutes = mins;
+  
+      var i = 1;
+      var j = 1;
+      var k = 1;
+  
+      // Loop through all tag inputs and push them to array
+      while (i <= tagCounter) {
+        let tagsValue = document.getElementById("input-tags" + i).value;
+        if(tagsValue == "") {
+          i++;
+          continue;
+        } else {
+          newRecipe.tags.push(tagsValue);
+          i++;
+        }
+      }
+  
+      // Loop through all ings inputs and push them to array
+      while (j <= ingCounter) {
+        let ingsValue = document.getElementById("input-ings" + j).value;
+        if(ingsValue == "") {
+          j++;
+          continue;
+        } else {
+          newRecipe.ingredients.push(ingsValue);
+          j++;
+        }
+      }
+  
+      // Loop through all dir inputs and push them to array
+      while (k <= stepCounter) {
+        let stepsValue = document.getElementById("input-steps" + k).value;
+        if(stepsValue == "") {
+          k++;
+          continue;
+        } else {
+          newRecipe.directions.push(stepsValue);
+          k++;
+        }
+      }
+  
+      // Get image and store in in the object as a string
+      let img = document.getElementById("display-image");
+      newRecipe.thumbnail = img.src;
+  
+      // Put the object into storage
+      localStorage.setItem(
+        newRecipe.name.toLowerCase(),
+        JSON.stringify(newRecipe)
+      );
+  
+      // Creates a recipe card & displays it on the 'My Recipes' page
+      newCard(newRecipe.name.toLowerCase());
+      document.querySelector("recipe-expand").data = newRecipe;
+      alert("Recipe updated!");
+      changeView("Recipe Expand");
+      reset();
+    }
+    else {
+      return
+    }
+  }
+  // Else, create new recipe object and delete old one
+  else {
+    console.log(originalName)
+    // Delete old recipe
+    localStorage.removeItem(originalName)
+    var newRecipe = {
+      name: "",
+      description: "",
+      time: { hours: "", minutes: "" },
+      tags: [],
+      ingredients: [],
+      directions: [],
+      thumbnail: "",
+      favorites: 0,
+    };
+
+    // Get name and store it in the object
+    let name = document.getElementById("input-name").value;
+    newRecipe.name = name;
+
+    // Get description and store it in the object
+    let desc = document.getElementById("input-desc").value;
+    newRecipe.description = desc;
+
+    // Get time and store it in the object
+    let hours = document.getElementById("input-hours").value;
+    let mins = document.getElementById("input-mins").value;
+    newRecipe.time.hours = hours;
+    newRecipe.time.minutes = mins;
+
+    if(hours < 0 || mins < 0 || hours > 24 || mins > 60) {
+      return alert("Please input valid times");
+    }
+
+    var i = 1;
+    var j = 1;
+    var k = 1;
+
+    // Loop through all tag inputs and push them to array
+    while (i <= tagCounter) {
+      let tagsValue = document.getElementById("input-tags" + i).value;
+      if(tagsValue == "") {
+        i++;
+        continue;
+      } else {
+        newRecipe.tags.push(tagsValue);
+        i++;
+      }
+    }
+
+    // Loop through all ings inputs and push them to array
+    while (j <= ingCounter) {
+      let ingsValue = document.getElementById("input-ings" + j).value;
+      if(ingsValue == "") {
+        j++;
+        continue;
+      } else {
+        newRecipe.ingredients.push(ingsValue);
+        j++;
+      }
+    }
+
+    // Loop through all dir inputs and push them to array
+    while (k <= stepCounter) {
+      let stepsValue = document.getElementById("input-steps" + k).value;
+      if(stepsValue == "") {
+        k++;
+        continue;
+      } else {
+        newRecipe.directions.push(stepsValue);
+        k++;
+      }
+    }
+
+    // Get image and store in in the object as a string
+    let img = document.getElementById("display-image");
+    newRecipe.thumbnail = img.src;
+
+    // Put the object into storage
+    localStorage.setItem(
+      newRecipe.name.toLowerCase(),
+      JSON.stringify(newRecipe)
+    );
+
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    alert("Recipe updated!");
+    changeView("Recipe Expand");
+
+    reset();
+  }
+}
+
+/**
+ * @method navEdit
+ *  Creates edit recipe page that contains data for a recipe in the inputs
+ * 
  * @param {e} -  event
- * @returns none 
  */
  export function navEdit (e) {
 
@@ -471,7 +671,11 @@ function saveData() {
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");
   let recipeExpand = document.querySelector('recipe-expand');
+
+  // Get name from expanded recipe page
   let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase()
+
+  // Get recipe data from name
   let recipe = JSON.parse(window.localStorage.getItem(name));
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
@@ -485,6 +689,9 @@ function saveData() {
 
     // Hide edit button
     document.getElementById("edit-btn").style.display = 'none'
+
+    // Show save button
+    document.querySelector('button.save-btn-edit').style.display = "block"
 
     // Set Image
     document.getElementById('display-image').src = recipe.thumbnail;
@@ -550,6 +757,12 @@ function saveData() {
       document.getElementById(`input-steps${k}`).value = recipe.directions[k-1]
     }
   }
+
+  // Save Button Edit
+  let saveButtonEdit = document.querySelector("button.save-btn-edit");
+  saveButtonEdit.addEventListener("click", () => {
+  saveDataEdit(name);
+});
 }
 
 
