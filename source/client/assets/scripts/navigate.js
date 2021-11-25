@@ -36,6 +36,7 @@ export function changeView(e) {
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
   const cookModeBut = document.getElementById("cook-mode-btn");
   const cookMode = document.querySelector(".section--cook-mode");
+  const navBar = document.querySelector("nav");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -71,7 +72,9 @@ export function changeView(e) {
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
+    cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
+    navBar.className = "navbar navbar-light bg-dark";
     //switchButtonView(returnButton);
     returnButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
@@ -85,6 +88,8 @@ export function changeView(e) {
   else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
     cookMode.classList.add("shown");
     expandRecipe.classList.remove("shown");
+    navBar.className = "hidden";
+    returnButton.className = "hidden";
     deleteButton.className = "hidden";
     cookModeBut.className = "hidden";
     editButton.style.display = "none";

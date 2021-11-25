@@ -1,3 +1,5 @@
+import { changeView } from "../scripts/navigate.js";
+
 class CookMode extends HTMLElement {
     constructor() {
         super();
@@ -11,18 +13,16 @@ class CookMode extends HTMLElement {
         // Fill in styles and root element
         styles.innerHTML = `
         #cook-mode--input-wrapper {
-            margin-top: 30px;
-            margin-bottom: 30px;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: start;
             gap: 10px;
         }
         
         /* Cards for all inputs */
         
         .input-card {
-            margin-top: 20px;
+            overflow-wrap: break-word;
             background-color: #f6f6f6;
             border-radius: 20px;
             padding: 20px;
@@ -48,7 +48,7 @@ class CookMode extends HTMLElement {
         /* Card for ingredients */
         
         #ing-card {
-            height: 98%;
+            height: 100vh;
             width: 500px;
         }
         
@@ -56,9 +56,10 @@ class CookMode extends HTMLElement {
         
         #step-card {
             height: 98%;
-            width: 500px;
+            width: 100vh;
             background-color: transparent;
             box-shadow: none;
+            margin-top: 40px;
         }
         
         p.text {
@@ -69,16 +70,13 @@ class CookMode extends HTMLElement {
             font-size: 15px;
         }  
 
-        ol, ul {
+        #ing-label {
+            font-size: 35px;
+            margin-top: 50px;
+        }
+
+        ul {
             margin-top: 10px;
-        }
-
-        ol li:not(:first-child) {
-            margin-top: 15px;
-        }
-
-        ol li::marker {
-        padding-right: 5px;
         }
         
         ul li {
@@ -88,38 +86,75 @@ class CookMode extends HTMLElement {
         ul li:not(:first-child) {
         margin-top: 8px;
         }
+
+        button.back-btn {
+            position: absolute;
+            display: block;
+            margin: 0px auto;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+            transition: 0.2s;
+            outline: none;
+        }
+
+        #time-inputs {
+            top: 20px;
+            right: 20px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+
+        .input-hours-mins {
+            width: 40px;
+            height: 45px;
+            display: inline-block;  
+        }
+
+        input[type="text"] {
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            border: none;
+            font-size: 30px;
+            text-align: right;
+        }
+
+        .semicolon {
+            display: inline-block;
+            font-size: 30px;
+        }
         `;
         article.innerHTML = `
         <div id="cook-mode--input-wrapper">
-          <!-- SECOND COLUMN -->
-          <div class="input-wrapper--column">
-            <!-- Ingredients -->
-            <div class="input-card" id="ing-card">
-              <div id="ing-wrapper">
-                <label>Ingredients</label><br><br>
-                <label for="input-ings1">1.</label>
-                <input type="text" id="input-ings1" class="ings" name="input-ings1">
-              </div>
-
-              <br>
-            </div>
-          </div>
-
-          <!-- THIRD COLUMN -->
-          <div class="input-wrapper--column">
-            <div class="input-card" id="step-card">
-
-              <div id="step-wrapper">
-                <label>Steps</label><br>
-                <div class="input-card-steps">
-                  <label for="input-steps1">1.</label>
-                  <input type="text" id="input-steps1" class="steps" name="input-steps1">
+            <!-- SECOND COLUMN -->
+            <div class="input-wrapper--column">
+                <!-- Ingredients -->
+                <div class="input-card" id="ing-card">
+                    <div id="ing-wrapper">
+                        <label id="ing-label">Ingredients</label><br>
+                        <p id="ing-none"></p>
+                        <ul id="ing-list"></ul>
+                    </div>
+                    <br>
                 </div>
-              </div>
-              <br><br>
             </div>
 
-          </div>
+            <!-- THIRD COLUMN -->
+            <div class="input-wrapper--column">
+                <button class="back-btn btn btn-light">
+                    <i class="bi bi-arrow-return-left"></i> Return
+                </button>
+                <div class="input-card" id="step-card">
+                    <div id="step-wrapper">
+                        <p id="step-none"></p>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
         </div>
         `;
         this.shadowRoot.append(styles, article);
@@ -130,12 +165,12 @@ class CookMode extends HTMLElement {
         console.log(data);
         this.shadowRoot.querySelector("article").innerHTML = `
         <div id="cook-mode--input-wrapper">
-          <!-- SECOND COLUMN -->
+            <!-- SECOND COLUMN -->
             <div class="input-wrapper--column">
                 <!-- Ingredients -->
                 <div class="input-card" id="ing-card">
                     <div id="ing-wrapper">
-                        <label>Ingredients</label><br>
+                        <label id="ing-label">Ingredients</label><br>
                         <p id="ing-none"></p>
                         <ul id="ing-list"></ul>
                     </div>
@@ -143,17 +178,29 @@ class CookMode extends HTMLElement {
                 </div>
             </div>
 
-          <!-- THIRD COLUMN -->
+            <!-- THIRD COLUMN -->
             <div class="input-wrapper--column">
+                <button class="back-btn btn btn-light">
+                    <i class="bi bi-arrow-return-left"></i> Return
+                </button>
                 <div class="input-card" id="step-card">
                     <div id="step-wrapper">
-                        <label>Steps</label><br>
                         <p id="step-none"></p>
-                        <ol id="step-list"></ol>
                     </div>
                     <br><br>
                 </div>
             </div>
+            <div id="time-inputs">
+                <input type="text" class="input-hours-mins" id="input-hours" maxlength = "2" placeholder="00">h
+                <p class="semicolon">:</p>
+                <input type="text" class="input-hours-mins" id="input-minutes" maxlength = "2" placeholder="00">m 
+                <p class="semicolon">:</p>
+                <input type="text" class="input-hours-mins" id="input-seconds" maxlength = "2" placeholder="00">s
+            </div>
+            <span id="timer"></span>
+            <button id="timer-btn" class="btn btn-light" style="top: 20px; right: 225px; position: fixed; border-radius: 20px;">
+                <i id="timer-icon" class="bi bi-play"></i>
+            </button>
         </div> 
         `;
         // Set ingredients
@@ -170,16 +217,51 @@ class CookMode extends HTMLElement {
         
         // Set directions
         const directions = data.directions;
+        console.log(directions);
         if (directions.length === 0) {
             this.shadowRoot.getElementById("step-none").innerHTML = "None";
         } else {
-            directions.forEach(step => {
-                const item = document.createElement('li');
-                item.innerHTML = step;
-                this.shadowRoot.getElementById("step-list").append(item);
-            })
+            for(let i = 0; i < directions.length; i++) {
+                this.shadowRoot.getElementById("step-wrapper").innerHTML += 
+                `<div class="input-card-steps" id=card-step${String(i + 1)}>
+                    <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+'. '+directions[i]}</p>
+                </div>`;
+            }
         }
+        this.shadowRoot.querySelector(".back-btn").addEventListener("click", () => {
+            changeView("Recipe Expand");
+        });
+        let timerIcon = this.shadowRoot.getElementById("timer-icon");
+        let seconds = this.shadowRoot.getElementById("input-seconds").value;
+        let minutes = this.shadowRoot.getElementById("input-minutes").value;
+        this.shadowRoot.getElementById("timer-btn").addEventListener("click", () => {
+            if(timerIcon.className == "bi bi-play") {
+                timerIcon.className = "bi bi-pause";
+                let duration = seconds * minutes;
+                let display = this.shadowRoot.getElementById("timer");
+                startTimer(duration, display);
+            } else {
+                timerIcon.className = "bi bi-play";
+            }
+        });
     }
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
 
 customElements.define('cook-mode', CookMode);
