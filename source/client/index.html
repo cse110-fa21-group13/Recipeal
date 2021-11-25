@@ -88,20 +88,11 @@
 
       <!-- EXPLORE RECIPES PAGE -->
       <section class="explore container-fluid">
-        <div class="row visible-xs-*">
-          <div class="col xs0"></div>
-          <div class="col xs1"></div>
+        <div id="explore-wrapper">          
         </div>
-        <div class="row visible-sm-*">
-          <div class="col sm0"></div>
-          <div class="col sm1"></div>
-          <div class="col sm2"></div>
-        </div>
-        <div class="row hidden-xs hidden-sm" style="height: 300px">
-          <div class="col lg0"></div>
-          <div class="col lg1"></div>
-          <div class="col lg2"></div>
-          <div class="col lg3"></div>
+        <div id="explore-buttons">
+          <button id="show-more-btn">Show More</button>
+          <button id="refresh-btn">Refresh</button>
         </div>
       </section>
 
@@ -240,10 +231,7 @@
         document.getElementById('edit-btn').onclick = function(){
           navEdit('Edit Recipe');
         }
-
       </script>
-
-      
     </section>
   </main>
 

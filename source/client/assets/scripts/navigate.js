@@ -15,6 +15,17 @@ exploreButton.addEventListener("click", (e) => {
   changeView(e);
 });
 
+let refreshButton = document.getElementById("refresh-btn");
+refreshButton.addEventListener("click", (e) => {
+  refresh();
+});
+
+let showMoreButton = document.getElementById("show-more-btn");
+showMoreButton.addEventListener("click", (e) => {
+  fetchApiRecipes();
+});
+
+
 /*
  * Function to switch pages
  */
@@ -116,7 +127,7 @@ function switchHighlight(innerText) {
 }
 
 /*
- * Function to fecth recipes from spoonacular and populate explore page
+ * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
   const API_KEY = "b24485ab3d4a47f696151e7134433592";
@@ -126,20 +137,35 @@ async function fetchApiRecipes() {
 
   // Storing data in form of JSON
   let data = await response.json();
-  data.recipes.forEach((element, i) => {
+  for (let i=0; i<3; i++) {
+    let summary = data.recipes[i].summary
+    summary = summary.replaceAll('<b>', '')
+    summary = summary.replaceAll('</b>', '')
+
+    // Trim to fit recipe card size
+    summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+
     const recipeData = {
-      thumbnail: element.image,
-      name: element.title,
-      description: element.summary,
+      thumbnail: data.recipes[i].image,
+      name: data.recipes[i].title,
+      description: summary,
       time: { hours: "1", minutes: "1" },
     };
+
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
 
-    document.querySelector(`.xs${i % 2}`).appendChild(recipeCard);
-    document.querySelector(`.sm${i % 3}`).appendChild(recipeCard);
-    document.querySelector(`.lg${i % 4}`).appendChild(recipeCard);
-  });
+    document.querySelector("#explore-wrapper").appendChild(recipeCard);
+  }
+}
+
+/**
+ * @method refresh
+ *  Removes recipes and shows 3 other random recipes
+ */
+function refresh() {
+  document.querySelector("#explore-wrapper").innerHTML = ""
+  fetchApiRecipes()
 }
 
 // Function for return to home page
