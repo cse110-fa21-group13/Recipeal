@@ -108,7 +108,7 @@ class CookMode extends HTMLElement {
             border: 1px solid #000;
         }
 
-        .input-hours-mins {
+        .input-hrs-mins {
             width: 40px;
             height: 45px;
             display: inline-block;  
@@ -191,14 +191,13 @@ class CookMode extends HTMLElement {
                 </div>
             </div>
             <div id="time-inputs">
-                <input type="text" class="input-hours-mins" id="input-hours" maxlength = "2" placeholder="00">h
+                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
                 <p class="semicolon">:</p>
-                <input type="text" class="input-hours-mins" id="input-minutes" maxlength = "2" placeholder="00">m 
+                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
                 <p class="semicolon">:</p>
-                <input type="text" class="input-hours-mins" id="input-seconds" maxlength = "2" placeholder="00">s
+                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
             </div>
-            <span id="timer"></span>
-            <button id="timer-btn" class="btn btn-light" style="top: 20px; right: 225px; position: fixed; border-radius: 20px;">
+            <button id="timer-btn" class="btn btn-light" style="top: 20px; right: 225px; position: absolute; border-radius: 20px;">
                 <i id="timer-icon" class="bi bi-play"></i>
             </button>
         </div> 
@@ -232,14 +231,12 @@ class CookMode extends HTMLElement {
             changeView("Recipe Expand");
         });
         let timerIcon = this.shadowRoot.getElementById("timer-icon");
-        let seconds = this.shadowRoot.getElementById("input-seconds").value;
-        let minutes = this.shadowRoot.getElementById("input-minutes").value;
+        let seconds = this.shadowRoot.getElementById("input-seconds");
+        let minutes = this.shadowRoot.getElementById("input-minutes");
         this.shadowRoot.getElementById("timer-btn").addEventListener("click", () => {
             if(timerIcon.className == "bi bi-play") {
                 timerIcon.className = "bi bi-pause";
-                let duration = seconds * minutes;
-                let display = this.shadowRoot.getElementById("timer");
-                startTimer(duration, display);
+                timer(this.shadowRoot);
             } else {
                 timerIcon.className = "bi bi-play";
             }
@@ -247,19 +244,23 @@ class CookMode extends HTMLElement {
     }
 }
 
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+function timer(shadowRoot) {
+    setInterval(() => {
+        let hVal = parseInt(shadowRoot.getElementById("input-hrs").value, 0);
+        let mVal = parseInt(shadowRoot.getElementById("input-minutes").value, 0);
+        let sVal = parseInt(shadowRoot.getElementById("input-seconds").value, 0);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
+        let current = ((hVal * 3600) + (mVal * 60) + sVal);  //the current time left in seconds
+        if (current > 0) {
+            current = current - 1;
+            shadowRoot.getElementById("input-hrs").value = parseInt((current / 3600) % 24, 10);
+            shadowRoot.getElementById("input-minutes").value = parseInt((current / 60) % 60, 10);
+            shadowRoot.getElementById("input-seconds").value = parseInt(current % 60, 10);
+            //take one second away, and rerender the seconds split into d, h, m, and s in the html, which you will reuse next time timer() runs
+        } else {
+            hours = "";
+            minutes = "";
+            seconds = "";
         }
     }, 1000);
 }
