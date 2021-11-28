@@ -23,22 +23,16 @@ class CookMode extends HTMLElement {
         
         .input-card {
             overflow-wrap: break-word;
-            background-color: #f6f6f6;
+            background-color: #F4F4F4;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
         
-        /* Input card for ings */
-        
-        .input-card-ings {
-            margin-top: 20px;
-        }
-        
         /* Input card for steps */
         
         .input-card-steps {
-            background-color: #f6f6f6;
+            background-color: #F4F4F4;
             border-radius: 20px;
             padding: 20px;
             margin-top: 20px;
@@ -73,6 +67,7 @@ class CookMode extends HTMLElement {
         #ing-label {
             font-size: 35px;
             margin-top: 50px;
+            margin-left: 25%;
         }
 
         ul {
@@ -80,43 +75,44 @@ class CookMode extends HTMLElement {
         }
         
         ul li {
-        padding-left: 2px;
+            padding-left: 5px;
         }
 
         ul li:not(:first-child) {
-        margin-top: 8px;
+            margin-top: 10px;
         }
 
         button.back-btn {
+            margin-top: 15px;
+            left: 36%;
             position: absolute;
-            display: block;
-            margin: 0px auto;
             width: 100px;
             height: 50px;
             cursor: pointer;
-            border: none;
             border-radius: 20px;
-            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.18);
             transition: 0.2s;
-            outline: none;
         }
 
         #time-inputs {
-            top: 20px;
-            right: 20px;
+            position: fixed;
+            margin-top: 10px;
+            border-radius: 20px;
+            right: 50px;
+            width: 200px;
             height: 50px;
             border: 1px solid #000;
         }
 
         .input-hrs-mins {
-            width: 40px;
-            height: 45px;
-            display: inline-block;  
+            border-radius: 20px;
+            width: 22%;
+            height: 100%;
+            display: inline-block;
+            background-color: transparent;  
         }
 
         input[type="text"] {
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
             outline: none;
             border: none;
             font-size: 30px;
@@ -126,6 +122,12 @@ class CookMode extends HTMLElement {
         .semicolon {
             display: inline-block;
             font-size: 30px;
+        }
+
+        button.btn-light:not(.back-btn) {
+            background-color: white;
+            border: 1px solid #000;
+            
         }
         `;
         article.innerHTML = `
@@ -155,6 +157,16 @@ class CookMode extends HTMLElement {
                     <br><br>
                 </div>
             </div>
+            <div id="time-inputs">
+                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
+                <p class="semicolon">:</p>
+                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
+                <p class="semicolon">:</p>
+                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
+            </div>
+            <button id="timer-btn" class="btn btn-light" style="top: 15px; right: 257px; position: fixed; border-radius: 20px;">
+                <i id="timer-icon" class="bi bi-play-fill"></i>
+            </button>
         </div>
         `;
         this.shadowRoot.append(styles, article);
@@ -191,17 +203,18 @@ class CookMode extends HTMLElement {
                 </div>
             </div>
             <div id="time-inputs">
-                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
+                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="0">h
                 <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
+                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="0">m 
                 <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
+                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
             </div>
-            <button id="timer-btn" class="btn btn-light" style="top: 20px; right: 225px; position: absolute; border-radius: 20px;">
-                <i id="timer-icon" class="bi bi-play"></i>
+            <button id="timer-btn" class="btn btn-light" style="top: 15px; right: 257px; position: fixed; border-radius: 20px;">
+                <i id="timer-icon" class="bi bi-play-fill"></i>
             </button>
         </div> 
         `;
+
         // Set ingredients
         const ingredients = data.ingredients;
         if (ingredients.length === 0) {
@@ -227,42 +240,59 @@ class CookMode extends HTMLElement {
                 </div>`;
             }
         }
+
         this.shadowRoot.querySelector(".back-btn").addEventListener("click", () => {
             changeView("Recipe Expand");
         });
+
         let timerIcon = this.shadowRoot.getElementById("timer-icon");
-        let seconds = this.shadowRoot.getElementById("input-seconds");
-        let minutes = this.shadowRoot.getElementById("input-minutes");
+
         this.shadowRoot.getElementById("timer-btn").addEventListener("click", () => {
-            if(timerIcon.className == "bi bi-play") {
+            if(timerIcon.className == "bi bi-play-fill") {
                 timerIcon.className = "bi bi-pause";
-                timer(this.shadowRoot);
+                timer(this.shadowRoot, true);
             } else {
-                timerIcon.className = "bi bi-play";
+                timerIcon.className = "bi bi-play-fill";
+                timer(this.shadowRoot, false);
             }
         });
     }
 }
 
-function timer(shadowRoot) {
-    setInterval(() => {
-        let hVal = parseInt(shadowRoot.getElementById("input-hrs").value, 0);
-        let mVal = parseInt(shadowRoot.getElementById("input-minutes").value, 0);
-        let sVal = parseInt(shadowRoot.getElementById("input-seconds").value, 0);
+// Needed to declare this globally to be able to pause/play correctly
+let interval = null;
 
-        let current = ((hVal * 3600) + (mVal * 60) + sVal);  //the current time left in seconds
-        if (current > 0) {
-            current = current - 1;
-            shadowRoot.getElementById("input-hrs").value = parseInt((current / 3600) % 24, 10);
-            shadowRoot.getElementById("input-minutes").value = parseInt((current / 60) % 60, 10);
-            shadowRoot.getElementById("input-seconds").value = parseInt(current % 60, 10);
-            //take one second away, and rerender the seconds split into d, h, m, and s in the html, which you will reuse next time timer() runs
-        } else {
-            hours = "";
-            minutes = "";
-            seconds = "";
-        }
-    }, 1000);
+/**
+ * @method timer 
+ *  Starts a countdown timer with user input. It does this by, for each interval, converting all 
+ *  time fields to seconds, subtracting one, and then converting back into hours/minutes/seconds
+ * @param {*} shadowRoot - Allows function to access shadowRoot elements
+ * @param {boolean} flag - Flags whether the timer should be started or stopped
+ */
+function timer(shadowRoot, flag) {
+    if(flag === false) {
+        clearInterval(interval);
+    }
+    else {
+        interval = setInterval(() => {
+            let hVal = parseInt(shadowRoot.getElementById("input-hrs").value, 0);
+            let mVal = parseInt(shadowRoot.getElementById("input-minutes").value, 0);
+            let sVal = parseInt(shadowRoot.getElementById("input-seconds").value, 0);
+    
+            let current = ((hVal * 3600) + (mVal * 60) + sVal);  //the current time left in seconds
+            if (current > 0) {
+                current = current - 1;
+                shadowRoot.getElementById("input-hrs").value = parseInt((current / 3600) % 24, 10);
+                shadowRoot.getElementById("input-minutes").value = parseInt((current / 60) % 60, 10);
+                shadowRoot.getElementById("input-seconds").value = parseInt(current % 60, 10);
+                //take one second away, and rerender the seconds split into d, h, m, and s in the html, which you will reuse next time timer() runs
+            } else {
+                shadowRoot.getElementById("input-hrs").value = "0";
+                shadowRoot.getElementById("input-minutes").value = "0";
+                shadowRoot.getElementById("input-seconds").value = "0";
+            }
+        }, 1000);
+    }
 }
 
 customElements.define('cook-mode', CookMode);
