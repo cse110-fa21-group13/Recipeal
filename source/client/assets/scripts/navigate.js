@@ -68,7 +68,7 @@ export function changeView(e) {
     returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
-    fetchApiRecipes();
+    refresh();
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
