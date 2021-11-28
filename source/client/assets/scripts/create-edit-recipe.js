@@ -518,7 +518,6 @@ function saveDataCreate() {
         <input type="text" id="input-steps${k}"  class="steps" name="input-steps${k}">
         </div>`;
         stepCounter++;
-       
     }
 
     // Set values for steps

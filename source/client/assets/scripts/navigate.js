@@ -25,6 +25,10 @@ showMoreButton.addEventListener("click", (e) => {
   fetchApiRecipes();
 });
 
+// Save to my recipes button
+let saveBtn = document.querySelector('.save-to-rec-btn')
+
+
 
 /*
  * Function to switch pages
@@ -126,37 +130,135 @@ function switchHighlight(innerText) {
   }
 }
 
+
+
 /*
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
+  
   const API_KEY = "b24485ab3d4a47f696151e7134433592";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
   );
-
   // Storing data in form of JSON
   let data = await response.json();
+
+  // Array to store ings
+  let ings = [];
+
+  // Array to store steps
+  let steps = [];
+
+  let ingCounter;
+
+  let stepCounter;
+
   for (let i=0; i<3; i++) {
+    // Get ingredients and push to array
+    for (let j=0; j<data.recipes[i].extendedIngredients.length; j++) {
+      ings.push(data.recipes[i].extendedIngredients[j].name)
+      console.log(ings)
+    }
     let summary = data.recipes[i].summary
     summary = summary.replaceAll('<b>', '')
     summary = summary.replaceAll('</b>', '')
 
+    // Split instructions string by period
+    console.log(data.recipes[i].instructions.split('.'))
+    
     // Trim to fit recipe card size
-    summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
 
     const recipeData = {
       thumbnail: data.recipes[i].image,
       name: data.recipes[i].title,
-      description: summary,
-      time: { hours: "1", minutes: "1" },
+      description: summaryTrim,
+      time: { hours: "", minutes: data.recipes[i].readyInMinutes}
     };
 
-    const recipeCard = document.createElement("recipe-card");
+    // Recipe Card
+    let recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
 
-    document.querySelector("#explore-wrapper").appendChild(recipeCard);
-  }
+    saveBtn = document.createElement("button")
+    saveBtn.className = `save-to-rec-btn`;
+    saveBtn.innerHTML = "Save to My Recipes";
+    saveBtn.onclick = function() {
+      // Hide explore recipes
+      document.querySelector(".explore").innerHTML = ""
+
+      // Show create recipes
+      let createRecipe = document.querySelector(".section--create-recipe");
+      createRecipe.classList.add("shown");
+
+      // Set Image
+      document.getElementById('display-image').src = recipeData.thumbnail;
+
+      // Set Name
+      document.getElementById('input-name').value = recipeData.name;
+
+      // Set Description
+      document.getElementById('input-desc').value = summary
+
+      // Set Time
+      document.getElementById('input-mins').value = recipeData.time
+
+      let x;
+      let y;
+
+      // Set Ingredients
+
+      // Create inputs for ings
+      for (x = 1; x <= ings.length; x++) {
+      document.getElementById(
+        "ing-wrapper"
+      ).innerHTML += `<div class="input-card-ings" id=card-ing${x}>
+        <label for="input-ings${x}" id=label-ings${x}>${x}.</label>
+        <input type="text" id="input-ings${x}"  class="ings" name="input-ings${x}">
+     </div>`;
+     ingCounter++;
+    }
+
+    // Set values for ings
+    for (x=1; x <= ings.length; x++) {
+      document.getElementById(`input-ings${x}`).value = ings[x-1]
+    }
+
+      // Set Instructions
+
+      // Create inputs for steps
+    for (y=1; y<= steps.length; y++) {
+      document.getElementById(
+        "step-wrapper"
+      ).innerHTML += `<div class="input-card-steps" id=card-step${y}>
+      <label for="input-steps${y}" id=label-steps${y}>${y}.</label>
+        <input type="text" id="input-steps${y}"  class="steps" name="input-steps${y}">
+        </div>`;
+        stepCounter++;
+    }
+
+    // Set values for steps
+    for (y=1; y <= steps.length; y++) {
+      document.getElementById(`input-steps${y}`).value = steps[y-1]
+    }
+
+      // Show save button
+      let saveButtonCreate = document.querySelector("button.save-btn-create");
+      saveButtonCreate.style.display="block";
+    }
+
+    // Card wrapper to hold recipe card and button
+    const cardWrapper = document.createElement("div")
+    cardWrapper.className = `card${i}`;
+    cardWrapper.id = 'explore-recipe-card';
+
+    cardWrapper.appendChild(recipeCard);
+    cardWrapper.appendChild(saveBtn);
+
+    document.querySelector("#explore-wrapper").appendChild(cardWrapper);
+}
+  
 }
 
 /**

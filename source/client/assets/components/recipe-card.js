@@ -50,7 +50,7 @@ class RecipeCard extends HTMLElement {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 10px;
+        padding: 7px;
       }
 
       .image-box .card-title {
@@ -117,6 +117,22 @@ class RecipeCard extends HTMLElement {
         margin: 15% auto; 
         padding: 20px;
       }
+
+      button.save-to-rec-btn {
+        position: relative;
+        left: 100px;
+        top: 100px;
+        display: block;
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+        border: none;
+        background-color: white;
+        border-radius: 10%;
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+        transition: 0.2s;
+        outline: none;
+      }
     `;
 
     const modal = document.createElement("div");
@@ -162,12 +178,9 @@ class RecipeCard extends HTMLElement {
     cardTitle.setAttribute("class", "card-title");
     const title = document.createElement("h1");
 
-    /* 
     title.textContent =
       data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
-    */
-
-    title.textContent = data.name;
+    
     title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
@@ -180,6 +193,8 @@ class RecipeCard extends HTMLElement {
     desBox.appendChild(description);
 
     const time = document.createElement("time");
+
+    
 
     // Hours
     if (data.time.hours === "") {
