@@ -130,7 +130,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b24485ab3d4a47f696151e7134433592";
+  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
   );
