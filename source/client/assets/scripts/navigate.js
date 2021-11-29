@@ -178,13 +178,28 @@ window.showTags = function () {
     const currentTags = JSON.parse(
       localStorage.getItem(localStorage.key(i))
     ).tags;
-    tags = tags.concat(currentTags);
+    currentTags.forEach(singleTag => {
+      if(!tags.includes(singleTag))
+      {
+        tags.push(singleTag);
+      }
+    })
   }
 
   tags.forEach((element, i) => {
     const newTagBut = document.createElement("button");
-    newTagBut.className = `but but-secondary tag-${i}`;
+    newTagBut.className = `but but-secondary filter-off`;
+    newTagBut.id = `${element}`;
     newTagBut.textContent = element;
+    newTagBut.addEventListener("click", () => {
+      if(newTagBut.classList.contains("filter-off")) {
+        newTagBut.classList.replace("filter-off", "filter-on");
+        filterTags(element);
+      } else {
+        newTagBut.classList.replace("filter-on", "filter-off");
+        filterTags(element);
+      }
+    });
     divTag.appendChild(newTagBut);
   });
 };
