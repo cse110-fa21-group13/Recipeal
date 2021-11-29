@@ -138,22 +138,43 @@ async function fetchApiRecipes() {
   // Storing data in form of JSON
   let data = await response.json();
   for (let i=0; i<3; i++) {
-    let summary = data.recipes[i].summary
+    const curRecipe = data.recipes[i];
+    let summary = curRecipe.summary
     summary = summary.replaceAll('<b>', '')
     summary = summary.replaceAll('</b>', '')
 
     // Trim to fit recipe card size
     summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
 
+    let tags = curRecipe.cuisines.concat(curRecipe.diets).concat(curRecipe.dishTypes);
+
+    let ingredients = curRecipe.extendedIngredients.map((v)=>{
+        return v.name;
+      });
+
+    let directions;
+    if(curRecipe.analyzedInstructions){
+      directions = curRecipe.analyzedInstructions[0].steps.map((v)=>{
+        return v.step;
+      });
+    }
+
     const recipeData = {
       thumbnail: data.recipes[i].image,
       name: data.recipes[i].title,
       description: summary,
-      time: { hours: "1", minutes: "1" },
+      time: { hours: "", minutes: "" },
+      tags,
+      ingredients,
+      directions,
     };
 
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
+    recipeCard.addEventListener("click", (e) => {
+        document.querySelector("recipe-expand").data = recipeData;
+        changeView("Recipe Expand");
+    });
 
     document.querySelector("#explore-wrapper").appendChild(recipeCard);
   }
