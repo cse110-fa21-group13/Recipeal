@@ -37,8 +37,6 @@ function filterTags(tag) {
     } else {
         let filteredTags = document.getElementsByClassName("but but-secondary filter-on");
         let filtTagsArray = Array.from(filteredTags);
-        console.log(filtTagsArray);
-        console.log(filteredTags);
         for(let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
             let currentRecipeName = currentRecipe.shadowRoot.querySelector('h1').textContent.toLowerCase();

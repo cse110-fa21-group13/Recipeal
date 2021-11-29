@@ -266,6 +266,7 @@ let interval = null;
  * @method timer 
  *  Starts a countdown timer with user input. It does this by, for each interval, converting all 
  *  time fields to seconds, subtracting one, and then converting back into hours/minutes/seconds
+ * 
  * @param {*} shadowRoot - Allows function to access shadowRoot elements
  * @param {boolean} flag - Flags whether the timer should be started or stopped
  */
@@ -290,6 +291,8 @@ function timer(shadowRoot, flag) {
                 shadowRoot.getElementById("input-hrs").value = "0";
                 shadowRoot.getElementById("input-minutes").value = "0";
                 shadowRoot.getElementById("input-seconds").value = "0";
+                shadowRoot.getElementById("timer-icon").className = "bi bi-play-fill";
+                clearInterval(interval);
             }
         }, 1000);
     }
