@@ -188,7 +188,7 @@ window.showTags = function () {
 
   tags.forEach((element, i) => {
     const newTagBut = document.createElement("button");
-    newTagBut.className = `but but-secondary filter-off`;
+    newTagBut.className = "but but-secondary filter-off";
     newTagBut.id = `${element}`;
     newTagBut.textContent = element;
     newTagBut.addEventListener("click", () => {
