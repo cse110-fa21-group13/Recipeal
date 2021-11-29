@@ -35,6 +35,9 @@ saveButtonCreate.addEventListener("click", () => {
   saveDataCreate();
 });
 
+// Save to my recipes button
+let saveBtn = document.querySelector('.save-to-rec-btn');
+
 
 /** FUNCTIONS **/
 
@@ -304,7 +307,7 @@ function saveBase() {
 
   // Loop through all tag inputs and push them to array
   while (i <= tagCounter) {
-    let tagsValue = document.getElementById("input-tags" + i).value;
+    let tagsValue = document.getElementById(`input-tags${i}`).value;
     if(tagsValue == "") {
       i++;
       continue;
@@ -316,7 +319,7 @@ function saveBase() {
 
   // Loop through all ings inputs and push them to array
   while (j <= ingCounter) {
-    let ingsValue = document.getElementById("input-ings" + j).value;
+    let ingsValue = document.getElementById(`input-ings${j}`).value;
     if(ingsValue == "") {
       j++;
       continue;
@@ -328,7 +331,7 @@ function saveBase() {
 
   // Loop through all dir inputs and push them to array
   while (k <= stepCounter) {
-    let stepsValue = document.getElementById("input-steps" + k).value;
+    let stepsValue = document.getElementById(`input-steps${k}`).value;
     if(stepsValue == "") {
       k++;
       continue;
@@ -533,5 +536,163 @@ function saveDataCreate() {
 });
 }
 
+
+export function saveToMyRecipes(data) {
+  // Array to store ings
+  let ings = [];
+
+  // Steps
+  let steps;
+
+  // Description
+  let summary;
+
+  // Time
+  let time;
+
+  // Hours time
+  let timeHour;
+
+  for (let i=0; i<3; i++) {
+    // Get ingredients and push to array
+    for (let j=0; j<data.recipes[i].extendedIngredients.length; j++) {
+      ings.push(data.recipes[i].extendedIngredients[j].name)
+    }
+
+    summary = data.recipes[i].summary;
+
+    // Cleaning data
+    summary = summary.replaceAll('<b>', '');
+    summary = summary.replaceAll('</b>', '');
+
+    steps = data.recipes[i].instructions;
+    steps = steps.replaceAll('<ol>', '');
+    steps = steps.replaceAll('</ol>', '');
+    steps = steps.replaceAll('<li>', '');
+    steps = steps.replaceAll('</li>', '');
+    steps = steps.replaceAll('\n', '');
+    steps = steps.replaceAll('<p>', '');
+    steps = steps.replaceAll('</p>', '');
+    steps = steps.split('.');
+    steps.pop();
+
+    // Converting time
+    time = data.recipes[i].readyInMinutes
+    if (time > 60) {
+      timeHour = Math.floor(time / 60)
+      time -= timeHour * 60;
+    }
+    else if (time == 60) {
+      timeHour = 1;
+      time = 0;
+    }
+    else {
+      timeHour = 0;
+    }
+    
+    // Trim to fit recipe card size
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+
+    const recipeData = {
+      thumbnail: data.recipes[i].image,
+      name: data.recipes[i].title,
+      description: summaryTrim,
+      time: { hours: timeHour, minutes: time}
+    };
+
+    // Recipe Card
+    let recipeCard = document.createElement("recipe-card");
+    recipeCard.data = recipeData;
+
+    saveBtn = document.createElement("button")
+    saveBtn.id = `save-to-rec-btn${i}`
+    saveBtn.className = `save-to-rec-btn`;
+    saveBtn.innerHTML = "Save to My Recipes";
+    saveBtn.onclick = function() {
+
+      // Hide explore recipes
+      document.querySelector(".explore").classList.add('hidden');
+
+      // Show create recipes
+      let createRecipe = document.querySelector(".section--create-recipe");
+      createRecipe.classList.add("shown");
+
+      // Show return button
+      document.getElementById("return-btn").className = "btn btn-light";
+
+      // Set Image
+      document.getElementById('display-image').src = recipeData.thumbnail;
+
+      // Set Name
+      document.getElementById('input-name').value = recipeData.name;
+
+      // Set Description
+      document.getElementById('input-desc').value = summary;
+
+      // Set Time
+      document.getElementById('input-mins').value = recipeData.time.minutes;
+
+      let x;
+      let y;
+
+      // INGREDIENTS
+
+      // Clear first input
+      document.getElementById('label-ings1').remove();
+      document.getElementById('input-ings1').remove();
+
+      // Create inputs for ings
+      for (x = 1; x <= ings.length; x++) {
+      document.getElementById(
+        "ing-wrapper"
+      ).innerHTML += `<div class="input-card-ings" id=card-ing${x}>
+        <label for="input-ings${x}" id=label-ings${x}>${x}.</label>
+        <input type="text" id="input-ings${x}"  class="ings" name="input-ings${x}">
+        </div>`;
+     ingCounter++;
+    }
+
+    // Set values for ings
+    for (x=1; x <= ings.length; x++) {
+      document.getElementById(`input-ings${x}`).value = ings[x-1];
+    }
+
+      // INSTRUCTIONS
+
+      // Clear first input
+      document.getElementById('card-step-1').remove();
+    
+      // Create inputs for steps
+    for (y=1; y<= steps.length; y++) {
+      document.getElementById(
+        "step-wrapper"
+      ).innerHTML += `<div class="input-card-steps" id=card-step${y}>
+      <label for="input-steps${y}" id=label-steps${y}>${y}.</label>
+        <input type="text" id="input-steps${y}"  class="steps" name="input-steps${y}">
+        </div>`;
+        stepCounter++;
+    }
+
+    // Set values for steps
+    for (y=1; y <= steps.length; y++) {
+      document.getElementById(`input-steps${y}`).value = steps[y-1]
+    }
+
+      // Show save button
+      let saveButtonCreate = document.querySelector("button.save-btn-create");
+      saveButtonCreate.style.display="block";
+    }
+
+    // Card wrapper to hold recipe card and button
+    const cardWrapper = document.createElement("div")
+    cardWrapper.className = `card${i}`;
+    cardWrapper.id = 'explore-recipe-card';
+
+    cardWrapper.appendChild(recipeCard);
+    cardWrapper.appendChild(saveBtn);
+
+    document.querySelector("#explore-wrapper").appendChild(cardWrapper);
+  }
+}
 
 

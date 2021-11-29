@@ -71,6 +71,7 @@ section:not(section.shown) {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  width: 300px;
 }
 
 /* Input card for ings */
@@ -125,7 +126,7 @@ input {
   font-family: var(--p-font);
   border: 3px solid #ccc;
   resize: none;
-  width: 90%;
+  width: 100%;
 }
 
 input.tags {
@@ -136,6 +137,14 @@ input.tags {
 input.input-hours-mins {
   width: 60px;
   margin: 5px;
+}
+
+input.ings {
+  width: 95%;
+}
+
+input.steps {
+  width: 95%;
 }
 
 input[type="text"] {
@@ -162,6 +171,30 @@ input[type="number"] {
 
 input[type="number"]:focus {
   border: 3px solid #555;
+}
+
+#input-desc {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: var(--p-font);
+  border: 3px solid #ccc;
+  resize: none;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#input-desc:focus {
+  border: 3px solid #555;
+}
+
+#time-inputs {
+  margin: auto;
 }
 
 button.add-btn {

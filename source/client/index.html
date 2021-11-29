@@ -122,8 +122,11 @@
             <!-- Description -->
             <div class="input-card">
               <label for="input-desc">Description</label><br>
-              <input type="text" id="input-desc" name="input-desc">
+              <textarea id="input-desc" name="input-desc"
+          rows="5" cols="33"></textarea>
             </div>
+
+            
 
             <!-- Time -->
             <div class="input-card">
@@ -157,7 +160,7 @@
             <div class="input-card" id="ing-card">
               <div id="ing-wrapper">
                 <label>Ingredients</label><br><br>
-                <label for="input-ings1">1.</label>
+                <label for="input-ings1" id="label-ings1">1.</label>
                 <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
 
@@ -174,8 +177,8 @@
 
               <div id="step-wrapper">
                 <label>Steps</label><br>
-                <div class="input-card-steps">
-                  <label for="input-steps1">1.</label>
+                <div class="input-card-steps" id = "card-step-1">
+                  <label for="input-steps1" id="label-steps1">1.</label>
                   <input type="text" id="input-steps1" class="steps" name="input-steps1">
                 </div>
               </div>
