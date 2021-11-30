@@ -54,6 +54,7 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
+    location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -137,10 +138,9 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  
-  const API_KEY = "b24485ab3d4a47f696151e7134433592";
+  const API_KEY = "75d567c9173d40f69fad55f6870057fe";
   const response = await fetch(
-    `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+    `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
   // Storing data in form of JSON
   let data = await response.json();
@@ -150,7 +150,7 @@ async function fetchApiRecipes() {
 
 /**
  * @method refresh
- *  Removes recipes and shows 3 other random recipes
+ *  Removes recipes and shows 15 other random recipes
  */
 function refresh() {
   document.querySelector("#explore-wrapper").innerHTML = ""

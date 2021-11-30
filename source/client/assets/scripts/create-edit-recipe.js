@@ -121,7 +121,6 @@ function addNewIngredient() {
   for (let i = 1; i <= ingCounter; i++) {
     let value = document.getElementById(`input-ings${i}`).value;
     prevIngs.push(value);
-    console.log(prevIngs);
   }
 
   document.getElementById(
@@ -170,7 +169,6 @@ function addNewStep() {
   for (let i = 1; i <= stepCounter; i++) {
     let value = document.getElementById(`input-steps${i}`).value;
     prevSteps.push(value);
-    console.log(prevSteps);
   }
 
   document.getElementById(
@@ -263,6 +261,10 @@ function reset() {
   // Set image to default
   document.getElementById("display-image").src =
     "https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png";
+
+  tagCounter = 0;
+  ingCounter = 0;
+  stepCounter = 0;
 }
 
 /**
@@ -306,8 +308,10 @@ function saveBase() {
   var k = 1;
 
   // Loop through all tag inputs and push them to array
+  console.log(tagCounter)
   while (i <= tagCounter) {
     let tagsValue = document.getElementById(`input-tags${i}`).value;
+    console.log(tagsValue)
     if(tagsValue == "") {
       i++;
       continue;
@@ -431,6 +435,8 @@ function saveDataCreate() {
   }
 }
 
+
+
 /**
  * @method navEdit
  *  Creates edit recipe page that contains data for a recipe in the inputs
@@ -482,13 +488,14 @@ function saveDataCreate() {
     let j;
     let k;
 
+    
+
     // Create inputs for tags
     for (i = 2; i <= recipe.tags.length; i++) {
       document.getElementById("tag-wrapper").innerHTML += `
       <input type="text" id="input-tags${i}" class="tags" name="input-tags${i}">
       `;
       tagCounter++;
-      
     }
     
     // Set values for tags
@@ -536,40 +543,48 @@ function saveDataCreate() {
 });
 }
 
-
+/**
+ * @method saveToMyRecipes
+ *  Saves recipes from the explore page to my recipes
+ * 
+ * @param {JSON} data 
+ */
 export function saveToMyRecipes(data) {
-  // Array to store ings
-  let ings = [];
+  tagCounter = 0;
+  ingCounter = 0;
+  stepCounter = 0;
+  for (let i=0; i<15; i++) {
+    // Array to store ings
+    let ings = [];
 
-  // Steps
-  let steps;
+    // Steps
+    let steps = [];
 
-  // Description
-  let summary;
+    // Description
+    let summary;
 
-  // Time
-  let time;
+    // Time
+    let time;
 
-  // Hours time
-  let timeHour;
+    // Hours time
+    let timeHour;
 
-  // Tags
-  let tags = [];
+    // Tags
+    let tags = [];
 
-  for (let i=0; i<3; i++) {
     // Get ingredients and push to array
     for (let j=0; j<data.recipes[i].extendedIngredients.length; j++) {
-      ings.push(data.recipes[i].extendedIngredients[j].name)
+      ings.push(data.recipes[i].extendedIngredients[j].original)
     }
 
     summary = data.recipes[i].summary;
-    steps = data.recipes[i].analyzedInstructions
+    //steps = data.recipes[i].analyzedInstructions
 
     // Cleaning data
     summary = summary.replaceAll('<b>', '');
     summary = summary.replaceAll('</b>', '');
 
-    /*
+    
     steps = data.recipes[i].instructions;
     steps = steps.replaceAll('<ol>', '');
     steps = steps.replaceAll('</ol>', '');
@@ -580,9 +595,8 @@ export function saveToMyRecipes(data) {
     steps = steps.replaceAll('</p>', '');
     steps = steps.split('.');
     steps.pop();
-    */
-
-    // Converting time
+    
+    // Converting time to hours min format
     time = data.recipes[i].readyInMinutes
     if (time > 60) {
       timeHour = Math.floor(time / 60)
@@ -597,31 +611,32 @@ export function saveToMyRecipes(data) {
     }
 
     // Push tags to array
-    if (data.recipes[i].cheap === "true") {
+    if (data.recipes[i].cheap === true) {
       tags.push("cheap")
     }
     if (data.recipes[i].cuisines) {
-      tags.concat(data.recipes[i].cuisines)
+      tags = tags.concat(data.recipes[i].cuisines)
     }
-    if (data.recipes[i].dairyFree === "true") {
-      tags.push("dairyFree")
+    if (data.recipes[i].dairyFree === true) {
+      tags.push("dairy-free")
     }
-    if (data.recipes[i].glutenFree === "true") {
-      tags.push("glutenFree")
+    if (data.recipes[i].glutenFree === true) {
+      tags.push("gluten-free")
     }
-    if (data.recipes[i].ketogenic === "true") {
+    if (data.recipes[i].ketogenic === true) {
       tags.push("ketogenic")
     }
-    if (data.recipes[i].vegan === "true") {
-      tags.push("ketogenic")
+    if (data.recipes[i].vegan === true) {
+      tags.push("vegan")
     }
-    if (data.recipes[i].vegetarian === "true") {
-      tags.push("ketogenic")
+    if (data.recipes[i].vegetarian === true) {
+      tags.push("vegetarian")
     }
     if (data.recipes[i].dishTypes) {
-      tags.concat(data.recipes[i].dishTypes)
+      tags = tags.concat(data.recipes[i].dishTypes)
     }
-    
+  
+
     // Trim to fit recipe card size
     let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
 
@@ -630,15 +645,21 @@ export function saveToMyRecipes(data) {
       description: summaryTrim,
       time: { hours: timeHour, minutes: time},
       tags: tags,
-      ingredients: [],
-      directions: [],
+      ingredients: ings,
+      directions: steps,
       thumbnail: data.recipes[i].image,
       favorites: 0,
     };
+  
 
     // Recipe Card
     let recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
+
+    recipeCard.addEventListener("click", (e) => {
+      document.querySelector("recipe-expand").data = recipeData;
+      changeView("Recipe Expand");
+    });
 
     saveBtn = document.createElement("button")
     saveBtn.id = `save-to-rec-btn${i}`
@@ -667,7 +688,11 @@ export function saveToMyRecipes(data) {
         createRecipe.classList.add("shown");
 
         // Show return button
-        document.getElementById("return-btn").className = "btn btn-light";
+        document.getElementById("return-btn").className = "shown";
+
+        // Show save button
+        let saveButtonCreate = document.querySelector("button.save-btn-create");
+        saveButtonCreate.style.display="block";
 
         // Set Image
         document.getElementById('display-image').src = recipeData.thumbnail;
@@ -683,6 +708,7 @@ export function saveToMyRecipes(data) {
 
         let x;
         let y;
+        let z;
 
         // INGREDIENTS
 
@@ -727,10 +753,24 @@ export function saveToMyRecipes(data) {
           document.getElementById(`input-steps${y}`).value = steps[y-1]
         }
 
-          // Show save button
-          let saveButtonCreate = document.querySelector("button.save-btn-create");
-          saveButtonCreate.style.display="block";
+        // TAGS
+
+        // Clear first input
+        document.getElementById('input-tags1').remove();
+
+        // Create inputs for tags
+        for (z = 1; z <= tags.length; z++) {
+          document.getElementById("tag-wrapper").innerHTML += `
+          <input type="text" id="input-tags${z}" class="tags" name="input-tags${z}">
+          `;
+          tagCounter++;
         }
+
+        // Set values for tags
+        for (z = 1; z <= tags.length; z++) {
+          document.getElementById(`input-tags${z}`).value = tags[z-1] ;
+        }
+      }
       else {
         // Put the object into storage
         localStorage.setItem(
@@ -742,5 +782,6 @@ export function saveToMyRecipes(data) {
     }
   }
 }
+
 
 

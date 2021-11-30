@@ -36,7 +36,7 @@ section:not(section.shown) {
   margin: auto;
   margin-top: 50px;
   gap: 50px;
-  height: auto; 
+  height: auto;
 }
 
 /** RECIPE CARDS IN MY RECIPE **/
@@ -140,11 +140,11 @@ input.input-hours-mins {
 }
 
 input.ings {
-  width: 95%;
+  width: 94%;
 }
 
 input.steps {
-  width: 95%;
+  width: 93%;
 }
 
 input[type="text"] {
@@ -244,7 +244,7 @@ button.save-btn:hover {
 /* Button */
 button.btn-light {
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* REFRESH AND SHOW MORE BUTTONS ON EXPLORE PAGE */
