@@ -210,18 +210,16 @@ button.save-btn:hover {
   padding: 20px;
 }
 
-.recipe-cards--wrapper {
+#search-bar {
   position: relative;
-}
-
-.accordianItem, #recipeCards {
-  position: absolute;
 }
 
 #collapseThree {
   box-shadow: 0 3px 7px rgba(0,0,0,0.4);
   border-radius: 16px;
   position: absolute;
+  left: 30%;
+  margin: 20px;
 }
 
 #existingTags {
@@ -232,7 +230,7 @@ button.save-btn:hover {
   background-color: gainsboro;
   border-radius: 16px;
   border: 1px solid #000; 
-  grid-column: 1;
+  grid-row: 1;
   margin: 7px;
   cursor: pointer;
 }

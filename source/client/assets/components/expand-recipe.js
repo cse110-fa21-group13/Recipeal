@@ -255,11 +255,12 @@ class ExpandRecipe extends HTMLElement {
     
     // Set tags
     let tags = data.tags;
+    console.log(tags);
     if (tags.length === 0) {
         tags.push("None");
     }
     else {
-        tags += tags.join(', ');
+        tags = tags.join(", ");
     }
     this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
