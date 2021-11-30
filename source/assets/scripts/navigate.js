@@ -1,5 +1,7 @@
 // Contains functions for navigating between pages
 
+import { saveToMyRecipes } from "./create-edit-recipe.js";
+
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -47,6 +49,7 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
+    location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -130,13 +133,17 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
+  const API_KEY = "75d567c9173d40f69fad55f6870057fe";
   const response = await fetch(
-    `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+    `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
 
   // Storing data in form of JSON
   let data = await response.json();
+
+  saveToMyRecipes(data);
+
+  /*
   for (let i=0; i<3; i++) {
     const curRecipe = data.recipes[i];
     let summary = curRecipe.summary
@@ -145,7 +152,7 @@ async function fetchApiRecipes() {
 
     // Trim to fit recipe card size
     summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
-
+    
     let tags = curRecipe.cuisines.concat(curRecipe.diets).concat(curRecipe.dishTypes);
 
     let ingredients = curRecipe.extendedIngredients.map((v)=>{
@@ -168,21 +175,21 @@ async function fetchApiRecipes() {
       ingredients,
       directions,
     };
-
+    
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
     recipeCard.addEventListener("click", (e) => {
         document.querySelector("recipe-expand").data = recipeData;
         changeView("Recipe Expand");
     });
-
-    document.querySelector("#explore-wrapper").appendChild(recipeCard);
+    
+    //document.querySelector("#explore-wrapper").appendChild(recipeCard);
+    */
   }
-}
 
 /**
  * @method refresh
- *  Removes recipes and shows 3 other random recipes
+ *  Removes recipes and shows 15 other random recipes
  */
 function refresh() {
   document.querySelector("#explore-wrapper").innerHTML = ""
