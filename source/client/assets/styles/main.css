@@ -24,7 +24,7 @@ section:not(section.shown) {
   margin-top: 50px;
   gap: 50px;
   height: auto;
-  max-width: 60%;
+  max-width: 80%;
 }
 
 /** CREATE RECIPE SECTION **/
@@ -208,4 +208,31 @@ button.save-btn:hover {
 .delete-modal-expand-content {
   margin: 15% auto;
   padding: 20px;
+}
+
+.recipe-cards--wrapper {
+  position: relative;
+}
+
+.accordianItem, #recipeCards {
+  position: absolute;
+}
+
+#collapseThree {
+  box-shadow: 0 3px 7px rgba(0,0,0,0.4);
+  border-radius: 16px;
+  position: absolute;
+}
+
+#existingTags {
+  display: grid;
+}
+
+.but-secondary {
+  background-color: gainsboro;
+  border-radius: 16px;
+  border: 1px solid #000; 
+  grid-column: 1;
+  margin: 7px;
+  cursor: pointer;
 }

@@ -194,9 +194,11 @@ window.showTags = function () {
     newTagBut.addEventListener("click", () => {
       if(newTagBut.classList.contains("filter-off")) {
         newTagBut.classList.replace("filter-off", "filter-on");
+        newTagBut.style.backgroundColor = "pink";
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
+        newTagBut.style.backgroundColor = "gainsboro";
         filterTags(element);
       }
     });

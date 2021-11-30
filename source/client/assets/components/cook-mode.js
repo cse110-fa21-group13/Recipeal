@@ -126,8 +126,7 @@ class CookMode extends HTMLElement {
 
         button.btn-light:not(.back-btn) {
             background-color: white;
-            border: 1px solid #000;
-            
+            border: 1px solid #000;    
         }
         `;
         article.innerHTML = `
