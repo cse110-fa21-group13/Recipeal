@@ -56,7 +56,7 @@
       <section class="recipe-cards--wrapper shown">
         <script>
           window.onload = function () {
-            if(window.localStorage.length == 0) {
+            if (window.localStorage.length == 0) {
               alert("It looks like you don't have any recipes saved. Create a new recipe by clicking the plus button!");
             }
           };
@@ -64,17 +64,25 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id = "search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..." style="height: 45px;" />
+          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..."
+            style="height: 45px;" />
           <div class="accordion-item ml-3">
-            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">
+            <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
+              type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+              aria-controls="collapseThree" onclick="showTags()">
               <i class="bi bi-funnel-fill"></i>
             </button>
+            <!--
             <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
               <div id="existingTags" class="accordion-body"></div>
-            </div>
+            -->
+
           </div>
         </div>
+        </div>
+
+        <!-- DISPLAY TAGS -->
+        <div id="tag-wrapper"></div>
 
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
@@ -199,7 +207,8 @@
             </div>
 
             <!-- Save Button -->
-            <button class="save-btn btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+            <button class="save-btn btn btn-light"
+              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -207,17 +216,20 @@
         </div>
       </section>
 
-      <button id="create-recipe-btn" class="btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+      <button id="create-recipe-btn" class="btn btn-light"
+        style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
         <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
       </button>
       <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute; border-radius: 20px;"
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-      <button id="delete-btn" class="btn btn-light" style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
+      <button id="delete-btn" class="btn btn-light"
+        style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
         <i id="delbut-icon" class="bi bi-trash"></i>
       </button>
-      <button id="cook-mode-btn" class="hidden" style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
+      <button id="cook-mode-btn" class="hidden"
+        style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
         <i id="cook-mode-icon" class="bi bi-play"></i>
       </button>
 
@@ -233,19 +245,19 @@
 
       <button id="edit-btn" class="btn btn-light"
         style="bottom: 10px; right: 10px; position: fixed; display: none; border-radius: 20px;">
-            <i class="bi bi-pencil-square"></i>
+        <i class="bi bi-pencil-square"></i>
       </button>
-    
+
       <script type="module">
         import { navEdit } from "../client/assets/scripts/create-recipe.js";
 
-        document.getElementById('edit-btn').onclick = function(){
+        document.getElementById('edit-btn').onclick = function () {
           navEdit('Edit Recipe');
         }
 
       </script>
 
-      
+
     </section>
   </main>
 

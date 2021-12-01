@@ -142,7 +142,7 @@ input[type="number"]:focus {
 /* Button */
 button.btn-light {
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 button.add-btn {
@@ -174,7 +174,7 @@ button.save-btn {
   height: 50px;
   cursor: pointer;
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -214,25 +214,39 @@ button.save-btn:hover {
   position: relative;
 }
 
+#tag-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/*
 #collapseThree {
-  box-shadow: 0 3px 7px rgba(0,0,0,0.4);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
   border-radius: 16px;
   position: absolute;
-  left: 10%;
-  right: 10%;
+  left: 40%;
+  right: 40%;
   margin-left: auto;
   margin-right: auto;
 }
 
+
 #existingTags {
-  display: grid;
+  display: flex;
+  justify-content: center;
 }
+*/
+
 
 .but-secondary {
-  background-color: gainsboro;
-  border-radius: 16px;
-  border: 1px solid #000; 
-  grid-row: 1;
-  margin: 7px;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+  width: 80px;
+  height: 30px;
+  margin: 7px;
 }

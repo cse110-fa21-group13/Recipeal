@@ -171,8 +171,6 @@ window.returnToHomePage = function () {
 
 // Show tags when pressing filter button
 window.showTags = function () {
-  const divTag = document.getElementById("existingTags");
-  divTag.innerHTML = "";
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
@@ -185,7 +183,12 @@ window.showTags = function () {
       }
     })
   }
-
+  let divTag = document.getElementById("tag-wrapper");
+  // If it's not empty, make it empty
+  if (!(divTag.innerHTML == "")) {
+    divTag.innerHTML = ""; 
+  }
+  else {
   tags.forEach((element, i) => {
     const newTagBut = document.createElement("button");
     newTagBut.className = "but but-secondary filter-off";
@@ -204,6 +207,7 @@ window.showTags = function () {
     });
     divTag.appendChild(newTagBut);
   });
+  }  
 };
 
 // Show delete buttons for each card when click delete on home page
