@@ -246,7 +246,6 @@ button.save-btn:hover {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
   outline: none;
-  width: 80px;
-  height: 30px;
+  padding: 10px 20px 10px 20px;
   margin: 7px;
 }
