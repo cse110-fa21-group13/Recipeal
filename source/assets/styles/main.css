@@ -324,6 +324,7 @@ button.save-to-rec-btn:hover {
 #tag-wrapper-filter {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /*
