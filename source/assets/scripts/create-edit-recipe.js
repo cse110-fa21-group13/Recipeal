@@ -742,6 +742,9 @@ function saveDataCreate() {
         }
       }
       else {
+        // Change description to include full instead of trim
+        recipeData.description = summary;
+        
         // Put the object into storage
         localStorage.setItem(
         recipeData.name.toLowerCase(),
