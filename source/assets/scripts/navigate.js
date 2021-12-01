@@ -229,7 +229,7 @@ window.returnToHomePage = function () {
   console.log(returnBut.classList);
   if(returnBut.classList.contains("explore")){
     changeView("Explore");
-    returnBut.classList.remove('explore');
+    returnBut.classList.remove("explore");
   }
   else{
     location.reload();
