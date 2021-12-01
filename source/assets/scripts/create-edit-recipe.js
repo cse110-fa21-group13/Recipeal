@@ -283,6 +283,7 @@ function saveBase() {
     directions: [],
     thumbnail: "",
     favorites: 0,
+    saveFrom: "Create",
   };
 
   // Get name and store it in the object
@@ -543,7 +544,7 @@ function saveDataCreate() {
     let time;
 
     // Hours time
-    let timeHour;
+    let timeHour = "";
 
     // Tags
     let tags = [];
@@ -576,13 +577,13 @@ function saveDataCreate() {
     if (time > 60) {
       timeHour = Math.floor(time / 60)
       time -= timeHour * 60;
+      if(time === 0) {
+        time = "";
+      }
     }
     else if (time == 60) {
       timeHour = 1;
-      time = 0;
-    }
-    else {
-      timeHour = 0;
+      time = "";
     }
 
     // Push tags to array
@@ -624,6 +625,7 @@ function saveDataCreate() {
       directions: steps,
       thumbnail: data.recipes[i].image,
       favorites: 0,
+      saveFrom: 'Explore',
     };
 
 
@@ -632,8 +634,16 @@ function saveDataCreate() {
     recipeCard.data = recipeData;
 
     recipeCard.addEventListener("click", (e) => {
+      recipeData.description = summary;
       document.querySelector("recipe-expand").data = recipeData;
       changeView("Recipe Expand");
+      const returnBut = document.getElementById("return-btn");
+      if(returnBut.classList.contains('explore')){
+          let editButton = document.getElementById("edit-btn");
+          let deleteButton = document.getElementById("delete-btn");
+          editButton.style.display = "none";
+          deleteButton.className = "hidden";
+      }
     });
 
     saveBtn = document.createElement("button")

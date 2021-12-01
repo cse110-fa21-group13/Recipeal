@@ -76,11 +76,14 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     expandRecipe.classList.remove("shown");
     explore.classList.add("shown");
-    returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
+    editButton.style.display = "none";
+    if(!returnButton.classList.contains("explore")) {
+      refresh();
+    }
+    returnButton.className = "hidden";
     cookModeBut.className = "hidden";
-    refresh();
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
@@ -91,7 +94,9 @@ export function changeView(e) {
     expandRecipe.classList.add("shown");
     navBar.className = "navbar navbar-light bg-dark";
     //switchButtonView(returnButton);
-    returnButton.className = "btn btn-light";
+    returnButton.classList.add("btn");
+    returnButton.classList.add("btn-light");
+    returnButton.classList.remove("hidden");
     deleteButton.className = "btn btn-light";
     cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
@@ -220,8 +225,15 @@ function refresh() {
 
 // Function for return to home page
 window.returnToHomePage = function () {
-  location.reload();
-  //changeView("My Recipes");
+  const returnBut = document.getElementById("return-btn");
+  console.log(returnBut.classList);
+  if(returnBut.classList.contains("explore")){
+    changeView("Explore");
+    returnBut.classList.remove("explore");
+  }
+  else{
+    location.reload();
+  }
 };
 
 // Show tags when pressing filter button
