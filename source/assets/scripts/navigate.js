@@ -68,11 +68,13 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     expandRecipe.classList.remove("shown");
     explore.classList.add("shown");
-    returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     editButton.style.display = "none";
-    refresh();
+    if(!returnButton.classList.contains("explore")) {
+      refresh();
+    }
+    returnButton.className = "hidden";
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
