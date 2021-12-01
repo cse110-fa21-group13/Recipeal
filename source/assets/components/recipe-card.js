@@ -191,12 +191,11 @@ class RecipeCard extends HTMLElement {
       favoriteImage.addEventListener("mouseleave", () =>{
         favoriteImage.classList.replace("mouse-on", "mouse-off");
       })
-      love = false;
+      love = storage.favorites;
     }
     
     function changeHeart(){
       if(!love){
-        console.log('testing');
         favoriteImage.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
         love = true;
