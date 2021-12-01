@@ -168,7 +168,7 @@ class RecipeCard extends HTMLElement {
     const image = document.createElement("img");
     image.setAttribute("src", data.thumbnail);
     
-    //favorite
+    // Favorite
 
     let storage = JSON.parse(localStorage.getItem(data.name));
     let favoriteImage;
@@ -207,6 +207,8 @@ class RecipeCard extends HTMLElement {
       }
       localStorage.setItem(data.name, JSON.stringify(storage));
     }
+
+    // Title
   
     const cardTitle = document.createElement("div");
     cardTitle.setAttribute("class", "card-title");

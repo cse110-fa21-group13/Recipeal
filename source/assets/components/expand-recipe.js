@@ -256,29 +256,36 @@ class ExpandRecipe extends HTMLElement {
 
     // Set Favorite
     const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
-    let favOnExpand = document.createElement('input');
-    favOnExpand.type = "image";
-    favOnExpand.classList.add("favorite");
+    let storage = JSON.parse(localStorage.getItem(data.name))
+    let love;
+    let favoriteIcon;
+    let favOnExpand;
 
-    let love = JSON.parse(localStorage.getItem(data.name)).favorites;
-    let favoriteIcon = love == 1 ? "assets/images/heart.png" : "assets/images/empty_heart.png";
-    favOnExpand.setAttribute("src", favoriteIcon);
-    expandView.appendChild(favOnExpand);
+    if(storage != null){
+    //this should never be created if there is no favorite to add
+        favOnExpand = document.createElement('input');
+        favOnExpand.type = "image";
+        favOnExpand.classList.add("favorite");
 
-
-    favOnExpand.addEventListener("click", changeHeart);    
+        love = storage.favorites;
+    
+        //again this should never be set if we don't know if it actually exists.
+        favoriteIcon = love == 1 ? "assets/images/heart.png" : "assets/images/empty_heart.png";
+        favOnExpand.setAttribute("src", favoriteIcon);
+        expandView.appendChild(favOnExpand);
+        favOnExpand.addEventListener("click", changeHeart);
+    }    
+    
     function changeHeart(){
       let storage = JSON.parse(localStorage.getItem(data.name));
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
-        console.log(JSON.parse(localStorage.getItem(data.name)).favorites);
         love = true;
       }
       else{
         favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
         storage.favorites = 0;
-        console.log(JSON.parse(localStorage.getItem(data.name)).favorites);
         love = false;
       }
       localStorage.setItem(data.name, JSON.stringify(storage));
