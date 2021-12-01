@@ -183,7 +183,7 @@ window.showTags = function () {
       }
     })
   }
-  let divTag = document.getElementById("tag-wrapper");
+  let divTag = document.getElementById("tag-wrapper-filter");
   // If it's not empty, make it empty
   if (!(divTag.innerHTML == "")) {
     divTag.innerHTML = ""; 

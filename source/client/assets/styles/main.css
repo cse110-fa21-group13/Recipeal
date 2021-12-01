@@ -214,7 +214,7 @@ button.save-btn:hover {
   position: relative;
 }
 
-#tag-wrapper {
+#tag-wrapper-filter {
   display: flex;
   justify-content: center;
 }
