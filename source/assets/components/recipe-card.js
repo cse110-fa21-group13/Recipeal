@@ -169,13 +169,13 @@ class RecipeCard extends HTMLElement {
     image.setAttribute("src", data.thumbnail);
     
     // Favorite
-
-    let storage = JSON.parse(localStorage.getItem(data.name));
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
     let favoriteImage;
     let love;
     if(storage != null){
+      console.log("This recipe is not in storage");
       favoriteImage = document.createElement("input");
-      favoriteImage.type = 'image';
+      favoriteImage.type = "image";
       favoriteImage.classList.add("favoriteOnCard");
       favoriteImage.classList.add("mouse-off");
       favoriteImage.id = "favoriteOnCard";

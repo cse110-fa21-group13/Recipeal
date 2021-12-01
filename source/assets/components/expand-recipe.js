@@ -256,7 +256,7 @@ class ExpandRecipe extends HTMLElement {
 
     // Set Favorite
     const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
-    let storage = JSON.parse(localStorage.getItem(data.name))
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()))
     let love;
     let favoriteIcon;
     let favOnExpand;

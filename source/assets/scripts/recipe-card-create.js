@@ -54,4 +54,6 @@ function bindRecipeCard(recipeCard, recipeData) {
       changeView("Recipe Expand");
     }
   });
+
+ 
 }
