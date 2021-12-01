@@ -172,6 +172,7 @@ class RecipeCard extends HTMLElement {
 
     let storage = JSON.parse(localStorage.getItem(data.name));
     let favoriteImage;
+    let love;
     if(storage != null){
       favoriteImage = document.createElement("input");
       favoriteImage.type = 'image';
@@ -190,11 +191,12 @@ class RecipeCard extends HTMLElement {
       favoriteImage.addEventListener("mouseleave", () =>{
         favoriteImage.classList.replace("mouse-on", "mouse-off");
       })
-      let love = false;
+      love = false;
     }
     
     function changeHeart(){
       if(!love){
+        console.log('testing');
         favoriteImage.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
         love = true;
