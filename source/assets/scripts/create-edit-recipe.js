@@ -542,7 +542,7 @@ function saveDataCreate() {
     let time;
 
     // Hours time
-    let timeHour;
+    let timeHour = "";
 
     // Tags
     let tags = [];
@@ -575,13 +575,13 @@ function saveDataCreate() {
     if (time > 60) {
       timeHour = Math.floor(time / 60)
       time -= timeHour * 60;
+      if(time === 0) {
+        time = "";
+      }
     }
     else if (time == 60) {
       timeHour = 1;
-      time = 0;
-    }
-    else {
-      timeHour = 0;
+      time = "";
     }
 
     // Push tags to array

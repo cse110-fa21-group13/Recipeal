@@ -179,8 +179,8 @@ class RecipeCard extends HTMLElement {
     const time = document.createElement("time");
 
     // Hours
-    if (data.time.hours === "") {
-      time.textContent += `${data.time.hours}`;
+    if (data.time.hours === "" || data.time.hours === "0") {
+      time.textContent += "";
     } else if (data.time.hours === "1") {
       time.textContent += `${data.time.hours} hour `;
     } else {
@@ -188,8 +188,8 @@ class RecipeCard extends HTMLElement {
     }
 
     // Minutes
-    if (data.time.minutes === "") {
-      time.textContent += `${data.time.minutes}`;
+    if (data.time.minutes === "" || data.time.minutes === "0") {
+      time.textContent += "";
     } else if (data.time.minutes === "1") {
       time.textContent += `${data.time.minutes} minute`;
     } else {
