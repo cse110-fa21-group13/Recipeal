@@ -34,16 +34,40 @@ function searchSpoon() {
         }
     }
     else {
+        const API_KEY = "b24485ab3d4a47f696151e7134433592";
         for (let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i]; 
             currentRecipe.style.display = "none"; 
         }
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=titleMatch=${filter}`;
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
+                // alert(data.results.length);
                 for (let i = 0; i < data.results.length; i++) {
-                    
+                    let recipeID = data.results[i].id;
+                    const RECIPE_INFO = `https://api.spoonacular.com/recipes/${recipeID}/information&apiKey=${API_KEY}`;
+                    // alert(recipeID);
+                    fetch(RECIPE_INFO)
+                        .then(response1 => response1.json())
+                        .then(info => {
+                            let recipeImage = info.image;
+                            let recipeTitle = info.title;
+                            let recipeTime = info.readyInMinutes;
+                            let recipeSummary = info.summary;
+                            let recipeMin = recipeTime % 60;
+                            let recipeHour = recipeTime / 60;
+                            const recipeData = {
+                                thumbnail: recipeImage,
+                                name: recipeTitle,
+                                description: recipeSummary,
+                                time: { hours: recipeHour.toString(), minutes: recipeMin.toString() },
+                            };
+                            const recipeCard = document.createElement("recipe-card");
+                            recipeCard.data = recipeData;
+
+                            document.querySelector("#explore-wrapper").appendChild(recipeCard);
+                        });
                 }
             });
 
