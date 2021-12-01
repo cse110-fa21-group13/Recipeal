@@ -172,6 +172,10 @@ class ExpandRecipe extends HTMLElement {
    */
   set data (data) {
     this.json = data;
+    const returnBut = document.getElementById("return-btn");
+    if(data.saveFrom==='Explore'){
+        returnBut.classList.add('explore');
+    }
 
     this.shadowRoot.querySelector('article').innerHTML = `
     <div id="create-recipe--input-wrapper">

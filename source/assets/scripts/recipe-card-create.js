@@ -12,7 +12,11 @@ export function newCard(name) {
     let recipe = JSON.parse(localStorage.getItem(name));
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
+    let summary = recipe.description;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    recipe.description = summaryTrim;
     newCard.data = recipe;
+    recipe.description = summary;
     bindRecipeCard(newCard, recipe);
     mainSec.appendChild(newCard);
   }
@@ -32,7 +36,12 @@ export function initCards() {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
+    let summary = storedRecipe.description;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    storedRecipe.description = summaryTrim;
+    storedRecipe.saveFrom = "Create";
     newCard.data = storedRecipe;
+    storedRecipe.description = summary;
     bindRecipeCard(newCard, storedRecipe);
     mainSec.appendChild(newCard);
   }
