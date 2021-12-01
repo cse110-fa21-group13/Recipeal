@@ -609,6 +609,23 @@ function saveDataCreate() {
       tags.push("vegetarian")
     }
     if (data.recipes[i].dishTypes) {
+      for(let j = 0; j < data.recipes[i].dishTypes.length; j++) {
+        if(data.recipes[i].dishTypes[j] === "main course") {
+          data.recipes[i].dishTypes.splice(j, 1);
+        }
+        else if(data.recipes[i].dishTypes[j] === "antipasti") {
+          data.recipes[i].dishTypes.splice(j, 1);
+        }
+        else if(data.recipes[i].dishTypes[j] === "appetizer" || data.recipes[i].dishTypes[j] === "hor d'oeuvre") {
+          data.recipes[i].dishTypes.splice(j, 1);
+        }
+        else if(data.recipes[i].dishTypes[j] === "drink") {
+          data.recipes[i].dishTypes.splice(j, 1);
+        }
+        else if(data.recipes[i].dishTypes[j] === "morning meal") {
+          data.recipes[i].dishTypes.splice(j, 1);
+        }
+      }
       tags = tags.concat(data.recipes[i].dishTypes)
     }
 

@@ -244,8 +244,8 @@ window.showTags = function () {
       localStorage.getItem(localStorage.key(i))
     ).tags;
     currentTags.forEach(singleTag => {
-      if(!tags.includes(singleTag))
-      {
+      singleTag = singleTag.toLowerCase(); 
+      if(!tags.includes(singleTag)) {
         tags.push(singleTag);
       }
     })
