@@ -637,8 +637,9 @@ function saveDataCreate() {
       recipeData.description = summary;
       document.querySelector("recipe-expand").data = recipeData;
       changeView("Recipe Expand");
+      document.getElementById("cook-mode-btn").className = "hidden";
       const returnBut = document.getElementById("return-btn");
-      if(returnBut.classList.contains('explore')){
+      if(returnBut.classList.contains("explore")){
           let editButton = document.getElementById("edit-btn");
           let deleteButton = document.getElementById("delete-btn");
           editButton.style.display = "none";

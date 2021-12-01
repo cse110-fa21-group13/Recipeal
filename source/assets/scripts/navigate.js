@@ -79,11 +79,11 @@ export function changeView(e) {
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     editButton.style.display = "none";
+    cookModeBut.className = "hidden";
     if(!returnButton.classList.contains("explore")) {
       refresh();
     }
     returnButton.className = "hidden";
-    cookModeBut.className = "hidden";
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
