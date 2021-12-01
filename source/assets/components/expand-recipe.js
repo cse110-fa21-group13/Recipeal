@@ -37,6 +37,15 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
         
+        /* Favorites icon */
+        #create-recipe--input-wrapper > .favorite{
+            position: absolute;
+            top: 100;
+            right: 10px;
+            height: 25px;
+            width: 43.75px;
+        }
+
         /* Card for display image */
         
         #img-card {
@@ -244,6 +253,36 @@ class ExpandRecipe extends HTMLElement {
     // Set image
     const image = this.shadowRoot.getElementById('display-image');
     image.setAttribute('src', data.thumbnail);
+
+    // Set Favorite
+    const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
+    let favOnExpand = document.createElement('input');
+    favOnExpand.type = "image";
+    favOnExpand.classList.add("favorite");
+
+    let love = JSON.parse(localStorage.getItem(data.name)).favorites;
+    let favoriteIcon = love == 1 ? "assets/images/heart.png" : "assets/images/empty_heart.png";
+    favOnExpand.setAttribute("src", favoriteIcon);
+    expandView.appendChild(favOnExpand);
+
+
+    favOnExpand.addEventListener("click", changeHeart);    
+    function changeHeart(){
+      let storage = JSON.parse(localStorage.getItem(data.name));
+      if(!love){
+        favOnExpand.setAttribute("src", "assets/images/heart.png");
+        storage.favorites = 1;
+        console.log(JSON.parse(localStorage.getItem(data.name)).favorites);
+        love = true;
+      }
+      else{
+        favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
+        storage.favorites = 0;
+        console.log(JSON.parse(localStorage.getItem(data.name)).favorites);
+        love = false;
+      }
+      localStorage.setItem(data.name, JSON.stringify(storage));
+    }
 
     // Set description
     if (!data.description) {
