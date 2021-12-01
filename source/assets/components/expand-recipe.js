@@ -40,10 +40,10 @@ class ExpandRecipe extends HTMLElement {
         /* Favorites icon */
         #create-recipe--input-wrapper > .favorite{
             position: absolute;
-            top: 100;
+            top: 10%;
             right: 10px;
-            height: 25px;
-            width: 43.75px;
+            height: 3%;
+            width: 5vh;
         }
 
         /* Card for display image */
