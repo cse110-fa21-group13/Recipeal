@@ -43,14 +43,14 @@ function searchSpoon() {
         fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
-                // alert(data.results.length);
+                // alert(data.results.length); 
                 for (let i = 0; i < data.results.length; i++) {
                     let recipeID = data.results[i].id;
-                    const RECIPE_INFO = `https://api.spoonacular.com/recipes/${recipeID}/information&apiKey=${API_KEY}`;
-                    // alert(recipeID);
+                    const RECIPE_INFO = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}`;
                     fetch(RECIPE_INFO)
                         .then(response1 => response1.json())
                         .then(info => {
+                            console.log(info);
                             let recipeImage = info.image;
                             let recipeTitle = info.title;
                             let recipeTime = info.readyInMinutes;
@@ -65,7 +65,6 @@ function searchSpoon() {
                             };
                             const recipeCard = document.createElement("recipe-card");
                             recipeCard.data = recipeData;
-
                             document.querySelector("#explore-wrapper").appendChild(recipeCard);
                         });
                 }
