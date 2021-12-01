@@ -201,7 +201,7 @@ window.showTags = function () {
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
-        newTagBut.style.backgroundColor = "gainsboro";
+        newTagBut.style.backgroundColor = "transparent";
         filterTags(element);
       }
     });
