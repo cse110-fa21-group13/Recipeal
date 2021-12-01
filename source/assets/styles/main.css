@@ -50,7 +50,7 @@ section:not(section.shown) {
   margin-top: 50px;
   gap: 50px;
   height: auto;
-  max-width: 60%;
+  max-width: 80%;
 }
 
 /** CREATE RECIPE SECTION **/
@@ -229,7 +229,7 @@ button.save-btn {
   height: 50px;
   cursor: pointer;
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -315,4 +315,44 @@ button.save-to-rec-btn:hover {
 .delete-modal-expand-content {
   margin: 15% auto;
   padding: 20px;
+}
+
+#search-bar {
+  position: relative;
+}
+
+#tag-wrapper-filter {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+#collapseThree {
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  position: absolute;
+  left: 40%;
+  right: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#existingTags {
+  display: flex;
+  justify-content: center;
+}
+*/
+
+
+.but-secondary {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+  padding: 10px 20px 10px 20px;
+  margin: 7px;
 }
