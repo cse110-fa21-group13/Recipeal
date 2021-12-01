@@ -12,6 +12,7 @@ export function newCard(name) {
     let recipe = JSON.parse(localStorage.getItem(name));
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
+    document.querySelector("cook-mode").data = recipe;
     newCard.data = recipe;
     bindRecipeCard(newCard, recipe);
     mainSec.appendChild(newCard);
