@@ -47,8 +47,10 @@ class RecipeCard extends HTMLElement {
       }
 
       .image-box h1 {
-          width: auto;
-          padding: 0px 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 7px;
       }
 
       .image-box .card-title {
@@ -159,8 +161,10 @@ class RecipeCard extends HTMLElement {
     const cardTitle = document.createElement("div");
     cardTitle.setAttribute("class", "card-title");
     const title = document.createElement("h1");
+
     title.textContent =
       data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
+    
     title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);

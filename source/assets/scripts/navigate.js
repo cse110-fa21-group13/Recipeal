@@ -1,5 +1,7 @@
 // Contains functions for navigating between pages
 
+import { saveToMyRecipes } from "./create-edit-recipe.js";
+
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -19,6 +21,17 @@ cookModeBtn.addEventListener("click", (e) => {
   changeView(e);
 });
 
+let refreshButton = document.getElementById("refresh-btn");
+refreshButton.addEventListener("click", (e) => {
+  refresh();
+});
+
+let showMoreButton = document.getElementById("show-more-btn");
+showMoreButton.addEventListener("click", (e) => {
+  fetchApiRecipes();
+});
+
+
 /*
  * Function to switch pages
  */
@@ -32,6 +45,7 @@ export function changeView(e) {
   var editButton = document.getElementById("edit-btn");
   var deleteButton = document.getElementById("delete-btn");
   var expandRecipe = document.querySelector(".section--recipe-expand");
+  var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
   const cookModeBut = document.getElementById("cook-mode-btn");
@@ -42,6 +56,7 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
+    location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -65,7 +80,7 @@ export function changeView(e) {
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     cookModeBut.className = "hidden";
-    fetchApiRecipes();
+    refresh();
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
@@ -107,7 +122,7 @@ export function changeView(e) {
     switchButtonView(createButton);
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
-    cookModeBut.className = "hidden";
+    saveButtonCreate.style.display="block";
   }
   switchHighlight(innerText);
 }
@@ -137,30 +152,70 @@ function switchHighlight(innerText) {
 }
 
 /*
- * Function to fecth recipes from spoonacular and populate explore page
+ * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b24485ab3d4a47f696151e7134433592";
+  const API_KEY = "75d567c9173d40f69fad55f6870057fe";
   const response = await fetch(
-    `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+    `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
 
   // Storing data in form of JSON
   let data = await response.json();
-  data.recipes.forEach((element, i) => {
+
+  saveToMyRecipes(data);
+
+  /*
+  for (let i=0; i<3; i++) {
+    const curRecipe = data.recipes[i];
+    let summary = curRecipe.summary
+    summary = summary.replaceAll('<b>', '')
+    summary = summary.replaceAll('</b>', '')
+
+    // Trim to fit recipe card size
+    summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    
+    let tags = curRecipe.cuisines.concat(curRecipe.diets).concat(curRecipe.dishTypes);
+
+    let ingredients = curRecipe.extendedIngredients.map((v)=>{
+        return v.name;
+      });
+
+    let directions;
+    if(curRecipe.analyzedInstructions){
+      directions = curRecipe.analyzedInstructions[0].steps.map((v)=>{
+        return v.step;
+      });
+    }
+
     const recipeData = {
-      thumbnail: element.image,
-      name: element.title,
-      description: element.summary,
-      time: { hours: "1", minutes: "1" },
+      thumbnail: data.recipes[i].image,
+      name: data.recipes[i].title,
+      description: summary,
+      time: { hours: "", minutes: "" },
+      tags,
+      ingredients,
+      directions,
     };
+    
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
+    recipeCard.addEventListener("click", (e) => {
+        document.querySelector("recipe-expand").data = recipeData;
+        changeView("Recipe Expand");
+    });
+    
+    //document.querySelector("#explore-wrapper").appendChild(recipeCard);
+    */
+  }
 
-    document.querySelector(`.xs${i % 2}`).appendChild(recipeCard);
-    document.querySelector(`.sm${i % 3}`).appendChild(recipeCard);
-    document.querySelector(`.lg${i % 4}`).appendChild(recipeCard);
-  });
+/**
+ * @method refresh
+ *  Removes recipes and shows 15 other random recipes
+ */
+function refresh() {
+  document.querySelector("#explore-wrapper").innerHTML = ""
+  fetchApiRecipes()
 }
 
 // Function for return to home page

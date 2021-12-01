@@ -20,10 +20,10 @@
 
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/main.css" />
-  <script type="module" src="../client/assets/scripts/recipe-card-create.js"></script>
+  <script type="module" src="assets/scripts/recipe-card-create.js"></script>
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
-  <script src="assets/scripts/create-recipe.js" type="module"></script>
+  <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
   <script src="assets/scripts/searchbar.js"></script>
 
   <!-- Bootstrap -->
@@ -101,20 +101,13 @@
 
       <!-- EXPLORE RECIPES PAGE -->
       <section class="explore container-fluid">
-        <div class="row visible-xs-*">
-          <div class="col xs0"></div>
-          <div class="col xs1"></div>
+        <div id="explore-wrapper">
+          <div id="card-wrapper">
+          </div>
         </div>
-        <div class="row visible-sm-*">
-          <div class="col sm0"></div>
-          <div class="col sm1"></div>
-          <div class="col sm2"></div>
-        </div>
-        <div class="row hidden-xs hidden-sm" style="height: 300px">
-          <div class="col lg0"></div>
-          <div class="col lg1"></div>
-          <div class="col lg2"></div>
-          <div class="col lg3"></div>
+        <div id="explore-buttons">
+          <button id="show-more-btn">Show More</button>
+          <button id="refresh-btn">Refresh</button>
         </div>
       </section>
 
@@ -142,7 +135,7 @@
             <!-- Description -->
             <div class="input-card">
               <label for="input-desc">Description</label><br>
-              <input type="text" id="input-desc" name="input-desc">
+              <textarea id="input-desc" name="input-desc" rows="5" cols="33"></textarea>
             </div>
 
             <!-- Time -->
@@ -177,7 +170,7 @@
             <div class="input-card" id="ing-card">
               <div id="ing-wrapper">
                 <label>Ingredients</label><br><br>
-                <label for="input-ings1">1.</label>
+                <label for="input-ings1" id="label-ings1">1.</label>
                 <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
 
@@ -194,8 +187,8 @@
 
               <div id="step-wrapper">
                 <label>Steps</label><br>
-                <div class="input-card-steps">
-                  <label for="input-steps1">1.</label>
+                <div class="input-card-steps" id="card-step-1">
+                  <label for="input-steps1" id="label-steps1">1.</label>
                   <input type="text" id="input-steps1" class="steps" name="input-steps1">
                 </div>
               </div>
@@ -206,9 +199,15 @@
               <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
             </div>
 
-            <!-- Save Button -->
-            <button class="save-btn btn btn-light"
-              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+            <!-- Save Button for Create Recipe -->
+            <button class="save-btn-create btn btn-light"
+              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
+              <i class="bi bi-check-lg"></i>
+            </button>
+
+            <!-- Save Button for Edit Recipe -->
+            <button class="save-btn-edit btn btn-light"
+              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -249,15 +248,12 @@
       </button>
 
       <script type="module">
-        import { navEdit } from "../client/assets/scripts/create-recipe.js";
+        import { navEdit } from "./assets/scripts/create-edit-recipe.js";
 
         document.getElementById('edit-btn').onclick = function () {
           navEdit('Edit Recipe');
         }
-
       </script>
-
-
     </section>
   </main>
 
