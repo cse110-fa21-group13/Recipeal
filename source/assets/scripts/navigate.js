@@ -16,6 +16,10 @@ let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
   changeView(e);
 });
+let cookModeBtn = document.getElementById("cook-mode-btn");
+cookModeBtn.addEventListener("click", (e) => {
+  changeView(e);
+});
 
 let refreshButton = document.getElementById("refresh-btn");
 refreshButton.addEventListener("click", (e) => {
@@ -44,6 +48,9 @@ export function changeView(e) {
   var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
+  const cookModeBut = document.getElementById("cook-mode-btn");
+  const cookMode = document.querySelector(".section--cook-mode");
+  const navBar = document.querySelector("nav");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -56,6 +63,7 @@ export function changeView(e) {
     createButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
     returnButton.className = "hidden";
+    cookModeBut.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
@@ -71,6 +79,7 @@ export function changeView(e) {
     returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
     refresh();
   }
   // navigating to recipe expand page
@@ -78,14 +87,27 @@ export function changeView(e) {
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
+    cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
+    navBar.className = "navbar navbar-light bg-dark";
     //switchButtonView(returnButton);
     returnButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
+    cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
+  }
+  // navigating to cook mode page
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
+    cookMode.classList.add("shown");
+    expandRecipe.classList.remove("shown");
+    navBar.className = "hidden";
+    returnButton.className = "hidden";
+    deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
   }
   // navigating to create recipe page
   else if (
@@ -204,22 +226,43 @@ window.returnToHomePage = function () {
 
 // Show tags when pressing filter button
 window.showTags = function () {
-  const divTag = document.getElementById("existingTags");
-  divTag.innerHTML = "";
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
       localStorage.getItem(localStorage.key(i))
     ).tags;
-    tags = tags.concat(currentTags);
+    currentTags.forEach(singleTag => {
+      if(!tags.includes(singleTag))
+      {
+        tags.push(singleTag);
+      }
+    })
   }
-
+  let divTag = document.getElementById("tag-wrapper-filter");
+  // If it's not empty, make it empty
+  if (!(divTag.innerHTML == "")) {
+    divTag.innerHTML = ""; 
+  }
+  else {
   tags.forEach((element, i) => {
     const newTagBut = document.createElement("button");
-    newTagBut.className = `but but-secondary tag-${i}`;
+    newTagBut.className = "but but-secondary filter-off";
+    newTagBut.id = `${element}`;
     newTagBut.textContent = element;
+    newTagBut.addEventListener("click", () => {
+      if(newTagBut.classList.contains("filter-off")) {
+        newTagBut.classList.replace("filter-off", "filter-on");
+        newTagBut.style.backgroundColor = "pink";
+        filterTags(element);
+      } else {
+        newTagBut.classList.replace("filter-on", "filter-off");
+        newTagBut.style.backgroundColor = "transparent";
+        filterTags(element);
+      }
+    });
     divTag.appendChild(newTagBut);
   });
+  }  
 };
 
 // Show delete buttons for each card when click delete on home page

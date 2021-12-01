@@ -8,6 +8,7 @@
   <title>Recipe App</title>
 
   <!-- Web Components -->
+  <script src="assets/components/cook-mode.js" type="module"></script>
   <script src="assets/components/recipe-card.js" type="module"></script>
   <script src="assets/components/expand-recipe.js" type="module"></script>
 
@@ -66,21 +67,31 @@
           <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..."
             style="height: 45px;" />
           <div class="accordion-item ml-3">
-            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button"
-              data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+            <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
+              type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
               aria-controls="collapseThree" onclick="showTags()">
               <i class="bi bi-funnel-fill"></i>
             </button>
+            <!--
             <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
-              <div id="existingTags" class="accordion-body">
-              </div>
-            </div>
+              <div id="existingTags" class="accordion-body"></div>
+            -->
+
           </div>
         </div>
+        </div>
+
+        <!-- DISPLAY TAGS -->
+        <div id="tag-wrapper-filter"></div>
 
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
         </div>
+      </section>
+
+      <!-- COOK MODE PAGE -->
+      <section class="section--cook-mode">
+        <cook-mode></cook-mode>
       </section>
 
       <!-- EXPAND RECIPES PAGE-->
@@ -215,6 +226,10 @@
       <button id="delete-btn" class="btn btn-light"
         style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
         <i id="delbut-icon" class="bi bi-trash"></i>
+      </button>
+      <button id="cook-mode-btn" class="hidden"
+        style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
+        <i id="cook-mode-icon" class="bi bi-play"></i>
       </button>
 
       <div class="delete-modal-expand hidden">
