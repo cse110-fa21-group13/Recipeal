@@ -1,20 +1,12 @@
-name: GitHub Actions Demo
-on:
-  push:
-  
-  pull_request:
-    branches: [ main ]
+name: cypress test
+on: [push]
 jobs:
- cypress-run:
-    runs-on: ubuntu-latest
-    steps: 
+  cypress-run:
+    runs-on: ubuntu-20.04
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install node
-        uses: actions/setup-node@v2
-        with:
-            node:version: '14'
-      - name: Install dependencies
-        run: npm install       
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2

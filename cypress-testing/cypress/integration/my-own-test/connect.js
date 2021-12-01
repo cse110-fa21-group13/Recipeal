@@ -23,6 +23,7 @@ describe('example to-do app', () => {
       })
     })
 
+    /*
     it('"search after single copy', ()=>{
       cy.get('button#create-recipe-btn').click();
       cy.get('input#input-name').type('myfood');
@@ -33,5 +34,5 @@ describe('example to-do app', () => {
       cy.get('input#input-ings1').type('1st ings');
       cy.get('input#input-steps1').type('1st steps');
       cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
-    })
+    })*/
 })
