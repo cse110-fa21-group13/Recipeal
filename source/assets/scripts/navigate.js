@@ -228,7 +228,7 @@ window.returnToHomePage = function () {
   const returnBut = document.getElementById("return-btn");
   console.log(returnBut.classList);
   if(returnBut.classList.contains("explore")){
-    changeView('Explore');
+    changeView("Explore");
     returnBut.classList.remove('explore');
   }
   else{
