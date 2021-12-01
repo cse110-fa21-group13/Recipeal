@@ -170,25 +170,28 @@ class RecipeCard extends HTMLElement {
     
     //favorite
 
-    const favoriteImage = document.createElement("input");
-    favoriteImage.type = 'image';
-    favoriteImage.classList.add("favoriteOnCard");
-    favoriteImage.classList.add("mouse-off");
-    favoriteImage.id = "favoriteOnCard";
-    
     let storage = JSON.parse(localStorage.getItem(data.name));
-    if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
-    else favoriteImage.setAttribute("src", "assets/images/heart.png");
-   
-    favoriteImage.addEventListener('click', changeHeart);
+    let favoriteImage;
+    if(storage != null){
+      favoriteImage = document.createElement("input");
+      favoriteImage.type = 'image';
+      favoriteImage.classList.add("favoriteOnCard");
+      favoriteImage.classList.add("mouse-off");
+      favoriteImage.id = "favoriteOnCard";
 
-    favoriteImage.addEventListener("mouseenter", () =>{
-      favoriteImage.classList.replace("mouse-off", "mouse-on");
-    })
-    favoriteImage.addEventListener("mouseleave", () =>{
-      favoriteImage.classList.replace("mouse-on", "mouse-off");
-    })
-    let love = false;
+      if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
+      else favoriteImage.setAttribute("src", "assets/images/heart.png");
+   
+      favoriteImage.addEventListener('click', changeHeart);
+
+      favoriteImage.addEventListener("mouseenter", () =>{
+        favoriteImage.classList.replace("mouse-off", "mouse-on");
+      })
+      favoriteImage.addEventListener("mouseleave", () =>{
+        favoriteImage.classList.replace("mouse-on", "mouse-off");
+      })
+      let love = false;
+    }
     
     function changeHeart(){
       if(!love){
@@ -214,7 +217,7 @@ class RecipeCard extends HTMLElement {
     title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
-    imageBox.appendChild(favoriteImage);
+    if(storage != null) imageBox.appendChild(favoriteImage);
     imageBox.appendChild(cardTitle);
 
     const desBox = document.createElement("div");
