@@ -174,7 +174,7 @@ class ExpandRecipe extends HTMLElement {
     this.json = data;
     const returnBut = document.getElementById("return-btn");
     if(data.saveFrom==='Explore'){
-        returnBut.classList.add('explore');
+        returnBut.classList.add("explore");
     }
 
     this.shadowRoot.querySelector('article').innerHTML = `
