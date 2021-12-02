@@ -14,19 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: install node v12
-        uses: actions/setup-node@v1
+      - name: JSDoc Action
+        uses: andstor/jsdoc-action@v1.2.0
         with:
-          node-version: 12
-
-      - name: Install npm
-        run: npm i
-
-      - name: Install JSDoc
-        run: npm install jsdoc
-
-      - name: Creating JSDocs
-        run: npm run doc
+          output_dir: ./docs
+          config_file: jsdoc.json
 
       - name: Deploying docs to Github Pages
         uses: peaceiris/actions-gh-pages@v3
