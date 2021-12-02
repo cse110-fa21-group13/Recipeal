@@ -38,6 +38,15 @@ class RecipeCard extends HTMLElement {
         height: 200px;
       }
 
+      .image-box > .favoriteOnCard{
+        position: relative;
+        width: 35px;
+        height: 20px;
+        left: 260px;
+        bottom: 185px;
+        z-index: 1;
+      }
+
       .image-box img, .image-box h1{
           margin: 0;
           width: 100%;
@@ -158,6 +167,49 @@ class RecipeCard extends HTMLElement {
     imageBox.setAttribute("class", "image-box");
     const image = document.createElement("img");
     image.setAttribute("src", data.thumbnail);
+    
+    // Favorite
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
+    let favoriteImage;
+    let love;
+    if(storage != null){
+      favoriteImage = document.createElement("input");
+      favoriteImage.type = "image";
+      favoriteImage.classList.add("favoriteOnCard");
+      favoriteImage.classList.add("mouse-off");
+      favoriteImage.id = "favoriteOnCard";
+      //favoriteImage.classList.add(data.name.toLowerCase());
+
+      if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
+      else favoriteImage.setAttribute("src", "assets/images/heart.png");
+   
+      favoriteImage.addEventListener('click', changeHeart);
+
+      favoriteImage.addEventListener("mouseenter", () =>{
+        favoriteImage.classList.replace("mouse-off", "mouse-on");
+      })
+      favoriteImage.addEventListener("mouseleave", () =>{
+        favoriteImage.classList.replace("mouse-on", "mouse-off");
+      })
+      love = storage.favorites;
+    }
+    
+    function changeHeart(){
+      if(!love){
+        favoriteImage.setAttribute("src", "assets/images/heart.png");
+        storage.favorites = 1;
+        love = true;
+      }
+      else{
+        favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
+        storage.favorites = 0;
+        love = false;
+      }
+      localStorage.setItem(data.name.toLowerCase(), JSON.stringify(storage));
+    }
+
+    // Title
+  
     const cardTitle = document.createElement("div");
     cardTitle.setAttribute("class", "card-title");
     const title = document.createElement("h1");
@@ -168,6 +220,7 @@ class RecipeCard extends HTMLElement {
     title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
+    if(storage != null) imageBox.appendChild(favoriteImage);
     imageBox.appendChild(cardTitle);
 
     const desBox = document.createElement("div");

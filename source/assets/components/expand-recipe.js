@@ -37,6 +37,15 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
         
+        /* Favorites icon */
+        #create-recipe--input-wrapper > .favorite{
+            position: absolute;
+            top: 10%;
+            right: 10px;
+            height: 3%;
+            width: 5vh;
+        }
+
         /* Card for display image */
         
         #img-card {
@@ -248,6 +257,47 @@ class ExpandRecipe extends HTMLElement {
     // Set image
     const image = this.shadowRoot.getElementById('display-image');
     image.setAttribute('src', data.thumbnail);
+
+    // Set Favorite
+    const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()))
+    let love;
+    let favoriteIcon;
+    let favOnExpand;
+
+    if(storage != null){
+    //this should never be created if there is no favorite to add
+        favOnExpand = document.createElement('input');
+        favOnExpand.type = "image";
+        favOnExpand.classList.add("favorite");
+
+        love = storage.favorites;
+    
+        //again this should never be set if we don't know if it actually exists.
+        favoriteIcon = love == 1 ? "assets/images/heart.png" : "assets/images/empty_heart.png";
+        favOnExpand.setAttribute("src", favoriteIcon);
+        expandView.appendChild(favOnExpand);
+        favOnExpand.addEventListener("click", changeHeart);
+    }    
+    
+    function changeHeart(){
+      let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
+      let imageOnCard = document.getElementById(data.name);
+
+      if(!love){
+        favOnExpand.setAttribute("src", "assets/images/heart.png");
+        imageOnCard.setAttribute("src", "assets/images/heart.png");
+        storage.favorites = 1;
+        love = true;
+      }
+      else{
+        favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
+        imageOnCard.setAttribute("src", "assets/images/empty_heart.png");
+        storage.favorites = 0;
+        love = false;
+      }
+      localStorage.setItem(data.name.toLowerCase(), JSON.stringify(storage));
+    }
 
     // Set description
     if (!data.description) {

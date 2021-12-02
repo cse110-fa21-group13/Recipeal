@@ -33,6 +33,7 @@ window.addEventListener("DOMContentLoaded", initCards);
  *  recipe page to it
  */
 export function initCards() {
+  console.log("initiated cards");
   for (let i = 0; i < localStorage.length; i++) {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
     let newCard = document.createElement("recipe-card");
@@ -59,10 +60,12 @@ export function initCards() {
  */
 function bindRecipeCard(recipeCard, recipeData) {
   recipeCard.addEventListener("click", (e) => {
-    if (document.getElementById("delbut-icon").className === "bi bi-trash") {
+    if (document.getElementById("delbut-icon").className === "bi bi-trash" && recipeCard.shadowRoot.getElementById("favoriteOnCard").classList.contains("mouse-off")) {
       document.querySelector("cook-mode").data = recipeData;
       document.querySelector("recipe-expand").data = recipeData;
       changeView("Recipe Expand");
     }
   });
+
+ 
 }
