@@ -17,7 +17,6 @@ jobs:
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source
           output_dir: ./out
 
       - name: Deploying docs to Github Pages
