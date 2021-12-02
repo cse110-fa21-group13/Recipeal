@@ -187,10 +187,10 @@ class RecipeCard extends HTMLElement {
 
       favoriteImage.addEventListener("mouseenter", () =>{
         favoriteImage.classList.replace("mouse-off", "mouse-on");
-      })
+      });
       favoriteImage.addEventListener("mouseleave", () =>{
         favoriteImage.classList.replace("mouse-on", "mouse-off");
-      })
+      });
       love = storage.favorites;
     }
     

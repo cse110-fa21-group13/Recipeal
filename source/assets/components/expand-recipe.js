@@ -260,7 +260,7 @@ class ExpandRecipe extends HTMLElement {
 
     // Set Favorite
     const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
-    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()))
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
     let love;
     let favoriteIcon;
     let favOnExpand;
@@ -353,7 +353,7 @@ class ExpandRecipe extends HTMLElement {
             const item = document.createElement('li');
             item.innerHTML = ingredient;
             this.shadowRoot.getElementById("ing-list").append(item);
-        })
+        });
     }
     
     // Set directions
@@ -365,7 +365,7 @@ class ExpandRecipe extends HTMLElement {
             const item = document.createElement('li');
             item.innerHTML = step;
             this.shadowRoot.getElementById("step-list").append(item);
-        })
+        });
     }
   }
 }

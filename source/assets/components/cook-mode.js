@@ -223,7 +223,7 @@ class CookMode extends HTMLElement {
                 const item = document.createElement('li');
                 item.innerHTML = ingredient;
                 this.shadowRoot.getElementById("ing-list").append(item);
-            })
+            });
         }
         
         // Set directions

@@ -13,7 +13,7 @@ export function newCard(name) {
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
     let summary = recipe.description;
-    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary;
     recipe.description = summaryTrim;
     newCard.data = recipe;
     recipe.description = summary;
@@ -39,7 +39,7 @@ export function initCards() {
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
     let summary = storedRecipe.description;
-    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary;
     storedRecipe.description = summaryTrim;
     storedRecipe.saveFrom = "Create";
     newCard.data = storedRecipe;

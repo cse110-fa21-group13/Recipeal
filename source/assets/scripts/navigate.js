@@ -89,7 +89,7 @@ export function changeView(e) {
     for (let i = 0; i < localStorage.length; i++) {
       let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
       if(storedRecipe.favorites == 0){
-        let unfavoriteRecipe = document.getElementById(storedRecipe.name)
+        let unfavoriteRecipe = document.getElementById(storedRecipe.name);
         unfavoriteRecipe.classList.add("hidden");
       }
     }
@@ -250,8 +250,8 @@ async function fetchApiRecipes() {
  *  Removes recipes and shows 15 other random recipes
  */
 function refresh() {
-  document.querySelector("#explore-wrapper").innerHTML = ""
-  fetchApiRecipes()
+  document.querySelector("#explore-wrapper").innerHTML = "";
+  fetchApiRecipes();
 }
 
 // Function for return to home page
@@ -279,7 +279,7 @@ window.showTags = function () {
       if(!tags.includes(singleTag)) {
         tags.push(singleTag);
       }
-    })
+    });
   }
   let divTag = document.getElementById("tag-wrapper-filter");
   // If it's not empty, make it empty
