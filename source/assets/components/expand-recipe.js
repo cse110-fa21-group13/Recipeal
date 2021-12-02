@@ -13,7 +13,7 @@ class ExpandRecipe extends HTMLElement {
         /** CREATE RECIPE SECTION **/
 
         .input-card {
-            inline-size: 300px;
+            inline-size: 90%;
             overflow-wrap: break-word
         }
 
@@ -24,8 +24,12 @@ class ExpandRecipe extends HTMLElement {
             flex-direction: row;
             justify-content: center;
             gap: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
           }
-          
+          .input-wrapper--column {
+            width: 30%;
+          }
         
         /* Cards for all inputs */
         
@@ -35,6 +39,7 @@ class ExpandRecipe extends HTMLElement {
             border-radius: 20px;
             padding: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+            
         }
         
         /* Favorites icon */
@@ -57,7 +62,7 @@ class ExpandRecipe extends HTMLElement {
         }
         
         #display-image {
-            width: 250px;
+            width: 100%;
             margin: auto;
         }
         
@@ -65,14 +70,14 @@ class ExpandRecipe extends HTMLElement {
         
         #ing-card {
             height: 98%;
-            width: 500px;
+            width: 90%;
         }
         
         /* Card for steps */
         
         #step-card {
             height: 98%;
-            width: 500px;
+            width: 100%;
             background-color: transparent;
             box-shadow: none;
         }
@@ -260,7 +265,7 @@ class ExpandRecipe extends HTMLElement {
 
     // Set Favorite
     const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
-    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()))
+    let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
     let love;
     let favoriteIcon;
     let favOnExpand;
@@ -353,7 +358,7 @@ class ExpandRecipe extends HTMLElement {
             const item = document.createElement('li');
             item.innerHTML = ingredient;
             this.shadowRoot.getElementById("ing-list").append(item);
-        })
+        });
     }
     
     // Set directions
@@ -365,7 +370,7 @@ class ExpandRecipe extends HTMLElement {
             const item = document.createElement('li');
             item.innerHTML = step;
             this.shadowRoot.getElementById("step-list").append(item);
-        })
+        });
     }
   }
 }

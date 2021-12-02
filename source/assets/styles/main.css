@@ -16,6 +16,13 @@ section:not(section.shown) {
   display: none;
 }
 
+.navbar-nav {
+  position: absolute; 
+  left: 50%; 
+  width: 200px; 
+  margin-left: -100px;
+}
+
 /** RECIPE CARDS IN EXPLORE **/
 
 #explore-wrapper {
@@ -62,6 +69,12 @@ section:not(section.shown) {
   flex-direction: row;
   justify-content: center;
   gap: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.input-wrapper--column {
+  width: 30%;
 }
 
 /* Cards for all inputs */
@@ -72,7 +85,7 @@ section:not(section.shown) {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  width: 85%;
 }
 
 /* Input card for ings */
@@ -95,26 +108,27 @@ section:not(section.shown) {
 
 #img-card {
   padding: 20px;
+  width: 85%;
 }
 
 #display-image {
   cursor: pointer;
   margin: auto;
-  width: 250px;
+  width: 100%;
 }
 
 /* Card for ingredients */
 
 #ing-card {
   height: 98%;
-  width: 500px;
+  width: 90%;
 }
 
 /* Card for steps */
 
 #step-card {
   height: 98%;
-  width: 500px;
+  width: 100%;
   background-color: transparent;
   box-shadow: none;
 }
@@ -246,6 +260,10 @@ button.save-btn:hover {
 
 button.btn-light {
   background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#delete-btn {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
