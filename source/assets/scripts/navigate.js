@@ -59,12 +59,6 @@ export function changeView(e) {
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
-  for (let i = 0; i < localStorage.length; i++) {
-    let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    let reappearRecipe = document.getElementById(storedRecipe.name);
-    reappearRecipe.classList.remove("hidden");
-  }
-
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
     location.reload();
@@ -80,6 +74,11 @@ export function changeView(e) {
       element.innerHTML = "";
     });
     editButton.style.display = "none";
+    for (let i = 0; i < localStorage.length; i++) {
+      let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      let reappearRecipe = document.getElementById(storedRecipe.name);
+      reappearRecipe.classList.remove("hidden");
+    }
   }
   // navigating to favorites page
   else if(innerText === "Favorites" && !deleteMode){

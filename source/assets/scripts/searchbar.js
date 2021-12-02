@@ -23,12 +23,15 @@ function filterTags(tag) {
     let recipeCards = document.getElementById("recipe-cards");
     let allRecipes = recipeCards.children;
     let tagBut = document.getElementById(`${tag}`);
-
     if(tagBut.classList.contains("filter-on")) {
         for(let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
-            let currentRecipeName = currentRecipe.shadowRoot.querySelector('h1').textContent.toLowerCase();
+            console.log(currentRecipe);
+            let currentRecipeName = currentRecipe.id.toLowerCase();
+            console.log(currentRecipeName);
             let currentRecipeJSON = JSON.parse(localStorage.getItem(currentRecipeName));
+            console.log(currentRecipeJSON);
+            console.log(currentRecipeJSON.tags);
             let tags = currentRecipeJSON.tags;
             for(let i = 0; i < tags.length; i++) {
                 tags[i] = tags[i].toLowerCase();
@@ -42,7 +45,7 @@ function filterTags(tag) {
         let filtTagsArray = Array.from(filteredTags);
         for(let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
-            let currentRecipeName = currentRecipe.shadowRoot.querySelector('h1').textContent.toLowerCase();
+            let currentRecipeName = currentRecipe.id.toLowerCase();
             let currentRecipeJSON = JSON.parse(localStorage.getItem(currentRecipeName));
             let tags = currentRecipeJSON.tags;
             if(filtTagsArray.every(val => tags.includes(val.id))) {

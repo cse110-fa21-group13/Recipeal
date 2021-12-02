@@ -613,7 +613,7 @@ function saveDataCreate() {
         if(data.recipes[i].dishTypes[j] === "main course") {
           data.recipes[i].dishTypes.splice(j, 1);
         }
-        else if(data.recipes[i].dishTypes[j] === "antipasti") {
+        else if(data.recipes[i].dishTypes[j] === "antipasti" || data.recipes[i].dishTypes[j] === "antipasto") {
           data.recipes[i].dishTypes.splice(j, 1);
         }
         else if(data.recipes[i].dishTypes[j] === "appetizer" || data.recipes[i].dishTypes[j] === "hor d'oeuvre") {
@@ -644,6 +644,7 @@ function saveDataCreate() {
       favorites: 0,
       saveFrom: 'Explore',
     };
+    console.log(recipeData.name);
 
 
     // Recipe Card
