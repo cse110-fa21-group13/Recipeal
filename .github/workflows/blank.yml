@@ -31,7 +31,4 @@ jobs:
       # Runs testing
       - name: run test suite
         run: npm run test
-        
-      - name: run jsDoc auto generation
-        run: npm run doc
     
