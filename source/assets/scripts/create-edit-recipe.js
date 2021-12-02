@@ -637,6 +637,18 @@ function saveDataCreate() {
     // Storing data in form of JSON
     let nutritionInfo = await response.json();
 
+    let calories = nutritionInfo.calories
+    calories = calories.replace(/\D/g,'');
+
+    let carbs = nutritionInfo.carbs
+    carbs = carbs.replace(/\D/g,'');
+
+    let fat = nutritionInfo.fat
+    fat = fat.replace(/\D/g,'');
+
+    let protein = nutritionInfo.protein
+    protein = protein.replace(/\D/g,'');
+
     // Trim to fit recipe card size
     let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
 
@@ -650,7 +662,7 @@ function saveDataCreate() {
       thumbnail: data.recipes[i].image,
       favorites: 0,
       saveFrom: 'Explore',
-      nutritionInfo: { calories: nutritionInfo.calories, carbs: nutritionInfo.carbs, fat: nutritionInfo.fat, protein: nutritionInfo.protein}
+      nutritionInfo: { calories: Number(calories), carbs: Number(carbs), fat: Number(fat), protein: Number(protein)}
     };
 
 
@@ -712,9 +724,13 @@ function saveDataCreate() {
         document.getElementById('input-desc').value = summary;
 
         // Set Nutrition Info
+        console.log(recipeData.nutritionInfo.calories)
         document.getElementById('input-calories').value = recipeData.nutritionInfo.calories;
+        console.log(recipeData.nutritionInfo.carbs)
         document.getElementById('input-carbs').value = recipeData.nutritionInfo.carbs;
+        console.log(recipeData.nutritionInfo.fat)
         document.getElementById('input-fat').value = recipeData.nutritionInfo.fat;
+        console.log(recipeData.nutritionInfo.protein)
         document.getElementById('input-protein').value = recipeData.nutritionInfo.protein;
 
         // Set Time
