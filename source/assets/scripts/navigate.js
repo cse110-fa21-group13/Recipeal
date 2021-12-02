@@ -198,7 +198,7 @@ async function fetchApiRecipes() {
   // Storing data in form of JSON
   let data = await response.json();
 
-  saveToMyRecipes(data);
+  saveToMyRecipes(data, API_KEY);
 
   /*
   for (let i=0; i<3; i++) {
