@@ -15,7 +15,6 @@ class RecipeCard extends HTMLElement {
   set data(data) {
     // if (!data) return;
     this.id = `${data.name}`;
-    console.log(this.id);
     const styles = document.createElement("style");
     styles.innerHTML = `
       article {

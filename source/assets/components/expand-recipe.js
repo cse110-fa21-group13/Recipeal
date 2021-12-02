@@ -278,9 +278,7 @@ class ExpandRecipe extends HTMLElement {
     
     function changeHeart(){
       let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
-      let test = document.getElementById("recipe-cards");
       let imageOnCard = document.getElementById(data.name);
-      console.log(test);
 
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
