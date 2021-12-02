@@ -1,5 +1,7 @@
 // Contains functions for navigating between pages
 
+import { saveToMyRecipes } from "./create-edit-recipe.js";
+
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -16,6 +18,10 @@ favoriteButton.addEventListener("click", (e) =>{
 });
 let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
+  changeView(e);
+});
+let cookModeBtn = document.getElementById("cook-mode-btn");
+cookModeBtn.addEventListener("click", (e) => {
   changeView(e);
 });
 
@@ -47,6 +53,9 @@ export function changeView(e) {
   var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
+  const cookModeBut = document.getElementById("cook-mode-btn");
+  const cookMode = document.querySelector(".section--cook-mode");
+  const navBar = document.querySelector("nav");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -58,12 +67,14 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
+    location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
     createButton.className = "btn btn-light";
     deleteButton.className = "btn btn-light";
     returnButton.className = "hidden";
+    cookModeBut.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
@@ -96,24 +107,43 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     expandRecipe.classList.remove("shown");
     explore.classList.add("shown");
-    returnButton.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
-    refresh();
+    editButton.style.display = "none";
+    cookModeBut.className = "hidden";
+    if(!returnButton.classList.contains("explore")) {
+      refresh();
+    }
+    returnButton.className = "hidden";
   }
   // navigating to recipe expand page
   else if (innerText === "Recipe Expand") {
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
+    cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
+    navBar.className = "navbar navbar-light bg-dark";
     //switchButtonView(returnButton);
-    returnButton.className = "btn btn-light";
+    returnButton.classList.add("btn");
+    returnButton.classList.add("btn-light");
+    returnButton.classList.remove("hidden");
     deleteButton.className = "btn btn-light";
+    cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
+  }
+  // navigating to cook mode page
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
+    cookMode.classList.add("shown");
+    expandRecipe.classList.remove("shown");
+    navBar.className = "hidden";
+    returnButton.className = "hidden";
+    deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
   }
   // navigating to create recipe page
   else if (
@@ -161,13 +191,17 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
+  const API_KEY = "1f5556cfc7c942b48451ce0e0c00f1e3";
   const response = await fetch(
-    `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+    `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
 
   // Storing data in form of JSON
   let data = await response.json();
+
+  saveToMyRecipes(data);
+
+  /*
   for (let i=0; i<3; i++) {
     const curRecipe = data.recipes[i];
     let summary = curRecipe.summary
@@ -176,7 +210,7 @@ async function fetchApiRecipes() {
 
     // Trim to fit recipe card size
     summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
-
+    
     let tags = curRecipe.cuisines.concat(curRecipe.diets).concat(curRecipe.dishTypes);
 
     let ingredients = curRecipe.extendedIngredients.map((v)=>{
@@ -199,21 +233,21 @@ async function fetchApiRecipes() {
       ingredients,
       directions,
     };
-
+    
     const recipeCard = document.createElement("recipe-card");
     recipeCard.data = recipeData;
     recipeCard.addEventListener("click", (e) => {
         document.querySelector("recipe-expand").data = recipeData;
         changeView("Recipe Expand");
     });
-
-    document.querySelector("#explore-wrapper").appendChild(recipeCard);
+    
+    //document.querySelector("#explore-wrapper").appendChild(recipeCard);
+    */
   }
-}
 
 /**
  * @method refresh
- *  Removes recipes and shows 3 other random recipes
+ *  Removes recipes and shows 15 other random recipes
  */
 function refresh() {
   document.querySelector("#explore-wrapper").innerHTML = ""
@@ -222,28 +256,56 @@ function refresh() {
 
 // Function for return to home page
 window.returnToHomePage = function () {
-  location.reload();
-  //changeView("My Recipes");
+  const returnBut = document.getElementById("return-btn");
+  console.log(returnBut.classList);
+  if(returnBut.classList.contains("explore")){
+    changeView("Explore");
+    returnBut.classList.remove("explore");
+  }
+  else{
+    location.reload();
+  }
 };
 
 // Show tags when pressing filter button
 window.showTags = function () {
-  const divTag = document.getElementById("existingTags");
-  divTag.innerHTML = "";
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
       localStorage.getItem(localStorage.key(i))
     ).tags;
-    tags = tags.concat(currentTags);
+    currentTags.forEach(singleTag => {
+      singleTag = singleTag.toLowerCase(); 
+      if(!tags.includes(singleTag)) {
+        tags.push(singleTag);
+      }
+    })
   }
-
+  let divTag = document.getElementById("tag-wrapper-filter");
+  // If it's not empty, make it empty
+  if (!(divTag.innerHTML == "")) {
+    divTag.innerHTML = ""; 
+  }
+  else {
   tags.forEach((element, i) => {
     const newTagBut = document.createElement("button");
-    newTagBut.className = `but but-secondary tag-${i}`;
+    newTagBut.className = "but but-secondary filter-off";
+    newTagBut.id = `${element}`;
     newTagBut.textContent = element;
+    newTagBut.addEventListener("click", () => {
+      if(newTagBut.classList.contains("filter-off")) {
+        newTagBut.classList.replace("filter-off", "filter-on");
+        newTagBut.style.backgroundColor = "pink";
+        filterTags(element);
+      } else {
+        newTagBut.classList.replace("filter-on", "filter-off");
+        newTagBut.style.backgroundColor = "transparent";
+        filterTags(element);
+      }
+    });
     divTag.appendChild(newTagBut);
   });
+  }  
 };
 
 // Show delete buttons for each card when click delete on home page

@@ -17,6 +17,7 @@ section:not(section.shown) {
 }
 
 /** RECIPE CARDS IN EXPLORE **/
+
 #explore-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +27,17 @@ section:not(section.shown) {
   gap: 50px;
   height: auto;
   max-width: 60%;
+}
+
+#explore-recipe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+  gap: 50px;
+  height: auto;
 }
 
 /** RECIPE CARDS IN MY RECIPE **/
@@ -38,7 +50,7 @@ section:not(section.shown) {
   margin-top: 50px;
   gap: 50px;
   height: auto;
-  max-width: 60%;
+  max-width: 80%;
 }
 
 /** CREATE RECIPE SECTION **/
@@ -60,6 +72,7 @@ section:not(section.shown) {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  width: 300px;
 }
 
 /* Input card for ings */
@@ -106,7 +119,7 @@ section:not(section.shown) {
   box-shadow: none;
 }
 
-/* Input */
+/** INPUTS **/
 
 input {
   border-radius: 5px;
@@ -114,12 +127,20 @@ input {
   font-family: var(--p-font);
   border: 3px solid #ccc;
   resize: none;
-  width: 90%;
+  width: 100%;
 }
 
 input.tags {
   width: 100px;
   margin: 5px;
+}
+
+input.ings {
+  width: 94%;
+}
+
+input.steps {
+  width: 93%;
 }
 
 input.input-hours-mins {
@@ -153,6 +174,32 @@ input[type="number"]:focus {
   border: 3px solid #555;
 }
 
+#input-desc {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: var(--p-font);
+  border: 3px solid #ccc;
+  resize: none;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#input-desc:focus {
+  border: 3px solid #555;
+}
+
+#time-inputs {
+  margin: auto;
+}
+
+/** BUTTONS **/
+
 button.add-btn {
   display: block;
   margin: 0px auto;
@@ -182,7 +229,7 @@ button.save-btn {
   height: 50px;
   cursor: pointer;
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -197,10 +244,9 @@ button.save-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
-/* Button */
 button.btn-light {
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* REFRESH AND SHOW MORE BUTTONS ON EXPLORE PAGE */
@@ -231,6 +277,24 @@ button#refresh-btn:hover, button#show-more-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
+/* Save to my recipe btn */
+
+button.save-to-rec-btn {
+  display: block;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(71, 255, 163);
+  border-radius: 40px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.save-to-rec-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
 
 .hidden {
   display: none;
@@ -251,4 +315,45 @@ button#refresh-btn:hover, button#show-more-btn:hover {
 .delete-modal-expand-content {
   margin: 15% auto;
   padding: 20px;
+}
+
+#search-bar {
+  position: relative;
+}
+
+#tag-wrapper-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*
+#collapseThree {
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  position: absolute;
+  left: 40%;
+  right: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#existingTags {
+  display: flex;
+  justify-content: center;
+}
+*/
+
+
+.but-secondary {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+  padding: 10px 20px 10px 20px;
+  margin: 7px;
 }

@@ -8,6 +8,7 @@
   <title>Recipe App</title>
 
   <!-- Web Components -->
+  <script src="assets/components/cook-mode.js" type="module"></script>
   <script src="assets/components/recipe-card.js" type="module"></script>
   <script src="assets/components/expand-recipe.js" type="module"></script>
 
@@ -19,7 +20,7 @@
 
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/main.css" />
-  <script type="module" src="../client/assets/scripts/recipe-card-create.js"></script>
+  <script type="module" src="assets/scripts/recipe-card-create.js"></script>
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
@@ -58,7 +59,7 @@
       <section class="recipe-cards--wrapper shown">
         <script>
           window.onload = function () {
-            if(window.localStorage.length == 0) {
+            if (window.localStorage.length == 0) {
               alert("It looks like you don't have any recipes saved. Create a new recipe by clicking the plus button!");
             }
           };
@@ -66,22 +67,34 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id = "search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..." style="height: 45px;" />
+          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..."
+            style="height: 45px;" />
           <div class="accordion-item ml-3">
-            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">
+            <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
+              type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+              aria-controls="collapseThree" onclick="showTags()">
               <i class="bi bi-funnel-fill"></i>
             </button>
+            <!--
             <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
-              <div id="existingTags" class="accordion-body">
-              </div>
-            </div>
+              <div id="existingTags" class="accordion-body"></div>
+            -->
+
           </div>
         </div>
+        </div>
+
+        <!-- DISPLAY TAGS -->
+        <div id="tag-wrapper-filter"></div>
 
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
         </div>
+      </section>
+
+      <!-- COOK MODE PAGE -->
+      <section class="section--cook-mode">
+        <cook-mode></cook-mode>
       </section>
 
       <!-- EXPAND RECIPES PAGE-->
@@ -93,7 +106,9 @@
 
       <!-- EXPLORE RECIPES PAGE -->
       <section class="explore container-fluid">
-        <div id="explore-wrapper">          
+        <div id="explore-wrapper">
+          <div id="card-wrapper">
+          </div>
         </div>
         <div id="explore-buttons">
           <button id="show-more-btn">Show More</button>
@@ -125,7 +140,7 @@
             <!-- Description -->
             <div class="input-card">
               <label for="input-desc">Description</label><br>
-              <input type="text" id="input-desc" name="input-desc">
+              <textarea id="input-desc" name="input-desc" rows="5" cols="33"></textarea>
             </div>
 
             <!-- Time -->
@@ -160,7 +175,7 @@
             <div class="input-card" id="ing-card">
               <div id="ing-wrapper">
                 <label>Ingredients</label><br><br>
-                <label for="input-ings1">1.</label>
+                <label for="input-ings1" id="label-ings1">1.</label>
                 <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
 
@@ -177,8 +192,8 @@
 
               <div id="step-wrapper">
                 <label>Steps</label><br>
-                <div class="input-card-steps">
-                  <label for="input-steps1">1.</label>
+                <div class="input-card-steps" id="card-step-1">
+                  <label for="input-steps1" id="label-steps1">1.</label>
                   <input type="text" id="input-steps1" class="steps" name="input-steps1">
                 </div>
               </div>
@@ -190,12 +205,14 @@
             </div>
 
             <!-- Save Button for Create Recipe -->
-            <button class="save-btn-create btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
+            <button class="save-btn-create btn btn-light"
+              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
 
             <!-- Save Button for Edit Recipe -->
-            <button class="save-btn-edit btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
+            <button class="save-btn-edit btn btn-light"
+              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
 
@@ -203,16 +220,21 @@
         </div>
       </section>
 
-      <button id="create-recipe-btn" class="btn btn-light" style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+      <button id="create-recipe-btn" class="btn btn-light"
+        style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
         <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
       </button>
       <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute; border-radius: 20px;"
         onclick="returnToHomePage()">
         <i class="bi bi-arrow-return-left"></i>
       </button>
-      <button id="delete-btn" class="btn btn-light" style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()"
-      >
+      <button id="delete-btn" class="btn btn-light"
+        style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
         <i id="delbut-icon" class="bi bi-trash"></i>
+      </button>
+      <button id="cook-mode-btn" class="hidden"
+        style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
+        <i id="cook-mode-icon" class="bi bi-play"></i>
       </button>
 
       <div class="delete-modal-expand hidden">
@@ -227,13 +249,13 @@
 
       <button id="edit-btn" class="btn btn-light"
         style="bottom: 10px; right: 10px; position: fixed; display: none; border-radius: 20px;">
-            <i class="bi bi-pencil-square"></i>
+        <i class="bi bi-pencil-square"></i>
       </button>
-    
-      <script type="module">
-        import { navEdit } from "../client/assets/scripts/create-edit-recipe.js";
 
-        document.getElementById('edit-btn').onclick = function(){
+      <script type="module">
+        import { navEdit } from "./assets/scripts/create-edit-recipe.js";
+
+        document.getElementById('edit-btn').onclick = function () {
           navEdit('Edit Recipe');
         }
       </script>

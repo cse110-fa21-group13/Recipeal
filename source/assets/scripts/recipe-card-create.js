@@ -12,7 +12,12 @@ export function newCard(name) {
     let recipe = JSON.parse(localStorage.getItem(name));
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
+    let summary = recipe.description;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    recipe.description = summaryTrim;
     newCard.data = recipe;
+    recipe.description = summary;
+    document.querySelector("cook-mode").data = recipe;
     bindRecipeCard(newCard, recipe);
     mainSec.appendChild(newCard);
   }
@@ -33,7 +38,12 @@ export function initCards() {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
     let newCard = document.createElement("recipe-card");
     let mainSec = document.getElementById("recipe-cards");
+    let summary = storedRecipe.description;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    storedRecipe.description = summaryTrim;
+    storedRecipe.saveFrom = "Create";
     newCard.data = storedRecipe;
+    storedRecipe.description = summary;
     bindRecipeCard(newCard, storedRecipe);
     mainSec.appendChild(newCard);
   }
@@ -51,6 +61,7 @@ export function initCards() {
 function bindRecipeCard(recipeCard, recipeData) {
   recipeCard.addEventListener("click", (e) => {
     if (document.getElementById("delbut-icon").className === "bi bi-trash" && recipeCard.shadowRoot.getElementById("favoriteOnCard").classList.contains("mouse-off")) {
+      document.querySelector("cook-mode").data = recipeData;
       document.querySelector("recipe-expand").data = recipeData;
       changeView("Recipe Expand");
     }

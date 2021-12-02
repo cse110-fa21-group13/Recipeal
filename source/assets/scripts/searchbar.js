@@ -18,3 +18,36 @@ function searchRecipe() {
         }
     }
 }
+
+function filterTags(tag) {
+    let recipeCards = document.getElementById("recipe-cards");
+    let allRecipes = recipeCards.children;
+    let tagBut = document.getElementById(`${tag}`);
+
+    if(tagBut.classList.contains("filter-on")) {
+        for(let i = 0; i < allRecipes.length; i++) {
+            let currentRecipe = allRecipes[i];
+            let currentRecipeName = currentRecipe.shadowRoot.querySelector('h1').textContent.toLowerCase();
+            let currentRecipeJSON = JSON.parse(localStorage.getItem(currentRecipeName));
+            let tags = currentRecipeJSON.tags;
+            for(let i = 0; i < tags.length; i++) {
+                tags[i] = tags[i].toLowerCase();
+            }
+            if(!tags.includes(tag)) {
+                currentRecipe.style.display = "none";
+            }
+        }
+    } else {
+        let filteredTags = document.getElementsByClassName("but but-secondary filter-on");
+        let filtTagsArray = Array.from(filteredTags);
+        for(let i = 0; i < allRecipes.length; i++) {
+            let currentRecipe = allRecipes[i];
+            let currentRecipeName = currentRecipe.shadowRoot.querySelector('h1').textContent.toLowerCase();
+            let currentRecipeJSON = JSON.parse(localStorage.getItem(currentRecipeName));
+            let tags = currentRecipeJSON.tags;
+            if(filtTagsArray.every(val => tags.includes(val.id))) {
+                currentRecipe.style.display = "";
+            }
+        } 
+    }
+}

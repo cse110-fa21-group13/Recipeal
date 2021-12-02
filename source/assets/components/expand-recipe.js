@@ -181,6 +181,10 @@ class ExpandRecipe extends HTMLElement {
    */
   set data (data) {
     this.json = data;
+    const returnBut = document.getElementById("return-btn");
+    if(data.saveFrom==="Explore"){
+        returnBut.classList.add("explore");
+    }
 
     this.shadowRoot.querySelector('article').innerHTML = `
     <div id="create-recipe--input-wrapper">
@@ -305,11 +309,12 @@ class ExpandRecipe extends HTMLElement {
     
     // Set tags
     let tags = data.tags;
+    console.log(tags);
     if (tags.length === 0) {
         tags.push("None");
     }
     else {
-        tags += tags.join(', ');
+        tags = tags.join(", ");
     }
     this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
 
@@ -345,11 +350,11 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("ing-none").innerHTML = "None";
     } else {
         ingredients.forEach(ingredient => {
-        const item = document.createElement('li');
-        item.innerHTML = ingredient;
-        this.shadowRoot.getElementById("ing-list").append(item);
-    })
-}
+            const item = document.createElement('li');
+            item.innerHTML = ingredient;
+            this.shadowRoot.getElementById("ing-list").append(item);
+        })
+    }
     
     // Set directions
     const directions = data.directions;
@@ -357,9 +362,9 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("step-none").innerHTML = "None";
     } else {
         directions.forEach(step => {
-        const item = document.createElement('li');
-        item.innerHTML = step;
-        this.shadowRoot.getElementById("step-list").append(item);
+            const item = document.createElement('li');
+            item.innerHTML = step;
+            this.shadowRoot.getElementById("step-list").append(item);
         })
     }
   }
