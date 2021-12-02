@@ -12,7 +12,7 @@ main {
   width: 100%;
 }
 
-section:not(section.shown) {
+section:not(section.shown){
   display: none;
 }
 
@@ -184,9 +184,7 @@ input[type="number"]:focus {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
-  border-radius: 5px;
   font-size: 15px;
-  padding: 10px;
   overflow-y: scroll;
 }
 
@@ -202,7 +200,7 @@ input[type="number"]:focus {
 
 button.add-btn {
   display: block;
-  margin: 0px auto;
+  margin: 0 auto;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -260,7 +258,8 @@ button.btn-light {
   gap: 50px;
 }
 
-button#refresh-btn, button#show-more-btn {
+button#refresh-btn, 
+button#show-more-btn {
   display: block;
   width: 100px;
   height: 30px;
@@ -273,7 +272,8 @@ button#refresh-btn, button#show-more-btn {
   outline: none;
 }
 
-button#refresh-btn:hover, button#show-more-btn:hover {
+button#refresh-btn:hover, 
+button#show-more-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
@@ -326,25 +326,6 @@ button.save-to-rec-btn:hover {
   justify-content: center;
   flex-wrap: wrap;
 }
-
-/*
-#collapseThree {
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
-  border-radius: 16px;
-  position: absolute;
-  left: 40%;
-  right: 40%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-#existingTags {
-  display: flex;
-  justify-content: center;
-}
-*/
-
 
 .but-secondary {
   cursor: pointer;

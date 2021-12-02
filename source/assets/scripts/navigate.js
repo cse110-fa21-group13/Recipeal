@@ -88,7 +88,7 @@ export function changeView(e) {
 
     for (let i = 0; i < localStorage.length; i++) {
       let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      if(storedRecipe.favorites == 0){
+      if(storedRecipe.favorites === 0){
         let unfavoriteRecipe = document.getElementById(storedRecipe.name);
         unfavoriteRecipe.classList.add("hidden");
       }
