@@ -17,11 +17,11 @@ jobs:
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          output_dir: ./docs
-          config_file: jsdoc.json
+          source_dir: ./source
+          output_dir: ./out
 
       - name: Deploying docs to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./out
