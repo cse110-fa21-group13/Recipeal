@@ -7,21 +7,21 @@ describe('example to-do app', () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
-    cy.visit('https://project-cupcake.netlify.app/')
-  })
+    cy.visit('https://project-cupcake.netlify.app/');
+  });
 
   it("search before create", ()=>{
     cy.get('input#search-bar')          
     .then($els => {
-      expect($els.length).to.eq(1)    
+      expect($els.length).to.eq(1);    
     })
     .type('myfood');
     cy.get('button#filter-btn').click();
     cy.get('div#recipe-cards').
       then($els => {
-      expect($els.length).to.eq(1)    
-    })
-  })
+      expect($els.length).to.eq(1);    
+    });
+  });
 
   /*
   it('"search after single copy', ()=>{
@@ -35,4 +35,4 @@ describe('example to-do app', () => {
     cy.get('input#input-steps1').type('1st steps');
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
   })*/
-})
+});
