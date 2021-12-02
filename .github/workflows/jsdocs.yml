@@ -1,6 +1,7 @@
 name: Generate JSDocs
 on: 
   push:
+    branches: [ main ]
 
   workflow_dispatch:
 
@@ -17,10 +18,11 @@ jobs:
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          output_dir: ./out
-
-      - name: Deploying docs to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+          source_dir: ./source/assets/scripts
+          output_dir: ./jsdocs
+      
+      - name: Add documentation
+        uses: EndBug/add-and-commit@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          add: ./jsdocs
+          message: 'Update JSDocs'
