@@ -103,6 +103,11 @@ section:not(section.shown) {
   width: 250px;
 }
 
+#nutrition-facts {
+  margin: auto;
+  width: 250px;
+}
+
 /* Card for ingredients */
 
 #ing-card {
@@ -132,6 +137,11 @@ input {
 
 input.tags {
   width: 100px;
+  margin: 5px;
+}
+
+input.nutrition-cat {
+  width: 70px;
   margin: 5px;
 }
 

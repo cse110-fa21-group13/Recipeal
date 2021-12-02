@@ -284,6 +284,7 @@ function saveBase() {
     thumbnail: "",
     favorites: 0,
     saveFrom: "Create",
+    nutritionInfo: { calories: "", carbs: "", fat: "", protein: ""}
   };
 
   // Get name and store it in the object
@@ -293,6 +294,19 @@ function saveBase() {
   // Get description and store it in the object
   let desc = document.getElementById("input-desc").value;
   newRecipe.description = desc;
+
+  // Get nutrition info and store it in the object
+  let calories = document.getElementById("input-calories").value;
+  newRecipe.nutritionInfo.calories = calories;
+
+  let carbs = document.getElementById("input-carbs").value;
+  newRecipe.nutritionInfo.carbs = carbs;
+
+  let fat = document.getElementById("input-fat").value;
+  newRecipe.nutritionInfo.fat = fat;
+
+  let protein = document.getElementById("input-protein").value;
+  newRecipe.nutritionInfo.protein = protein;
 
   // Get time and store it in the object
   let hours = document.getElementById("input-hours").value;
@@ -403,10 +417,7 @@ function saveDataCreate() {
  * @param {String} originalName - original name of recipe used for deletion
  */
  function saveDataEdit(originalName) {
-  let checkName = document.getElementById("input-name").value.toLowerCase();
   localStorage.removeItem(originalName)
-  // Delete old recipe with new name
-  localStorage.removeItem(checkName)
   saveBase();
   alert("Recipe updated!");
   reset();
@@ -457,6 +468,12 @@ function saveDataCreate() {
 
     // Set Description
     document.getElementById('input-desc').value = recipe.description
+
+    // Set Nutrition Info
+    document.getElementById('input-calories').value = recipe.nutritionInfo.calories;
+    document.getElementById('input-carbs').value = recipe.nutritionInfo.carbs;
+    document.getElementById('input-fat').value = recipe.nutritionInfo.fat;
+    document.getElementById('input-protein').value = recipe.nutritionInfo.protein;
 
     // Set Hour and Min
     document.getElementById('input-hours').value = recipe.time.hours
@@ -526,11 +543,11 @@ function saveDataCreate() {
  * 
  * @param {JSON} data 
  */
- export function saveToMyRecipes(data) {
+ export async function saveToMyRecipes(data, apiKey) {
   tagCounter = 0;
   ingCounter = 0;
   stepCounter = 0;
-  for (let i=0; i<15; i++) {
+  for (let i=0; i<1; i++) {
     // Array to store ings
     let ings = [];
 
@@ -612,6 +629,13 @@ function saveDataCreate() {
       tags = tags.concat(data.recipes[i].dishTypes)
     }
 
+    // Get nutrition info
+    let response = await fetch(
+      `https://api.spoonacular.com/recipes/${data.recipes[i].id}/nutritionWidget.json?apiKey=${apiKey}`
+    );
+
+    // Storing data in form of JSON
+    let nutritionInfo = await response.json();
 
     // Trim to fit recipe card size
     let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
@@ -626,6 +650,7 @@ function saveDataCreate() {
       thumbnail: data.recipes[i].image,
       favorites: 0,
       saveFrom: 'Explore',
+      nutritionInfo: { calories: nutritionInfo.calories, carbs: nutritionInfo.carbs, fat: nutritionInfo.fat, protein: nutritionInfo.protein}
     };
 
 
@@ -685,6 +710,12 @@ function saveDataCreate() {
 
         // Set Description
         document.getElementById('input-desc').value = summary;
+
+        // Set Nutrition Info
+        document.getElementById('input-calories').value = recipeData.nutritionInfo.calories;
+        document.getElementById('input-carbs').value = recipeData.nutritionInfo.carbs;
+        document.getElementById('input-fat').value = recipeData.nutritionInfo.fat;
+        document.getElementById('input-protein').value = recipeData.nutritionInfo.protein;
 
         // Set Time
         document.getElementById('input-mins').value = recipeData.time.minutes;
