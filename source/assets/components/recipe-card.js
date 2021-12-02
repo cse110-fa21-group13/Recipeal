@@ -15,6 +15,7 @@ class RecipeCard extends HTMLElement {
   set data(data) {
     // if (!data) return;
     this.id = `${data.name}`;
+    console.log(this.id);
     const styles = document.createElement("style");
     styles.innerHTML = `
       article {
@@ -178,7 +179,7 @@ class RecipeCard extends HTMLElement {
       favoriteImage.classList.add("favoriteOnCard");
       favoriteImage.classList.add("mouse-off");
       favoriteImage.id = "favoriteOnCard";
-      favoriteImage.classList.add(data.name.toLowerCase());
+      //favoriteImage.classList.add(data.name.toLowerCase());
 
       if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
       else favoriteImage.setAttribute("src", "assets/images/heart.png");
