@@ -30,6 +30,9 @@ function searchSpoon() {
     if (filter === "") {
         for (let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
+            if (currentRecipe.classList.contains("new-recipe")) {
+                recipeCardsElement.removeChild(allRecipes[i]);
+            }
             currentRecipe.style.display = "";
         }
     }
@@ -39,7 +42,7 @@ function searchSpoon() {
             let currentRecipe = allRecipes[i]; 
             currentRecipe.style.display = "none"; 
         }
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=${API_KEY}`;
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=3&apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
@@ -65,6 +68,7 @@ function searchSpoon() {
                             };
                             const recipeCard = document.createElement("recipe-card");
                             recipeCard.data = recipeData;
+                            recipeCard.classList.add("new-recipe");
                             document.querySelector("#explore-wrapper").appendChild(recipeCard);
                         });
                 }
