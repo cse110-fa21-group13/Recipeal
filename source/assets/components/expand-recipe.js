@@ -277,18 +277,24 @@ class ExpandRecipe extends HTMLElement {
     }    
     
     function changeHeart(){
-      let storage = JSON.parse(localStorage.getItem(data.name));
+      let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
+      let test = document.getElementById("recipe-cards");
+      let imageOnCard = document.getElementById(data.name);
+      console.log(test);
+
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
+        imageOnCard.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
         love = true;
       }
       else{
         favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
+        imageOnCard.setAttribute("src", "assets/images/empty_heart.png");
         storage.favorites = 0;
         love = false;
       }
-      localStorage.setItem(data.name, JSON.stringify(storage));
+      localStorage.setItem(data.name.toLowerCase(), JSON.stringify(storage));
     }
 
     // Set description

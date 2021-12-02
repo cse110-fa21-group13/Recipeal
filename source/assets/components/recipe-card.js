@@ -173,12 +173,12 @@ class RecipeCard extends HTMLElement {
     let favoriteImage;
     let love;
     if(storage != null){
-      console.log("This recipe is not in storage");
       favoriteImage = document.createElement("input");
       favoriteImage.type = "image";
       favoriteImage.classList.add("favoriteOnCard");
       favoriteImage.classList.add("mouse-off");
       favoriteImage.id = "favoriteOnCard";
+      favoriteImage.classList.add(data.name.toLowerCase());
 
       if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
       else favoriteImage.setAttribute("src", "assets/images/heart.png");
@@ -205,7 +205,7 @@ class RecipeCard extends HTMLElement {
         storage.favorites = 0;
         love = false;
       }
-      localStorage.setItem(data.name, JSON.stringify(storage));
+      localStorage.setItem(data.name.toLowerCase(), JSON.stringify(storage));
     }
 
     // Title

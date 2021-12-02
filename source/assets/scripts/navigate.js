@@ -10,6 +10,10 @@ let myRecipesButton = document.getElementById("my-recipes-btn");
 myRecipesButton.addEventListener("click", (e) => {
   changeView(e);
 });
+let favoriteButton = document.getElementById("my-fav-btn");
+favoriteButton.addEventListener("click", (e) =>{
+  changeView(e);
+});
 let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
   changeView(e);
@@ -32,6 +36,7 @@ showMoreButton.addEventListener("click", (e) => {
 export function changeView(e) {
   // reference for needed elements
   var myRecipes = document.querySelector(".recipe-cards--wrapper");
+  var recipeCards = document.getElementById("recipe-cards");
   var explore = document.querySelector(".explore");
   var createRecipe = document.querySelector(".section--create-recipe");
   var createButton = document.getElementById("create-recipe-btn");
@@ -44,6 +49,12 @@ export function changeView(e) {
   const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
+
+  for (let i = 0; i < localStorage.length; i++) {
+    let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    let reappearRecipe = document.getElementById(storedRecipe.name);
+    reappearRecipe.classList.remove("hidden");
+  }
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
@@ -58,6 +69,26 @@ export function changeView(e) {
       element.innerHTML = "";
     });
     editButton.style.display = "none";
+  }
+  // navigating to favorites page
+  else if(innerText === "Favorites" && !deleteMode){
+    myRecipes.classList.add("shown");
+    explore.classList.remove("shown");
+
+    for (let i = 0; i < localStorage.length; i++) {
+      let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      if(storedRecipe.favorites == 0){
+        let unfavoriteRecipe = document.getElementById(storedRecipe.name)
+        unfavoriteRecipe.classList.add("hidden");
+      }
+    }
+
+    createButton.className = "hidden";
+    deleteButton.className = "hidden";
+    createRecipe.classList.remove("shown");
+    returnButton.className = "hidden";
+    expandRecipe.classList.remove("shown");
+
   }
   // navigating to explore page
   else if (innerText === "Explore" && !deleteMode) {
