@@ -27,13 +27,16 @@ function searchSpoon() {
     const filter = input.value.toLowerCase();
     var recipeCardsElement = document.getElementById('explore-wrapper');
     var allRecipes = recipeCardsElement.children; 
+
     if (filter === "") {
         for (let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
             if (currentRecipe.classList.contains("new-recipe")) {
                 recipeCardsElement.removeChild(allRecipes[i]);
             }
-            currentRecipe.style.display = "";
+            else {
+                currentRecipe.style.display = "";
+            }
         }
     }
     else {
@@ -42,7 +45,7 @@ function searchSpoon() {
             let currentRecipe = allRecipes[i]; 
             currentRecipe.style.display = "none"; 
         }
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=3&apiKey=${API_KEY}`;
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=2&apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
@@ -61,7 +64,7 @@ function searchSpoon() {
                             recipeSummary = recipeSummary.replaceAll('<b>', '');
                             recipeSummary = recipeSummary.replaceAll('</b>', '');
                             recipeSummary = recipeSummary.length > 173 ? recipeSummary.substring(0, 170) + "..." : recipeSummary;
-                            
+
                             const recipeData = {
                                 thumbnail: info.image,
                                 name: info.title,
@@ -71,6 +74,11 @@ function searchSpoon() {
                             const recipeCard = document.createElement("recipe-card");
                             recipeCard.data = recipeData;
                             recipeCard.classList.add("new-recipe");
+
+                            for (let i = 0; i < allRecipes.length; i++) {
+                                if (allRecipes[i].)
+                            }
+
                             document.querySelector("#explore-wrapper").appendChild(recipeCard);
                         });
                 }
