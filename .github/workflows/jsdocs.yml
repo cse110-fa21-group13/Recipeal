@@ -31,5 +31,6 @@ jobs:
           destination-github-username: 'cse110-fa21-group13'
           destination-repository-name: 'cse110-fa21-group13-docs'
           user-email: jasonwin2000@gmail.com
+          user-name: jasonwin20000
           commit-message: 'update JSDocs'
           target-branch: main
