@@ -13,7 +13,7 @@ class ExpandRecipe extends HTMLElement {
         /** CREATE RECIPE SECTION **/
 
         .input-card {
-            inline-size: 300px;
+            inline-size: 90%;
             overflow-wrap: break-word
         }
 
@@ -24,26 +24,32 @@ class ExpandRecipe extends HTMLElement {
             flex-direction: row;
             justify-content: center;
             gap: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
           }
-          
+          .input-wrapper--column {
+            width: 30%;
+          }
         
         /* Cards for all inputs */
         
         .input-card:not(#img-card) {
-            margin-top: 20px;
+            margin-top: 5%;
             background-color: #f6f6f6;
             border-radius: 20px;
-            padding: 20px;
+            font-size: 1.8vw;
+            padding: 5%;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+            
         }
         
         /* Favorites icon */
         #create-recipe--input-wrapper > .favorite{
             position: absolute;
             top: 10%;
-            right: 10px;
-            height: 3%;
-            width: 5vh;
+            right: 1%;
+            height: 5%;
+            width: 8vh;
         }
 
         /* Card for display image */
@@ -53,11 +59,11 @@ class ExpandRecipe extends HTMLElement {
             background-color: #f6f6f6;
             border-radius: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            padding: 10%;
         }
         
         #display-image {
-            width: 250px;
+            width: 100%;
             margin: auto;
         }
 
@@ -70,14 +76,14 @@ class ExpandRecipe extends HTMLElement {
         
         #ing-card {
             height: 98%;
-            width: 500px;
+            width: 90%;
         }
         
         /* Card for steps */
         
         #step-card {
             height: 98%;
-            width: 500px;
+            width: 100%;
             background-color: transparent;
             box-shadow: none;
         }
@@ -87,15 +93,16 @@ class ExpandRecipe extends HTMLElement {
             transition: 0.5s;
             outline: none;
             border-radius: 5px;
-            font-size: 15px;
+            font-size: 1.8vw;
         }  
 
         #input-name {
-            font-size: 35px;
+            font-size: 2vw;
         }
 
         ol, ul {
             margin-top: 10px;
+            padding-left: 2vw;
         }
 
         ol li:not(:first-child) {
@@ -106,12 +113,21 @@ class ExpandRecipe extends HTMLElement {
         padding-right: 5px;
         }
         
-        ul li {
-        padding-left: 2px;
-        }
+
 
         ul li:not(:first-child) {
         margin-top: 8px;
+        }
+        @media screen and (min-width: 800px) {
+            #input-name {
+                font-size: 35px;
+            }
+            .input-card:not(#img-card) {
+                font-size: 20px;
+            }
+            p.text:not(#input-name) {
+                font-size: 15px;
+            }
         }
     `;
     article.innerHTML = `

@@ -42,8 +42,8 @@
     <section class="section--recipe-cards shown">
       <nav class="navbar navbar-light bg-dark">
         <span class="navbar-brand mb-0 h1 text-white">Recipe Manager</span>
-        <div class="navbar-nav mx-auto d-flex flex-row">
-          <button id="my-recipes-btn" class="nav-item btn btn-white mr-3">
+        <div class="navbar-nav d-flex flex-row">
+          <button id="my-recipes-btn" class="nav-item btn btn-white">
             My Recipes
           </button>
           <button id="my-fav-btn" class="nav-item btn btn-dark">
@@ -67,8 +67,7 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..."
-            style="height: 45px;" />
+          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search by recipe name..." />
           <div class="accordion-item ml-3">
             <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
@@ -133,13 +132,13 @@
 
             <!-- Name -->
             <div class="input-card">
-              <label for="input-name">Name</label><br>
+              <label for="input-name">Name</label>
               <input type="text" id="input-name" name="input-name">
             </div>
 
             <!-- Description -->
             <div class="input-card">
-              <label for="input-desc">Description</label><br>
+              <label for="input-desc">Description</label>
               <textarea id="input-desc" name="input-desc" rows="5" cols="33"></textarea>
             </div>
 
@@ -158,7 +157,7 @@
 
             <!-- Time -->
             <div class="input-card">
-              <label for="input-time">Time</label><br>
+              <label for="input-time">Time</label>
               <div id="time-inputs">
                 <label for="input-hours">Hour:</label>
                 <input type="number" class="input-hours-mins" id="input-hours" name="input-hours">
@@ -171,7 +170,7 @@
             <!-- Tags -->
             <div class="input-card">
               <div id="tag-wrapper">
-                <label for="input-tags">Tags</label><br>
+                <label for="input-tags">Tags</label>
                 <input type="text" id="input-tags1" class="tags" name="input-tags1">
 
               </div>
@@ -187,7 +186,7 @@
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
               <div id="ing-wrapper">
-                <label>Ingredients</label><br><br>
+                <label>Ingredients</label><br>
                 <label for="input-ings1" id="label-ings1">1.</label>
                 <input type="text" id="input-ings1" class="ings" name="input-ings1">
               </div>
@@ -204,7 +203,7 @@
             <div class="input-card" id="step-card">
 
               <div id="step-wrapper">
-                <label>Steps</label><br>
+                <label>Steps</label>
                 <div class="input-card-steps" id="card-step-1">
                   <label for="input-steps1" id="label-steps1">1.</label>
                   <input type="text" id="input-steps1" class="steps" name="input-steps1">
@@ -214,17 +213,17 @@
 
               <!-- Create new step button-->
               <button class="add-btn step-btn" type="button">+</button>
-              <p style="text-align: center; color: #C4C4C4;">Click to add steps</span>
+              <p style="text-align: center; color: #C4C4C4; font-size: 1.8vw;">Click to add steps</span>
             </div>
 
             <!-- Save Button for Create Recipe -->
-            <button class="save-btn-create btn btn-light"
+            <button id="save-create-btn" class="save-btn-create btn btn-light"
               style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
 
             <!-- Save Button for Edit Recipe -->
-            <button class="save-btn-edit btn btn-light"
+            <button id="save-edit-btn" class="save-btn-edit btn btn-light"
               style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
               <i class="bi bi-check-lg"></i>
             </button>
@@ -234,7 +233,7 @@
       </section>
 
       <button id="create-recipe-btn" class="btn btn-light"
-        style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px;">
+        style="bottom: 20px; right: 15px; position: fixed; border-radius: 20px;">
         <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
       </button>
       <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute; border-radius: 20px;"
@@ -242,11 +241,11 @@
         <i class="bi bi-arrow-return-left"></i>
       </button>
       <button id="delete-btn" class="btn btn-light"
-        style="bottom: 60px; right: 10px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
+        style="bottom: 75px; right: 15px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
         <i id="delbut-icon" class="bi bi-trash"></i>
       </button>
       <button id="cook-mode-btn" class="hidden"
-        style="bottom: 110px; right: 10px; position: fixed; border-radius: 20px;">
+        style="bottom: 130px; right: 15px; position: fixed; border-radius: 20px;">
         <i id="cook-mode-icon" class="bi bi-play"></i>
       </button>
 
@@ -261,7 +260,7 @@
       </div>
 
       <button id="edit-btn" class="btn btn-light"
-        style="bottom: 10px; right: 10px; position: fixed; display: none; border-radius: 20px;">
+        style="bottom: 20px; right: 15px; position: fixed; display: none; border-radius: 20px;">
         <i class="bi bi-pencil-square"></i>
       </button>
 
