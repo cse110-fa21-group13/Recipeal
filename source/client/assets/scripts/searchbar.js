@@ -53,16 +53,18 @@ function searchSpoon() {
                     fetch(RECIPE_INFO)
                         .then(response1 => response1.json())
                         .then(info => {
-                            console.log(info);
-                            let recipeImage = info.image;
-                            let recipeTitle = info.title;
                             let recipeTime = info.readyInMinutes;
-                            let recipeSummary = info.summary;
                             let recipeMin = recipeTime % 60;
                             let recipeHour = recipeTime / 60;
+
+                            let recipeSummary = info.summary;
+                            recipeSummary = recipeSummary.replaceAll('<b>', '');
+                            recipeSummary = recipeSummary.replaceAll('</b>', '');
+                            recipeSummary = recipeSummary.length > 173 ? recipeSummary.substring(0, 170) + "..." : recipeSummary;
+                            
                             const recipeData = {
-                                thumbnail: recipeImage,
-                                name: recipeTitle,
+                                thumbnail: info.image,
+                                name: info.title,
                                 description: recipeSummary,
                                 time: { hours: recipeHour.toString(), minutes: recipeMin.toString() },
                             };
