@@ -402,6 +402,12 @@ i {
 }
 
 @media screen and (min-width: 800px) {
+  button.btn-light:not(#filter-btn) {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    height: 6%;
+    width: 5%;
+  }
   button#refresh-btn, button#show-more-btn {
     width: 100px;
     font-size: inherit;

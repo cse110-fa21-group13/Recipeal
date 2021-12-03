@@ -40,11 +40,12 @@ class RecipeCard extends HTMLElement {
 
       .image-box > .favoriteOnCard{
         position: relative;
-        width: 35px;
-        height: 20px;
+        width: 40px;
+        height: 25px;
         left: 260px;
-        bottom: 185px;
+        bottom: 190px;
         z-index: 1;
+        filter: saturate(20);
       }
 
       .image-box img, .image-box h1{

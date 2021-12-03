@@ -47,9 +47,9 @@ class ExpandRecipe extends HTMLElement {
         #create-recipe--input-wrapper > .favorite{
             position: absolute;
             top: 10%;
-            right: 10px;
-            height: 3%;
-            width: 5vh;
+            right: 1%;
+            height: 5%;
+            width: 8vh;
         }
 
         /* Card for display image */
