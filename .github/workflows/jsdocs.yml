@@ -15,14 +15,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Checkout docs repo
+        uses: actions/checkout@v2
+        with:
+          repository: cse110-fa21-group13/cse110-fa21-group13-docs
+          path: docs
+          token: ${{ secrets.PUSH_TOKEN }}
+          
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
           source_dir: ./source/assets/scripts
-          output_dir: ./jsdocs
+          output_dir: docs
       
       - name: Add documentation
-        uses: EndBug/add-and-commit@v7
-        with:
-          add: ./jsdocs
-          message: 'Update JSDocs'
+        run: |
+          cd docs
+          git add -A
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "update JSDocs"
+          git push https://$USERNAME:$REPO_KEY@github.com/cse110-fa21-group13/cse110-fa21-group13-docs main
+          
+        env:
+          REPO_KEY: ${{ secrets.PUSH_TOKEN }}
+          USERNAME: github-actions[bot]
