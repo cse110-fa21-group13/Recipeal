@@ -59,12 +59,6 @@ export function changeView(e) {
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
-  for (let i = 0; i < localStorage.length; i++) {
-    let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    let reappearRecipe = document.getElementById(storedRecipe.name);
-    reappearRecipe.classList.remove("hidden");
-  }
-
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
     location.reload();
@@ -80,6 +74,11 @@ export function changeView(e) {
       element.innerHTML = "";
     });
     editButton.style.display = "none";
+    for (let i = 0; i < localStorage.length; i++) {
+      let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      let reappearRecipe = document.getElementById(storedRecipe.name);
+      reappearRecipe.classList.remove("hidden");
+    }
   }
   // navigating to favorites page
   else if(innerText === "Favorites" && !deleteMode){
@@ -88,8 +87,8 @@ export function changeView(e) {
 
     for (let i = 0; i < localStorage.length; i++) {
       let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      if(storedRecipe.favorites == 0){
-        let unfavoriteRecipe = document.getElementById(storedRecipe.name)
+      if(storedRecipe.favorites === 0){
+        let unfavoriteRecipe = document.getElementById(storedRecipe.name);
         unfavoriteRecipe.classList.add("hidden");
       }
     }
@@ -191,7 +190,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "1f5556cfc7c942b48451ce0e0c00f1e3";
+  const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
@@ -199,7 +198,7 @@ async function fetchApiRecipes() {
   // Storing data in form of JSON
   let data = await response.json();
 
-  saveToMyRecipes(data);
+  saveToMyRecipes(data, API_KEY);
 
   /*
   for (let i=0; i<3; i++) {
@@ -250,8 +249,8 @@ async function fetchApiRecipes() {
  *  Removes recipes and shows 15 other random recipes
  */
 function refresh() {
-  document.querySelector("#explore-wrapper").innerHTML = ""
-  fetchApiRecipes()
+  document.querySelector("#explore-wrapper").innerHTML = "";
+  fetchApiRecipes();
 }
 
 // Function for return to home page
@@ -279,7 +278,7 @@ window.showTags = function () {
       if(!tags.includes(singleTag)) {
         tags.push(singleTag);
       }
-    })
+    });
   }
   let divTag = document.getElementById("tag-wrapper-filter");
   // If it's not empty, make it empty

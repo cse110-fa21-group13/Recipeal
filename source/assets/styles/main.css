@@ -12,7 +12,7 @@ main {
   width: 100%;
 }
 
-section:not(section.shown) {
+section:not(section.shown){
   display: none;
 }
 
@@ -132,6 +132,11 @@ section:not(section.shown) {
   width: 100%;
 }
 
+#nutrition-facts {
+  margin: auto;
+  width: 250px;
+}
+
 /* Card for ingredients */
 
 #ing-card {
@@ -162,6 +167,11 @@ input {
 input.tags {
   width: 60%;
   margin: 1.5%;
+}
+
+input.nutrition-cat {
+  width: 70px;
+  margin: 5px;
 }
 
 input.ings {
@@ -230,7 +240,7 @@ input[type="number"]:focus {
 
 button.add-btn {
   display: block;
-  margin: 0px auto;
+  margin: 0 auto;
   width: 7vw;
   height: 7vw;
   padding: 0;
@@ -293,7 +303,8 @@ button.btn-light {
   gap: 50px;
 }
 
-button#refresh-btn, button#show-more-btn {
+button#refresh-btn, 
+button#show-more-btn {
   display: block;
   width: 10vw;
   font-size: 2vw;
@@ -306,7 +317,8 @@ button#refresh-btn, button#show-more-btn {
   outline: none;
 }
 
-button#refresh-btn:hover, button#show-more-btn:hover {
+button#refresh-btn:hover, 
+button#show-more-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
@@ -360,25 +372,6 @@ button.save-to-rec-btn:hover {
   justify-content: center;
   flex-wrap: wrap;
 }
-
-/*
-#collapseThree {
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
-  border-radius: 16px;
-  position: absolute;
-  left: 40%;
-  right: 40%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-#existingTags {
-  display: flex;
-  justify-content: center;
-}
-*/
-
 
 .but-secondary {
   cursor: pointer;

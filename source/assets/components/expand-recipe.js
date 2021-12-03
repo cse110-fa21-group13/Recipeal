@@ -66,6 +66,11 @@ class ExpandRecipe extends HTMLElement {
             width: 100%;
             margin: auto;
         }
+
+        #nutrition-facts {
+            margin: auto;
+            width: 250px;
+        }
         
         /* Card for ingredients */
         
@@ -144,6 +149,19 @@ class ExpandRecipe extends HTMLElement {
                 <p class="text" id="input-desc"></p>
             </div>
 
+            <!-- Nutrition -->
+            <div class= "input-card">
+                <label for="nutrition-facts">Nutrition Information</label><br>
+                <label for="input-calories">Calories</label>
+                <p id="input-calories"></p><br>
+                <label for="input-carbs">Carbohydrates(g)</label>
+                <p id="input-carbs"></p><br>
+                <label for="input-fat">Fat(g)</label>
+                <p id="input-fat"></p><br>
+                <label for="input-protein">Protein(g)</label>
+                <p id="input-protein"></p>
+            </div>
+
             <!-- Time -->
             <div class="input-card">
                 <label for="input-time">Time</label><br>
@@ -220,6 +238,19 @@ class ExpandRecipe extends HTMLElement {
             <div class="input-card">
                 <label for="input-desc">Description</label><br>
                 <p class="text" id="input-desc"></p>
+            </div>
+
+            <!-- Nutrition -->
+            <div class= "input-card">
+                <label for="nutrition-facts">Nutrition Information</label><br>
+                <label for="input-calories">Calories</label>
+                <p id="input-calories"></p><br>
+                <label for="input-carbs">Carbohydrates(g)</label>
+                <p id="input-carbs"></p><br>
+                <label for="input-fat">Fat(g)</label>
+                <p id="input-fat"></p><br>
+                <label for="input-protein">Protein(g)</label>
+                <p id="input-protein"></p>
             </div>
 
             <!-- Time -->
@@ -322,7 +353,67 @@ class ExpandRecipe extends HTMLElement {
     else {
         this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
     }
+
+    /*
+    console.log(data.nutritionInfo)
+
+    async function checkImage(url) {
+        // Set nutrition info
+        let myRequest = new Request(data.nutritionInfo);
+        await fetch(myRequest).then(function(response) {
+        console.log(response.status)
+        if (response.status == 200) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    });
+    }
     
+
+    if (checkImage(data.nutritionInfo)) {
+        this.shadowRoot.getElementById('nutrition-facts').setAttribute('src', data.nutritionInfo)
+        console.log("Returned true")
+    }
+    else {
+        this.shadowRoot.getElementById('nutrition-facts-none').innerHTML = "None";
+        console.log("Returned false")
+    }
+    */
+
+    // Calories
+    if (!data.nutritionInfo.calories) {
+        this.shadowRoot.getElementById('input-calories').innerHTML = "None";
+    }
+    else {
+        this.shadowRoot.getElementById('input-calories').innerHTML = data.nutritionInfo.calories;
+    }
+
+    // Carbs
+    if (!data.nutritionInfo.carbs) {
+        this.shadowRoot.getElementById('input-carbs').innerHTML = "None";
+    }
+    else {
+        this.shadowRoot.getElementById('input-carbs').innerHTML = data.nutritionInfo.carbs;
+    }
+
+    // Fat
+    if (!data.nutritionInfo.fat) {
+        this.shadowRoot.getElementById('input-fat').innerHTML = "None";
+    }
+    else {
+        this.shadowRoot.getElementById('input-fat').innerHTML = data.nutritionInfo.fat;
+    }
+
+    // Protein
+    if (!data.nutritionInfo.protein) {
+        this.shadowRoot.getElementById('input-protein').innerHTML = "None";
+    }
+    else {
+        this.shadowRoot.getElementById('input-protein').innerHTML = data.nutritionInfo.protein;
+    }
+
     // Set tags
     let tags = data.tags;
     console.log(tags);

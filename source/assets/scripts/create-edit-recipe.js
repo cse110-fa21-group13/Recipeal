@@ -284,6 +284,7 @@ function saveBase() {
     thumbnail: "",
     favorites: 0,
     saveFrom: "Create",
+    nutritionInfo: { calories: "", carbs: "", fat: "", protein: ""}
   };
 
   // Get name and store it in the object
@@ -293,6 +294,19 @@ function saveBase() {
   // Get description and store it in the object
   let desc = document.getElementById("input-desc").value;
   newRecipe.description = desc;
+
+  // Get nutrition info and store it in the object
+  let calories = document.getElementById("input-calories").value;
+  newRecipe.nutritionInfo.calories = calories;
+
+  let carbs = document.getElementById("input-carbs").value;
+  newRecipe.nutritionInfo.carbs = carbs;
+
+  let fat = document.getElementById("input-fat").value;
+  newRecipe.nutritionInfo.fat = fat;
+
+  let protein = document.getElementById("input-protein").value;
+  newRecipe.nutritionInfo.protein = protein;
 
   // Get time and store it in the object
   let hours = document.getElementById("input-hours").value;
@@ -377,13 +391,13 @@ function saveDataCreate() {
   else if (recipeExists(checkName)) {
     if (confirm("Recipe already exists. Would you like to update it?")) {
       // Delete old recipe 
-      localStorage.removeItem(checkName)
+      localStorage.removeItem(checkName);
       saveBase();
       alert("Recipe updated!");
       reset();
     }
     else {
-      return
+      return;
     }
   }
   // Else, create new recipe object
@@ -404,9 +418,9 @@ function saveDataCreate() {
  */
  function saveDataEdit(originalName) {
   let checkName = document.getElementById("input-name").value.toLowerCase();
-  localStorage.removeItem(originalName)
+  localStorage.removeItem(originalName);
   // Delete old recipe with new name
-  localStorage.removeItem(checkName)
+  localStorage.removeItem(checkName);
   saveBase();
   alert("Recipe updated!");
   reset();
@@ -428,7 +442,7 @@ function saveDataCreate() {
   let cookModeBtn = document.getElementById("cook-mode-btn");
 
   // Get name from expanded recipe page
-  let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase()
+  let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase();
 
   // Get recipe data from name
   let recipe = JSON.parse(window.localStorage.getItem(name));
@@ -444,10 +458,10 @@ function saveDataCreate() {
     switchButtonView(cookModeBtn);
 
     // Hide edit button
-    document.getElementById("edit-btn").style.display = 'none'
+    document.getElementById("edit-btn").style.display = 'none';
 
     // Show save button
-    document.querySelector('button.save-btn-edit').style.display = "block"
+    document.querySelector('button.save-btn-edit').style.display = "block";
 
     // Set Image
     document.getElementById('display-image').src = recipe.thumbnail;
@@ -456,11 +470,17 @@ function saveDataCreate() {
     document.getElementById('input-name').value = recipe.name;
 
     // Set Description
-    document.getElementById('input-desc').value = recipe.description
+    document.getElementById('input-desc').value = recipe.description;
+
+    // Set Nutrition Info
+    document.getElementById('input-calories').value = recipe.nutritionInfo.calories;
+    document.getElementById('input-carbs').value = recipe.nutritionInfo.carbs;
+    document.getElementById('input-fat').value = recipe.nutritionInfo.fat;
+    document.getElementById('input-protein').value = recipe.nutritionInfo.protein;
 
     // Set Hour and Min
-    document.getElementById('input-hours').value = recipe.time.hours
-    document.getElementById('input-mins').value = recipe.time.minutes
+    document.getElementById('input-hours').value = recipe.time.hours;
+    document.getElementById('input-mins').value = recipe.time.minutes;
 
     let i;
     let j;
@@ -492,7 +512,7 @@ function saveDataCreate() {
 
     // Set values for ings
     for (j=1; j <= recipe.ingredients.length; j++) {
-      document.getElementById(`input-ings${j}`).value = recipe.ingredients[j-1]
+      document.getElementById(`input-ings${j}`).value = recipe.ingredients[j-1];
     }
 
     // Create inputs for steps
@@ -508,7 +528,7 @@ function saveDataCreate() {
 
     // Set values for steps
     for (k=1; k <= recipe.directions.length; k++) {
-      document.getElementById(`input-steps${k}`).value = recipe.directions[k-1]
+      document.getElementById(`input-steps${k}`).value = recipe.directions[k-1];
     }
   }
 
@@ -526,11 +546,11 @@ function saveDataCreate() {
  * 
  * @param {JSON} data 
  */
- export function saveToMyRecipes(data) {
+ export async function saveToMyRecipes(data, apiKey) {
   tagCounter = 0;
   ingCounter = 0;
   stepCounter = 0;
-  for (let i=0; i<15; i++) {
+  for (let i=0; i<1; i++) {
     // Array to store ings
     let ings = [];
 
@@ -551,7 +571,7 @@ function saveDataCreate() {
 
     // Get ingredients and push to array
     for (let j=0; j<data.recipes[i].extendedIngredients.length; j++) {
-      ings.push(data.recipes[i].extendedIngredients[j].original)
+      ings.push(data.recipes[i].extendedIngredients[j].original);
     }
     
     summary = data.recipes[i].summary;
@@ -573,9 +593,9 @@ function saveDataCreate() {
     
 
     // Converting time to hours min format
-    time = data.recipes[i].readyInMinutes
+    time = data.recipes[i].readyInMinutes;
     if (time > 60) {
-      timeHour = Math.floor(time / 60)
+      timeHour = Math.floor(time / 60);
       time -= timeHour * 60;
       if(time === 0) {
         time = "";
@@ -588,32 +608,32 @@ function saveDataCreate() {
 
     // Push tags to array
     if (data.recipes[i].cheap === true) {
-      tags.push("cheap")
+      tags.push("cheap");
     }
     if (data.recipes[i].cuisines) {
-      tags = tags.concat(data.recipes[i].cuisines)
+      tags = tags.concat(data.recipes[i].cuisines);
     }
     if (data.recipes[i].dairyFree === true) {
-      tags.push("dairy-free")
+      tags.push("dairy-free");
     }
     if (data.recipes[i].glutenFree === true) {
-      tags.push("gluten-free")
+      tags.push("gluten-free");
     }
     if (data.recipes[i].ketogenic === true) {
-      tags.push("ketogenic")
+      tags.push("ketogenic");
     }
     if (data.recipes[i].vegan === true) {
-      tags.push("vegan")
+      tags.push("vegan");
     }
     if (data.recipes[i].vegetarian === true) {
-      tags.push("vegetarian")
+      tags.push("vegetarian");
     }
     if (data.recipes[i].dishTypes) {
       for(let j = 0; j < data.recipes[i].dishTypes.length; j++) {
         if(data.recipes[i].dishTypes[j] === "main course") {
           data.recipes[i].dishTypes.splice(j, 1);
         }
-        else if(data.recipes[i].dishTypes[j] === "antipasti") {
+        else if(data.recipes[i].dishTypes[j] === "antipasti" || data.recipes[i].dishTypes[j] === "antipasto") {
           data.recipes[i].dishTypes.splice(j, 1);
         }
         else if(data.recipes[i].dishTypes[j] === "appetizer" || data.recipes[i].dishTypes[j] === "hor d'oeuvre") {
@@ -626,12 +646,31 @@ function saveDataCreate() {
           data.recipes[i].dishTypes.splice(j, 1);
         }
       }
-      tags = tags.concat(data.recipes[i].dishTypes)
+      tags = tags.concat(data.recipes[i].dishTypes);
     }
 
+    // Get nutrition info
+    let response = await fetch(
+      `https://api.spoonacular.com/recipes/${data.recipes[i].id}/nutritionWidget.json?apiKey=${apiKey}`
+    );
+
+    // Storing data in form of JSON
+    let nutritionInfo = await response.json();
+
+    let calories = nutritionInfo.calories
+    calories = calories.replace(/\D/g,'');
+
+    let carbs = nutritionInfo.carbs
+    carbs = carbs.replace(/\D/g,'');
+
+    let fat = nutritionInfo.fat
+    fat = fat.replace(/\D/g,'');
+
+    let protein = nutritionInfo.protein
+    protein = protein.replace(/\D/g,'');
 
     // Trim to fit recipe card size
-    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary;
 
     const recipeData = {
       name: data.recipes[i].title,
@@ -643,7 +682,9 @@ function saveDataCreate() {
       thumbnail: data.recipes[i].image,
       favorites: 0,
       saveFrom: 'Explore',
+      nutritionInfo: { calories: Number(calories), carbs: Number(carbs), fat: Number(fat), protein: Number(protein)}
     };
+    console.log(recipeData.name);
 
 
     // Recipe Card
@@ -664,13 +705,13 @@ function saveDataCreate() {
       }
     });
 
-    saveBtn = document.createElement("button")
-    saveBtn.id = `save-to-rec-btn${i}`
+    saveBtn = document.createElement("button");
+    saveBtn.id = `save-to-rec-btn${i}`;
     saveBtn.className = `save-to-rec-btn`;
     saveBtn.innerHTML = "Save to My Recipes";
 
     // Card wrapper to hold recipe card and button
-    const cardWrapper = document.createElement("div")
+    const cardWrapper = document.createElement("div");
     cardWrapper.className = `card${i}`;
     cardWrapper.id = 'explore-recipe-card';
 
@@ -702,6 +743,16 @@ function saveDataCreate() {
 
         // Set Description
         document.getElementById('input-desc').value = summary;
+
+        // Set Nutrition Info
+        console.log(recipeData.nutritionInfo.calories)
+        document.getElementById('input-calories').value = recipeData.nutritionInfo.calories;
+        console.log(recipeData.nutritionInfo.carbs)
+        document.getElementById('input-carbs').value = recipeData.nutritionInfo.carbs;
+        console.log(recipeData.nutritionInfo.fat)
+        document.getElementById('input-fat').value = recipeData.nutritionInfo.fat;
+        console.log(recipeData.nutritionInfo.protein)
+        document.getElementById('input-protein').value = recipeData.nutritionInfo.protein;
 
         // Set Time
         document.getElementById('input-mins').value = recipeData.time.minutes;
@@ -768,7 +819,7 @@ function saveDataCreate() {
 
         // Set values for steps
         for (z=1; z <= steps.length; z++) {
-          document.getElementById(`input-steps${z}`).value = steps[z-1]
+          document.getElementById(`input-steps${z}`).value = steps[z-1];
         }
       }
       else {
@@ -780,9 +831,9 @@ function saveDataCreate() {
         recipeData.name.toLowerCase(),
         JSON.stringify(recipeData));
 
-        alert('Recipe has been saved!')
+        alert('Recipe has been saved!');
       }
-    }
+    };
   }
 }
 
