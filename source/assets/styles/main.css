@@ -17,10 +17,9 @@ section:not(section.shown) {
 }
 
 .navbar-nav {
-  position: absolute; 
-  left: 50%; 
-  width: 200px; 
-  margin-left: -100px;
+  position: relative;
+  text-align: center;
+  margin: auto;
 }
 
 /** RECIPE CARDS IN EXPLORE **/
@@ -83,15 +82,31 @@ section:not(section.shown) {
   margin-top: 20px;
   background-color: #f6f6f6;
   border-radius: 20px;
-  padding: 20px;
+  padding: 5%;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
   width: 85%;
 }
 
+.input-card label {
+  font-size: 2vw;
+  margin-bottom: 0;
+}
+
+.navbar-nav button {
+  font-size: 2vw;
+  padding: 0.5vw 0.8vw;
+  margin-right: 0.5vw;
+}
+
+.navbar span {
+  font-size: 2.5vw;
+}
+
+
 /* Input card for ings */
 
 .input-card-ings {
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 /* Input card for steps */
@@ -99,15 +114,15 @@ section:not(section.shown) {
 .input-card-steps {
   background-color: #f6f6f6;
   border-radius: 20px;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 5%;
+  margin-top: 5%;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Card for display image */
 
 #img-card {
-  padding: 20px;
+  padding: 5%;
   width: 85%;
 }
 
@@ -136,8 +151,8 @@ section:not(section.shown) {
 /** INPUTS **/
 
 input {
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 1.5%;
+  padding: 1.5%;
   font-family: var(--p-font);
   border: 3px solid #ccc;
   resize: none;
@@ -145,8 +160,8 @@ input {
 }
 
 input.tags {
-  width: 100px;
-  margin: 5px;
+  width: 60%;
+  margin: 1.5%;
 }
 
 input.ings {
@@ -158,8 +173,8 @@ input.steps {
 }
 
 input.input-hours-mins {
-  width: 60px;
-  margin: 5px;
+  width: 40%;
+  margin: 1.5%;
 }
 
 input[type="text"] {
@@ -167,8 +182,8 @@ input[type="text"] {
   transition: 0.5s;
   outline: none;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 1.8vw;
+  padding: 3%;
 }
 
 input[type="text"]:focus {
@@ -180,8 +195,8 @@ input[type="number"] {
   transition: 0.5s;
   outline: none;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 1.8vw;
+  padding: 3%;
 }
 
 input[type="number"]:focus {
@@ -190,7 +205,6 @@ input[type="number"]:focus {
 
 #input-desc {
   border-radius: 5px;
-  padding: 5px;
   font-family: var(--p-font);
   border: 3px solid #ccc;
   resize: none;
@@ -199,8 +213,8 @@ input[type="number"]:focus {
   transition: 0.5s;
   outline: none;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 1.8vw;
+  padding: 3%;
   overflow-y: scroll;
 }
 
@@ -217,8 +231,9 @@ input[type="number"]:focus {
 button.add-btn {
   display: block;
   margin: 0px auto;
-  width: 30px;
-  height: 30px;
+  width: 7vw;
+  height: 7vw;
+  padding: 0;
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -280,8 +295,8 @@ button.btn-light {
 
 button#refresh-btn, button#show-more-btn {
   display: block;
-  width: 100px;
-  height: 30px;
+  width: 10vw;
+  font-size: 2vw;
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -337,6 +352,7 @@ button.save-to-rec-btn:hover {
 
 #search-bar {
   position: relative;
+  height: 5vw;
 }
 
 #tag-wrapper-filter {
@@ -372,6 +388,66 @@ button.save-to-rec-btn:hover {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
   outline: none;
-  padding: 10px 20px 10px 20px;
+  padding: 0.75vw 1.5vw;
   margin: 7px;
+  font-size: 2.5vw;
+}
+
+i {
+  font-size: 3vw;
+}
+
+#filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
+  padding: 0 0.4rem;
+}
+
+@media screen and (min-width: 400px) {
+  button.add-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  button#refresh-btn, button#show-more-btn {
+    width: 100px;
+    font-size: inherit;
+  }
+  .but-secondary {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+  .input-card label {
+     font-size: 16px;
+     margin-bottom: 1.5rem;
+  }
+  .navbar-nav button {
+    font-size: 1em;
+    padding: .375rem 0.75rem;
+    margin-right: 10px
+  }
+  .navbar span {
+    font-size: 1.25em;
+  }
+  input[type="text"] {
+    font-size: 15px;
+    padding: 10px;
+  }
+  input[type="number"] {
+    font-size: 15px;
+    padding: 10px;
+  }
+  #input-desc {
+    font-size: 15px;
+    padding: 10px;
+  }
+  #search-bar {
+    height: 45px;
+  }
+  i {
+    font-size: 1rem;
+  }
+  #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
+    padding: 0.25rem 0.5rem;
+  }
 }

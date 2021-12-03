@@ -34,10 +34,11 @@ class ExpandRecipe extends HTMLElement {
         /* Cards for all inputs */
         
         .input-card:not(#img-card) {
-            margin-top: 20px;
+            margin-top: 5%;
             background-color: #f6f6f6;
             border-radius: 20px;
-            padding: 20px;
+            font-size: 1.8vw;
+            padding: 5%;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
             
         }
@@ -58,7 +59,7 @@ class ExpandRecipe extends HTMLElement {
             background-color: #f6f6f6;
             border-radius: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            padding: 10%;
         }
         
         #display-image {
@@ -87,15 +88,16 @@ class ExpandRecipe extends HTMLElement {
             transition: 0.5s;
             outline: none;
             border-radius: 5px;
-            font-size: 15px;
+            font-size: 1.8vw;
         }  
 
         #input-name {
-            font-size: 35px;
+            font-size: 2vw;
         }
 
         ol, ul {
             margin-top: 10px;
+            padding-left: 2vw;
         }
 
         ol li:not(:first-child) {
@@ -106,12 +108,21 @@ class ExpandRecipe extends HTMLElement {
         padding-right: 5px;
         }
         
-        ul li {
-        padding-left: 2px;
-        }
+
 
         ul li:not(:first-child) {
         margin-top: 8px;
+        }
+        @media screen and (min-width: 800px) {
+            #input-name {
+                font-size: 35px;
+            }
+            .input-card:not(#img-card) {
+                font-size: 20px;
+            }
+            p.text:not(#input-name) {
+                font-size: 15px;
+            }
         }
     `;
     article.innerHTML = `
