@@ -19,6 +19,14 @@ function searchRecipe() {
     }
 }
 
+/**
+ * @method filterTags 
+ *  Checks the tag list of each existing recipe card. If the filter tag is not in a recipe's tag list,
+ *  that recipe gets hidden. If the filter is being turned off, then check the list of tags still being
+ *  filtered for against each recipe's tag list. If there is no intersection, display the recipe
+ *  
+ * @param {string} tag The filter to be applied
+ */
 function filterTags(tag) {
     let recipeCards = document.getElementById("recipe-cards");
     let allRecipes = recipeCards.children;
