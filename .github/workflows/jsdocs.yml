@@ -37,5 +37,5 @@ jobs:
           git push https://$USERNAME:$REPO_KEY@github.com/cse110-fa21-group13/cse110-fa21-group13-docs main
           
         env:
-          REPO_KEY: ${{ secrets.PUSH_TOKEN }}
+          REPO_KEY: ${{ github.token }}
           USERNAME: github-actions[bot]
