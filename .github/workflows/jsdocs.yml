@@ -14,15 +14,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: code
+        
+      - name: Checkout documentation repo
+        uses: actions/checkout@v2
+        with:
+          repository: cse110-fa21-group13/cse110-fa21-group15-docs
+          path: docs
+          token: ${{ secrets.PUSH_TOKEN }}
 
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source/assets/scripts
-          output_dir: ./jsdocs
+          source_dir: code/source
+          output_dir: docs
       
       - name: Add documentation
         uses: EndBug/add-and-commit@v7
         with:
-          add: ./jsdocs
+          add: docs
           message: 'Update JSDocs'
