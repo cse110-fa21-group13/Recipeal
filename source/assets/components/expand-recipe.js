@@ -87,6 +87,10 @@ class ExpandRecipe extends HTMLElement {
             background-color: transparent;
             box-shadow: none;
         }
+
+        p {
+            margin-bottom: 0;
+        }
         
         p.text:not(#input-name) {
             -webkit-transition: 0.5s;

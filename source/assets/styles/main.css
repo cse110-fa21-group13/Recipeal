@@ -65,7 +65,7 @@ section:not(section.shown){
   margin-top: 30px;
   margin-bottom: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 10px;
   padding-left: 50px;
@@ -73,7 +73,7 @@ section:not(section.shown){
 }
 
 .input-wrapper--column {
-  width: 30%;
+  width: 100%;
 }
 
 /* Cards for all inputs */
@@ -165,13 +165,13 @@ input {
 }
 
 input.tags {
-  width: 60%;
+  width: 40%;
   margin: 1.5%;
 }
 
 input.nutrition-cat {
-  width: 70px;
-  margin: 5px;
+  width: 7vw;
+  margin: 0.5vw;
 }
 
 input.ings {
@@ -449,4 +449,18 @@ i {
   #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
     padding: 0.25rem 0.5rem;
   }
+
+  input.nutrition-cat {
+    width: 70px;
+    margin: 5px;
+  }
+
+  #create-recipe--input-wrapper {
+    flex-direction: row;
+  }
+
+  .input-wrapper--column {
+    width: 30%;
+  }
+
 }
