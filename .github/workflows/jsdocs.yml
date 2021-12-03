@@ -20,7 +20,6 @@ jobs:
         with:
           repository: cse110-fa21-group13/cse110-fa21-group13-docs
           path: docs
-          token: ${{ secrets.PUSH_TOKEN }}
           
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
