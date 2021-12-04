@@ -7,19 +7,19 @@ describe('example to-do app', () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
-    cy.visit('https://project-cupcake.netlify.app/')
+    cy.visit('https://project-cupcake.netlify.app/');
   })
 
   it("search before create", ()=>{
     cy.get('input#search-bar')          
     .then($els => {
-      expect($els.length).to.eq(1)    
+      expect($els.length).to.eq(1);
     })
     .type('myfood');
     cy.get('button#filter-btn').click();
     cy.get('div#recipe-cards').
       then($els => {
-      expect($els.length).to.eq(1)    
+      expect($els.length).to.eq(1);
     })
   })
 
@@ -32,8 +32,11 @@ describe('example to-do app', () => {
     cy.get('textarea#input-desc').type('this is some desc');
     cy.get('input#input-hours').type('1');
     cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
     cy.get('input#input-tags1').type('1st tag');
+    cy.xpath('//*[@id="ing-card"]/button').click();
     cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
     cy.get('input#input-steps1').type('1st steps');
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
     cy.get('button#return-btn').click();
@@ -57,11 +60,16 @@ describe('create one sample recipe', ()=>{
     cy.get('textarea#input-desc').type('this is some desc');
     cy.get('input#input-hours').type('1');
     cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
     cy.get('input#input-tags1').type('1st tag');
+    cy.xpath('//*[@id="ing-card"]/button').click();
     cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
     cy.get('input#input-steps1').type('1st steps');
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
     cy.get('button#return-btn').click();
+    // check if element is being saved
+    cy.get('recipe-card#myfood').should('exist');
   })
 
   it('information saved correctly in create', ()=>{
