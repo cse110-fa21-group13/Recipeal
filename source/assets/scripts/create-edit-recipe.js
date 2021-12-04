@@ -581,7 +581,7 @@ function saveDataCreate() {
   // Save Button Edit
   let saveButtonEdit = document.getElementById("save-edit-btn");
   saveButtonEdit.addEventListener("click", function save() {
-    saveDataEdit(name, save)
+    saveDataEdit(name, save);
   })
 }
 

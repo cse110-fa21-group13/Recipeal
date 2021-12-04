@@ -35,6 +35,7 @@ showMoreButton.addEventListener("click", (e) => {
   fetchApiRecipes();
 });
 
+let exploreCheck = 0;
 
 /*
  * Function to switch pages
@@ -106,13 +107,15 @@ export function changeView(e) {
     myRecipes.classList.remove("shown");
     createRecipe.classList.remove("shown");
     expandRecipe.classList.remove("shown");
+    explore.classList.remove("hidden");
     explore.classList.add("shown");
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
-    if(!returnButton.classList.contains("explore")) {
+    if(exploreCheck === 0) {
       refresh();
+      exploreCheck++;
     }
     returnButton.className = "hidden";
   }
