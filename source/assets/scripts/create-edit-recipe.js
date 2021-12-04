@@ -281,32 +281,6 @@ function reset() {
   document.getElementById("tag-wrapper").innerHTML = "";
   document.getElementById("ing-wrapper").innerHTML = "";
   document.getElementById("step-wrapper").innerHTML = "";
-/*
-  let i = 1;
-  let j = 1;
-  let k = 1;
-  i++;
-  j++;
-  k++;
-
-  // Loop through all tag inputs and remove them
-  while (i <= tagCounter) {
-    document.getElementById("input-tags" + i).remove();
-    i++;
-  }
-
-  // Loop through all ings inputs and remove them
-  while (j <= ingCounter) {
-    document.getElementById("card-ing" + j).remove();
-    j++;
-  }
-
-  // Loop through all dir inputs and remove them
-  while (k <= stepCounter) {
-    document.getElementById("card-step" + k).remove();
-    k++;
-  }
-  */
 
   // Set image to default
   document.getElementById("display-image").src =
@@ -473,15 +447,16 @@ function saveDataCreate() {
  *  Changes screen to expanded recipe page of saved recipe
  *
  * @param {String} originalName - original name of recipe used for deletion
+ * @param {function} functionName - name of function to remove from event listener
  */
- function saveDataEdit(originalName) {
-  console.log("saveDataEdit gets called");
+ function saveDataEdit(originalName, functionName) {
   localStorage.removeItem(originalName);
   saveBase();
   alert("Recipe updated!");
+  let saveButtonEdit = document.getElementById("save-edit-btn");
+  saveButtonEdit.removeEventListener("click", functionName)
   reset();
 }
-
 
 /**
  * @method navEdit
@@ -504,6 +479,8 @@ function saveDataCreate() {
   let recipe = JSON.parse(window.localStorage.getItem(name));
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
+
+  
   
   if (innerText === "Edit Recipe") {
     
@@ -588,12 +565,11 @@ function saveDataCreate() {
     }
   }
 
-  console.log("navEdit gets called")
   // Save Button Edit
-  let saveButtonEdit = document.querySelector("button.save-btn-edit");
-  saveButtonEdit.addEventListener("click", () => {
-  saveDataEdit(name);
-  });
+  let saveButtonEdit = document.getElementById("save-edit-btn");
+  saveButtonEdit.addEventListener("click", function save() {
+    saveDataEdit(name, save)
+  })
 }
 
 /**
