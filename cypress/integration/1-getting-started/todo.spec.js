@@ -60,8 +60,7 @@ describe('create one sample recipe', ()=>{
     cy.get('textarea#input-desc').type('this is some desc');
     cy.get('input#input-hours').type('1');
     cy.get('input#input-mins').type('30');
-    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
-    cy.get('input#input-tags1').type('1st tag');
+    /*
     cy.xpath('//*[@id="ing-card"]/button').click();
     cy.get('input#input-ings1').type('1st ings');
     cy.xpath('//*[@id="step-card"]/button').click();
@@ -70,13 +69,57 @@ describe('create one sample recipe', ()=>{
     cy.get('button#return-btn').click();
     // check if element is being saved
     cy.get('recipe-card#myfood').should('exist');
+    */
   })
 
-  it('information saved correctly in create', ()=>{
-    //cy.xpath('//*[@id="myfood"]//article/div[1]/div/h1').should('be.visible');
-    
+  it('more tag', ()=>{
+
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click(); 
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.get('input#input-tags1').type('1st tag');
+    cy.get('input#input-tags2').type('2nd tag');
+    cy.get('input#input-tags3').type('3rd tag');
+    cy.get('input#input-tags4').type('4th tag');
+    cy.get('input#input-tags5').type('5th tag');
+    cy.get('button#return-btn').click();
     //cy.get('recipe-card#myfood').children('div#')
 
+  })
+
+  it('more step', ()=>{
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps2').type('2nd steps');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps3').type('3rd steps');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps4').type('4th steps');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps5').type('5th steps');
+
+  })
+
+  it('more ing', ()=>{
+
+
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings2').type('2nd ings');
+
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings3').type('3rd ings');
+
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings4').type('4th ings');
+
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings5').type('5th ings');
   })
 
 
