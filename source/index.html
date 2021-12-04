@@ -48,7 +48,7 @@
           </button>
           <button id="my-fav-btn" class="nav-item btn btn-dark">
             Favorites
-          </button> 
+          </button>
           <button id="explore-btn" class="nav-item btn btn-dark">
             Explore
           </button>
@@ -67,7 +67,8 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search by recipe name..." />
+          <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()"
+            placeholder="Search by recipe name..." />
           <div class="accordion-item ml-3">
             <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
@@ -169,15 +170,14 @@
 
             <!-- Tags -->
             <div class="input-card">
+              <label for="input-tags">Tags</label>
               <div id="tag-wrapper">
-                <label for="input-tags">Tags</label><br>
-                <input type="text" id="input-tags1" class="tags" name="input-tags1">
-
               </div>
               <br>
 
               <!-- Create new tag input button-->
               <button class="add-btn tag-btn" type="button">+</button>
+              <p style="text-align: center; color: #C4C4C4; font-size: 1vw;">Click to add tags</span>
             </div>
           </div>
 
@@ -185,29 +185,24 @@
           <div class="input-wrapper--column">
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
+              <label>Ingredients</label><br>
               <div id="ing-wrapper">
-                <label>Ingredients</label><br>
-                <label for="input-ings1" id="label-ings1">1.</label>
-                <input type="text" id="input-ings1" class="ings" name="input-ings1">
+
               </div>
 
               <br>
 
               <!-- Create new ingredient button-->
               <button class="add-btn ing-btn" type="button">+</button>
+              <p style="text-align: center; color: #C4C4C4; font-size: 1.5vw;">Click to add ingredients</span>
             </div>
           </div>
 
           <!-- THIRD COLUMN -->
           <div class="input-wrapper--column">
             <div class="input-card" id="step-card">
-
+              <label>Steps</label>
               <div id="step-wrapper">
-                <label>Steps</label>
-                <div class="input-card-steps" id="card-step-1">
-                  <label for="input-steps1" id="label-steps1">1.</label>
-                  <input type="text" id="input-steps1" class="steps" name="input-steps1">
-                </div>
               </div>
               <br><br>
 
