@@ -791,9 +791,6 @@ function saveDataCreate() {
 
         // TAGS
 
-        // Clear first input
-        document.getElementById('input-tags1').remove();
-
         // Create inputs for tags
         for (x = 1; x <= tags.length; x++) {
           document.getElementById("tag-wrapper").innerHTML += `
@@ -808,10 +805,6 @@ function saveDataCreate() {
         }
 
         // INGREDIENTS
-
-        // Clear first input
-        document.getElementById('label-ings1').remove();
-        document.getElementById('input-ings1').remove();
 
         // Create inputs for ings
         for (y = 1; y <= ings.length; y++) {
@@ -830,9 +823,6 @@ function saveDataCreate() {
         }
 
         // INSTRUCTIONS
-
-        // Clear first input
-        document.getElementById('card-step-1').remove();
 
         // Create inputs for steps
         for (z=1; z<= steps.length; z++) {
