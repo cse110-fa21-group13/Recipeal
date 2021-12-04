@@ -55,7 +55,6 @@ function handleImageUpload() {
   let fileReader = new FileReader();
   fileReader.onload = function (e) {
     document.getElementById("display-image").src = e.target.result;
-    console.log(e.target.result);
   };
   if (image) {
     fileReader.readAsDataURL(image);
@@ -65,7 +64,7 @@ function handleImageUpload() {
 /* TAGS */
 
 // Keep track of number of tag inputs
-let tagCounter = 1;
+let tagCounter = 0;
 
 // Array to store tags to repopulate tags later
 let prevTags = [];
@@ -78,6 +77,18 @@ let prevTags = [];
  * @returns none
  */
 function addNewTag() {
+
+  // Adding first tag
+  if (tagCounter == 0) {
+    document.getElementById("tag-wrapper").innerHTML += `
+    <input type="text" id="input-tags${String(
+      tagCounter + 1
+    )}" class="tags" name="input-tags${String(tagCounter + 1)}">
+    `;
+    tagCounter++;
+    return;
+  }
+
   // Save prev tags in array
   for (let i = 1; i <= tagCounter; i++) {
     let value = document.getElementById(`input-tags${i}`).value;
@@ -104,7 +115,7 @@ function addNewTag() {
 /* INGREDIENTS */
 
 // Keep track of number of ingredient inputs
-let ingCounter = 1;
+let ingCounter = 0;
 
 // Array to store tags to repopulate tags later
 let prevIngs = [];
@@ -117,6 +128,25 @@ let prevIngs = [];
  * @returns none
  */
 function addNewIngredient() {
+
+  // Adding first ing
+  if (ingCounter == 0) {
+    document.getElementById(
+      "ing-wrapper"
+    ).innerHTML += `<div class="input-card-ings" id=card-ing${String(
+      ingCounter + 1
+    )}>
+      <label for="input-ings${String(ingCounter + 1)}" id=label-ings${String(
+      ingCounter + 1
+    )}>${String(ingCounter + 1)}.</label>
+      <input type="text" id="input-ings${String(
+        ingCounter + 1
+      )}"  class="ings" name="input-ings${String(ingCounter + 1)}">
+   </div>`;
+    ingCounter++;
+    return;
+  }
+  else {
   // Save prev tags in array
   for (let i = 1; i <= ingCounter; i++) {
     let value = document.getElementById(`input-ings${i}`).value;
@@ -148,11 +178,12 @@ function addNewIngredient() {
     prevIngs.pop();
   }
 }
+}
 
 /* DIRECTIONS */
 
 // Keep track of number of step inputs
-let stepCounter = 1;
+let stepCounter = 0;
 
 // Array to store tags to repopulate tags later
 let prevSteps = [];
@@ -165,6 +196,25 @@ let prevSteps = [];
  * @returns none
  */
 function addNewStep() {
+
+  // Adding first step
+  if (stepCounter == 0) {
+    document.getElementById(
+      "step-wrapper"
+    ).innerHTML += `<div class="input-card-steps" id=card-step${String(
+      stepCounter + 1
+    )}>
+    <label for="input-steps${String(stepCounter + 1)}" id=label-steps${String(
+      stepCounter + 1
+    )}>${String(stepCounter + 1)}.</label>
+      <input type="text" id="input-steps${String(
+        stepCounter + 1
+      )}"  class="steps" name="input-steps${String(stepCounter + 1)}">
+      </div>`;
+    stepCounter++;
+    return;
+  }
+
   // Save prev tags in array
   for (let i = 1; i <= stepCounter; i++) {
     let value = document.getElementById(`input-steps${i}`).value;
@@ -228,40 +278,14 @@ function reset() {
   document.getElementById("input-hours").value = "";
   document.getElementById("input-mins").value = "";
 
-  let i = 1;
-  let j = 1;
-  let k = 1;
-
-  document.getElementById("input-tags" + i).value = "";
-  document.getElementById("input-ings" + j).value = "";
-  document.getElementById("input-steps" + k).value = "";
-
-  i++;
-  j++;
-  k++;
-
-  // Loop through all tag inputs and remove them
-  while (i <= tagCounter) {
-    document.getElementById("input-tags" + i).remove();
-    i++;
-  }
-
-  // Loop through all ings inputs and remove them
-  while (j <= ingCounter) {
-    document.getElementById("card-ing" + j).remove();
-    j++;
-  }
-
-  // Loop through all dir inputs and remove them
-  while (k <= stepCounter) {
-    document.getElementById("card-step" + k).remove();
-    k++;
-  }
+  document.getElementById("tag-wrapper").innerHTML = "";
+  document.getElementById("ing-wrapper").innerHTML = "";
+  document.getElementById("step-wrapper").innerHTML = "";
 
   // Set image to default
   document.getElementById("display-image").src =
     "https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png";
-
+    
   tagCounter = 0;
   ingCounter = 0;
   stepCounter = 0;
@@ -322,8 +346,10 @@ function saveBase() {
   let j = 1;
   let k = 1;
 
-  // Loop through all tag inputs and push them to array
-  while (i <= tagCounter) {
+  // If first input exists, then loop
+  if (document.getElementById(`input-tags1`)) {
+    // Loop through all tag inputs and push them to array
+    while (i <= tagCounter) {
     let tagsValue = document.getElementById(`input-tags${i}`).value;
     if(tagsValue == "") {
       i++;
@@ -333,7 +359,10 @@ function saveBase() {
       i++;
     }
   }
+  }
+  
 
+  if (document.getElementById(`input-ings1`)) {
   // Loop through all ings inputs and push them to array
   while (j <= ingCounter) {
     let ingsValue = document.getElementById(`input-ings${j}`).value;
@@ -345,7 +374,9 @@ function saveBase() {
       j++;
     }
   }
+}
 
+if (document.getElementById(`input-steps1`)) {
   // Loop through all dir inputs and push them to array
   while (k <= stepCounter) {
     let stepsValue = document.getElementById(`input-steps${k}`).value;
@@ -357,6 +388,7 @@ function saveBase() {
       k++;
     }
   }
+}
 
   // Get image and store in in the object as a string
   let img = document.getElementById("display-image");
@@ -389,11 +421,17 @@ function saveDataCreate() {
   }
   // Check if recipe has already been made
   else if (recipeExists(checkName)) {
-    if (confirm("Recipe already exists. Would you like to update it?")) {
-      // Delete old recipe 
-      localStorage.removeItem(checkName);
+    if (confirm("Recipe already exists. Would you like to overwrite it?")) {
+      // Delete old recipe
+      let recipeCards = document.getElementById("recipe-cards").children;
+      for(let i = 0; i < recipeCards.length; i++) {
+        if(recipeCards[i].id.toLowerCase() === checkName) {
+          recipeCards[i].parentNode.removeChild(recipeCards[i]);
+        }
+      } 
+      localStorage.removeItem(checkName)
       saveBase();
-      alert("Recipe updated!");
+      alert("Recipe overwritten!");
       reset();
     }
     else {
@@ -415,17 +453,24 @@ function saveDataCreate() {
  *  Changes screen to expanded recipe page of saved recipe
  *
  * @param {String} originalName - original name of recipe used for deletion
+ * @param {function} functionName - name of function to remove from event listener
  */
  function saveDataEdit(originalName) {
   let checkName = document.getElementById("input-name").value.toLowerCase();
   localStorage.removeItem(originalName);
   // Delete old recipe with new name
-  localStorage.removeItem(checkName);
+  let recipeCards = document.getElementById("recipe-cards").children;
+  for(let i = 0; i < recipeCards.length; i++) {
+    if(recipeCards[i].id.toLowerCase() === originalName) {
+      recipeCards[i].parentNode.removeChild(recipeCards[i]);
+    }
+  }
   saveBase();
   alert("Recipe updated!");
+  let saveButtonEdit = document.getElementById("save-edit-btn");
+  saveButtonEdit.removeEventListener("click", functionName)
   reset();
 }
-
 
 /**
  * @method navEdit
@@ -448,6 +493,8 @@ function saveDataCreate() {
   let recipe = JSON.parse(window.localStorage.getItem(name));
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
+
+  
   
   if (innerText === "Edit Recipe") {
     
@@ -487,7 +534,7 @@ function saveDataCreate() {
     let k;
 
     // Create inputs for tags
-    for (i = 2; i <= recipe.tags.length; i++) {
+    for (i = 1; i <= recipe.tags.length; i++) {
       document.getElementById("tag-wrapper").innerHTML += `
       <input type="text" id="input-tags${i}" class="tags" name="input-tags${i}">
       `;
@@ -500,7 +547,7 @@ function saveDataCreate() {
     }
 
     // Create inputs for ings
-    for (j = 2; j <= recipe.ingredients.length; j++) {
+    for (j = 1; j <= recipe.ingredients.length; j++) {
       document.getElementById(
         "ing-wrapper"
       ).innerHTML += `<div class="input-card-ings" id=card-ing${j}>
@@ -516,7 +563,7 @@ function saveDataCreate() {
     }
 
     // Create inputs for steps
-    for (k=2; k<= recipe.directions.length; k++) {
+    for (k=1; k<= recipe.directions.length; k++) {
       document.getElementById(
         "step-wrapper"
       ).innerHTML += `<div class="input-card-steps" id=card-step${k}>
@@ -533,10 +580,10 @@ function saveDataCreate() {
   }
 
   // Save Button Edit
-  let saveButtonEdit = document.querySelector("button.save-btn-edit");
-  saveButtonEdit.addEventListener("click", () => {
-  saveDataEdit(name);
-});
+  let saveButtonEdit = document.getElementById("save-edit-btn");
+  saveButtonEdit.addEventListener("click", function save() {
+    saveDataEdit(name, save)
+  })
 }
 
 /**
@@ -657,16 +704,16 @@ function saveDataCreate() {
     // Storing data in form of JSON
     let nutritionInfo = await response.json();
 
-    let calories = nutritionInfo.calories
+    let calories = nutritionInfo.calories;
     calories = calories.replace(/\D/g,'');
 
-    let carbs = nutritionInfo.carbs
+    let carbs = nutritionInfo.carbs;
     carbs = carbs.replace(/\D/g,'');
 
-    let fat = nutritionInfo.fat
+    let fat = nutritionInfo.fat;
     fat = fat.replace(/\D/g,'');
 
-    let protein = nutritionInfo.protein
+    let protein = nutritionInfo.protein;
     protein = protein.replace(/\D/g,'');
 
     // Trim to fit recipe card size
@@ -684,7 +731,6 @@ function saveDataCreate() {
       saveFrom: 'Explore',
       nutritionInfo: { calories: Number(calories), carbs: Number(carbs), fat: Number(fat), protein: Number(protein)}
     };
-    console.log(recipeData.name);
 
 
     // Recipe Card
@@ -745,13 +791,9 @@ function saveDataCreate() {
         document.getElementById('input-desc').value = summary;
 
         // Set Nutrition Info
-        console.log(recipeData.nutritionInfo.calories)
         document.getElementById('input-calories').value = recipeData.nutritionInfo.calories;
-        console.log(recipeData.nutritionInfo.carbs)
         document.getElementById('input-carbs').value = recipeData.nutritionInfo.carbs;
-        console.log(recipeData.nutritionInfo.fat)
         document.getElementById('input-fat').value = recipeData.nutritionInfo.fat;
-        console.log(recipeData.nutritionInfo.protein)
         document.getElementById('input-protein').value = recipeData.nutritionInfo.protein;
 
         // Set Time
@@ -830,6 +872,8 @@ function saveDataCreate() {
         localStorage.setItem(
         recipeData.name.toLowerCase(),
         JSON.stringify(recipeData));
+
+        newCard(recipeData.name.toLowerCase());
 
         alert('Recipe has been saved!');
       }

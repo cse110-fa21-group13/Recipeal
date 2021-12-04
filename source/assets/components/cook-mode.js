@@ -25,7 +25,6 @@ class CookMode extends HTMLElement {
             overflow-wrap: break-word;
             background-color: #F4F4F4;
             border-radius: 20px;
-            padding: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
         
@@ -42,18 +41,29 @@ class CookMode extends HTMLElement {
         /* Card for ingredients */
         
         #ing-card {
-            height: 100vh;
-            width: 500px;
+            height: 100%;
+            width: 30vw;
+            margin: 2vw;
+            padding-right: 1vw;
+        }
+
+        #ing-wrapper {
+            text-align:center;
         }
         
         /* Card for steps */
         
         #step-card {
             height: 98%;
-            width: 100vh;
+            width: 50vw;
             background-color: transparent;
             box-shadow: none;
-            margin-top: 40px;
+            margin-top: 13vw;
+        }
+
+        .steps {
+            font-size: 2.6vw;
+            margin-bottom: 0;
         }
         
         p.text {
@@ -61,20 +71,23 @@ class CookMode extends HTMLElement {
             transition: 0.5s;
             outline: none;
             border-radius: 5px;
-            font-size: 15px;
+            font-size: 3vw;
         }  
 
         #ing-label {
-            font-size: 35px;
-            margin-top: 50px;
-            margin-left: 25%;
+            font-size: 3vw;
+            margin-top: 2vw;
         }
 
         ul {
             margin-top: 10px;
+            padding-left: 15%;
+            text-align: left;
         }
         
         ul li {
+            float: left;
+            font-size: 2.25vw;
             padding-left: 5px;
         }
 
@@ -86,8 +99,9 @@ class CookMode extends HTMLElement {
             margin-top: 15px;
             left: 36%;
             position: absolute;
-            width: 100px;
-            height: 50px;
+            width: 13vw;
+            font-size: 2vw;
+            padding: 0.5em;
             cursor: pointer;
             border-radius: 20px;
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.18);
@@ -127,6 +141,25 @@ class CookMode extends HTMLElement {
         button.btn-light:not(.back-btn) {
             background-color: white;
             border: 1px solid #000;    
+        }
+
+        @media screen and (min-width: 800px) {
+            button.back-btn {
+                width: 100px;
+                font-size: inherit;
+            }
+            #ing-label {
+                font-size: 35px;
+            }
+            #step-card {
+                margin-top: 80px;
+            }
+            .steps {
+                font-size: 25px;
+            }
+            ul li {
+                font-size: 20px;
+            }
         }
         `;
         article.innerHTML = `

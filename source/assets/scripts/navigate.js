@@ -61,7 +61,7 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
-    location.reload();
+    //location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -77,7 +77,9 @@ export function changeView(e) {
     for (let i = 0; i < localStorage.length; i++) {
       let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
       let reappearRecipe = document.getElementById(storedRecipe.name);
-      reappearRecipe.classList.remove("hidden");
+      if(reappearRecipe) {
+        reappearRecipe.classList.remove("hidden");
+      }
     }
   }
   // navigating to favorites page
@@ -110,9 +112,11 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
-    if(!returnButton.classList.contains("explore")) {
+    //console.log(returnButton.classList);
+    //if(!returnButton.classList.contains("explore")) {
+      //console.log(returnButton.classList);
       refresh();
-    }
+    //}
     returnButton.className = "hidden";
   }
   // navigating to recipe expand page
@@ -190,7 +194,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
+  const API_KEY = "a3af6d458f354cab920d3cd9caefde2b";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
@@ -200,49 +204,8 @@ async function fetchApiRecipes() {
 
   saveToMyRecipes(data, API_KEY);
 
-  /*
-  for (let i=0; i<3; i++) {
-    const curRecipe = data.recipes[i];
-    let summary = curRecipe.summary
-    summary = summary.replaceAll('<b>', '')
-    summary = summary.replaceAll('</b>', '')
-
-    // Trim to fit recipe card size
-    summary = summary.length > 173 ? summary.substring(0, 170) + "..." : summary
-    
-    let tags = curRecipe.cuisines.concat(curRecipe.diets).concat(curRecipe.dishTypes);
-
-    let ingredients = curRecipe.extendedIngredients.map((v)=>{
-        return v.name;
-      });
-
-    let directions;
-    if(curRecipe.analyzedInstructions){
-      directions = curRecipe.analyzedInstructions[0].steps.map((v)=>{
-        return v.step;
-      });
-    }
-
-    const recipeData = {
-      thumbnail: data.recipes[i].image,
-      name: data.recipes[i].title,
-      description: summary,
-      time: { hours: "", minutes: "" },
-      tags,
-      ingredients,
-      directions,
-    };
-    
-    const recipeCard = document.createElement("recipe-card");
-    recipeCard.data = recipeData;
-    recipeCard.addEventListener("click", (e) => {
-        document.querySelector("recipe-expand").data = recipeData;
-        changeView("Recipe Expand");
-    });
-    
-    //document.querySelector("#explore-wrapper").appendChild(recipeCard);
-    */
-  }
+  
+}
 
 /**
  * @method refresh
@@ -262,7 +225,8 @@ window.returnToHomePage = function () {
     returnBut.classList.remove("explore");
   }
   else{
-    location.reload();
+    //location.reload();
+    changeView("My Recipes");
   }
 };
 
