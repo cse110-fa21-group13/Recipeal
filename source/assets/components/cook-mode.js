@@ -98,7 +98,7 @@ class CookMode extends HTMLElement {
             position: fixed;
             margin-top: 10px;
             border-radius: 20px;
-            right: 50px;
+            right: 10px;
             width: 200px;
             height: 50px;
             border: 1px solid #000;
@@ -208,7 +208,7 @@ class CookMode extends HTMLElement {
                 <p class="semicolon">:</p>
                 <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
             </div>
-            <button id="timer-btn" class="btn btn-light" style="top: 15px; right: 257px; position: fixed; border-radius: 20px;">
+            <button id="timer-btn" class="btn btn-light" style="top: 15px; right: 215px; position: fixed; border-radius: 20px;">
                 <i id="timer-icon" class="bi bi-play-fill"></i>
             </button>
         </div> 
