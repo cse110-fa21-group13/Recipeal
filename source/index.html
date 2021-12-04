@@ -25,6 +25,7 @@
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
   <script src="assets/scripts/searchbar.js"></script>
+  <script src="assets/scripts/no-sleep.js"></script> 
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -258,6 +259,28 @@
         style="bottom: 20px; right: 15px; position: fixed; display: none; border-radius: 20px;">
         <i class="bi bi-pencil-square"></i>
       </button>
+
+      <button id="sleep-btn" class="hidden"
+        style="top: 15px; right: 50%; position: absolute; border-radius: 20px;">
+        <i id="sleep-icon" class="bi bi-brightness-high"></i>
+      </button>
+
+      <script>
+        let noSleep = new NoSleep();
+        let sleepBtn = document.getElementById("sleep-btn");
+        let sleepIcon = document.getElementById("sleep-icon");
+        sleepBtn.addEventListener("click", () => {
+          if(sleepIcon.className === "bi bi-brightness-high") {
+            noSleep.enable();
+            console.log("success");
+            sleepIcon.className = "bi bi-brightness-high-fill";
+          } else {
+            noSleep.disable();
+            console.log("yep");
+            sleepIcon.className = "bi bi-brightness-high";
+          }  
+        });
+      </script>
 
       <script type="module">
         import { navEdit } from "./assets/scripts/create-edit-recipe.js";

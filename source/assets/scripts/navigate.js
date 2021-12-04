@@ -56,6 +56,7 @@ export function changeView(e) {
   const cookModeBut = document.getElementById("cook-mode-btn");
   const cookMode = document.querySelector(".section--cook-mode");
   const navBar = document.querySelector("nav");
+  const sleepBtn = document.getElementById("sleep-btn");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -134,6 +135,7 @@ export function changeView(e) {
     deleteButton.className = "btn btn-light";
     cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
+    sleepBtn.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
@@ -147,6 +149,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     cookModeBut.className = "hidden";
     editButton.style.display = "none";
+    sleepBtn.className = "btn btn-light";
   }
   // navigating to create recipe page
   else if (
