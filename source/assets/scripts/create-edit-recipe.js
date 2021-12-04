@@ -455,8 +455,7 @@ function saveDataCreate() {
  * @param {String} originalName - original name of recipe used for deletion
  * @param {function} functionName - name of function to remove from event listener
  */
- function saveDataEdit(originalName) {
-  let checkName = document.getElementById("input-name").value.toLowerCase();
+ function saveDataEdit(originalName, functionName) {
   localStorage.removeItem(originalName);
   // Delete old recipe with new name
   let recipeCards = document.getElementById("recipe-cards").children;
@@ -805,9 +804,6 @@ function saveDataCreate() {
 
         // TAGS
 
-        // Clear first input
-        document.getElementById('input-tags1').remove();
-
         // Create inputs for tags
         for (x = 1; x <= tags.length; x++) {
           document.getElementById("tag-wrapper").innerHTML += `
@@ -822,10 +818,6 @@ function saveDataCreate() {
         }
 
         // INGREDIENTS
-
-        // Clear first input
-        document.getElementById('label-ings1').remove();
-        document.getElementById('input-ings1').remove();
 
         // Create inputs for ings
         for (y = 1; y <= ings.length; y++) {
@@ -844,9 +836,6 @@ function saveDataCreate() {
         }
 
         // INSTRUCTIONS
-
-        // Clear first input
-        document.getElementById('card-step-1').remove();
 
         // Create inputs for steps
         for (z=1; z<= steps.length; z++) {

@@ -42,7 +42,6 @@ showMoreButton.addEventListener("click", (e) => {
 export function changeView(e) {
   // reference for needed elements
   var myRecipes = document.querySelector(".recipe-cards--wrapper");
-  var recipeCards = document.getElementById("recipe-cards");
   var explore = document.querySelector(".explore");
   var createRecipe = document.querySelector(".section--create-recipe");
   var createButton = document.getElementById("create-recipe-btn");
@@ -112,11 +111,9 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
-    //console.log(returnButton.classList);
-    //if(!returnButton.classList.contains("explore")) {
-      //console.log(returnButton.classList);
+    if(!returnButton.classList.contains("explore")) {
       refresh();
-    //}
+    }
     returnButton.className = "hidden";
   }
   // navigating to recipe expand page
@@ -194,7 +191,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "a3af6d458f354cab920d3cd9caefde2b";
+  const API_KEY = "75d567c9173d40f69fad55f6870057fe";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
@@ -225,7 +222,6 @@ window.returnToHomePage = function () {
     returnBut.classList.remove("explore");
   }
   else{
-    //location.reload();
     changeView("My Recipes");
   }
 };
