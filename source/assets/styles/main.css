@@ -284,11 +284,10 @@ button.save-btn:hover {
 }
 
 button.btn-light {
-  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-#delete-btn {
+#delete-btn, #filter-btn {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -377,6 +376,7 @@ button.save-to-rec-btn:hover {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  border-width: 0;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -388,6 +388,19 @@ button.save-to-rec-btn:hover {
 
 i {
   font-size: 3vw;
+  color: white;
+}
+
+button.filter-on {
+  background-color: #97BC62;
+}
+
+button.filter-off {
+  background-color: white;
+}
+
+#filter-icon {
+  color: black;
 }
 
 #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
@@ -403,10 +416,10 @@ i {
 
 @media screen and (min-width: 800px) {
   button.btn-light:not(#filter-btn) {
-    background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     height: 6%;
     width: 5%;
+    background-color: #2C5F2D;
   }
   button#refresh-btn, button#show-more-btn {
     width: 100px;
@@ -445,6 +458,10 @@ i {
   }
   i {
     font-size: 1rem;
+    color: white;
+  }
+  #filter-icon {
+    color: black;
   }
   #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
     padding: 0.25rem 0.5rem;

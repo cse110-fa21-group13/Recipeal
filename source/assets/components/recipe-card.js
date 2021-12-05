@@ -127,6 +127,11 @@ class RecipeCard extends HTMLElement {
         margin: 15% auto; 
         padding: 20px;
       }
+
+      .btn-primary {
+        background-color: #00AB03;
+        border-width : 0;
+      }
     `;
 
     const modal = document.createElement("div");
@@ -158,7 +163,7 @@ class RecipeCard extends HTMLElement {
     deleteBut.className = `delbut hidden btn-primary`;
     deleteBut.setAttribute(
       "style",
-      "position: absolute; top: 0; left:0; padding: 2px 6px"
+      "position: absolute; top: 10px; right: 10px; padding: 2px 6px"
     );
     deleteBut.innerHTML = "<i class='bi bi-x'></i>";
     deleteBut.addEventListener("click", () => {
