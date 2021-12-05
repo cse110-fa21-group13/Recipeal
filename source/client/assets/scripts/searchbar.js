@@ -1,3 +1,8 @@
+/*
+ * Stores the added recipe Ids so we don't add duplicates from typing teach letter
+ */
+const addedRecipes = new Set(); 
+
 /* 
  * Function to search for recipe cards in search bar
  */
@@ -29,6 +34,7 @@ function searchSpoon() {
     var allRecipes = recipeCardsElement.children; 
 
     if (filter === "") {
+        addedRecipes.clear(); 
         for (let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
             if (currentRecipe.classList.contains("new-recipe")) {
@@ -52,6 +58,10 @@ function searchSpoon() {
                 // alert(data.results.length); 
                 for (let i = 0; i < data.results.length; i++) {
                     let recipeID = data.results[i].id;
+                    if (addedRecipes.has(recipeID)) {
+                        continue; 
+                    } 
+                    addedRecipes.add(recipeID); 
                     const RECIPE_INFO = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}`;
                     fetch(RECIPE_INFO)
                         .then(response1 => response1.json())
@@ -74,10 +84,6 @@ function searchSpoon() {
                             const recipeCard = document.createElement("recipe-card");
                             recipeCard.data = recipeData;
                             recipeCard.classList.add("new-recipe");
-
-                            for (let i = 0; i < allRecipes.length; i++) {
-                                if (allRecipes[i].)
-                            }
 
                             document.querySelector("#explore-wrapper").appendChild(recipeCard);
                         });
