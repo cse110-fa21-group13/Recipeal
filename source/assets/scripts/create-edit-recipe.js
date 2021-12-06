@@ -272,7 +272,7 @@ function recipeExists(recipeName) {
  * @param none
  * @returns none
  */
-function reset() {
+export function reset() {
   document.getElementById("input-name").value = "";
   document.getElementById("input-desc").value = "";
   document.getElementById("input-hours").value = "";
@@ -467,7 +467,7 @@ function saveDataCreate() {
   saveBase();
   alert("Recipe updated!");
   let saveButtonEdit = document.getElementById("save-edit-btn");
-  saveButtonEdit.removeEventListener("click", functionName)
+  saveButtonEdit.removeEventListener("click", functionName);
   reset();
 }
 
@@ -482,12 +482,15 @@ function saveDataCreate() {
   let createRecipe = document.querySelector(".section--create-recipe");
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");
-  let recipeExpand = document.querySelector('recipe-expand');
+  let recipeExpand = document.querySelector("recipe-expand");
   let cookModeBtn = document.getElementById("cook-mode-btn");
   let refreshButton = document.getElementById("refresh-btn");
+  let returnBut = document.getElementById("return-btn");
+
+  returnBut.classList.add("edit");
 
   // Get name from expanded recipe page
-  let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase();
+  let name = recipeExpand.shadowRoot.getElementById("input-name").textContent.toLowerCase();
 
   // Get recipe data from name
   let recipe = JSON.parse(window.localStorage.getItem(name));

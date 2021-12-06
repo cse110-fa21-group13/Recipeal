@@ -1,12 +1,12 @@
 // Contains functions for navigating between pages
 
-import { saveToMyRecipes } from "./create-edit-recipe.js";
+import { saveToMyRecipes, reset } from "./create-edit-recipe.js";
 
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
-createRecipeButton.addEventListener("click", (e) => {
-  changeView(e);
+createRecipeButton.addEventListener("click", () => {
+  changeView("Create Recipe");
 });
 let myRecipesButton = document.getElementById("my-recipes-btn");
 myRecipesButton.addEventListener("click", (e) => {
@@ -143,22 +143,9 @@ export function changeView(e) {
     // make edit button visible so user can click it
     editButton.style.display = "block";
   }
-  // navigating to cook mode page
-  else if (e.target.id === "cook-mode-btn" || e.target.id === "knife-fork") {
-    cookMode.classList.add("shown");
-    expandRecipe.classList.remove("shown");
-    navBar.className = "hidden";
-    returnButton.className = "hidden";
-    deleteButton.className = "hidden";
-    cookModeBut.className = "hidden";
-    editButton.style.display = "none";
-  }
   // navigating to create recipe page
-  else if (
-    (e.target.id === "create-recipe-btn" ||
-      e.target.id === "plus-icon") &&
-    !deleteMode
-  ) {
+  else if (innerText === "Create Recipe" && !deleteMode) {
+    reset();
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     expandRecipe.classList.remove("shown");
@@ -168,6 +155,16 @@ export function changeView(e) {
     switchButtonView(deleteButton);
     saveButtonCreate.style.display="block";
     refreshButton.className = "hidden";
+  }
+  // navigating to cook mode page
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "knife-fork") {
+    cookMode.classList.add("shown");
+    expandRecipe.classList.remove("shown");
+    navBar.className = "hidden";
+    returnButton.className = "hidden";
+    deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
   }
   switchHighlight(innerText);
 }
@@ -235,8 +232,10 @@ window.returnToHomePage = function () {
   if(returnBut.classList.contains("explore")){
     changeView("Explore");
     returnBut.classList.remove("explore");
-  }
-  else{
+  } else if(returnBut.classList.contains("edit")) {
+    changeView("Recipe Expand");
+    returnBut.classList.remove("edit");
+  } else {
     changeView("My Recipes");
   }
 };
@@ -308,21 +307,27 @@ window.showDeleteButtons = function () {
     for (let recipeCard of recipeCards) {
       const delbut = recipeCard.shadowRoot.querySelector(".delbut");
       if (delbut.classList.contains("hidden")) {
-        document.getElementById("delbut-icon").src = "assets/images/icon-park_return.png";
         delbut.classList.remove("hidden");
         delbut.classList.add("btn");
       } else {
-        document.getElementById("delbut-icon").src = "assets/images/trash.png";
         delbut.classList.add("hidden");
         delbut.classList.remove("btn");
       }
     }
 
-    const delbutIcon = document.getElementById("delbut-icon");
-    delbutIcon.className =
-      delbutIcon.className === "bi bi-trash"
-        ? "bi bi-arrow-return-left"
-        : "bi bi-trash";
+    let delIcon = document.getElementById("delbut-icon"); 
+    if(delIcon.className === "trash") {
+      delIcon.className = "return";
+      delIcon.src = "assets/images/icon-park_return.png";
+    } else {
+      delIcon.className = "trash";
+      delIcon.src = "assets/images/trash.png";
+    }
+    /*const delbutIcon = document.getElementById("delbut-icon");
+    delbutIcon.src =
+      delbutIcon.src === "assets/images/trash.png"
+        ? "assets/images/icon-park_return.png"
+        : "assets/images/trash.png";*/
   }
 };
 
