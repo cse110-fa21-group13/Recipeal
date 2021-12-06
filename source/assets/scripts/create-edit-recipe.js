@@ -424,6 +424,11 @@ if (document.getElementById(`input-steps1`)) {
     JSON.stringify(newRecipe)
   );
     alert("Recipe saved!");
+    reset();
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    changeView("Recipe Expand");
   }
   if (page === "update") {
     // Put the object into storage
@@ -432,6 +437,11 @@ if (document.getElementById(`input-steps1`)) {
     JSON.stringify(newRecipe)
     );
     alert("Recipe overwritten!");
+    reset();
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    changeView("Recipe Expand");
   }
   if (page === "edit") {
     // Put the object into storage
@@ -445,12 +455,6 @@ if (document.getElementById(`input-steps1`)) {
     changeView("Recipe Expand");
     return 1;
   }
-  
-  reset();
-  // Creates a recipe card & displays it on the 'My Recipes' page
-  newCard(newRecipe.name.toLowerCase());
-  document.querySelector("recipe-expand").data = newRecipe;
-  changeView("Recipe Expand");
 }
 
 /**
@@ -508,7 +512,7 @@ function saveDataCreate() {
   if (saveBase(page) === 1) {
   // Delete old recipe with new name
   localStorage.removeItem(originalName);
-  saveBase(page, isFav);
+  saveBase(null, isFav);
   alert("Recipe updated!");
   reset();
   let recipeCards = document.getElementById("recipe-cards").children;
