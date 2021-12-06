@@ -27,7 +27,7 @@ function searchRecipe() {
  * TODO: 
  * Function to search for recipes in Spoonacular
  */
-function searchSpoon() {
+export async function searchSpoon() {
     let input = document.getElementById("explore-search-bar");
     const filter = input.value.toLowerCase();
     let recipeCardsElement = document.getElementById('explore-wrapper');
@@ -50,7 +50,7 @@ function searchSpoon() {
         }
     }
     else {
-        const API_KEY = "b7855be92a904131a1fc088d0e40c138";
+        const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
         if (addedRecipes.size == 0) {
             for (let i = 0; i < allRecipes.length; i++) {
                 let currentRecipe = allRecipes[i]; 
@@ -60,8 +60,8 @@ function searchSpoon() {
             addedRecipes.delete(allRecipes[allRecipes.length - 1].id); 
             allRecipes[allRecipes.length - 1].remove(); 
         }
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=1&apiKey=${API_KEY}`;
-        fetch (SEARCH_URL)
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=2&apiKey=${API_KEY}`;
+        await fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
                 // alert(data.results.length); 

@@ -1,5 +1,5 @@
 // Contains functions for navigating between pages
-
+import { searchSpoon } from "./searchbar.js"
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -24,6 +24,13 @@ let showMoreButton = document.getElementById("show-more-btn");
 showMoreButton.addEventListener("click", (e) => {
   fetchApiRecipes();
 });
+
+let exploreSearch = document.getElementById("explore-search-bar");
+exploreSearch.addEventListener("keyup", (e) => {
+  if(e.key === "Enter") {
+    searchSpoon();
+  }
+})
 
 
 /*
@@ -130,7 +137,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
+  const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
   );
