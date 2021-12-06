@@ -1,5 +1,7 @@
 /* main.css */
 
+/** VARIABLES **/
+
 :root {
   --darkGreen: #2C5F2D;
   --limeGreen: #94C11E;
@@ -8,12 +10,6 @@
   --header-font: 'Work Sans', sans-serif;
   --body-font: 'Open Sans', sans-serif;
 }
-
-/*
-* {
-  font-family: sans-serif;
-}
-*/
 
 body,
 main {
@@ -27,13 +23,51 @@ section:not(section.shown) {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
+
+/* NAVBAR */
+
+#logo {
+  width: 200px;
+}
+
+.navbar span {
+  font-size: 2.5vw;
+}
+
+.nav-label {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navbarv2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+}
+
+
 .navbar-nav {
   position: relative;
   text-align: center;
   margin: auto;
 }
 
-/** RECIPE CARDS IN EXPLORE **/
+.navBtn:hover {
+  cursor: pointer;
+}
+
+.navBtn:focus {
+  outline: rgba(148, 193, 30, 1);
+  box-shadow: none;
+}
+
+/** EXPLORE **/
 
 #explore-wrapper {
   display: flex;
@@ -57,14 +91,14 @@ section:not(section.shown) {
   height: auto;
 }
 
-/** RECIPE CARDS IN MY RECIPE **/
+/** MY RECIPE **/
 
 #recipe-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 25px;
   gap: 50px;
   height: auto;
   max-width: 80%;
@@ -87,8 +121,6 @@ section:not(section.shown) {
   width: 100%;
 }
 
-/* Cards for all inputs */
-
 .input-card {
   margin-top: 20px;
   background-color: #f6f6f6;
@@ -98,9 +130,29 @@ section:not(section.shown) {
   width: 85%;
 }
 
+/*
 .input-card label {
   font-size: 2vw;
   margin-bottom: 0;
+}
+*/
+
+.card-label {
+  font-family: var(--header-font);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.nut-info-label {
+  font-family: var(--body-font);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.time-label {
+  font-family: var(--body-font);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .navbar-nav button {
@@ -108,11 +160,6 @@ section:not(section.shown) {
   padding: 0.5vw 0.8vw;
   margin-right: 0.5vw;
 }
-
-.navbar span {
-  font-size: 2.5vw;
-}
-
 
 /* Input card for ings */
 
@@ -194,7 +241,7 @@ input.steps {
 }
 
 input.input-hours-mins {
-  width: 40%;
+  width: 20%;
   margin: 1.5%;
 }
 
@@ -249,7 +296,7 @@ input[type="number"]:focus {
 
 /** BUTTONS **/
 
-button.add-btn {
+.add-btn {
   display: block;
   margin: 0 auto;
   width: 7vw;
@@ -259,20 +306,23 @@ button.add-btn {
   border: none;
   background-color: transparent;
   border-radius: 50%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  color: #B8B8B8;
 
   transition: 0.2s;
   outline: none;
 }
 
-button.add-btn:focus {
+.add-btn:focus {
   outline: none;
 }
 
-button.add-btn:hover {
+.add-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
-button.save-btn {
+/*
+.save-btn {
   display: block;
   margin: 0px auto;
   width: 100px;
@@ -286,23 +336,129 @@ button.save-btn {
   outline: none;
 }
 
-button.save-btn:focus {
+
+.save-btn:focus {
   outline: none;
 }
 
-button.save-btn:hover {
+.save-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
+*/
 
+
+#edit-btn {
+  bottom: 20px;
+  right: 15px;
+  position: fixed;
+  display: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+}
+
+
+#save-create-btn {
+  bottom: 10px;
+  right: 10px;
+  position: fixed;
+  display: none;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  border: none;
+  cursor: pointer
+}
+
+#save-edit-btn {
+  bottom: 10px;
+  right: 10px;
+  position: fixed;
+  display: none;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  border: none;
+  cursor: pointer
+}
+
+#create-recipe-btn {
+  bottom: 20px;
+  right: 15px;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+}
+
+#return-btn {
+  top: 105px;
+  left: 10px;
+  position: absolute;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+}
+
+#delete-btn {
+  bottom: 100px;
+  right: 15px;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+
+#cook-mode-btn {
+  bottom: 180px;
+  right: 15px;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  cursor: pointer;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  border: none;
+}
+
+#delete-btn:hover, #create-recipe-btn:hover, #save-create-btn:hover, #edit-btn:hover, #cook-mode-btn:hover {
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
+}
+
+/*
 button.btn-light {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
+*/
 
 #delete-btn, #filter-btn {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
-
-/* REFRESH AND SHOW MORE BUTTONS ON EXPLORE PAGE */
 
 #explore-buttons {
   display: flex;
@@ -313,15 +469,7 @@ button.btn-light {
   gap: 50px;
 }
 
-img#arrow-down {
-  width: 30px;
-}
-
-img#refresh {
-  width: 30px;
-}
-
-button#refresh-btn {
+#refresh-btn {
   float: right;
   margin: 10px 10px 0px 0px;
   width: 50px;
@@ -335,7 +483,7 @@ button#refresh-btn {
   outline: none;
 }
 
-button#show-more-btn {
+#show-more-btn {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -352,13 +500,11 @@ button#show-more-btn {
   text-transform: uppercase;
 }
 
-button#refresh-btn:hover {
+#refresh-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
-/* Save to my recipe btn */
-
-button.save-to-rec-btn {
+.save-to-rec-btn {
   display: block;
   width: 200px;
   height: 50px;
@@ -373,7 +519,7 @@ button.save-to-rec-btn {
   font-weight: bold;
 }
 
-button.save-to-rec-btn:hover {
+.save-to-rec-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
@@ -384,29 +530,22 @@ button.save-to-rec-btn:hover {
 }
 
 #explore-btn {
-  background-color: rgba(44, 95, 45, 1); 
+  background-color: rgba(44, 95, 45, 1);
   color: white;
   border: transparent;
   border-radius: 30px;
   width: 10%;
 }
 
-.navBtn:hover {
-  cursor: pointer;
-}
-
-.navBtn:focus {
-  outline:rgba(148, 193, 30, 1);
-  box-shadow: none;
-}
-
 #filter-btn {
+  width: 40px;
+  height: 40px;
   background-color: white;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.18);
 }
 
 #filter-btn:focus {
-  outline:rgba(148, 193, 30, 1);
+  outline: rgba(148, 193, 30, 1);
 }
 
 .filter-on, .filter-off {
@@ -414,8 +553,12 @@ button.save-to-rec-btn:hover {
   box-shadow: none;
 }
 
-.hidden {
-  display: none;
+button.filter-on {
+  background-color: #97BC62;
+}
+
+button.filter-off {
+  background-color: white;
 }
 
 .delete-modal-expand {
@@ -435,10 +578,24 @@ button.save-to-rec-btn:hover {
   padding: 20px;
 }
 
+/* SEARCH BAR */
+
+#search-bar-filter {
+  display: flex;
+  align-items: center;
+}
+
 #search-bar {
   position: relative;
   height: 5vw;
+  border-radius: 25px;
+  background: url("/source/assets/images/search.png");
+  background-repeat: no-repeat;
+  background-position: 96% 5px;
+
 }
+
+/* TAGS */
 
 #tag-wrapper-filter {
   display: flex;
@@ -446,7 +603,8 @@ button.save-to-rec-btn:hover {
   flex-wrap: wrap;
 }
 
-.but-secondary {
+
+.tags-btn {
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -458,28 +616,61 @@ button.save-to-rec-btn:hover {
   padding: 0.75vw 1.5vw;
   margin: 7px;
   font-size: 2.5vw;
+  font-size: 15px;
+  padding: 10px 20px;
 }
 
-i {
-  font-size: 3vw;
-  color: white;
-}
-
-button.filter-on {
-  background-color: #97BC62;
-}
-
-button.filter-off {
-  background-color: white;
-}
+/* ICONS */
 
 #filter-icon {
   color: black;
 }
 
+#plus-icon {
+  width: 30px;
+  height: 30px
+}
+
+#delbut-icon {
+  width: 30px;
+  height: 30px
+}
+
+#checkmark-icon {
+  width: 30px;
+  height: 30px;
+}
+
+#edit-icon {
+  width: 30px;
+  height: 30px;
+}
+
+#arrow-left {
+  width: 30px;
+  height: 30px;
+}
+
+#knife-fork {
+  width: 30px;
+  height: 30px;
+}
+
+#arrow-down {
+  width: 30px;
+}
+
+#refresh {
+  width: 30px;
+}
+
+/*
 #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
   padding: 0 0.4rem;
 }
+*/
+
+/* MEDIA QUERY */
 
 @media screen and (min-width: 400px) {
   button.add-btn {
@@ -488,13 +679,18 @@ button.filter-off {
   }
 }
 
+
 @media screen and (min-width: 800px) {
+
+  /*
   button.btn-light:not(#filter-btn) {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     height: 6%;
     width: 5%;
     background-color: #2C5F2D;
   }
+  */
+
 
   /*
   button#refresh-btn, button#show-more-btn {
@@ -503,15 +699,13 @@ button.filter-off {
   }
   */
 
-  .but-secondary {
-    font-size: 15px;
-    padding: 10px 20px;
-  }
 
+  /*
   .input-card label {
     font-size: 16px;
     margin-bottom: 1.5rem;
   }
+  */
 
   .navbar-nav button {
     font-size: 1em;
@@ -552,9 +746,11 @@ button.filter-off {
     color: black;
   }
 
+  /*
   #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
     padding: 0.25rem 0.5rem;
   }
+  */
 
   input.nutrition-cat {
     width: 70px;

@@ -52,7 +52,7 @@ export function changeView(e) {
   var expandRecipe = document.querySelector(".section--recipe-expand");
   var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
-  const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
+  const deleteMode = delbutIcon.className === "arrow-left";
   const cookModeBut = document.getElementById("cook-mode-btn");
   const cookMode = document.querySelector(".section--cook-mode");
   const navBar = document.querySelector("nav");
@@ -126,7 +126,7 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
-    navBar.className = "navbar navbar-light";
+    navBar.className = "navbarv2 navbar-light";
     //switchButtonView(returnButton);
     returnButton.classList.add("btn");
     returnButton.classList.add("btn-light");
@@ -139,7 +139,7 @@ export function changeView(e) {
     editButton.style.display = "block";
   }
   // navigating to cook mode page
-  else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "knife-fork") {
     cookMode.classList.add("shown");
     expandRecipe.classList.remove("shown");
     navBar.className = "hidden";
@@ -151,7 +151,7 @@ export function changeView(e) {
   // navigating to create recipe page
   else if (
     (e.target.id === "create-recipe-btn" ||
-      e.target.id === "create-recipe-btn-plus") &&
+      e.target.id === "plus-icon") &&
     !deleteMode
   ) {
     myRecipes.classList.remove("shown");
@@ -269,7 +269,7 @@ window.showTags = function () {
     filterBtn.classList.remove('filter-off');
     filterBtn.classList.add('filter-on');
     const newTagBut = document.createElement("button");
-    newTagBut.className = "but but-secondary filter-off";
+    newTagBut.className = "tags-btn filter-off";
     newTagBut.id = `${element}`;
     newTagBut.textContent = element;
     newTagBut.style.outline = "rgba(148, 193, 30, 1)";
@@ -280,6 +280,7 @@ window.showTags = function () {
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
+        newTagBut.style.backgroundColor = "rgba(255, 255, 255, 1)";
         filterTags(element);
       }
     });

@@ -35,7 +35,7 @@ class ExpandRecipe extends HTMLElement {
         
         .input-card:not(#img-card) {
             margin-top: 5%;
-            background-color: #f6f6f6;
+            /*background-color: #f6f6f6;*/
             border-radius: 20px;
             font-size: 1.8vw;
             padding: 5%;
@@ -56,7 +56,7 @@ class ExpandRecipe extends HTMLElement {
         
         #img-card {
             margin-top: 20px;
-            background-color: #f6f6f6;
+            /*background-color: #f6f6f6;*/
             border-radius: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
             padding: 10%;
@@ -88,8 +88,29 @@ class ExpandRecipe extends HTMLElement {
             box-shadow: none;
         }
 
+        .card-label {
+            font-family: var(--header-font);
+            font-size: 24px;
+            font-weight: 600;
+          }
+          
+          .nut-info-label {
+            font-family: var(--body-font);
+            font-size: 18px;
+            font-weight: 700;
+          }
+          
+          .time-label {
+            font-family: var(--body-font);
+            font-size: 14px;
+            font-weight: 700;
+          }
+
         p {
             margin-bottom: 0;
+            font-family: var(--body-font);
+            font-size: 14px;
+            font-weight: 400;
         }
         
         p.text:not(#input-name) {
@@ -101,7 +122,10 @@ class ExpandRecipe extends HTMLElement {
         }  
 
         #input-name {
-            font-size: 2vw;
+            /*font-size: 2vw;*/
+            font-family: var(--header-font);
+            font-size: 48px;
+            font-weight: 700;
         }
 
         ol, ul {
@@ -132,81 +156,88 @@ class ExpandRecipe extends HTMLElement {
             p.text:not(#input-name) {
                 font-size: 15px;
             }
+
+            #create-recipe--input-wrapper {
+                flex-direction: row;
+            }
         }
     `;
     article.innerHTML = `
     <div id="create-recipe--input-wrapper">
-        <!-- FIRST COLUMN -->
-        <div class="input-wrapper--column">
-            <div class="input-card" id="img-card">
-                <img id="display-image"
-                src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />  
-            </div>
+    <!-- FIRST COLUMN -->
+    <div class="input-wrapper--column">
+        <div class="input-card" id="img-card">
+            <img id="display-image"
+            src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />  
+        </div>
 
-            <!-- Name -->
-            <div class="input-card">
-                <p class="text" id="input-name"></p>
-            </div>
+        <!-- Name -->
+        <div class="input-card">
+            <p class="text" id="input-name"></p>
+        </div>
 
-            <!-- Description -->
-            <div class="input-card">
-                <p class="text" id="input-desc"></p>
-            </div>
+        <!-- Description -->
+        <div class="input-card">
+            <label for="input-desc" class="card-label">Description</label><br>
+            <p class="text" id="input-desc"></p>
+        </div>
 
-            <!-- Nutrition -->
-            <div class= "input-card">
-                <label for="nutrition-facts">Nutrition Information</label><br>
-                <label for="input-calories">Calories</label>
-                <p id="input-calories"></p><br>
-                <label for="input-carbs">Carbohydrates(g)</label>
-                <p id="input-carbs"></p><br>
-                <label for="input-fat">Fat(g)</label>
-                <p id="input-fat"></p><br>
-                <label for="input-protein">Protein(g)</label>
-                <p id="input-protein"></p>
-            </div>
+        <!-- Nutrition -->
+        <div class= "input-card">
+            <label for="nutrition-facts" class="card-label">Nutrition Information</label><br>
+            <label for="input-calories" class="nut-info-label">Calories</label>
+            <p id="input-calories"></p><br>
+            <label for="input-carbs" class="nut-info-label">Carbohydrates(g)</label>
+            <p id="input-carbs"></p><br>
+            <label for="input-fat" class="nut-info-label">Fat(g)</label>
+            <p id="input-fat"></p><br>
+            <label for="input-protein" class="nut-info-label">Protein(g)</label>
+            <p id="input-protein"></p>
+        </div>
 
-            <!-- Time -->
-            <div class="input-card">
-                <label for="input-time">Time</label><br>
-                <div id="time-inputs">
-                    <p class="input-hours-mins" id="input-hours">
-                </div>
-            </div>
-
-            <!-- Tags -->
-            <div class="input-card">
-                <div id="tag-wrapper">
-                    <label for="input-tags">Tags</label><br>
-                    <p class="text" id="input-tags1" class="tags"></p>
-                </div>
-                <br>
+        <!-- Time -->
+        <div class="input-card">
+            <label for="input-time" class="card-label">Time</label><br>
+            <div id="time-inputs">
+                <p class="input-hours-mins" id="input-hours">
             </div>
         </div>
 
-        <!-- SECOND COLUMN -->
-        <div class="input-wrapper--column">
-            <!-- Ingredients -->
-            <div class="input-card" id="ing-card">
-                <div id="ing-wrapper">
-                    <label>Ingredients</label><br><br>
-                    <ul id="ing-list"></ul>
-                </div>
-                <br>
+        <!-- Tags -->
+        <div class="input-card">
+            <div id="tag-wrapper">
+                <label for="input-tags" class="card-label">Tags</label><br>
+                <p class="text" id="input-tags1" class="tags"></p>
             </div>
+            <br>
         </div>
+    </div>
 
-        <!-- THIRD COLUMN -->
-        <div class="input-wrapper--column">
-            <div class="input-card" id="step-card">
-                <div id="step-wrapper">
-                    <label>Steps</label><br>
-                    <ol id="step-list"></ol>
-                </div>
-                <br><br>
+    <!-- SECOND COLUMN -->
+    <div class="input-wrapper--column">
+        <!-- Ingredients -->
+        <div class="input-card" id="ing-card">
+            <div id="ing-wrapper">
+            <label class="card-label">Ingredients</label><br>
+                <p id="ing-none"></p>
+                <ul id="ing-list"></ul>
             </div>
+            <br>
         </div>
-    </div> 
+    </div>
+
+    <!-- THIRD COLUMN -->
+    <div class="input-wrapper--column">
+        <div class="input-card" id="step-card">
+            <div id="step-wrapper">
+            <label class="card-label">Steps</label><br>
+                <p id="step-none"></p>
+                <ol id="step-list"></ol>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
     `;
 
     // Append elements to the shadow root
@@ -240,26 +271,26 @@ class ExpandRecipe extends HTMLElement {
 
             <!-- Description -->
             <div class="input-card">
-                <label for="input-desc">Description</label><br>
+                <label for="input-desc" class="card-label">Description</label><br>
                 <p class="text" id="input-desc"></p>
             </div>
 
             <!-- Nutrition -->
             <div class= "input-card">
-                <label for="nutrition-facts">Nutrition Information</label><br>
-                <label for="input-calories">Calories</label>
+                <label for="nutrition-facts" class="card-label">Nutrition Information</label><br>
+                <label for="input-calories" class="nut-info-label">Calories</label>
                 <p id="input-calories"></p><br>
-                <label for="input-carbs">Carbohydrates(g)</label>
+                <label for="input-carbs" class="nut-info-label">Carbohydrates(g)</label>
                 <p id="input-carbs"></p><br>
-                <label for="input-fat">Fat(g)</label>
+                <label for="input-fat" class="nut-info-label">Fat(g)</label>
                 <p id="input-fat"></p><br>
-                <label for="input-protein">Protein(g)</label>
+                <label for="input-protein" class="nut-info-label">Protein(g)</label>
                 <p id="input-protein"></p>
             </div>
 
             <!-- Time -->
             <div class="input-card">
-                <label for="input-time">Time</label><br>
+                <label for="input-time" class="card-label">Time</label><br>
                 <div id="time-inputs">
                     <p class="input-hours-mins" id="input-hours">
                 </div>
@@ -268,7 +299,7 @@ class ExpandRecipe extends HTMLElement {
             <!-- Tags -->
             <div class="input-card">
                 <div id="tag-wrapper">
-                    <label for="input-tags">Tags</label><br>
+                    <label for="input-tags" class="card-label">Tags</label><br>
                     <p class="text" id="input-tags1" class="tags"></p>
                 </div>
                 <br>
@@ -280,7 +311,7 @@ class ExpandRecipe extends HTMLElement {
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
                 <div id="ing-wrapper">
-                    <label>Ingredients</label><br>
+                <label class="card-label">Ingredients</label><br>
                     <p id="ing-none"></p>
                     <ul id="ing-list"></ul>
                 </div>
@@ -292,7 +323,7 @@ class ExpandRecipe extends HTMLElement {
         <div class="input-wrapper--column">
             <div class="input-card" id="step-card">
                 <div id="step-wrapper">
-                    <label>Steps</label><br>
+                <label class="card-label">Steps</label><br>
                     <p id="step-none"></p>
                     <ol id="step-list"></ol>
                 </div>

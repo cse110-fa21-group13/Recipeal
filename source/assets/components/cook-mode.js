@@ -15,7 +15,7 @@ class CookMode extends HTMLElement {
         #cook-mode--input-wrapper {
             display: flex;
             flex-direction: row;
-            justify-content: start;
+            justify-content: center;
             gap: 10px;
         }
         
@@ -75,8 +75,19 @@ class CookMode extends HTMLElement {
         }  
 
         #ing-label {
-            font-size: 3vw;
+            font-family: var(--header-font);
+            font-size: 24px;
+            font-weight: 600;
             margin-top: 2vw;
+            /*font-size: 3vw;*/
+        }
+
+        #step-label {
+            font-family: var(--header-font);
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 2vw;
+            /*font-size: 3vw;*/
         }
 
         ul {
@@ -98,6 +109,13 @@ class CookMode extends HTMLElement {
         }
 
         button.back-btn {
+            top: 50px;
+            left: 10px;
+            position: absolute;
+            border-radius: 20px;
+            background: transparent;
+            border: none;
+            /*
             margin-top: 15px;
             left: 36%;
             position: absolute;
@@ -108,6 +126,7 @@ class CookMode extends HTMLElement {
             border-radius: 20px;
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.18);
             transition: 0.2s;
+            */
         }
 
         #time-inputs {
@@ -227,9 +246,10 @@ class CookMode extends HTMLElement {
             <!-- THIRD COLUMN -->
             <div class="input-wrapper--column">
                 <button class="back-btn btn btn-light">
-                    <i class="bi bi-arrow-return-left"></i> Return
+                <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Return</b>
                 </button>
                 <div class="input-card" id="step-card">
+                    <label id="step-label">Steps</label><br>
                     <div id="step-wrapper">
                         <p id="step-none"></p>
                     </div>
