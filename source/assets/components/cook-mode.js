@@ -23,7 +23,7 @@ class CookMode extends HTMLElement {
         
         .input-card {
             overflow-wrap: break-word;
-            background-color: #F4F4F4;
+            background-color: rgba(188, 220, 142, 1);
             border-radius: 20px;
             box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
         }
@@ -31,7 +31,7 @@ class CookMode extends HTMLElement {
         /* Input card for steps */
         
         .input-card-steps {
-            background-color: #F4F4F4;
+            background-color: rgba(188, 220, 142, 1);
             border-radius: 20px;
             padding: 20px;
             margin-top: 20px;
@@ -119,14 +119,13 @@ class CookMode extends HTMLElement {
             margin-top: 15px;
             left: 36%;
             position: absolute;
-            width: 13vw;
             font-size: 2vw;
             padding: 0.5em;
             cursor: pointer;
             border-radius: 20px;
+            background-color: #2C5F2D;
+            color: white;
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.18);
-            transition: 0.2s;
-            */
         }
 
         #time-inputs {
