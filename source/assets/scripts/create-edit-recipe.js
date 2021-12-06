@@ -305,7 +305,7 @@ function reset() {
  * 
  * @param {String} page - determines if it's updating or saving a recipe
  */
-function saveBase(page) {
+function saveBase(page, favoriteStatus) {
   var newRecipe = {
     name: "",
     description: "",
@@ -322,6 +322,9 @@ function saveBase(page) {
   // Get name and store it in the object
   let name = document.getElementById("input-name").value;
   newRecipe.name = name;
+
+  // Get favorite and store it in the object
+  newRecipe.favorites = favoriteStatus;
 
   // Get description and store it in the object
   let desc = document.getElementById("input-desc").value;
@@ -476,7 +479,7 @@ function saveDataCreate() {
       } 
       localStorage.removeItem(checkName)
       page = "update";
-      saveBase(page);
+      saveBase(page, 0);
     }
     else {
       return;
@@ -485,7 +488,7 @@ function saveDataCreate() {
   // Else, create new recipe object
   else {
     page = "create";
-    saveBase(page);
+    saveBase(page, 0);
   }
 }
 
@@ -499,11 +502,13 @@ function saveDataCreate() {
  * @param {function} functionName - name of function to remove from event listener
  */
  function saveDataEdit(originalName, functionName) {
+  // Delete old recipe with new name
+  let isFav = JSON.parse(localStorage.getItem(originalName)).favorites;
   let page = "edit";
   if (saveBase(page) === 1) {
   // Delete old recipe with new name
   localStorage.removeItem(originalName);
-  saveBase(page);
+  saveBase(page, isFav);
   alert("Recipe updated!");
   reset();
   let recipeCards = document.getElementById("recipe-cards").children;
@@ -524,7 +529,6 @@ function saveDataCreate() {
  * @param {e} -  event
  */
  export function navEdit (e) {
-
   let createRecipe = document.querySelector(".section--create-recipe");
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");

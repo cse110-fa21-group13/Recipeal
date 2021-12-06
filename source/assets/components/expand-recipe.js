@@ -49,7 +49,7 @@ class ExpandRecipe extends HTMLElement {
             top: 10%;
             right: 1%;
             height: 5%;
-            width: 8vh;
+            width: 5vh;
         }
 
         /* Card for display image */
@@ -334,16 +334,17 @@ class ExpandRecipe extends HTMLElement {
     function changeHeart(){
       let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
       let imageOnCard = document.getElementById(data.name);
+      const img = imageOnCard.shadowRoot.getElementById('favoriteOnCard')
 
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
-        imageOnCard.setAttribute("src", "assets/images/heart.png");
+        img.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
         love = true;
       }
       else{
         favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
-        imageOnCard.setAttribute("src", "assets/images/empty_heart.png");
+        img.setAttribute("src", "assets/images/empty_heart.png");
         storage.favorites = 0;
         love = false;
       }
