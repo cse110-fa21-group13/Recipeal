@@ -126,7 +126,7 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
-    navBar.className = "navbar navbar-light bg-dark";
+    navBar.className = "navbar navbar-light";
     //switchButtonView(returnButton);
     returnButton.classList.add("btn");
     returnButton.classList.add("btn-light");
@@ -178,15 +178,21 @@ function switchHighlight(innerText) {
   let nav = document.querySelector(".navbar-nav");
   let buttons = nav.getElementsByTagName("*");
   let e;
-  for (var i = 0; i < buttons.length; i++) {
+  for (let i = 0; i < buttons.length; i++) {
     e = buttons[i];
     if (e.innerText === innerText) {
-      e.classList.remove("btn-dark");
-      e.classList.add("btn-white");
+      e.style.textDecoration = "underline";
+      e.style.textDecorationThickness = "3px";
     } else {
-      e.classList.add("btn-dark");
-      e.classList.remove("btn-white");
+      e.style.textDecoration = "";
     }
+  }
+  let exploreBtn = document.getElementById("explore-btn");
+  if(exploreBtn.innerText === innerText) {
+    exploreBtn.style.textDecoration = "underline";
+    exploreBtn.style.textDecorationThickness = "3px";
+  } else {
+    exploreBtn.style.textDecoration = "";
   }
 }
 
@@ -231,6 +237,14 @@ window.returnToHomePage = function () {
 
 // Show tags when pressing filter button
 window.showTags = function () {
+  let filterBtn = document.getElementById("filter-btn");
+  if(filterBtn.classList.contains("false")) {
+    filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
+    filterBtn.classList.replace("false", "true");
+  } else {
+    filterBtn.style.backgroundColor = "white";
+    filterBtn.classList.replace("true", "false");
+  }
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
@@ -254,10 +268,11 @@ window.showTags = function () {
     newTagBut.className = "but but-secondary filter-off";
     newTagBut.id = `${element}`;
     newTagBut.textContent = element;
+    newTagBut.style.outline = "rgba(148, 193, 30, 1)";
     newTagBut.addEventListener("click", () => {
       if(newTagBut.classList.contains("filter-off")) {
         newTagBut.classList.replace("filter-off", "filter-on");
-        newTagBut.style.backgroundColor = "pink";
+        newTagBut.style.backgroundColor = "rgba(148, 193, 30, 1)";
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");

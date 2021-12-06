@@ -83,6 +83,8 @@ class CookMode extends HTMLElement {
             margin-top: 10px;
             padding-left: 15%;
             text-align: left;
+            display: flex;
+            flex-direction: column;
         }
         
         ul li {
