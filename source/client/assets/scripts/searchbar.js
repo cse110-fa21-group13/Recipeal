@@ -24,7 +24,6 @@ function searchRecipe() {
     }
 }
 /* 
- * TODO: 
  * Function to search for recipes in Spoonacular
  */
 export async function searchSpoon() {
@@ -35,50 +34,34 @@ export async function searchSpoon() {
 
     if (filter === "") {
         addedRecipes.clear(); 
-        let goingToBeRemoved = []; 
+        currentRecipe.style.display = "";
+    } else {
         for (let i = 0; i < allRecipes.length; i++) {
-            let currentRecipe = allRecipes[i];
-            if (currentRecipe.classList.contains("new-recipe")) {
-                goingToBeRemoved.push(currentRecipe); 
-            }
-            else {
-                currentRecipe.style.display = "";
-            }
+            allRecipes[i].style.display = "none"; 
         }
-        for (let i = 0; i < goingToBeRemoved.length; i++) {
-            goingToBeRemoved[i].remove();
-        }
-    }
-    else {
         const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
-        if (addedRecipes.size == 0) {
-            for (let i = 0; i < allRecipes.length; i++) {
-                let currentRecipe = allRecipes[i]; 
-                currentRecipe.style.display = "none"; 
-            }
-        } else {
-            addedRecipes.delete(allRecipes[allRecipes.length - 1].id); 
-            allRecipes[allRecipes.length - 1].remove(); 
-        }
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=2&apiKey=${API_KEY}`;
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=3&apiKey=${API_KEY}`;
         await fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
-                // alert(data.results.length); 
                 for (let i = 0; i < data.results.length; i++) {
                     let recipeID = data.results[i].id; 
                     let recipeTitle = data.results[i].title;
+
+                    // Prevents duplicate cards from showing up
                     if (addedRecipes.has(recipeTitle)) {
                         continue; 
                     } 
+
                     addedRecipes.add(recipeTitle); 
                     const RECIPE_INFO = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${API_KEY}`;
                     fetch(RECIPE_INFO)
                         .then(response1 => response1.json())
                         .then(info => {
+                            // Creates recipe card
                             let recipeTime = info.readyInMinutes;
                             let recipeMin = recipeTime % 60;
-                            let recipeHour = recipeTime / 60;
+                            let recipeHour = (recipeTime / 60);
 
                             let recipeSummary = info.summary;
                             recipeSummary = recipeSummary.replaceAll('<b>', '');
@@ -91,10 +74,9 @@ export async function searchSpoon() {
                                 description: recipeSummary,
                                 time: { hours: recipeHour.toString(), minutes: recipeMin.toString() },
                             };
+
                             const recipeCard = document.createElement("recipe-card");
                             recipeCard.data = recipeData;
-                            recipeCard.classList.add("new-recipe");
-
                             document.querySelector("#explore-wrapper").appendChild(recipeCard);
                         });
                 }
