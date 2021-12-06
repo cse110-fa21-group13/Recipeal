@@ -166,6 +166,7 @@ class RecipeCard extends HTMLElement {
     card.setAttribute("style", "border-radius: 16px;");
     const deleteBut = document.createElement("button");
     deleteBut.className = `delbut hidden btn-primary`;
+    deleteBut.id = "cardDelete";
     deleteBut.setAttribute(
       "style",
       "position: absolute; top: 10px; right: 10px; padding: 2px 6px"

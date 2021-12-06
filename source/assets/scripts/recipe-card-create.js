@@ -60,7 +60,7 @@ export function initCards() {
  */
 function bindRecipeCard(recipeCard, recipeData) {
   recipeCard.addEventListener("click", (e) => {
-    if (recipeCard.shadowRoot.getElementById("favoriteOnCard").classList.contains("mouse-off")) {
+    if (recipeCard.shadowRoot.getElementById("cardDelete").classList.contains("hidden") && recipeCard.shadowRoot.getElementById("favoriteOnCard").classList.contains("mouse-off")) {
       document.querySelector("cook-mode").data = recipeData;
       document.querySelector("recipe-expand").data = recipeData;
       changeView("Recipe Expand");

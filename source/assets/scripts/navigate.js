@@ -308,9 +308,11 @@ window.showDeleteButtons = function () {
     for (let recipeCard of recipeCards) {
       const delbut = recipeCard.shadowRoot.querySelector(".delbut");
       if (delbut.classList.contains("hidden")) {
+        document.getElementById("delbut-icon").src = "assets/images/icon-park_return.png";
         delbut.classList.remove("hidden");
         delbut.classList.add("btn");
       } else {
+        document.getElementById("delbut-icon").src = "assets/images/trash.png";
         delbut.classList.add("hidden");
         delbut.classList.remove("btn");
       }
