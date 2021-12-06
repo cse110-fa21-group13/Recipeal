@@ -275,6 +275,12 @@ function recipeExists(recipeName) {
 function reset() {
   document.getElementById("input-name").value = "";
   document.getElementById("input-desc").value = "";
+
+  document.getElementById("input-calories").value = "";
+  document.getElementById("input-carbs").value = "";
+  document.getElementById("input-protein").value = "";
+  document.getElementById("input-fat").value = "";
+
   document.getElementById("input-hours").value = "";
   document.getElementById("input-mins").value = "";
 
@@ -296,8 +302,10 @@ function reset() {
  *  Saves data in input fields to local storage
  *  Resets the input field values
  *  Changes screen to expanded recipe page of saved recipe
+ * 
+ * @param {String} page - determines if it's updating or saving a recipe
  */
-function saveBase(favoriteStatus) {
+function saveBase(page, favoriteStatus) {
   var newRecipe = {
     name: "",
     description: "",
@@ -334,6 +342,10 @@ function saveBase(favoriteStatus) {
 
   let protein = document.getElementById("input-protein").value;
   newRecipe.nutritionInfo.protein = protein;
+
+  if(calories < 0 || carbs < 0 || fat < 0 || protein < 0) {
+    return alert("Please input valid nutritional information");
+  }
 
   // Get time and store it in the object
   let hours = document.getElementById("input-hours").value;
@@ -397,12 +409,44 @@ if (document.getElementById(`input-steps1`)) {
   let img = document.getElementById("display-image");
   newRecipe.thumbnail = img.src;
 
+  /*
   // Put the object into storage
   localStorage.setItem(
     newRecipe.name.toLowerCase(),
     JSON.stringify(newRecipe)
   );
+  */
 
+  if (page === "create") {
+    // Put the object into storage
+    localStorage.setItem(
+    newRecipe.name.toLowerCase(),
+    JSON.stringify(newRecipe)
+  );
+    alert("Recipe saved!");
+  }
+  if (page === "update") {
+    // Put the object into storage
+    localStorage.setItem(
+    newRecipe.name.toLowerCase(),
+    JSON.stringify(newRecipe)
+    );
+    alert("Recipe overwritten!");
+  }
+  if (page === "edit") {
+    // Put the object into storage
+    localStorage.setItem(
+    newRecipe.name.toLowerCase(),
+    JSON.stringify(newRecipe)
+    );
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    changeView("Recipe Expand");
+    return 1;
+  }
+  
+  reset();
   // Creates a recipe card & displays it on the 'My Recipes' page
   newCard(newRecipe.name.toLowerCase());
   document.querySelector("recipe-expand").data = newRecipe;
@@ -417,6 +461,7 @@ if (document.getElementById(`input-steps1`)) {
  */
 function saveDataCreate() {
   let checkName = document.getElementById("input-name").value.toLowerCase();
+  let page = "update";
 
   // Check if user has inputted name field
   if (checkName == "") {
@@ -433,9 +478,8 @@ function saveDataCreate() {
         }
       } 
       localStorage.removeItem(checkName)
-      saveBase(0);
-      alert("Recipe overwritten!");
-      reset();
+      page = "update";
+      saveBase(page, 0);
     }
     else {
       return;
@@ -443,9 +487,8 @@ function saveDataCreate() {
   }
   // Else, create new recipe object
   else {
-    saveBase(0);
-    alert("Recipe saved!");
-    reset();
+    page = "create";
+    saveBase(page, 0);
   }
 }
 
@@ -461,19 +504,22 @@ function saveDataCreate() {
  function saveDataEdit(originalName, functionName) {
   // Delete old recipe with new name
   let isFav = JSON.parse(localStorage.getItem(originalName)).favorites;
+  let page = "edit";
+  if (saveBase(page) === 1) {
+  // Delete old recipe with new name
   localStorage.removeItem(originalName);
-
+  saveBase(page, isFav);
+  alert("Recipe updated!");
+  reset();
   let recipeCards = document.getElementById("recipe-cards").children;
   for(let i = 0; i < recipeCards.length; i++) {
     if(recipeCards[i].id.toLowerCase() === originalName) {
       recipeCards[i].parentNode.removeChild(recipeCards[i]);
     }
   }
-  saveBase(isFav);
-  alert("Recipe updated!");
   let saveButtonEdit = document.getElementById("save-edit-btn");
-  saveButtonEdit.removeEventListener("click", functionName)
-  reset();
+  saveButtonEdit.removeEventListener("click", functionName);
+  }
 }
 
 /**

@@ -388,7 +388,7 @@ class ExpandRecipe extends HTMLElement {
     */
 
     // Calories
-    if (!data.nutritionInfo.calories) {
+    if (!data.nutritionInfo.calories || data.nutritionInfo.calories < 0 ) {
         this.shadowRoot.getElementById('input-calories').innerHTML = "None";
     }
     else {
@@ -396,7 +396,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Carbs
-    if (!data.nutritionInfo.carbs) {
+    if (!data.nutritionInfo.carbs || data.nutritionInfo.carbs < 0) {
         this.shadowRoot.getElementById('input-carbs').innerHTML = "None";
     }
     else {
@@ -404,7 +404,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Fat
-    if (!data.nutritionInfo.fat) {
+    if (!data.nutritionInfo.fat || data.nutritionInfo.fat < 0) {
         this.shadowRoot.getElementById('input-fat').innerHTML = "None";
     }
     else {
@@ -412,7 +412,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Protein
-    if (!data.nutritionInfo.protein) {
+    if (!data.nutritionInfo.protein || data.nutritionInfo.protein < 0) {
         this.shadowRoot.getElementById('input-protein').innerHTML = "None";
     }
     else {

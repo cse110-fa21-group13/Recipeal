@@ -124,12 +124,24 @@ describe('create one sample recipe', ()=>{
     
   })
 
+  /*
   it('large paragraph', ()=>{
     cy.get('textarea#input-desc').type('Chief Justice Roberts, Vice President Harris, Speaker Pelosi, Leader Schumer, Leader McConnell, Vice President Pence, distinguished guests, and my fellow Americans.This is America’s day. This is democracy’s day. A day of history and hope. Of renewal and resolve. Through a crucible for the ages America has been tested anew and America has risen to the challenge. Today, we celebrate the triumph not of a candidate, but of a cause, the cause of democracy. The will of the people has been heard and the will of the people has been heeded. We have learned again that democracy is precious. Democracy is fragile. And at this hour, my friends, democracy has prevailed. So now, on this hallowed ground where just days ago violence sought to shake this Capitol’s very foundation, we come together as one nation, under God, indivisible, to carry out the peaceful transfer of power as we have for more than two centuries. We look ahead in our uniquely American way – restless, bold, optimistic – and set our sights on the nation we know we can be and we must be. I thank my predecessors of both parties for their presence here. I thank them from the bottom of my heart. You know the resilience of our Constitution and the strength of our nation. As does President Carter, who I spoke to last night but who cannot be with us today, but whom we salute for his lifetime of service. I have just taken the sacred oath each of these patriots took — an oath first sworn by George Washington. But the American story depends not on any one of us, not on some of us, but on all of us. On “We the People” who seek a more perfect Union. This is a great nation and we are a good people. Over the centuries through storm and strife, in peace and in war, we have come so far. But we still have far to go. We will press forward with speed and urgency, for we have much to do in this winter of peril and possibility.');
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
     cy.get('button#return-btn').click();
   })
 
+  it('no desc', ()=>{
+    cy.get('textarea#input-desc').type('');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.contains("Please add at least a recipe name to save the recipe.").should('exist');
+    cy.get('button#return-btn').click();
+  })*/
 
-
+  it('add nutriton', ()=>{
+    cy.xpath('//*[@id="input-calories"]').type('100');
+    cy.xpath('//*[@id="input-carbs"]').type('100');
+    cy.xpath('//*[@id="input-fat"]').type('100');
+    cy.xpath('//*[@id="input-protein"]').type('100');
+  })
 })
