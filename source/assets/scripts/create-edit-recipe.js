@@ -297,7 +297,7 @@ function reset() {
  *  Resets the input field values
  *  Changes screen to expanded recipe page of saved recipe
  */
-function saveBase() {
+function saveBase(favoriteStatus) {
   var newRecipe = {
     name: "",
     description: "",
@@ -314,6 +314,9 @@ function saveBase() {
   // Get name and store it in the object
   let name = document.getElementById("input-name").value;
   newRecipe.name = name;
+
+  // Get favorite and store it in the object
+  newRecipe.favorites = favoriteStatus;
 
   // Get description and store it in the object
   let desc = document.getElementById("input-desc").value;
@@ -430,7 +433,7 @@ function saveDataCreate() {
         }
       } 
       localStorage.removeItem(checkName)
-      saveBase();
+      saveBase(0);
       alert("Recipe overwritten!");
       reset();
     }
@@ -440,7 +443,7 @@ function saveDataCreate() {
   }
   // Else, create new recipe object
   else {
-    saveBase();
+    saveBase(0);
     alert("Recipe saved!");
     reset();
   }
@@ -458,7 +461,6 @@ function saveDataCreate() {
  function saveDataEdit(originalName, functionName) {
   // Delete old recipe with new name
   let isFav = JSON.parse(localStorage.getItem(originalName)).favorites;
-  console.log(isFav);
   localStorage.removeItem(originalName);
 
   let recipeCards = document.getElementById("recipe-cards").children;
@@ -467,7 +469,7 @@ function saveDataCreate() {
       recipeCards[i].parentNode.removeChild(recipeCards[i]);
     }
   }
-  saveBase();
+  saveBase(isFav);
   alert("Recipe updated!");
   let saveButtonEdit = document.getElementById("save-edit-btn");
   saveButtonEdit.removeEventListener("click", functionName)
