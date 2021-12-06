@@ -101,6 +101,8 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     returnButton.className = "hidden";
     expandRecipe.classList.remove("shown");
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
 
   }
   // navigating to explore page

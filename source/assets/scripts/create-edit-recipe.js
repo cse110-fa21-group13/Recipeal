@@ -456,8 +456,11 @@ function saveDataCreate() {
  * @param {function} functionName - name of function to remove from event listener
  */
  function saveDataEdit(originalName, functionName) {
-  localStorage.removeItem(originalName);
   // Delete old recipe with new name
+  let isFav = JSON.parse(localStorage.getItem(originalName)).favorites;
+  console.log(isFav);
+  localStorage.removeItem(originalName);
+
   let recipeCards = document.getElementById("recipe-cards").children;
   for(let i = 0; i < recipeCards.length; i++) {
     if(recipeCards[i].id.toLowerCase() === originalName) {
@@ -478,7 +481,6 @@ function saveDataCreate() {
  * @param {e} -  event
  */
  export function navEdit (e) {
-
   let createRecipe = document.querySelector(".section--create-recipe");
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");
