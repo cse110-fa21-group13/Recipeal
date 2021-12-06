@@ -244,12 +244,14 @@ window.returnToHomePage = function () {
 // Show tags when pressing filter button
 window.showTags = function () {
   let filterBtn = document.getElementById("filter-btn");
-  if(filterBtn.classList.contains("false")) {
+  if(filterBtn.classList.contains("flag")) {
+    console.log("yep");
     filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
-    filterBtn.classList.replace("false", "true");
+    filterBtn.classList.remove("flag");
   } else {
+    console.log("yep");
     filterBtn.style.backgroundColor = "white";
-    filterBtn.classList.replace("true", "false");
+    filterBtn.classList.add("flag");
   }
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -286,6 +288,7 @@ window.showTags = function () {
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
+        newTagBut.style.backgroundColor = "white";
         filterTags(element);
       }
     });

@@ -78,7 +78,7 @@
           <input type="text" id="search-bar" class="form-control" onkeyup="searchRecipe()"
             placeholder="Search by recipe name..." />
           <div class="accordion-item ml-3">
-            <button id="filter-btn" class="btn accordion-button collapsed false" style="border-radius: 20px;"
+            <button id="filter-btn" class="btn accordion-button collapsed flag" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
               aria-controls="collapseThree" onclick="showTags()">
               <i id="filter-icon" class="bi bi-funnel-fill"></i>
@@ -113,7 +113,7 @@
       <!-- FAVORITES PAGE -->
 
       <!-- EXPLORE RECIPES PAGE -->
-      <button id="refresh-btn">
+      <button class="hidden" id="refresh-btn">
         <img src="assets/images/refresh.png" id="refresh">
       </button>
       <section class="explore container-fluid">

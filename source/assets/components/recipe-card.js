@@ -92,7 +92,7 @@ class RecipeCard extends HTMLElement {
 
       .textbox p{
           position: absolute;
-          top: 30px;
+          top: 25px;
           transform: translateY(-10%);
           font-size: 14px;
           margin: 0;
@@ -105,7 +105,7 @@ class RecipeCard extends HTMLElement {
         position: absolute;
         font-size: 14px;
         margin: 0;
-        padding: 5px 9px; 
+        padding: 3px 9px; 
         color: #000000;
         font-family: 'Open Sans', sans-serif;
         font-weight: 700;
