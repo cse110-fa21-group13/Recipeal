@@ -716,7 +716,7 @@ function saveDataCreate() {
     protein = protein.replace(/\D/g,'');
 
     // Trim to fit recipe card size
-    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 150) + "..." : summary;
 
     const recipeData = {
       name: data.recipes[i].title,

@@ -35,6 +35,13 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Work+Sans:wght@600;700&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
@@ -74,7 +81,7 @@
             <button id="filter-btn" class="btn accordion-button collapsed false" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
               aria-controls="collapseThree" onclick="showTags()">
-              <i class="bi bi-funnel-fill"></i>
+              <i id="filter-icon" class="bi bi-funnel-fill"></i>
             </button>
             <!--
             <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
@@ -106,14 +113,21 @@
       <!-- FAVORITES PAGE -->
 
       <!-- EXPLORE RECIPES PAGE -->
+      <button id="refresh-btn">
+        <img src="assets/images/refresh.png" id="refresh">
+      </button>
       <section class="explore container-fluid">
+        <div>
+        </div>
         <div id="explore-wrapper">
           <div id="card-wrapper">
           </div>
         </div>
         <div id="explore-buttons">
-          <button id="show-more-btn">Show More</button>
-          <button id="refresh-btn">Refresh</button>
+          <button id="show-more-btn">
+            <img src="assets/images/arrow-down.png" id="arrow-down">
+            Show More</button>
+
         </div>
       </section>
 
