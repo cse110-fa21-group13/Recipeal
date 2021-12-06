@@ -56,6 +56,7 @@ export function changeView(e) {
   const cookModeBut = document.getElementById("cook-mode-btn");
   const cookMode = document.querySelector(".section--cook-mode");
   const navBar = document.querySelector("nav");
+  const refreshButton = document.getElementById("refresh-btn");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -69,6 +70,7 @@ export function changeView(e) {
     deleteButton.className = "btn btn-light";
     returnButton.className = "hidden";
     cookModeBut.className = "hidden";
+    refreshButton.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
@@ -100,6 +102,7 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     returnButton.className = "hidden";
     expandRecipe.classList.remove("shown");
+    refreshButton.className = "hidden";
 
   }
   // navigating to explore page
@@ -113,6 +116,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
+    refreshButton.className = "";
     if(exploreCheck === 0) {
       refresh();
       exploreCheck++;
@@ -134,6 +138,7 @@ export function changeView(e) {
     deleteButton.className = "btn btn-light";
     cookModeBut.className = "btn btn-light";
     createButton.className = "hidden";
+    refreshButton.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
@@ -162,6 +167,7 @@ export function changeView(e) {
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
     saveButtonCreate.style.display="block";
+    refreshButton.className = "hidden";
   }
   switchHighlight(innerText);
 }
@@ -238,12 +244,14 @@ window.returnToHomePage = function () {
 // Show tags when pressing filter button
 window.showTags = function () {
   let filterBtn = document.getElementById("filter-btn");
-  if(filterBtn.classList.contains("false")) {
+  if(filterBtn.classList.contains("flag")) {
+    console.log("yep");
     filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
-    filterBtn.classList.replace("false", "true");
+    filterBtn.classList.remove("flag");
   } else {
+    console.log("yep");
     filterBtn.style.backgroundColor = "white";
-    filterBtn.classList.replace("true", "false");
+    filterBtn.classList.add("flag");
   }
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -280,7 +288,7 @@ window.showTags = function () {
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
-        newTagBut.style.backgroundColor = "rgba(255, 255, 255, 1)";
+        newTagBut.style.backgroundColor = "white";
         filterTags(element);
       }
     });
