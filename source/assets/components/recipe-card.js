@@ -82,7 +82,7 @@ class RecipeCard extends HTMLElement {
       }
 
       .textbox {
-          border-top: solid 4px #FFC148;
+          border-top: solid 10px #2C5F2D;
           height: 118px;
           position: relative;
           vertical-align: middle;
@@ -97,6 +97,8 @@ class RecipeCard extends HTMLElement {
           font-size: 14px;
           margin: 0;
           padding: 12px 9px;
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 400;
       }
 
       .textbox time {
@@ -104,7 +106,10 @@ class RecipeCard extends HTMLElement {
         font-size: 14px;
         margin: 0;
         padding: 5px 9px; 
-        color: #70757A;
+        color: #000000;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+
       }
 
       .hidden {
@@ -222,7 +227,7 @@ class RecipeCard extends HTMLElement {
     title.textContent = data.name;
       //data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
     
-    title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
+    title.style = "'Work Sans', sans-serif; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
     if(storage != null) imageBox.appendChild(favoriteImage);

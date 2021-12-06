@@ -1,8 +1,19 @@
 /* main.css */
 
+:root {
+  --darkGreen: #2C5F2D;
+  --limeGreen: #94C11E;
+  --boogerGreen: #97BC62;
+  --neonGreen: #00AB03;
+  --header-font: 'Work Sans', sans-serif;
+  --body-font: 'Open Sans', sans-serif;
+}
+
+/*
 * {
   font-family: sans-serif;
 }
+*/
 
 body,
 main {
@@ -12,7 +23,7 @@ main {
   width: 100%;
 }
 
-section:not(section.shown){
+section:not(section.shown) {
   display: none;
 }
 
@@ -248,7 +259,7 @@ button.add-btn {
   border: none;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+
   transition: 0.2s;
   outline: none;
 }
@@ -302,22 +313,46 @@ button.btn-light {
   gap: 50px;
 }
 
-button#refresh-btn, 
-button#show-more-btn {
-  display: block;
-  width: 10vw;
-  font-size: 2vw;
+img#arrow-down {
+  width: 30px;
+}
+
+img#refresh {
+  width: 30px;
+}
+
+button#refresh-btn {
+  float: right;
+  margin: 10px 10px 0px 0px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   border: none;
   background-color: transparent;
-  border-radius: 10%;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  border-radius: 70%;
   transition: 0.2s;
   outline: none;
 }
 
-button#refresh-btn:hover, 
-button#show-more-btn:hover {
+button#show-more-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 10%;
+  transition: 0.2s;
+  outline: none;
+  font-family: var(--header-font);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+button#refresh-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
@@ -326,14 +361,16 @@ button#show-more-btn:hover {
 button.save-to-rec-btn {
   display: block;
   width: 200px;
-  height: 40px;
+  height: 50px;
   cursor: pointer;
+  color: #fff;
   border: none;
-  background-color: rgb(71, 255, 163);
+  background-color: #00AB03;
   border-radius: 40px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
   outline: none;
+  font-weight: bold;
 }
 
 button.save-to-rec-btn:hover {
@@ -421,48 +458,62 @@ button.filter-off {
     width: 5%;
     background-color: #2C5F2D;
   }
+
+  /*
   button#refresh-btn, button#show-more-btn {
     width: 100px;
     font-size: inherit;
   }
+  */
+
   .but-secondary {
     font-size: 15px;
     padding: 10px 20px;
   }
+
   .input-card label {
-     font-size: 16px;
-     margin-bottom: 1.5rem;
+    font-size: 16px;
+    margin-bottom: 1.5rem;
   }
+
   .navbar-nav button {
     font-size: 1em;
     padding: .375rem 0.75rem;
     margin-right: 10px
   }
+
   .navbar span {
     font-size: 1.25em;
   }
+
   input[type="text"] {
     font-size: 15px;
     padding: 10px;
   }
+
   input[type="number"] {
     font-size: 15px;
     padding: 10px;
   }
+
   #input-desc {
     font-size: 15px;
     padding: 10px;
   }
+
   #search-bar {
     height: 45px;
   }
+
   i {
     font-size: 1rem;
     color: white;
   }
+
   #filter-icon {
     color: black;
   }
+
   #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
     padding: 0.25rem 0.5rem;
   }
