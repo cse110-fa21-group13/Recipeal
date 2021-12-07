@@ -115,7 +115,6 @@ class CookMode extends HTMLElement {
             border: none;
             margin-top: 15px;
             left: 2%;
-            position: absolute;
             font-size: 2vw;
             cursor: pointer;
         }
@@ -129,7 +128,7 @@ class CookMode extends HTMLElement {
           }
 
         #time-inputs {
-            position: fixed;
+            position: absolute;
             margin-top: 10px;
             border-radius: 20px;
             right: 10px;
@@ -158,12 +157,19 @@ class CookMode extends HTMLElement {
             font-size: 30px;
         }
 
-        /*
-        button.btn-light:not(.back-btn) {
+        #timer-btn {
             background-color: white;
-            border: 1px solid #000;    
+            border: 1px solid #000;
+            font-size: 25px;
+            margin-top: 1%; 
+            right: 250px; 
+            position: absolute; 
+            border-radius: 20px;
         }
-        */
+
+        #timer-btn:focus {
+            outline: black;
+        }
 
         @media screen and (min-width: 800px) {
             button.back-btn {
@@ -188,8 +194,17 @@ class CookMode extends HTMLElement {
             ul li {
                 font-size: 3.25vw;
             }
+            #step-label, #ing-label {
+                font-size: 4vw;
+            }
             .steps {
-                font-size: 5.25vw;
+                font-size: 3.75vw;
+            }
+            button.back-btn {
+                left: 43%;
+            }
+            #arrow-left {
+                width: 4vw;
             }
         }
 
@@ -209,6 +224,20 @@ class CookMode extends HTMLElement {
 
             #step-card {
                 width: 80vw;
+            }
+
+            #timer-btn {
+                margin-top: 4%;
+                left: 32%;
+            }
+
+            button.back-btn {
+                left: 5%;
+                font-size: 4vw;
+            }
+
+            #arrow-left {
+                width: 7vw;
             }
         }
         `;
@@ -232,6 +261,16 @@ class CookMode extends HTMLElement {
                 <button class="back-btn">
                     <i class="bi bi-arrow-return-left"></i> Return
                 </button>
+                <div id="time-inputs">
+                    <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
+                    <p class="semicolon">:</p>
+                    <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
+                    <p class="semicolon">:</p>
+                    <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
+                </div>
+                <button id="timer-btn">
+                    <i id="timer-icon" class="bi bi-play-fill"></i>
+                </button>
                 <div class="input-card" id="step-card">
                     <div id="step-wrapper">
                         <p id="step-none"></p>
@@ -239,16 +278,6 @@ class CookMode extends HTMLElement {
                     <br><br>
                 </div>
             </div>
-            <div id="time-inputs">
-                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
-                <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
-                <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
-            </div>
-            <button id="timer-btn" style="top: 15px; right: 257px; position: fixed; border-radius: 20px;">
-                <i id="timer-icon" class="bi bi-play-fill"></i>
-            </button>
         </div>
         `;
         this.shadowRoot.append(styles, article);
@@ -277,6 +306,16 @@ class CookMode extends HTMLElement {
                 <button class="back-btn">
                 <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Return</b>
                 </button>
+                <button id="timer-btn">
+                    <i id="timer-icon" class="bi bi-play-fill"></i>
+                </button>
+                <div id="time-inputs">
+                    <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="0">h
+                    <p class="semicolon">:</p>
+                    <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="0">m 
+                    <p class="semicolon">:</p>
+                    <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
+                </div>
                 <div class="input-card" id="step-card">
                     <label id="step-label">Steps</label><br>
                     <div id="step-wrapper">
@@ -285,16 +324,6 @@ class CookMode extends HTMLElement {
                     <br><br>
                 </div>
             </div>
-            <div id="time-inputs">
-                <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="0">h
-                <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="0">m 
-                <p class="semicolon">:</p>
-                <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
-            </div>
-            <button id="timer-btn" style="top: 15px; right: 215px; position: fixed; border-radius: 20px;">
-                <i id="timer-icon" class="bi bi-play-fill"></i>
-            </button>
         </div> 
         `;
 

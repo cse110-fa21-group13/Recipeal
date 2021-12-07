@@ -22,9 +22,9 @@ class ExpandRecipe extends HTMLElement {
             justify-content: center;
             gap: 10px;
             padding-right: 50px;
-            width: 80%;
+            width: 85%;
             margin: auto;
-            margin-top: 50px;
+            margin-top: 35px;
             margin-bottom: 50px;
           }
           .input-wrapper--column {
@@ -110,7 +110,7 @@ class ExpandRecipe extends HTMLElement {
         p {
             margin-bottom: 0;
             font-family: var(--body-font);
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 400;
         }
         
@@ -119,11 +119,10 @@ class ExpandRecipe extends HTMLElement {
             transition: 0.5s;
             outline: none;
             border-radius: 5px;
-            font-size: 1.8vw;
+            font-size: 3vw;
         }  
 
         #input-name {
-            /*font-size: 2vw;*/
             font-family: var(--header-font);
             font-size: 48px;
             font-weight: 700;
@@ -132,6 +131,7 @@ class ExpandRecipe extends HTMLElement {
         ol, ul {
             margin-top: 10px;
             padding-left: 2vw;
+            font-size: 20px;
         }
 
         ol li:not(:first-child) {
@@ -139,17 +139,16 @@ class ExpandRecipe extends HTMLElement {
         }
 
         ol li::marker {
-        padding-right: 5px;
+            padding-right: 5px;
         }
         
-
-
         ul li:not(:first-child) {
-        margin-top: 8px;
+            margin-top: 8px;
         }
+        
         @media screen and (min-width: 800px) {
             #input-name {
-                font-size: 35px;
+                font-size: 40px;
             }
             .input-card:not(#img-card) {
                 font-size: 20px;
@@ -167,6 +166,12 @@ class ExpandRecipe extends HTMLElement {
             }
             .input-card {
                 width: 120%;
+            }
+            #input-name {
+                font-size: 7vw;
+            }
+            ol, ul {
+                font-size: 3vw;
             }
         }
     `;
@@ -300,7 +305,7 @@ class ExpandRecipe extends HTMLElement {
             <div class="input-card">
                 <label for="input-time" class="card-label">Time</label><br>
                 <div id="time-inputs">
-                    <p class="input-hours-mins" id="input-hours">
+                    <p class="text" id="input-hours">
                 </div>
             </div>
 
@@ -492,7 +497,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Set time
-    this.shadowRoot.querySelector('p.input-hours-mins').innerHTML = time;
+    this.shadowRoot.getElementById("input-hours").innerHTML = time;
 
     // Set ingredients
     const ingredients = data.ingredients;
