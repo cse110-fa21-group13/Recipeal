@@ -24,8 +24,8 @@
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
-  <script src="assets/scripts/searchbar.js" type="module"></script>
-  <script src="assets/scripts/no-sleep.js"></script> 
+  <!--<script src="assets/scripts/searchbar.js" type="module"></script>-->
+  <script src="assets/scripts/no-sleep.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -68,7 +68,8 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id = "search-bar" class="form-control" placeholder="Search by recipe name..." style="height: 45px;" />
+          <input type="text" id="search-bar" class="form-control" placeholder="Search by recipe name..."
+            style="height: 45px;" />
           <div class="accordion-item ml-3">
             <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
@@ -106,10 +107,12 @@
       <section class="explore container-fluid">
 
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id = "explore-search-bar" class="form-control" placeholder="Search..." style="height: 45px;" />
+          <input type="text" id="explore-search-bar" class="form-control" placeholder="Search..."
+            style="height: 45px;" />
           <div class="accordion-item ml-3">
-            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">
+            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button"
+              data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+              aria-controls="collapseThree" onclick="showTags()">
               <i class="bi bi-funnel-fill"></i>
             </button>
             <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
@@ -118,7 +121,7 @@
             </div>
           </div>
         </div>
-                  
+
         <div id="explore-wrapper">
           <div id="card-wrapper">
           </div>
@@ -272,8 +275,7 @@
         <i class="bi bi-pencil-square"></i>
       </button>
 
-      <button id="sleep-btn" class="hidden"
-        style="top: 15px; right: 50%; position: absolute; border-radius: 20px;">
+      <button id="sleep-btn" class="hidden" style="top: 15px; right: 50%; position: absolute; border-radius: 20px;">
         <i id="sleep-icon" class="bi bi-brightness-high"></i>
       </button>
 
@@ -282,7 +284,7 @@
         let sleepBtn = document.getElementById("sleep-btn");
         let sleepIcon = document.getElementById("sleep-icon");
         sleepBtn.addEventListener("click", () => {
-          if(sleepIcon.className === "bi bi-brightness-high") {
+          if (sleepIcon.className === "bi bi-brightness-high") {
             noSleep.enable();
             console.log("success");
             sleepIcon.className = "bi bi-brightness-high-fill";
@@ -290,7 +292,7 @@
             noSleep.disable();
             console.log("yep");
             sleepIcon.className = "bi bi-brightness-high";
-          }  
+          }
         });
       </script>
 

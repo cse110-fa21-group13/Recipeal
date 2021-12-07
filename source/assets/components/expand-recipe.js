@@ -359,34 +359,6 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
     }
 
-    /*
-    console.log(data.nutritionInfo)
-
-    async function checkImage(url) {
-        // Set nutrition info
-        let myRequest = new Request(data.nutritionInfo);
-        await fetch(myRequest).then(function(response) {
-        console.log(response.status)
-        if (response.status == 200) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    });
-    }
-    
-
-    if (checkImage(data.nutritionInfo)) {
-        this.shadowRoot.getElementById('nutrition-facts').setAttribute('src', data.nutritionInfo)
-        console.log("Returned true")
-    }
-    else {
-        this.shadowRoot.getElementById('nutrition-facts-none').innerHTML = "None";
-        console.log("Returned false")
-    }
-    */
-
     // Calories
     if (!data.nutritionInfo.calories || data.nutritionInfo.calories < 0 ) {
         this.shadowRoot.getElementById('input-calories').innerHTML = "None";

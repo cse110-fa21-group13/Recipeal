@@ -1,6 +1,5 @@
 // Contains functions for navigating between pages
-import { searchSpoon, searchRecipe, filterTags } from "./searchbar.js"
-import { saveToMyRecipes } from "./create-edit-recipe.js";
+import { saveToMyRecipes, searchSpoon, searchRecipe, filterTags } from "./create-edit-recipe.js";
 
 /** BUTTONS **/
 
@@ -211,7 +210,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
+  const API_KEY = "b24485ab3d4a47f696151e7134433592";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
