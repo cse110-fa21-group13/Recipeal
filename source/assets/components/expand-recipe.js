@@ -21,7 +21,6 @@ class ExpandRecipe extends HTMLElement {
             flex-direction: row;
             justify-content: center;
             gap: 10px;
-            padding-left: 50px;
             padding-right: 50px;
             width: 80%;
             margin: auto;
