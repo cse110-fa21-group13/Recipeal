@@ -1,6 +1,5 @@
 // Contains functions for navigating between pages
-
-import { saveToMyRecipes, reset } from "./create-edit-recipe.js";
+import { saveToMyRecipes, searchSpoon, searchRecipe, filterTags, reset } from "./create-edit-recipe.js";
 
 /** BUTTONS **/
 
@@ -35,6 +34,18 @@ showMoreButton.addEventListener("click", (e) => {
   fetchApiRecipes();
 });
 
+let exploreSearch = document.getElementById("explore-search-bar");
+exploreSearch.addEventListener("keyup", (e) => {
+  if(e.key === "Enter") {
+    searchSpoon();
+  }
+})
+
+let recipeSearch = document.getElementById("search-bar");
+recipeSearch.addEventListener("keyup", () => {
+  searchRecipe();
+})
+
 let exploreCheck = 0;
 
 /*
@@ -57,6 +68,7 @@ export function changeView(e) {
   const cookMode = document.querySelector(".section--cook-mode");
   const navBar = document.querySelector("nav");
   const refreshButton = document.getElementById("refresh-btn");
+  const sleepBtn = document.getElementById("sleep-btn");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
@@ -103,6 +115,8 @@ export function changeView(e) {
     returnButton.className = "hidden";
     expandRecipe.classList.remove("shown");
     refreshButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
 
   }
   // navigating to explore page
@@ -139,6 +153,7 @@ export function changeView(e) {
     cookModeBut.className = "ok";
     createButton.className = "hidden";
     refreshButton.className = "hidden";
+    sleepBtn.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
@@ -165,6 +180,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     cookModeBut.className = "hidden";
     editButton.style.display = "none";
+    sleepBtn.className = "btn btn-light";
   }
   switchHighlight(innerText);
 }

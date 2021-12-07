@@ -1,3 +1,5 @@
+// Contains constructor for cook mode page
+
 import { changeView } from "../scripts/navigate.js";
 
 class CookMode extends HTMLElement {

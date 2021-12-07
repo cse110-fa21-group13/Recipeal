@@ -38,14 +38,11 @@ class RecipeCard extends HTMLElement {
         height: 200px;
       }
 
-      .image-box > .favoriteOnCard{
+      .favoriteOnCard{
         position: relative;
-        width: 40px;
+        left: 90%;
+        width: 25px;
         height: 25px;
-        left: 260px;
-        bottom: 190px;
-        z-index: 1;
-        filter: saturate(20);
       }
 
       .image-box img, .image-box h1{
@@ -190,7 +187,6 @@ class RecipeCard extends HTMLElement {
       favoriteImage.classList.add("favoriteOnCard");
       favoriteImage.classList.add("mouse-off");
       favoriteImage.id = "favoriteOnCard";
-      //favoriteImage.classList.add(data.name.toLowerCase());
 
       if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
       else favoriteImage.setAttribute("src", "assets/images/heart.png");
@@ -231,7 +227,6 @@ class RecipeCard extends HTMLElement {
     title.style = "'Work Sans', sans-serif; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
-    if(storage != null) imageBox.appendChild(favoriteImage);
     imageBox.appendChild(cardTitle);
 
     const desBox = document.createElement("div");
@@ -264,6 +259,7 @@ class RecipeCard extends HTMLElement {
       desBox.appendChild(time);
     }
 
+    if(storage != null) desBox.appendChild(favoriteImage);
     card.appendChild(deleteBut);
     card.appendChild(imageBox);
     card.appendChild(desBox);

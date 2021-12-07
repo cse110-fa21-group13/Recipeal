@@ -1,3 +1,5 @@
+// Contains functions to create a new recipe card
+
 import { changeView } from "./navigate.js";
 
 /**

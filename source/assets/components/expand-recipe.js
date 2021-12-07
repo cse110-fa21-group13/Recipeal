@@ -391,16 +391,17 @@ class ExpandRecipe extends HTMLElement {
     function changeHeart(){
       let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
       let imageOnCard = document.getElementById(data.name);
+      const img = imageOnCard.shadowRoot.getElementById('favoriteOnCard')
 
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
-        imageOnCard.setAttribute("src", "assets/images/heart.png");
+        img.setAttribute("src", "assets/images/heart.png");
         storage.favorites = 1;
         love = true;
       }
       else{
         favOnExpand.setAttribute("src", "assets/images/empty_heart.png");
-        imageOnCard.setAttribute("src", "assets/images/empty_heart.png");
+        img.setAttribute("src", "assets/images/empty_heart.png");
         storage.favorites = 0;
         love = false;
       }
@@ -415,36 +416,8 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
     }
 
-    /*
-    console.log(data.nutritionInfo)
-
-    async function checkImage(url) {
-        // Set nutrition info
-        let myRequest = new Request(data.nutritionInfo);
-        await fetch(myRequest).then(function(response) {
-        console.log(response.status)
-        if (response.status == 200) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    });
-    }
-    
-
-    if (checkImage(data.nutritionInfo)) {
-        this.shadowRoot.getElementById('nutrition-facts').setAttribute('src', data.nutritionInfo)
-        console.log("Returned true")
-    }
-    else {
-        this.shadowRoot.getElementById('nutrition-facts-none').innerHTML = "None";
-        console.log("Returned false")
-    }
-    */
-
     // Calories
-    if (!data.nutritionInfo.calories) {
+    if (!data.nutritionInfo.calories || data.nutritionInfo.calories < 0 ) {
         this.shadowRoot.getElementById('input-calories').innerHTML = "None";
     }
     else {
@@ -452,7 +425,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Carbs
-    if (!data.nutritionInfo.carbs) {
+    if (!data.nutritionInfo.carbs || data.nutritionInfo.carbs < 0) {
         this.shadowRoot.getElementById('input-carbs').innerHTML = "None";
     }
     else {
@@ -460,7 +433,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Fat
-    if (!data.nutritionInfo.fat) {
+    if (!data.nutritionInfo.fat || data.nutritionInfo.fat < 0) {
         this.shadowRoot.getElementById('input-fat').innerHTML = "None";
     }
     else {
@@ -468,7 +441,7 @@ class ExpandRecipe extends HTMLElement {
     }
 
     // Protein
-    if (!data.nutritionInfo.protein) {
+    if (!data.nutritionInfo.protein || data.nutritionInfo.protein < 0) {
         this.shadowRoot.getElementById('input-protein').innerHTML = "None";
     }
     else {
