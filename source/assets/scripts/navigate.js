@@ -250,6 +250,7 @@ window.returnToHomePage = function () {
     changeView("Explore");
     returnBut.classList.remove("explore");
   } else if(returnBut.classList.contains("edit")) {
+    reset();
     changeView("Recipe Expand");
     returnBut.classList.remove("edit");
   } else {
