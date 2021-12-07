@@ -17,14 +17,16 @@ class ExpandRecipe extends HTMLElement {
         }
 
         #create-recipe--input-wrapper {
-            margin-top: 30px;
-            margin-bottom: 30px;
             display: flex;
             flex-direction: row;
             justify-content: center;
             gap: 10px;
             padding-left: 50px;
             padding-right: 50px;
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
           }
           .input-wrapper--column {
             width: 80%;
