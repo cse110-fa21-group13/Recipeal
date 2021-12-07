@@ -23,7 +23,7 @@
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
   <script src="assets/scripts/create-edit-recipe.js" type="module"></script>
-  <script src="assets/scripts/searchbar.js"></script>
+  <script src="assets/scripts/searchbar.js" type="module"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -63,7 +63,7 @@
 
         <!--Search bar and filter-->
         <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id = "search-bar" class="form-control" onkeyup="searchRecipe()" placeholder="Search..." style="height: 45px;" />
+          <input type="text" id = "search-bar" class="form-control" placeholder="Search..." style="height: 45px;" />
           <div class="accordion-item ml-3">
             <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="showTags()">

@@ -6,7 +6,7 @@ const addedRecipes = new Set();
 /* 
  * Function to search for recipe cards in search bar
  */
-function searchRecipe() {
+export function searchRecipe() {
     let input = document.getElementById("search-bar");
     let filter = input.value.toLowerCase();
     let recipeCardsElement = document.getElementById('recipe-cards'); 
@@ -26,7 +26,7 @@ function searchRecipe() {
 /* 
  * Function to search for recipes in Spoonacular
  */
-export async function searchSpoon() {
+export function searchSpoon() {
     let input = document.getElementById("explore-search-bar");
     const filter = input.value.toLowerCase();
     let recipeCardsElement = document.getElementById('explore-wrapper');
@@ -41,7 +41,7 @@ export async function searchSpoon() {
         }
         const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
         const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=3&apiKey=${API_KEY}`;
-        await fetch (SEARCH_URL)
+        fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {
                 for (let i = 0; i < data.results.length; i++) {

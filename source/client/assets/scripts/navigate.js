@@ -1,5 +1,5 @@
 // Contains functions for navigating between pages
-import { searchSpoon } from "./searchbar.js"
+import { searchSpoon, searchRecipe } from "./searchbar.js"
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
@@ -30,6 +30,11 @@ exploreSearch.addEventListener("keyup", (e) => {
   if(e.key === "Enter") {
     searchSpoon();
   }
+})
+
+let recipeSearch = document.getElementById("search-bar");
+recipeSearch.addEventListener("keyup", () => {
+  searchRecipe();
 })
 
 
