@@ -49,8 +49,8 @@ class ExpandRecipe extends HTMLElement {
             position: absolute;
             margin-top: 2vh;
             right: 2%;
-            height: 3vw;
-            width: 5vw;
+            height: 4vw;
+            width: 4vw;
         }
 
         /* Card for display image */
@@ -174,8 +174,8 @@ class ExpandRecipe extends HTMLElement {
             #create-recipe--input-wrapper > .favorite{
                 right: 1%;
                 top: 23%;
-                height: 5vw;
-                width: 8vw;
+                height: 7vw;
+                width: 7vw;
             }
         }
 
@@ -183,7 +183,7 @@ class ExpandRecipe extends HTMLElement {
             #create-recipe--input-wrapper > .favorite{
                 right: 1%;
                 top: 30%;
-                height: 7vw;
+                height: 10vw;
                 width: 10vw;
             }
         }

@@ -180,7 +180,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     cookModeBut.className = "hidden";
     editButton.style.display = "none";
-    sleepBtn.className = "btn btn-light";
+    sleepBtn.className = "";
   }
   switchHighlight(innerText);
 }
