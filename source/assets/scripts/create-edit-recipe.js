@@ -430,7 +430,7 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
   }
-  if (page === "update") {
+  else if (page === "update") {
     // Put the object into storage
     localStorage.setItem(
     newRecipe.name.toLowerCase(),
@@ -443,7 +443,7 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
   }
-  if (page === "edit") {
+  else if (page === "edit") {
     // Put the object into storage
     localStorage.setItem(
     newRecipe.name.toLowerCase(),
@@ -454,6 +454,17 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
     return 1;
+  }
+  else {
+    // Put the object into storage
+    localStorage.setItem(
+      newRecipe.name.toLowerCase(),
+      JSON.stringify(newRecipe)
+    );
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    changeView("Recipe Expand");
   }
 }
 
