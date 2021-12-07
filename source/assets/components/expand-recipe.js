@@ -83,8 +83,6 @@ class ExpandRecipe extends HTMLElement {
         /* Card for steps */
         
         #step-card {
-            height: 98%;
-            width: 100%;
             background-color: transparent;
             box-shadow: none;
         }
