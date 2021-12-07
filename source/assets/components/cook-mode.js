@@ -127,6 +127,13 @@ class CookMode extends HTMLElement {
             outline: none;
           }
 
+        #timer-wrapper {
+            position: fixed;
+            align-items: center;
+            top: 0px;
+            right: 10px;
+        }
+
         #time-inputs {
             position: absolute;
             margin-top: 10px;
@@ -134,7 +141,8 @@ class CookMode extends HTMLElement {
             right: 10px;
             width: 200px;
             height: 50px;
-            border: 1px solid #000;
+            border: 2px solid #000;
+            background: #fff;
         }
 
         .input-hrs-mins {
@@ -159,12 +167,14 @@ class CookMode extends HTMLElement {
 
         #timer-btn {
             background-color: white;
-            border: 1px solid #000;
+            border: 2px solid #000;
             font-size: 25px;
-            margin-top: 1%; 
-            right: 250px; 
+            margin-top: 10px; 
+            right: 211px; 
             position: absolute; 
-            border-radius: 20px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
         }
 
         #timer-btn:focus {
@@ -215,7 +225,8 @@ class CookMode extends HTMLElement {
             }
 
             #ing-card {
-                width: 80vw
+                width: 80vw;
+                margin-top: 70px;
             }
 
             ul li {
@@ -224,16 +235,28 @@ class CookMode extends HTMLElement {
 
             #step-card {
                 width: 80vw;
+                margin-top: 0px;
+            }
+
+            #timer-wrapper {
+                position: fixed;
+                bottom: 50px;
+                right: 0px;
+                width: 50px;
             }
 
             #timer-btn {
-                margin-top: 4%;
-                left: 32%;
+                bottom: -40px
+            }
+
+            #time-inputs {
+                bottom: -40px;
             }
 
             button.back-btn {
-                left: 5%;
+                top: 10px;
                 font-size: 4vw;
+                left: 10px;
             }
 
             #arrow-left {
@@ -259,26 +282,30 @@ class CookMode extends HTMLElement {
             <!-- THIRD COLUMN -->
             <div class="input-wrapper--column">
                 <button class="back-btn">
-                    <i class="bi bi-arrow-return-left"></i> Return
+                <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Return</b>
                 </button>
+                
                 <div id="time-inputs">
-                    <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="00">h
+                    <button id="timer-btn">
+                        <i id="timer-icon" class="bi bi-play-fill"></i>
+                    </button>
+                    <div>
+                    <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="0">h
                     <p class="semicolon">:</p>
-                    <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="00">m 
+                    <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="0">m 
                     <p class="semicolon">:</p>
-                    <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="00">s
+                    <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
+                    </div>
                 </div>
-                <button id="timer-btn">
-                    <i id="timer-icon" class="bi bi-play-fill"></i>
-                </button>
                 <div class="input-card" id="step-card">
+                    <label id="step-label">Steps</label><br>
                     <div id="step-wrapper">
                         <p id="step-none"></p>
                     </div>
                     <br><br>
                 </div>
             </div>
-        </div>
+        </div> 
         `;
         this.shadowRoot.append(styles, article);
     }
@@ -288,6 +315,9 @@ class CookMode extends HTMLElement {
         console.log(data);
         this.shadowRoot.querySelector("article").innerHTML = `
         <div id="cook-mode--input-wrapper">
+            <button class="back-btn">
+                <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Return</b>
+            </button>
             <!-- SECOND COLUMN -->
             <div class="input-wrapper--column">
                 <!-- Ingredients -->
@@ -303,11 +333,18 @@ class CookMode extends HTMLElement {
 
             <!-- THIRD COLUMN -->
             <div class="input-wrapper--column">
-                <button class="back-btn">
-                <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Return</b>
-                </button>
+                
+                <div class="input-card" id="step-card">
+                    <label id="step-label">Steps</label><br>
+                    <div id="step-wrapper">
+                        <p id="step-none"></p>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+            <div id="timer-wrapper">
                 <button id="timer-btn">
-                    <i id="timer-icon" class="bi bi-play-fill"></i>
+                        <i id="timer-icon" class="bi bi-play-fill"></i>
                 </button>
                 <div id="time-inputs">
                     <input type="text" class="input-hrs-mins" id="input-hrs" maxlength = "2" value="0">h
@@ -315,13 +352,6 @@ class CookMode extends HTMLElement {
                     <input type="text" class="input-hrs-mins" id="input-minutes" maxlength = "2" value="0">m 
                     <p class="semicolon">:</p>
                     <input type="text" class="input-hrs-mins" id="input-seconds" maxlength = "2" value="0">s
-                </div>
-                <div class="input-card" id="step-card">
-                    <label id="step-label">Steps</label><br>
-                    <div id="step-wrapper">
-                        <p id="step-none"></p>
-                    </div>
-                    <br><br>
                 </div>
             </div>
         </div> 

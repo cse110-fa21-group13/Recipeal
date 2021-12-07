@@ -278,7 +278,7 @@ input[type="number"]:focus {
 
 #input-desc {
   border-radius: 5px;
-  font-family: var(--p-font);
+  font-family: var(--body-font);
   border: 3px solid #ccc;
   resize: none;
   width: 100%;
@@ -457,11 +457,26 @@ input[type="number"]:focus {
   border: none;
 }
 
-#delete-btn:hover, #create-recipe-btn:hover, #save-create-btn:hover, #edit-btn:hover, #cook-mode-btn:hover {
+#refresh-btn {
+  bottom: 20px;
+  right: 15px;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--darkGreen);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+#delete-btn:hover, #create-recipe-btn:hover, #save-create-btn:hover, #edit-btn:hover, #cook-mode-btn:hover, #refresh-btn:hover {
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
 }
 
-#delete-btn:focus, #create-recipe-btn:focus, #save-create-btn:focus, #edit-btn:focus, #cook-mode-btn:focus {
+#delete-btn:focus, #create-recipe-btn:focus, #save-create-btn:focus, #edit-btn:focus, #cook-mode-btn:focus, #refresh-btn:focus {
   outline: none;
 }
 
@@ -479,19 +494,7 @@ input[type="number"]:focus {
   gap: 50px;
 }
 
-#refresh-btn {
-  float: right;
-  margin: 10px 10px 0px 0px;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  border-radius: 70%;
-  transition: 0.2s;
-  outline: none;
-}
+
 
 #show-more-btn {
   display: flex;
@@ -510,9 +513,7 @@ input[type="number"]:focus {
   text-transform: uppercase;
 }
 
-#refresh-btn:hover {
-  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
-}
+
 
 .save-to-rec-btn {
   display: block;
@@ -736,7 +737,7 @@ button.filter-off {
     width: 32vw;
   }
 
-  #delete-btn, #create-recipe-btn, #save-create-btn, #edit-btn, #cook-mode-btn, #save-edit-btn {
+  #delete-btn, #create-recipe-btn, #save-create-btn, #edit-btn, #cook-mode-btn, #save-edit-btn, #refresh-btn {
     width: 50px;
     height: 50px;
     right: 1%;
