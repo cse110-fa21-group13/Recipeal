@@ -202,13 +202,13 @@ class CookMode extends HTMLElement {
 
         @media screen and (max-width: 800px) {
             ul li {
-                font-size: 3.25vw;
+                font-size: 3vw;
             }
             #step-label, #ing-label {
                 font-size: 4vw;
             }
             .steps {
-                font-size: 3.75vw;
+                font-size: 3.5vw;
             }
             button.back-btn {
                 left: 43%;

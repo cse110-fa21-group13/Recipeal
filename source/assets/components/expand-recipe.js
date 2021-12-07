@@ -47,10 +47,10 @@ class ExpandRecipe extends HTMLElement {
         /* Favorites icon */
         #create-recipe--input-wrapper > .favorite{
             position: absolute;
-            top: 10%;
-            right: 1%;
-            height: 5%;
-            width: 8vh;
+            margin-top: 2vh;
+            right: 2%;
+            height: 3vw;
+            width: 5vw;
         }
 
         /* Card for display image */
@@ -172,6 +172,21 @@ class ExpandRecipe extends HTMLElement {
             }
             ol, ul {
                 font-size: 3vw;
+            }
+            #create-recipe--input-wrapper > .favorite{
+                right: 1%;
+                top: 23%;
+                height: 5vw;
+                width: 8vw;
+            }
+        }
+
+        @media screen and (max-width: 425px) {
+            #create-recipe--input-wrapper > .favorite{
+                right: 1%;
+                top: 30%;
+                height: 7vw;
+                width: 10vw;
             }
         }
     `;
