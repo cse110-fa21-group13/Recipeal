@@ -66,8 +66,8 @@ export function changeView(e) {
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
-    createButton.className = "btn btn-light";
-    deleteButton.className = "btn btn-light";
+    createButton.className = "ok";
+    deleteButton.className = "ok";
     returnButton.className = "hidden";
     cookModeBut.className = "hidden";
     refreshButton.className = "hidden";
@@ -132,11 +132,11 @@ export function changeView(e) {
     expandRecipe.classList.add("shown");
     navBar.className = "navbarv2 navbar-light";
     //switchButtonView(returnButton);
-    returnButton.classList.add("btn");
-    returnButton.classList.add("btn-light");
+    //returnButton.classList.add("btn");
+    returnButton.classList.add("ok");
     returnButton.classList.remove("hidden");
-    deleteButton.className = "btn btn-light";
-    cookModeBut.className = "btn btn-light";
+    deleteButton.className = "ok";
+    cookModeBut.className = "ok";
     createButton.className = "hidden";
     refreshButton.className = "hidden";
 
@@ -171,8 +171,9 @@ export function changeView(e) {
 
 // switch between shown and hidden for button
 export function switchButtonView(but) {
-  but.className = but.className === "hidden" ? "btn btn-light" : "hidden";
+  but.className = but.className === "hidden" ? "ok" : "hidden";
 }
+
 
 /*
  * Function to change button highlight

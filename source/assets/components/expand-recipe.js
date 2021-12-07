@@ -13,7 +13,6 @@ class ExpandRecipe extends HTMLElement {
         /** CREATE RECIPE SECTION **/
 
         .input-card {
-            inline-size: 90%;
             overflow-wrap: break-word
         }
 
@@ -28,7 +27,8 @@ class ExpandRecipe extends HTMLElement {
             padding-right: 50px;
           }
           .input-wrapper--column {
-            width: 30%;
+            width: 80%;
+            margin: 0px auto;
           }
         
         /* Cards for all inputs */
@@ -76,7 +76,7 @@ class ExpandRecipe extends HTMLElement {
         
         #ing-card {
             height: 98%;
-            width: 90%;
+            width: 100%%;
         }
         
         /* Card for steps */
@@ -156,9 +156,16 @@ class ExpandRecipe extends HTMLElement {
             p.text:not(#input-name) {
                 font-size: 15px;
             }
+        }
 
+        @media screen and (max-width: 800px) {
             #create-recipe--input-wrapper {
-                flex-direction: row;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .input-card {
+                width: 120%;
             }
         }
     `;

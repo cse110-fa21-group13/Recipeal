@@ -28,6 +28,9 @@ section:not(section.shown) {
 }
 
 
+
+
+
 /* NAVBAR */
 
 #logo {
@@ -99,6 +102,7 @@ section:not(section.shown) {
   justify-content: space-evenly;
   margin: auto;
   margin-top: 25px;
+  margin-bottom: 50px;
   gap: 50px;
   height: auto;
   max-width: 80%;
@@ -119,6 +123,9 @@ section:not(section.shown) {
 
 .input-wrapper--column {
   width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .input-card {
@@ -228,7 +235,7 @@ input.tags {
 }
 
 input.nutrition-cat {
-  width: 7vw;
+  width: 11vw;
   margin: 0.5vw;
 }
 
@@ -416,7 +423,13 @@ input[type="number"]:focus {
   border-radius: 20px;
   background: transparent;
   border: none;
+  cursor: pointer;
 }
+
+#return-btn:focus {
+  outline: none;
+}
+
 
 #delete-btn {
   bottom: 100px;
@@ -450,11 +463,10 @@ input[type="number"]:focus {
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
 }
 
-/*
-button.btn-light {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+#delete-btn:focus, #create-recipe-btn:focus, #save-create-btn:focus, #edit-btn:focus, #cook-mode-btn:focus {
+  outline: none;
 }
-*/
+
 
 #delete-btn, #filter-btn {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -583,6 +595,8 @@ button.filter-off {
 #search-bar-filter {
   display: flex;
   align-items: center;
+  margin: 30px auto;
+  width: 30%;
 }
 
 #search-bar {
@@ -664,13 +678,71 @@ button.filter-off {
   width: 30px;
 }
 
-/*
-#filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
-  padding: 0 0.4rem;
-}
-*/
-
 /* MEDIA QUERY */
+
+@media screen and (max-width: 800px) {
+  .navbarv2 {
+    flex-direction: column;
+  }
+
+  #explore-btn {
+    margin-top: 20px;
+    width: 15vw;
+  }
+
+  #search-bar-filter {
+    width: 70%;
+    height: 20%;
+  }
+
+  #search-bar {
+    height: 4vh;
+  }
+
+  input[type="text"] {
+    font-size: 4vw;
+    padding: none;
+    height: 5vh;
+    width: 100%;
+  }
+
+  input[type="number"] {
+    font-size: 4vw;
+    padding: 3%;
+    height: 5vh;
+    width: 100%;
+  }
+
+  #input-desc {
+    font-size: 4vw;
+    padding: none;
+    width: 100%;
+  }
+
+  #return-btn {
+    top: 200px;
+    left: 10px;
+  }
+
+  .back-btn {
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #search-bar {
+    background: none;
+  }
+
+  #explore-btn {
+    width: 32vw;
+  }
+
+  #delete-btn, #create-recipe-btn, #save-create-btn, #edit-btn, #cook-mode-btn, #save-edit-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
 
 @media screen and (min-width: 400px) {
   button.add-btn {
@@ -683,16 +755,6 @@ button.filter-off {
 @media screen and (min-width: 800px) {
 
   /*
-  button.btn-light:not(#filter-btn) {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    height: 6%;
-    width: 5%;
-    background-color: #2C5F2D;
-  }
-  */
-
-
-  /*
   button#refresh-btn, button#show-more-btn {
     width: 100px;
     font-size: inherit;
@@ -701,7 +763,7 @@ button.filter-off {
 
 
   /*
-  .input-card label {
+  .input-card {
     font-size: 16px;
     margin-bottom: 1.5rem;
   }
@@ -737,20 +799,9 @@ button.filter-off {
     height: 45px;
   }
 
-  i {
-    font-size: 1rem;
-    color: white;
-  }
-
   #filter-icon {
     color: black;
   }
-
-  /*
-  #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
-    padding: 0.25rem 0.5rem;
-  }
-  */
 
   input.nutrition-cat {
     width: 70px;
