@@ -1,0 +1,466 @@
+/* main.css */
+
+* {
+  font-family: sans-serif;
+}
+
+body,
+main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+section:not(section.shown){
+  display: none;
+}
+
+.navbar-nav {
+  position: relative;
+  text-align: center;
+  margin: auto;
+}
+
+/** RECIPE CARDS IN EXPLORE **/
+
+#explore-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
+  margin-top: 50px;
+  gap: 50px;
+  height: auto;
+  max-width: 60%;
+}
+
+#explore-recipe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+  gap: 50px;
+  height: auto;
+}
+
+/** RECIPE CARDS IN MY RECIPE **/
+
+#recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
+  margin-top: 50px;
+  gap: 50px;
+  height: auto;
+  max-width: 80%;
+}
+
+/** CREATE RECIPE SECTION **/
+
+#create-recipe--input-wrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.input-wrapper--column {
+  width: 100%;
+}
+
+/* Cards for all inputs */
+
+.input-card {
+  margin-top: 20px;
+  background-color: #f6f6f6;
+  border-radius: 20px;
+  padding: 5%;
+  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  width: 85%;
+}
+
+.input-card label {
+  font-size: 2vw;
+  margin-bottom: 0;
+}
+
+.navbar-nav button {
+  font-size: 2vw;
+  padding: 0.5vw 0.8vw;
+  margin-right: 0.5vw;
+}
+
+.navbar span {
+  font-size: 2.5vw;
+}
+
+
+/* Input card for ings */
+
+.input-card-ings {
+  margin-top: 5%;
+}
+
+/* Input card for steps */
+
+.input-card-steps {
+  background-color: #f6f6f6;
+  border-radius: 20px;
+  padding: 5%;
+  margin-top: 5%;
+  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Card for display image */
+
+#img-card {
+  padding: 5%;
+  width: 85%;
+}
+
+#display-image {
+  cursor: pointer;
+  margin: auto;
+  width: 100%;
+}
+
+#nutrition-facts {
+  margin: auto;
+  width: 250px;
+}
+
+/* Card for ingredients */
+
+#ing-card {
+  height: 98%;
+  width: 90%;
+}
+
+/* Card for steps */
+
+#step-card {
+  height: 98%;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/** INPUTS **/
+
+input {
+  border-radius: 1.5%;
+  padding: 1.5%;
+  font-family: var(--p-font);
+  border: 3px solid #ccc;
+  resize: none;
+  width: 100%;
+}
+
+input.tags {
+  width: 40%;
+  margin: 1.5%;
+}
+
+input.nutrition-cat {
+  width: 7vw;
+  margin: 0.5vw;
+}
+
+input.ings {
+  width: 94%;
+}
+
+input.steps {
+  width: 93%;
+}
+
+input.input-hours-mins {
+  width: 40%;
+  margin: 1.5%;
+}
+
+input[type="text"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.8vw;
+  padding: 3%;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+}
+
+input[type="number"] {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.8vw;
+  padding: 3%;
+}
+
+input[type="number"]:focus {
+  border: 3px solid #555;
+}
+
+#input-desc {
+  border-radius: 5px;
+  font-family: var(--p-font);
+  border: 3px solid #ccc;
+  resize: none;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.8vw;
+  padding: 3%;
+  overflow-y: scroll;
+}
+
+#input-desc:focus {
+  border: 3px solid #555;
+}
+
+#time-inputs {
+  margin: auto;
+}
+
+/** BUTTONS **/
+
+button.add-btn {
+  display: block;
+  margin: 0 auto;
+  width: 7vw;
+  height: 7vw;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.add-btn:focus {
+  outline: none;
+}
+
+button.add-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+button.save-btn {
+  display: block;
+  margin: 0px auto;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.save-btn:focus {
+  outline: none;
+}
+
+button.save-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+button.btn-light {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#delete-btn {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* REFRESH AND SHOW MORE BUTTONS ON EXPLORE PAGE */
+
+#explore-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  gap: 50px;
+}
+
+button#refresh-btn, 
+button#show-more-btn {
+  display: block;
+  width: 10vw;
+  font-size: 2vw;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 10%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button#refresh-btn:hover, 
+button#show-more-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* Save to my recipe btn */
+
+button.save-to-rec-btn {
+  display: block;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(71, 255, 163);
+  border-radius: 40px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+}
+
+button.save-to-rec-btn:hover {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+.hidden {
+  display: none;
+}
+
+.delete-modal-expand {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.delete-modal-expand-content {
+  margin: 15% auto;
+  padding: 20px;
+}
+
+#search-bar {
+  position: relative;
+  height: 5vw;
+}
+
+#tag-wrapper-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.but-secondary {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  transition: 0.2s;
+  outline: none;
+  padding: 0.75vw 1.5vw;
+  margin: 7px;
+  font-size: 2.5vw;
+}
+
+i {
+  font-size: 3vw;
+}
+
+#filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
+  padding: 0 0.4rem;
+}
+
+@media screen and (min-width: 400px) {
+  button.add-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  button.btn-light:not(#filter-btn) {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    height: 6%;
+    width: 5%;
+  }
+  button#refresh-btn, button#show-more-btn {
+    width: 100px;
+    font-size: inherit;
+  }
+  .but-secondary {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+  .input-card label {
+     font-size: 16px;
+     margin-bottom: 1.5rem;
+  }
+  .navbar-nav button {
+    font-size: 1em;
+    padding: .375rem 0.75rem;
+    margin-right: 10px
+  }
+  .navbar span {
+    font-size: 1.25em;
+  }
+  input[type="text"] {
+    font-size: 15px;
+    padding: 10px;
+  }
+  input[type="number"] {
+    font-size: 15px;
+    padding: 10px;
+  }
+  #input-desc {
+    font-size: 15px;
+    padding: 10px;
+  }
+  #search-bar {
+    height: 45px;
+  }
+  i {
+    font-size: 1rem;
+  }
+  #filter-btn, #save-create-btn, #save-edit-btn, #create-recipe-btn, #return-btn, #delete-btn, #cook-mode-btn, #edit-btn {
+    padding: 0.25rem 0.5rem;
+  }
+
+  input.nutrition-cat {
+    width: 70px;
+    margin: 5px;
+  }
+
+  #create-recipe--input-wrapper {
+    flex-direction: row;
+  }
+
+  .input-wrapper--column {
+    width: 30%;
+  }
+
+}

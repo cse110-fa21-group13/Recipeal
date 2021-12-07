@@ -1,0 +1,36 @@
+name: Generate JSDocs
+on: 
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+          
+      - name: JSDoc Action
+        uses: andstor/jsdoc-action@v1.2.0
+        with:
+          source_dir: ./source/assets/scripts
+          output_dir: ./jsdocs
+      
+      - name: Add to separate repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.JSDOCS_TOKEN }}
+        with:
+          source-directory: 'jsdocs'
+          destination-github-username: 'cse110-fa21-group13'
+          destination-repository-name: 'cse110-fa21-group13-docs'
+          user-email: jasonwin2000@gmail.com
+          user-name: jasonwin20000
+          commit-message: 'update JSDocs'
+          target-branch: main
