@@ -196,7 +196,6 @@ class CookMode extends HTMLElement {
         }
         #tts-icon {
             width: 100%;
-            height: 100%;
         }
 
         @media screen and (min-width: 800px) {
