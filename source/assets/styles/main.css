@@ -669,6 +669,8 @@ button.filter-off {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 70%;
+  margin: auto;
 }
 
 
@@ -805,6 +807,10 @@ button.filter-off {
 
   .back-btn {
     width: 30px;
+  }
+
+  #tag-wrapper-filter {
+    width: 100%;
   }
 }
 
