@@ -70,6 +70,9 @@
       <section class="recipe-cards--wrapper shown">
         <script>
           window.onload = function () {
+            let myRecipes = document.getElementById("my-recipes-btn");
+            myRecipes.style.textDecoration = "underline";
+            myRecipes.style.textDecorationThickness = "3px";
             if (window.localStorage.length == 0) {
               alert("It looks like you don't have any recipes saved. Create a new recipe by clicking the plus button!");
             }
