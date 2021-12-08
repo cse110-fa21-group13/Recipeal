@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recipe App</title>
+  <title>Recipeal</title>
+
+  <!--FAVICON-->
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
 
   <!-- Web Components -->
   <script src="assets/components/cook-mode.js" type="module"></script>
@@ -35,10 +38,151 @@
     href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Work+Sans:wght@600;700&display=swap"
     rel="stylesheet">
 
+  <!-- Sweet Alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+
+  <!-- Animate.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 </head>
 
 <body>
   <main>
+    <script>
+      // Introduction
+      Swal.fire({
+        title: 'Welcome to Recipeal!',
+        width: 600,
+        padding: '2em',
+        color: '#000000',
+        text: 'From saving your favorite recipes to finding new ones, Recipeal is here to make your cooking process a breeze!',
+        confirmButtonColor: '#00AB03',
+        confirmButtonText: 'Start Walkthrough',
+        showDenyButton: true,
+        denyButtonColor: '#2C5F2D',
+        denyButtonText: 'Skip',
+        backdrop: `
+        rgba(0, 0, 0, 0.5)
+        `,
+        showClass: {
+          popup: 'animate__animated animate__fadeIn'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOut'
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // My Recipes
+          Swal.fire({
+            title: 'My Recipes',
+            width: 800,
+            padding: '2em',
+            color: '#000000',
+            imageUrl: "./assets/images/My_Recipes.png",
+            text: 'My Recipes is where all your saved recipes reside. You can search for any of your recipes by name or filter by their tags!',
+            confirmButtonColor: '#00AB03',
+            confirmButtonText: 'Continue',
+            backdrop: `
+              rgba(0, 0, 0, 0.5)`,
+            showClass: {
+              popup: 'animate__animated animate__fadeIn'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOut'
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Favorites
+              Swal.fire({
+                title: 'Favorites',
+                width: 800,
+                padding: '2em',
+                color: '#000000',
+                imageUrl: "./assets/images/Favorites.png",
+                text: 'Favorites is where all of your favorited recipes are displayed! You can favorite a recipe by clicking on it’s heart icon.',
+                confirmButtonColor: '#00AB03',
+                confirmButtonText: 'Continue',
+                backdrop: `
+                  rgba(0, 0, 0, 0.6)`,
+                showClass: {
+                  popup: 'animate__animated animate__fadeIn'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOut'
+                },
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Explore
+                  Swal.fire({
+                    title: 'Explore',
+                    width: 800,
+                    padding: '2em',
+                    color: '#000000',
+                    imageUrl: "./assets/images/Explore.png",
+                    text: 'Explore is where you can find new recipes! Use the search bar if you’re looking for something specific or click the refresh button to browse random recipes.',
+                    confirmButtonColor: '#00AB03',
+                    confirmButtonText: 'Continue',
+                    backdrop: `
+                    rgba(0, 0, 0, 0.6)`,
+                    showClass: {
+                      popup: 'animate__animated animate__fadeIn'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOut'
+                    },
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      // Buttons
+                      Swal.fire({
+                        width: 600,
+                        padding: '2em',
+                        color: '#000000',
+                        imageUrl: "./assets/images/Buttons.png",
+                        confirmButtonColor: '#00AB03',
+                        confirmButtonText: 'Continue',
+                        backdrop: `
+                      rgba(0, 0, 0, 0.6)`,
+                        showClass: {
+                          popup: 'animate__animated animate__fadeIn'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOut'
+                        },
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          // Buttons
+                          Swal.fire({
+                            title: "That's all from us. Ready to get cooking?",
+                            width: 800,
+                            padding: '2em',
+                            color: '#000000',
+                            confirmButtonColor: '#00AB03',
+                            confirmButtonText: "Let's start!",
+                            backdrop: `
+                      rgba(0, 0, 0, 0.6)`,
+                            showClass: {
+                              popup: 'animate__animated animate__fadeIn'
+                            },
+                            hideClass: {
+                              popup: 'animate__animated animate__fadeOut'
+                            },
+                          })
+                        }
+                      })
+                    }
+                    else {
+                      return;
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
+
+    </script>
     <!-- HOME PAGE -->
     <section class="section--recipe-cards shown">
       <nav class="navbarv2" style="background-color: rgba(148, 193, 30, 1);">
@@ -245,12 +389,13 @@
         <img src="assets/images/knife_fork.png" id="knife-fork">
       </button>
 
+
       <div class="delete-modal-expand hidden">
         <div class="card delete-modal-expand-content" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Are you sure you want to delete this recipe?</h5>
-            <button id="modal-close" class="btn btn-secondary" onclick="cancelDelete()">Close</button>
-            <button id="modal-delete" class="btn btn-primary" onclick="confirmDelete()">Delete</button>
+            <button id="modal-delete" onclick="confirmDelete()">Delete</button>
+            <button id="modal-close" onclick="cancelDelete()">Close</button>
           </div>
         </div>
       </div>

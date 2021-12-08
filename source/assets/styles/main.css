@@ -28,7 +28,63 @@ section:not(section.shown) {
 }
 
 
+/* Introduction */
 
+.swal2-title {
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.8 em 1 em 0;
+  color: inherit;
+  font-size: 1.875em;
+  font-weight: 600;
+  text-align: center;
+  text-transform: none;
+  word-wrap: break-word;
+  font-family: var(--header-font)
+}
+
+.swal2-html-container {
+  z-index: 1;
+  justify-content: center;
+  margin: 1 em 1.6 em 0.3 em;
+  padding: 0;
+  overflow: auto;
+  color: inherit;
+  font-size: 1.125em;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-word;
+  font-family: var(--body-font)
+}
+
+#modal-delete {
+  background-color: var(--neonGreen);
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  cursor: pointer
+}
+
+#modal-delete:hover {
+  background-color: #008a02;
+}
+
+#modal-close {
+  background-color: var(--darkGreen);
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  cursor: pointer
+}
+
+#modal-close:hover {
+  background-color: #184118;
+}
 
 
 /* NAVBAR */
@@ -93,6 +149,8 @@ section:not(section.shown) {
   gap: 50px;
   height: auto;
 }
+
+
 
 /** MY RECIPE **/
 
@@ -787,7 +845,7 @@ button.filter-off {
 
 
 @media screen and (min-width: 800px) {
-  
+
   #sleep-btn {
     right: 20px;
   }

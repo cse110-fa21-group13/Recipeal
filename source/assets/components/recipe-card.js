@@ -134,8 +134,29 @@ class RecipeCard extends HTMLElement {
         background-color: #00AB03;
         border-width : 0;
       }
+
+      .btn-primary:hover {
+        color: #fff;
+        background-color: #008a02;
+        border-color: #008a02;
+      }
+
+      .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #008a02;
+        border-color: #008a02;
+    }
+
+    .btn-primary.focus, .btn-primary:focus {
+      box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 0%);
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 0%); 
+    }
     `;
 
+    
     const modal = document.createElement("div");
     modal.className = `${data.name} hidden delete-modal`;
     modal.innerHTML = `<div class="card delete-modal-content" style="width: 18rem;">
@@ -145,12 +166,17 @@ class RecipeCard extends HTMLElement {
       <button id="modal-delete${data.name}" class="btn btn-primary ${data.name}">Delete</button>
     </div>
   </div>`;
+  
     this.shadowRoot.appendChild(modal);
     const closeBut = this.shadowRoot.getElementById(`modal-close${data.name}`);
     const delBut = this.shadowRoot.getElementById(`modal-delete${data.name}`);
+    
+    
     closeBut.addEventListener("click", () => {
       modal.classList.add("hidden");
     });
+    
+    
     delBut.addEventListener("click", (event) => {
       const curCardId = this.id;
       this.parentNode.removeChild(this);
