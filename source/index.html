@@ -20,6 +20,7 @@
 
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
   <script type="module" src="assets/scripts/recipe-card-create.js"></script>
   <!--<script type="text/javascript" src="../client/assets/scripts/main.js"></script>-->
   <script src="assets/scripts/navigate.js" type="module"></script>
@@ -35,31 +36,43 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Work+Sans:wght@600;700&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
   <main>
     <!-- HOME PAGE -->
     <section class="section--recipe-cards shown">
-      <nav class="navbar navbar-light bg-dark">
-        <span class="navbar-brand mb-0 h1 text-white">Recipe Manager</span>
+      <nav class="navbarv2" style="background-color: rgba(148, 193, 30, 1);">
+        <img src="assets/images/logo.png" id="logo">
         <div class="navbar-nav d-flex flex-row">
-          <button id="my-recipes-btn" class="nav-item btn btn-white">
-            My Recipes
+          <button class="navBtn" id="my-recipes-btn">
+            <span class="nav-label">
+              My Recipes
+            </span>
           </button>
-          <button id="my-fav-btn" class="nav-item btn btn-dark">
-            Favorites
-          </button>
-          <button id="explore-btn" class="nav-item btn btn-dark">
-            Explore
+          <button class="navBtn" id="my-fav-btn">
+            <span class="nav-label">Favorites</span>
           </button>
         </div>
+        <button class="navBtn" id="explore-btn">
+          <span class="nav-label">Explore</span>
+        </button>
       </nav>
 
       <!-- RECIPE CARDS -->
       <section class="recipe-cards--wrapper shown">
         <script>
           window.onload = function () {
+            let myRecipes = document.getElementById("my-recipes-btn");
+            myRecipes.style.textDecoration = "underline";
+            myRecipes.style.textDecorationThickness = "3px";
             if (window.localStorage.length == 0) {
               alert("It looks like you don't have any recipes saved. Create a new recipe by clicking the plus button!");
             }
@@ -67,22 +80,15 @@
         </script>
 
         <!--Search bar and filter-->
-        <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id="search-bar" class="form-control" placeholder="Search by recipe name..."
-            style="height: 45px;" />
+        <div id="search-bar-filter">
+          <input id="search-bar" type="text" onkeyup="searchRecipe()" placeholder="Search for recipes" />
           <div class="accordion-item ml-3">
-            <button id="filter-btn" class="btn btn-light accordion-button collapsed" style="border-radius: 20px;"
+            <button id="filter-btn" class="btn accordion-button collapsed flag" style="border-radius: 20px;"
               type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
               aria-controls="collapseThree" onclick="showTags()">
-              <i class="bi bi-funnel-fill"></i>
+              <i id="filter-icon" class="bi bi-funnel-fill"></i>
             </button>
-            <!--
-            <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
-              <div id="existingTags" class="accordion-body"></div>
-            -->
-
           </div>
-        </div>
         </div>
 
         <!-- DISPLAY TAGS -->
@@ -105,21 +111,12 @@
 
       <!-- EXPLORE RECIPES PAGE -->
       <section class="explore container-fluid">
+        <button id="refresh-btn">
+          <img src="assets/images/refresh.png" id="refresh">
+        </button>
 
-        <div class="d-flex flex-row" style="margin: 10px auto; width: 30%;">
-          <input type="text" id="explore-search-bar" class="form-control" placeholder="Search..."
-            style="height: 45px;" />
-          <div class="accordion-item ml-3">
-            <button class="btn btn-light accordion-button collapsed" style="border-radius: 20px;" type="button"
-              data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-              aria-controls="collapseThree" onclick="showTags()">
-              <i class="bi bi-funnel-fill"></i>
-            </button>
-            <div id="collapseThree" class="accordion-collapse collapse border border-2 mt-2">
-              <div id="existingTags" class="accordion-body">
-              </div>
-            </div>
-          </div>
+        <div id="explore-search-wrapper">
+          <input type="text" id="explore-search-bar" placeholder="Search for recipes" />
         </div>
 
         <div id="explore-wrapper">
@@ -127,8 +124,10 @@
           </div>
         </div>
         <div id="explore-buttons">
-          <button id="show-more-btn">Show More</button>
-          <button id="refresh-btn">Refresh</button>
+          <button id="show-more-btn">
+            <img src="assets/images/arrow-down.png" id="arrow-down">
+            Show More</button>
+
         </div>
       </section>
 
@@ -149,36 +148,36 @@
 
             <!-- Name -->
             <div class="input-card">
-              <label for="input-name">Name</label>
+              <label for="input-name" class="card-label">Name</label>
               <input type="text" id="input-name" name="input-name">
             </div>
 
             <!-- Description -->
             <div class="input-card">
-              <label for="input-desc">Description</label>
+              <label for="input-desc" class="card-label">Description</label>
               <textarea id="input-desc" name="input-desc" rows="5" cols="33"></textarea>
             </div>
 
             <!-- Nutrition -->
             <div class="input-card">
-              <label for="nutrition-facts">Nutrition Information</label><br>
-              <label for="input-calories">Calories</label>
+              <label for="nutrition-facts" class="card-label">Nutrition Information</label><br>
+              <label for="input-calories" class="nut-info-label">Calories</label>
               <input type="number" id="input-calories" name="input-calories" class="nutrition-cat"><br>
-              <label for="input-carbs">Carbohydrates(g)</label>
+              <label for="input-carbs" class="nut-info-label">Carbohydrates(g)</label>
               <input type="number" id="input-carbs" name="input-carbs" class="nutrition-cat"><br>
-              <label for="input-fat">Fat(g)</label>
+              <label for="input-fat" class="nut-info-label">Fat(g)</label>
               <input type="number" id="input-fat" name="input-fat" class="nutrition-cat"><br>
-              <label for="input-protein">Protein(g)</label>
+              <label for="input-protein" class="nut-info-label">Protein(g)</label>
               <input type="number" id="input-protein" name="input-protein" class="nutrition-cat">
             </div>
 
             <!-- Time -->
             <div class="input-card">
-              <label for="input-time">Time</label>
+              <label for="input-time" class="card-label">Time</label>
               <div id="time-inputs">
-                <label for="input-hours">Hour:</label>
+                <label for="input-hours" class="time-label">Hour:</label>
                 <input type="number" class="input-hours-mins" id="input-hours" name="input-hours">
-                <label for="input-minutes">Minute:</label>
+                <label for="input-minutes" class="time-label">Minute:</label>
                 <input type="number" class="input-hours-mins" id="input-mins" name="input-mins">
               </div>
 
@@ -186,7 +185,7 @@
 
             <!-- Tags -->
             <div class="input-card">
-              <label for="input-tags">Tags</label>
+              <label for="input-tags" class="card-label">Tags</label>
               <div id="tag-wrapper">
               </div>
               <br>
@@ -201,7 +200,7 @@
           <div class="input-wrapper--column">
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
-              <label>Ingredients</label><br>
+              <label class="card-label">Ingredients</label><br>
               <div id="ing-wrapper">
 
               </div>
@@ -217,7 +216,7 @@
           <!-- THIRD COLUMN -->
           <div class="input-wrapper--column">
             <div class="input-card" id="step-card">
-              <label>Steps</label>
+              <label class="card-label">Steps</label>
               <div id="step-wrapper">
               </div>
               <br><br>
@@ -228,36 +227,30 @@
             </div>
 
             <!-- Save Button for Create Recipe -->
-            <button id="save-create-btn" class="save-btn-create btn btn-light"
-              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
-              <i class="bi bi-check-lg"></i>
+            <button id="save-create-btn" class="save-btn-create">
+              <img src="assets/images/checkmark.png" id="checkmark-icon">
             </button>
 
             <!-- Save Button for Edit Recipe -->
-            <button id="save-edit-btn" class="save-btn-edit btn btn-light"
-              style="bottom: 10px; right: 10px; position: fixed; border-radius: 20px; display: none;">
-              <i class="bi bi-check-lg"></i>
+            <button id="save-edit-btn" class="save-btn-edit">
+              <img src="assets/images/checkmark.png" id="checkmark-icon">
             </button>
 
           </div>
         </div>
       </section>
 
-      <button id="create-recipe-btn" class="btn btn-light"
-        style="bottom: 20px; right: 15px; position: fixed; border-radius: 20px;">
-        <i id="create-recipe-btn-plus" class="bi bi-plus-lg"></i>
+      <button id="create-recipe-btn">
+        <img src="assets/images/plus.png" id="plus-icon">
       </button>
-      <button id="return-btn" class="hidden" style="top: 66px; left: 10px; position: absolute; border-radius: 20px;"
-        onclick="returnToHomePage()">
-        <i class="bi bi-arrow-return-left"></i>
+      <button id="return-btn" class="hidden" onclick="returnToHomePage()">
+        <img src="assets/images/arrow-left.png" id="arrow-left"> <b>Back</b>
       </button>
-      <button id="delete-btn" class="btn btn-light"
-        style="bottom: 90px; right: 15px; position: fixed; border-radius: 20px;" onclick="showDeleteButtons()">
-        <i id="delbut-icon" class="bi bi-trash"></i>
+      <button id="delete-btn" onclick="showDeleteButtons()">
+        <img src="assets/images/trash.png" id="delbut-icon" class="trash">
       </button>
-      <button id="cook-mode-btn" class="hidden"
-        style="bottom: 160px; right: 15px; position: fixed; border-radius: 20px;">
-        <i id="cook-mode-icon" class="bi bi-play"></i>
+      <button id="cook-mode-btn" class="hidden">
+        <img src="assets/images/knife_fork.png" id="knife-fork">
       </button>
 
       <div class="delete-modal-expand hidden">
@@ -270,13 +263,12 @@
         </div>
       </div>
 
-      <button id="edit-btn" class="btn btn-light"
-        style="bottom: 20px; right: 15px; position: fixed; display: none; border-radius: 20px;">
-        <i class="bi bi-pencil-square"></i>
+      <button id="edit-btn">
+        <img src="assets/images/edit.png" id="edit-icon">
       </button>
 
-      <button id="sleep-btn" class="hidden" style="top: 15px; right: 50%; position: absolute; border-radius: 20px;">
-        <i id="sleep-icon" class="bi bi-brightness-high"></i>
+      <button id="sleep-btn" class="hidden">
+        <img class="off" id="sleep-icon" src="assets/images/bi_brightness-high.png"></img>
       </button>
 
       <script>
@@ -284,14 +276,14 @@
         let sleepBtn = document.getElementById("sleep-btn");
         let sleepIcon = document.getElementById("sleep-icon");
         sleepBtn.addEventListener("click", () => {
-          if (sleepIcon.className === "bi bi-brightness-high") {
+          if (sleepIcon.className === "off") {
             noSleep.enable();
-            console.log("success");
-            sleepIcon.className = "bi bi-brightness-high-fill";
+            sleepIcon.src = "assets/images/bi_brightness-high-fill.png";
+            sleepIcon.className = "on";
           } else {
             noSleep.disable();
-            console.log("yep");
-            sleepIcon.className = "bi bi-brightness-high";
+            sleepIcon.src = "assets/images/bi_brightness-high.png";
+            sleepIcon.className = "off";
           }
         });
       </script>

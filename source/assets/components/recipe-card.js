@@ -79,7 +79,7 @@ class RecipeCard extends HTMLElement {
       }
 
       .textbox {
-          border-top: solid 4px #FFC148;
+          border-top: solid 10px #2C5F2D;
           height: 118px;
           position: relative;
           vertical-align: middle;
@@ -89,19 +89,24 @@ class RecipeCard extends HTMLElement {
 
       .textbox p{
           position: absolute;
-          top: 30px;
+          top: 25px;
           transform: translateY(-10%);
           font-size: 14px;
           margin: 0;
           padding: 12px 9px;
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 400;
       }
 
       .textbox time {
         position: absolute;
         font-size: 14px;
         margin: 0;
-        padding: 5px 9px; 
-        color: #70757A;
+        padding: 3px 9px; 
+        color: #000000;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+
       }
 
       .hidden {
@@ -123,6 +128,11 @@ class RecipeCard extends HTMLElement {
       .delete-modal-content {
         margin: 15% auto; 
         padding: 20px;
+      }
+
+      .btn-primary {
+        background-color: #00AB03;
+        border-width : 0;
       }
     `;
 
@@ -153,9 +163,10 @@ class RecipeCard extends HTMLElement {
     card.setAttribute("style", "border-radius: 16px;");
     const deleteBut = document.createElement("button");
     deleteBut.className = `delbut hidden btn-primary`;
+    deleteBut.id = "cardDelete";
     deleteBut.setAttribute(
       "style",
-      "position: absolute; top: 0; left:0; padding: 2px 6px"
+      "position: absolute; top: 10px; right: 10px; padding: 2px 6px"
     );
     deleteBut.innerHTML = "<i class='bi bi-x'></i>";
     deleteBut.addEventListener("click", () => {
@@ -213,7 +224,7 @@ class RecipeCard extends HTMLElement {
     title.textContent = data.name;
       //data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
     
-    title.style = "font-family: 'Ubuntu Mono', monospace; font-size: 30px";
+    title.style = "'Work Sans', sans-serif; font-size: 30px";
     cardTitle.appendChild(title);
     imageBox.appendChild(image);
     imageBox.appendChild(cardTitle);

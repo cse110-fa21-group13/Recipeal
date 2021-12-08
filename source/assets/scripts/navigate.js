@@ -1,11 +1,11 @@
 // Contains functions for navigating between pages
-import { saveToMyRecipes, searchSpoon, searchRecipe, filterTags } from "./create-edit-recipe.js";
+import { saveToMyRecipes, searchSpoon, searchRecipe, filterTags, reset } from "./create-edit-recipe.js";
 
 /** BUTTONS **/
 
 let createRecipeButton = document.getElementById("create-recipe-btn");
-createRecipeButton.addEventListener("click", (e) => {
-  changeView(e);
+createRecipeButton.addEventListener("click", () => {
+  changeView("Create Recipe");
 });
 let myRecipesButton = document.getElementById("my-recipes-btn");
 myRecipesButton.addEventListener("click", (e) => {
@@ -63,10 +63,11 @@ export function changeView(e) {
   var expandRecipe = document.querySelector(".section--recipe-expand");
   var saveButtonCreate = document.querySelector("button.save-btn-create");
   const delbutIcon = document.getElementById("delbut-icon");
-  const deleteMode = delbutIcon.className === "bi bi-arrow-return-left";
+  const deleteMode = delbutIcon.className === "arrow-left";
   const cookModeBut = document.getElementById("cook-mode-btn");
   const cookMode = document.querySelector(".section--cook-mode");
   const navBar = document.querySelector("nav");
+  const refreshButton = document.getElementById("refresh-btn");
   const sleepBtn = document.getElementById("sleep-btn");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
@@ -77,10 +78,11 @@ export function changeView(e) {
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
-    createButton.className = "btn btn-light";
-    deleteButton.className = "btn btn-light";
+    createButton.className = "ok";
+    deleteButton.className = "ok";
     returnButton.className = "hidden";
     cookModeBut.className = "hidden";
+    refreshButton.className = "hidden";
     expandRecipe.classList.remove("shown");
     [...document.querySelectorAll(".col")].forEach((element) => {
       element.innerHTML = "";
@@ -112,6 +114,7 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     returnButton.className = "hidden";
     expandRecipe.classList.remove("shown");
+    refreshButton.className = "hidden";
     cookModeBut.className = "hidden";
     editButton.style.display = "none";
 
@@ -127,6 +130,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
+    refreshButton.className = "";
     if(exploreCheck === 0) {
       refresh();
       exploreCheck++;
@@ -140,36 +144,23 @@ export function changeView(e) {
     createRecipe.classList.remove("shown");
     cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
-    navBar.className = "navbar navbar-light bg-dark";
+    navBar.className = "navbarv2 navbar-light";
     //switchButtonView(returnButton);
-    returnButton.classList.add("btn");
-    returnButton.classList.add("btn-light");
+    //returnButton.classList.add("btn");
+    returnButton.classList.add("ok");
     returnButton.classList.remove("hidden");
-    deleteButton.className = "btn btn-light";
-    cookModeBut.className = "btn btn-light";
+    deleteButton.className = "ok";
+    cookModeBut.className = "ok";
     createButton.className = "hidden";
+    refreshButton.className = "hidden";
     sleepBtn.className = "hidden";
 
     // make edit button visible so user can click it
     editButton.style.display = "block";
   }
-  // navigating to cook mode page
-  else if (e.target.id === "cook-mode-btn" || e.target.id === "cook-mode-icon") {
-    cookMode.classList.add("shown");
-    expandRecipe.classList.remove("shown");
-    navBar.className = "hidden";
-    returnButton.className = "hidden";
-    deleteButton.className = "hidden";
-    cookModeBut.className = "hidden";
-    editButton.style.display = "none";
-    sleepBtn.className = "btn btn-light";
-  }
   // navigating to create recipe page
-  else if (
-    (e.target.id === "create-recipe-btn" ||
-      e.target.id === "create-recipe-btn-plus") &&
-    !deleteMode
-  ) {
+  else if (innerText === "Create Recipe" && !deleteMode) {
+    reset();
     myRecipes.classList.remove("shown");
     explore.classList.remove("shown");
     expandRecipe.classList.remove("shown");
@@ -178,14 +169,27 @@ export function changeView(e) {
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
     saveButtonCreate.style.display="block";
+    refreshButton.className = "hidden";
+  }
+  // navigating to cook mode page
+  else if (e.target.id === "cook-mode-btn" || e.target.id === "knife-fork") {
+    cookMode.classList.add("shown");
+    expandRecipe.classList.remove("shown");
+    navBar.className = "hidden";
+    returnButton.className = "hidden";
+    deleteButton.className = "hidden";
+    cookModeBut.className = "hidden";
+    editButton.style.display = "none";
+    sleepBtn.className = "";
   }
   switchHighlight(innerText);
 }
 
 // switch between shown and hidden for button
 export function switchButtonView(but) {
-  but.className = but.className === "hidden" ? "btn btn-light" : "hidden";
+  but.className = but.className === "hidden" ? "ok" : "hidden";
 }
+
 
 /*
  * Function to change button highlight
@@ -194,15 +198,21 @@ function switchHighlight(innerText) {
   let nav = document.querySelector(".navbar-nav");
   let buttons = nav.getElementsByTagName("*");
   let e;
-  for (var i = 0; i < buttons.length; i++) {
+  for (let i = 0; i < buttons.length; i++) {
     e = buttons[i];
     if (e.innerText === innerText) {
-      e.classList.remove("btn-dark");
-      e.classList.add("btn-white");
+      e.style.textDecoration = "underline";
+      e.style.textDecorationThickness = "3px";
     } else {
-      e.classList.add("btn-dark");
-      e.classList.remove("btn-white");
+      e.style.textDecoration = "";
     }
+  }
+  let exploreBtn = document.getElementById("explore-btn");
+  if(exploreBtn.innerText === innerText) {
+    exploreBtn.style.textDecoration = "underline";
+    exploreBtn.style.textDecorationThickness = "3px";
+  } else {
+    exploreBtn.style.textDecoration = "";
   }
 }
 
@@ -210,7 +220,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "b24485ab3d4a47f696151e7134433592";
+  const API_KEY = "1f5556cfc7c942b48451ce0e0c00f1e3";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
@@ -239,14 +249,27 @@ window.returnToHomePage = function () {
   if(returnBut.classList.contains("explore")){
     changeView("Explore");
     returnBut.classList.remove("explore");
-  }
-  else{
+  } else if(returnBut.classList.contains("edit")) {
+    reset();
+    changeView("Recipe Expand");
+    returnBut.classList.remove("edit");
+  } else {
     changeView("My Recipes");
   }
 };
 
 // Show tags when pressing filter button
 window.showTags = function () {
+  let filterBtn = document.getElementById("filter-btn");
+  if(filterBtn.classList.contains("flag")) {
+    console.log("yep");
+    filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
+    filterBtn.classList.remove("flag");
+  } else {
+    console.log("yep");
+    filterBtn.style.backgroundColor = "white";
+    filterBtn.classList.add("flag");
+  }
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
@@ -263,21 +286,26 @@ window.showTags = function () {
   // If it's not empty, make it empty
   if (!(divTag.innerHTML == "")) {
     divTag.innerHTML = ""; 
+    filterBtn.classList.remove('filter-on');
+    filterBtn.classList.add('filter-off');
   }
   else {
   tags.forEach((element, i) => {
+    filterBtn.classList.remove('filter-off');
+    filterBtn.classList.add('filter-on');
     const newTagBut = document.createElement("button");
-    newTagBut.className = "but but-secondary filter-off";
+    newTagBut.className = "tags-btn filter-off";
     newTagBut.id = `${element}`;
     newTagBut.textContent = element;
+    newTagBut.style.outline = "rgba(148, 193, 30, 1)";
     newTagBut.addEventListener("click", () => {
       if(newTagBut.classList.contains("filter-off")) {
         newTagBut.classList.replace("filter-off", "filter-on");
-        newTagBut.style.backgroundColor = "pink";
+        newTagBut.style.backgroundColor = "rgba(148, 193, 30, 1)";
         filterTags(element);
       } else {
         newTagBut.classList.replace("filter-on", "filter-off");
-        newTagBut.style.backgroundColor = "transparent";
+        newTagBut.style.backgroundColor = "white";
         filterTags(element);
       }
     });
@@ -305,11 +333,19 @@ window.showDeleteButtons = function () {
       }
     }
 
-    const delbutIcon = document.getElementById("delbut-icon");
-    delbutIcon.className =
-      delbutIcon.className === "bi bi-trash"
-        ? "bi bi-arrow-return-left"
-        : "bi bi-trash";
+    let delIcon = document.getElementById("delbut-icon"); 
+    if(delIcon.className === "trash") {
+      delIcon.className = "return";
+      delIcon.src = "assets/images/icon-park_return.png";
+    } else {
+      delIcon.className = "trash";
+      delIcon.src = "assets/images/trash.png";
+    }
+    /*const delbutIcon = document.getElementById("delbut-icon");
+    delbutIcon.src =
+      delbutIcon.src === "assets/images/trash.png"
+        ? "assets/images/icon-park_return.png"
+        : "assets/images/trash.png";*/
   }
 };
 

@@ -272,7 +272,7 @@ function recipeExists(recipeName) {
  * @param none
  * @returns none
  */
-function reset() {
+export function reset() {
   document.getElementById("input-name").value = "";
   document.getElementById("input-desc").value = "";
 
@@ -430,7 +430,7 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
   }
-  if (page === "update") {
+  else if (page === "update") {
     // Put the object into storage
     localStorage.setItem(
     newRecipe.name.toLowerCase(),
@@ -443,7 +443,7 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
   }
-  if (page === "edit") {
+  else if (page === "edit") {
     // Put the object into storage
     localStorage.setItem(
     newRecipe.name.toLowerCase(),
@@ -454,6 +454,17 @@ if (document.getElementById(`input-steps1`)) {
     document.querySelector("recipe-expand").data = newRecipe;
     changeView("Recipe Expand");
     return 1;
+  }
+  else {
+    // Put the object into storage
+    localStorage.setItem(
+      newRecipe.name.toLowerCase(),
+      JSON.stringify(newRecipe)
+    );
+    // Creates a recipe card & displays it on the 'My Recipes' page
+    newCard(newRecipe.name.toLowerCase());
+    document.querySelector("recipe-expand").data = newRecipe;
+    changeView("Recipe Expand");
   }
 }
 
@@ -536,11 +547,15 @@ function saveDataCreate() {
   let createRecipe = document.querySelector(".section--create-recipe");
   let deleteButton = document.getElementById("delete-btn");
   let expandRecipe = document.querySelector(".section--recipe-expand");
-  let recipeExpand = document.querySelector('recipe-expand');
+  let recipeExpand = document.querySelector("recipe-expand");
   let cookModeBtn = document.getElementById("cook-mode-btn");
+  let refreshButton = document.getElementById("refresh-btn");
+  let returnBut = document.getElementById("return-btn");
+
+  returnBut.classList.add("edit");
 
   // Get name from expanded recipe page
-  let name = recipeExpand.shadowRoot.getElementById('input-name').textContent.toLowerCase();
+  let name = recipeExpand.shadowRoot.getElementById("input-name").textContent.toLowerCase();
 
   // Get recipe data from name
   let recipe = JSON.parse(window.localStorage.getItem(name));
@@ -556,6 +571,7 @@ function saveDataCreate() {
     createRecipe.classList.add("shown");
     switchButtonView(deleteButton);
     switchButtonView(cookModeBtn);
+    refreshButton.className = "hidden";
 
     // Hide edit button
     document.getElementById("edit-btn").style.display = 'none';
@@ -764,7 +780,7 @@ function saveDataCreate() {
     protein = protein.replace(/\D/g,'');
 
     // Trim to fit recipe card size
-    let summaryTrim = summary.length > 173 ? summary.substring(0, 170) + "..." : summary;
+    let summaryTrim = summary.length > 173 ? summary.substring(0, 150) + "..." : summary;
 
     const recipeData = {
       name: data.recipes[i].title,
@@ -900,10 +916,13 @@ function saveDataCreate() {
         for (z=1; z <= steps.length; z++) {
           document.getElementById(`input-steps${z}`).value = steps[z-1];
         }
+        document.getElementById(recipeData.name).parentElement.remove();
       }
       else {
+        document.getElementById(recipeData.name).parentElement.remove();
         // Change description to include full instead of trim
         recipeData.description = summary;
+        recipeData.saveFrom = "";
         
         // Put the object into storage
         localStorage.setItem(
@@ -1290,6 +1309,3 @@ export async function searchSpoon() {
             });
     }
 }
-
-
-
