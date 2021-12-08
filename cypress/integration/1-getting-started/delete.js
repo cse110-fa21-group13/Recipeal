@@ -31,7 +31,7 @@ describe('update recipe', ()=>{
       cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
       cy.get('button#return-btn').click();
       cy.get('recipe-card#myfood-delete').should('exist');
-    })
+    });
   
     it('delete', ()=>{
       cy.xpath('//*[@id="delete-btn"]').click();
@@ -39,7 +39,7 @@ describe('update recipe', ()=>{
       //cy.xpath('//*[@id="myfood"]//article').should('be.visible');
       
       //cy.xpath('//*[@id="delete-btn"]').click();
-    })
+    });
     /*
     it('change name', ()=>{
   
@@ -57,4 +57,4 @@ describe('update recipe', ()=>{
   
     })*/
   
-  })
+  });

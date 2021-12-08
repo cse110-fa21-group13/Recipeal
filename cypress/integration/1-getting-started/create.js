@@ -8,7 +8,7 @@ describe('example to-do app', () => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     cy.visit('https://project-cupcake.netlify.app/');
-  })
+  });
 
   it("search before create", ()=>{
     cy.get('input#search-bar')          
@@ -20,8 +20,8 @@ describe('example to-do app', () => {
     cy.get('div#recipe-cards').
       then($els => {
       expect($els.length).to.eq(1);
-    })
-  })
+    });
+  });
 
   
   it('create', ()=>{
@@ -42,12 +42,12 @@ describe('example to-do app', () => {
     cy.get('button#return-btn').click();
     // check if element is being saved
     cy.get('recipe-card#myfood').should('exist');
-  })
+  });
 
   
 
 
-})
+});
 
 
 describe('create one sample recipe', ()=>{
@@ -70,7 +70,7 @@ describe('create one sample recipe', ()=>{
     // check if element is being saved
     cy.get('recipe-card#myfood').should('exist');
     */
-  })
+  });
 
   it('more tag', ()=>{
 
@@ -89,7 +89,7 @@ describe('create one sample recipe', ()=>{
     
     //cy.get('recipe-card#myfood').children('div#')
 
-  })
+  });
 
   it('more step', ()=>{
     cy.xpath('//*[@id="step-card"]/button').click();
@@ -105,7 +105,7 @@ describe('create one sample recipe', ()=>{
 
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
     cy.get('button#return-btn').click();
-  })
+  });
 
   it('more ing', ()=>{
     cy.xpath('//*[@id="ing-card"]/button').click();
@@ -122,7 +122,7 @@ describe('create one sample recipe', ()=>{
     cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
     cy.get('button#return-btn').click();
     
-  })
+  });
 
   /*
   it('large paragraph', ()=>{
@@ -143,5 +143,5 @@ describe('create one sample recipe', ()=>{
     cy.xpath('//*[@id="input-carbs"]').type('100');
     cy.xpath('//*[@id="input-fat"]').type('100');
     cy.xpath('//*[@id="input-protein"]').type('100');
-  })
-})
+  });
+});

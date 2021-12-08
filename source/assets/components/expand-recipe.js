@@ -1,12 +1,12 @@
 class ExpandRecipe extends HTMLElement {
   constructor () {
     super();
-    this.attachShadow({ mode: 'open' }).innerHTML = `
+    this.attachShadow({ mode: "open" }).innerHTML = `
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`;
 
     // Create styles and root element
-    const styles = document.createElement('style');
-    const article = document.createElement('article');
+    const styles = document.createElement("style");
+    const article = document.createElement("article");
 
     // Fill in styles and root element
     styles.innerHTML = `
@@ -281,7 +281,7 @@ class ExpandRecipe extends HTMLElement {
         returnBut.classList.add("explore");
     }
 
-    this.shadowRoot.querySelector('article').innerHTML = `
+    this.shadowRoot.querySelector("article").innerHTML = `
     <div id="create-recipe--input-wrapper">
         <!-- FIRST COLUMN -->
         <div class="input-wrapper--column">
@@ -360,11 +360,11 @@ class ExpandRecipe extends HTMLElement {
     `;
 
     // Set title
-    this.shadowRoot.querySelector('p.text').innerHTML = data.name;
+    this.shadowRoot.querySelector("p.text").innerHTML = data.name;
 
     // Set image
-    const image = this.shadowRoot.getElementById('display-image');
-    image.setAttribute('src', data.thumbnail);
+    const image = this.shadowRoot.getElementById("display-image");
+    image.setAttribute("src", data.thumbnail);
 
     // Set Favorite
     const expandView = this.shadowRoot.getElementById("create-recipe--input-wrapper");
@@ -375,7 +375,7 @@ class ExpandRecipe extends HTMLElement {
 
     if(storage != null){
     //this should never be created if there is no favorite to add
-        favOnExpand = document.createElement('input');
+        favOnExpand = document.createElement("input");
         favOnExpand.type = "image";
         favOnExpand.classList.add("favorite");
 
@@ -391,7 +391,7 @@ class ExpandRecipe extends HTMLElement {
     function changeHeart(){
       let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
       let imageOnCard = document.getElementById(data.name);
-      const img = imageOnCard.shadowRoot.getElementById('favoriteOnCard')
+      const img = imageOnCard.shadowRoot.getElementById("favoriteOnCard");
 
       if(!love){
         favOnExpand.setAttribute("src", "assets/images/heart.png");
@@ -410,42 +410,42 @@ class ExpandRecipe extends HTMLElement {
 
     // Set description
     if (!data.description) {
-        this.shadowRoot.getElementById('input-desc').innerHTML = "None";
+        this.shadowRoot.getElementById("input-desc").innerHTML = "None";
     }
     else {
-        this.shadowRoot.getElementById('input-desc').innerHTML = data.description;
+        this.shadowRoot.getElementById("input-desc").innerHTML = data.description;
     }
 
     // Calories
     if (!data.nutritionInfo.calories || data.nutritionInfo.calories < 0 ) {
-        this.shadowRoot.getElementById('input-calories').innerHTML = "None";
+        this.shadowRoot.getElementById("input-calories").innerHTML = "None";
     }
     else {
-        this.shadowRoot.getElementById('input-calories').innerHTML = data.nutritionInfo.calories;
+        this.shadowRoot.getElementById("input-calories").innerHTML = data.nutritionInfo.calories;
     }
 
     // Carbs
     if (!data.nutritionInfo.carbs || data.nutritionInfo.carbs < 0) {
-        this.shadowRoot.getElementById('input-carbs').innerHTML = "None";
+        this.shadowRoot.getElementById("input-carbs").innerHTML = "None";
     }
     else {
-        this.shadowRoot.getElementById('input-carbs').innerHTML = data.nutritionInfo.carbs;
+        this.shadowRoot.getElementById("input-carbs").innerHTML = data.nutritionInfo.carbs;
     }
 
     // Fat
     if (!data.nutritionInfo.fat || data.nutritionInfo.fat < 0) {
-        this.shadowRoot.getElementById('input-fat').innerHTML = "None";
+        this.shadowRoot.getElementById("input-fat").innerHTML = "None";
     }
     else {
-        this.shadowRoot.getElementById('input-fat').innerHTML = data.nutritionInfo.fat;
+        this.shadowRoot.getElementById("input-fat").innerHTML = data.nutritionInfo.fat;
     }
 
     // Protein
     if (!data.nutritionInfo.protein || data.nutritionInfo.protein < 0) {
-        this.shadowRoot.getElementById('input-protein').innerHTML = "None";
+        this.shadowRoot.getElementById("input-protein").innerHTML = "None";
     }
     else {
-        this.shadowRoot.getElementById('input-protein').innerHTML = data.nutritionInfo.protein;
+        this.shadowRoot.getElementById("input-protein").innerHTML = data.nutritionInfo.protein;
     }
 
     // Set tags
@@ -457,15 +457,15 @@ class ExpandRecipe extends HTMLElement {
     else {
         tags = tags.join(", ");
     }
-    this.shadowRoot.getElementById('input-tags1').innerHTML = tags;
+    this.shadowRoot.getElementById("input-tags1").innerHTML = tags;
 
     // Detect if time or minute needs to be plural or not
-    let time = '';
+    let time = "";
     if (!data.time.hours && !data.time.minutes) {
         time += `None`;
     } else {
         // Hours
-        if (data.time.hours === '1') {
+        if (data.time.hours === "1") {
             time += `${data.time.hours} hour `;
         } else if (!data.time.hours) {
 
@@ -473,7 +473,7 @@ class ExpandRecipe extends HTMLElement {
             time += `${data.time.hours} hours `;
         }
         // Minutes
-        if (data.time.minutes === '1') {
+        if (data.time.minutes === "1") {
             time += `${data.time.minutes} minute`;
         } else if (!data.time.minutes) {
 
@@ -491,7 +491,7 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("ing-none").innerHTML = "None";
     } else {
         ingredients.forEach(ingredient => {
-            const item = document.createElement('li');
+            const item = document.createElement("li");
             item.innerHTML = ingredient;
             this.shadowRoot.getElementById("ing-list").append(item);
         });
@@ -503,7 +503,7 @@ class ExpandRecipe extends HTMLElement {
         this.shadowRoot.getElementById("step-none").innerHTML = "None";
     } else {
         directions.forEach(step => {
-            const item = document.createElement('li');
+            const item = document.createElement("li");
             item.innerHTML = step;
             this.shadowRoot.getElementById("step-list").append(item);
         });
@@ -511,4 +511,4 @@ class ExpandRecipe extends HTMLElement {
   }
 }
 
-customElements.define('recipe-expand', ExpandRecipe);
+customElements.define("recipe-expand", ExpandRecipe);

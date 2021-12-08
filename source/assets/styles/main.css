@@ -326,22 +326,6 @@ input[type="number"]:focus {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
-/*
-.save-btn {
-  display: block;
-  margin: 0px auto;
-  width: 100px;
-  height: 50px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  border-radius: 20px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  transition: 0.2s;
-  outline: none;
-}
-
-
 .save-btn:focus {
   outline: none;
 }
@@ -804,21 +788,7 @@ button.filter-off {
 
 
 @media screen and (min-width: 800px) {
-
-  /*
-  button#refresh-btn, button#show-more-btn {
-    width: 100px;
-    font-size: inherit;
-  }
-  */
-
-
-  /*
-  .input-card {
-    font-size: 16px;
-    margin-bottom: 1.5rem;
-  }
-  */
+  
   #sleep-btn {
     right: 20px;
   }

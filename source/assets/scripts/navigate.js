@@ -39,12 +39,12 @@ exploreSearch.addEventListener("keyup", (e) => {
   if(e.key === "Enter") {
     searchSpoon();
   }
-})
+});
 
 let recipeSearch = document.getElementById("search-bar");
 recipeSearch.addEventListener("keyup", () => {
   searchRecipe();
-})
+});
 
 let exploreCheck = 0;
 
@@ -286,13 +286,13 @@ window.showTags = function () {
   // If it's not empty, make it empty
   if (!(divTag.innerHTML == "")) {
     divTag.innerHTML = ""; 
-    filterBtn.classList.remove('filter-on');
-    filterBtn.classList.add('filter-off');
+    filterBtn.classList.remove("filter-on");
+    filterBtn.classList.add("filter-off");
   }
   else {
   tags.forEach((element, i) => {
-    filterBtn.classList.remove('filter-off');
-    filterBtn.classList.add('filter-on');
+    filterBtn.classList.remove("filter-off");
+    filterBtn.classList.add("filter-on");
     const newTagBut = document.createElement("button");
     newTagBut.className = "tags-btn filter-off";
     newTagBut.id = `${element}`;

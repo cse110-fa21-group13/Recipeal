@@ -20,7 +20,7 @@ class RecipeCard extends HTMLElement {
       article {
         display: flexbox;
         position: relative;
-        font-family: 'Work Sans', sans-serif;
+        font-family: "Work Sans", sans-serif;
         width: 300px;
         height: 325px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -94,7 +94,7 @@ class RecipeCard extends HTMLElement {
           font-size: 14px;
           margin: 0;
           padding: 12px 9px;
-          font-family: 'Open Sans', sans-serif;
+          font-family: "Open Sans", sans-serif;
           font-weight: 400;
       }
 
@@ -104,7 +104,7 @@ class RecipeCard extends HTMLElement {
         margin: 0;
         padding: 3px 9px; 
         color: #000000;
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         font-weight: 700;
 
       }
@@ -191,7 +191,7 @@ class RecipeCard extends HTMLElement {
       if(storage.favorites == 0) favoriteImage.setAttribute("src", "assets/images/empty_heart.png");
       else favoriteImage.setAttribute("src", "assets/images/heart.png");
    
-      favoriteImage.addEventListener('click', changeHeart);
+      favoriteImage.addEventListener("click", changeHeart);
 
       favoriteImage.addEventListener("mouseenter", () =>{
         favoriteImage.classList.replace("mouse-off", "mouse-on");

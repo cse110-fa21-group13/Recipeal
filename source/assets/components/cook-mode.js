@@ -5,12 +5,12 @@ import { changeView } from "../scripts/navigate.js";
 class CookMode extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' }).innerHTML = `
+        this.attachShadow({ mode: "open" }).innerHTML = `
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />`;
 
         // Create styles and root element
-        const styles = document.createElement('style');
-        const article = document.createElement('article');
+        const styles = document.createElement("style");
+        const article = document.createElement("article");
 
         // Fill in styles and root element
         styles.innerHTML = `
@@ -365,7 +365,7 @@ class CookMode extends HTMLElement {
             this.shadowRoot.getElementById("ing-none").innerHTML = "None";
         } else {
             ingredients.forEach(ingredient => {
-                const item = document.createElement('li');
+                const item = document.createElement("li");
                 item.innerHTML = ingredient;
                 this.shadowRoot.getElementById("ing-list").append(item);
             });
@@ -380,7 +380,7 @@ class CookMode extends HTMLElement {
             for(let i = 0; i < directions.length; i++) {
                 this.shadowRoot.getElementById("step-wrapper").innerHTML += 
                 `<div class="input-card-steps" id=card-step${String(i + 1)}>
-                    <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+'. '+directions[i]}</p>
+                    <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+". "+directions[i]}</p>
                 </div>`;
             }
         }
@@ -442,4 +442,4 @@ function timer(shadowRoot, flag) {
     }
 }
 
-customElements.define('cook-mode', CookMode);
+customElements.define("cook-mode", CookMode);
