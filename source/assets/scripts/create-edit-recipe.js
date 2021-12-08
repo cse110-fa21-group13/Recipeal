@@ -1294,6 +1294,7 @@ export async function searchSpoon() {
                                     document.getElementById(recipeData.name).parentElement.remove();
                                     // Change description to include full instead of trim
                                     recipeData.description = recipeSummary;
+                                    recipeData.saveFrom = "";
                                     
                                     // Put the object into storage
                                     localStorage.setItem(
