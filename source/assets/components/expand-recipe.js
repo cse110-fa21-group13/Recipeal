@@ -37,10 +37,10 @@ class ExpandRecipe extends HTMLElement {
         .input-card:not(#img-card) {
             margin-top: 5%;
             /*background-color: #f6f6f6;*/
-            border-radius: 20px;
+            border-radius: 12px;
             font-size: 1.8vw;
             padding: 5%;
-            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
             
         }
         
@@ -51,6 +51,7 @@ class ExpandRecipe extends HTMLElement {
             right: 2%;
             height: 4vw;
             width: 4vw;
+            opacity: 0.7;
         }
 
         /* Card for display image */
@@ -58,8 +59,8 @@ class ExpandRecipe extends HTMLElement {
         #img-card {
             margin-top: 20px;
             /*background-color: #f6f6f6;*/
-            border-radius: 20px;
-            box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
             padding: 10%;
         }
         

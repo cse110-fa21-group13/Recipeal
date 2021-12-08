@@ -100,7 +100,7 @@ class RecipeCard extends HTMLElement {
         position: absolute;
         top: 30px;
         transform: translateY(-10%);
-        font-size: 14px;
+        font-size: 16px;
         margin: 0;
         padding: 12px 9px;
     }

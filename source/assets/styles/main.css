@@ -131,9 +131,9 @@ section:not(section.shown) {
 .input-card {
   margin-top: 20px;
   background-color: #f6f6f6;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 5%;
-  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
   width: 85%;
 }
 
@@ -178,7 +178,7 @@ section:not(section.shown) {
 
 .input-card-steps {
   background-color: #f6f6f6;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 5%;
   margin-top: 5%;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
@@ -309,12 +309,12 @@ input[type="number"]:focus {
   padding: 0;
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background-color: white;
   border-radius: 50%;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   color: #B8B8B8;
 
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
 }
 
@@ -323,7 +323,10 @@ input[type="number"]:focus {
 }
 
 .add-btn:hover {
-  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+  filter: none;
+  background-color: #d0e49d;
+  color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 /*
@@ -337,7 +340,7 @@ input[type="number"]:focus {
   background-color: transparent;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
 }
 
@@ -506,7 +509,7 @@ input[type="number"]:focus {
   border: none;
   background-color: transparent;
   border-radius: 10%;
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
   font-family: var(--header-font);
   font-weight: 600;
@@ -525,7 +528,7 @@ input[type="number"]:focus {
   background-color: #00AB03;
   border-radius: 40px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
   font-weight: bold;
 }
@@ -589,6 +592,15 @@ button.filter-off {
   padding: 20px;
 }
 
+button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.5);
+}
+
+button {
+  transition: all 0.2s ease-in-out;
+}
+
 /* SEARCH BAR */
 
 #search-bar-filter, #explore-search-wrapper {
@@ -638,7 +650,7 @@ button.filter-off {
   border-width: 0;
   border-radius: 20px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
   padding: 0.75vw 1.5vw;
   margin: 7px;
@@ -793,8 +805,9 @@ button.filter-off {
 
 @media screen and (min-width: 400px) {
   button.add-btn {
-    width: 28px;
-    height: 28px;
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
   }
 
   #sleep-btn {
