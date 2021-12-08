@@ -183,6 +183,22 @@ class CookMode extends HTMLElement {
             outline: black;
         }
 
+        .tts-btn {
+            width: 45px;
+            height: 25px;
+            outline: transparent;
+            border: none;
+            background-color: transparent;
+            float: right;
+        }
+        .tts-btn:focus {
+            outline: transparent;
+        }
+        #tts-icon {
+            width: 100%;
+            height: 100%;
+        }
+
         @media screen and (min-width: 800px) {
             button.back-btn {
                 width: 100px;
@@ -263,6 +279,10 @@ class CookMode extends HTMLElement {
 
             #arrow-left {
                 width: 7vw;
+            }
+            .tts-btn {
+                width: 8vw;
+                height: 4vw;
             }
         }
         `;
@@ -377,11 +397,41 @@ class CookMode extends HTMLElement {
         if (directions.length === 0) {
             this.shadowRoot.getElementById("step-none").innerHTML = "None";
         } else {
-            for(let i = 0; i < directions.length; i++) {
-                this.shadowRoot.getElementById("step-wrapper").innerHTML += 
-                `<div class="input-card-steps" id=card-step${String(i + 1)}>
-                    <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+". "+directions[i]}</p>
-                </div>`;
+            let synth = window.speechSynthesis;
+            let utterText = new SpeechSynthesisUtterance();
+            setVoice(false, this.shadowRoot);
+            function setVoice(flag, shadowRoot) {
+                if(flag === false) {
+                    setTimeout(() => {
+                        let voices = synth.getVoices();
+                        for(let i = 0; i < voices.length; i++) {
+                            if(voices[i].name === "Google US English") {
+                                utterText.voice = voices[i];
+                            }
+                        }
+                        setVoice(true, shadowRoot);
+                    }, 50);
+                    return;
+                } else {
+                    for(let i = 0; i < directions.length; i++) {
+                        shadowRoot.getElementById("step-wrapper").innerHTML += 
+                        `<div class="input-card-steps" id=card-step${String(i + 1)}>
+                            <button class="tts-btn" id="${String(i + 1)}" name="${directions[i]}">
+                                <img src="./assets/images/tts.png" id="tts-icon">
+                            </button>
+                            <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+". "+directions[i]}</p>
+                        </div>`;
+                        console.log(shadowRoot.getElementById(`${String(i + 1)}`));
+                        setTimeout(() => {
+                            shadowRoot.getElementById(`${String(i + 1)}`).addEventListener("click", () => {
+                                console.log(utterText.text);
+                                utterText.text = shadowRoot.getElementById(`${String(i + 1)}`).name;
+                                console.log(utterText.text);
+                                synth.speak(utterText);
+                            });
+                        }, 10);
+                    }
+                }
             }
         }
 
