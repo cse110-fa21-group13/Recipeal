@@ -609,7 +609,7 @@ button.filter-off {
 
 #explore-search-bar {
   position: relative;
-  height: 3vw;
+  height: 2.4vw;
   border-radius: 25px;
   border-width: 3px;
   background: url("/source/assets/images/search.png");
@@ -621,6 +621,7 @@ button.filter-off {
   outline: transparent;
   box-shadow: none;
 }
+
 /* TAGS */
 
 #tag-wrapper-filter {
@@ -693,9 +694,9 @@ button.filter-off {
 #sleep-btn {
   width: 60px;
   height: 60px;
-  bottom: 20px; 
+  bottom: 20px;
   color: white;
-  right: 20px; 
+  right: 20px;
   position: fixed;
   border-radius: 50%;
   background-color: var(--darkGreen);
@@ -795,6 +796,7 @@ button.filter-off {
     width: 28px;
     height: 28px;
   }
+
   #sleep-btn {
     right: 10px;
   }
