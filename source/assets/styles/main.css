@@ -292,7 +292,7 @@ input[type="number"]:focus {
 }
 
 #input-desc:focus {
-  border: 3px solid #555;
+  border: 3px soflid #555;
 }
 
 #time-inputs {
@@ -474,11 +474,11 @@ input[type="number"]:focus {
   cursor: pointer;
   color: white;
 }
-
+/*
 #delete-btn:hover, #create-recipe-btn:hover, #save-create-btn:hover, #edit-btn:hover, #cook-mode-btn:hover, #refresh-btn:hover, #sleep-btn:hover {
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
 }
-
+*/
 #delete-btn:focus, #create-recipe-btn:focus, #save-create-btn:focus, #edit-btn:focus, #cook-mode-btn:focus, #refresh-btn:focus {
   outline: none;
 }
@@ -552,10 +552,12 @@ input[type="number"]:focus {
 }
 
 #filter-btn {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   background-color: white;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.18);
+  transition: all 0.2s ease-in-out;
 }
 
 #filter-btn:focus {
@@ -614,9 +616,10 @@ button {
   position: relative;
   height: 5vw;
   border-radius: 25px;
+  border: solid 1px #aaaaaa;
   background: url("/source/assets/images/search.png");
   background-repeat: no-repeat;
-  background-position: 96% 5px;
+  background-position: 97% 8px;
 }
 
 #explore-search-bar {
@@ -863,7 +866,7 @@ button {
   }
 
   #search-bar {
-    height: 45px;
+    height: 50px;
   }
 
   #filter-icon {
