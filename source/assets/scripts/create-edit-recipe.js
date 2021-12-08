@@ -1288,8 +1288,10 @@ export async function searchSpoon() {
                                     for (z=1; z <= steps.length; z++) {
                                         document.getElementById(`input-steps${z}`).value = steps[z-1];
                                     }
+                                    document.getElementById(recipeData.name).parentElement.remove();
                                     }
                                     else {
+                                    document.getElementById(recipeData.name).parentElement.remove();
                                     // Change description to include full instead of trim
                                     recipeData.description = recipeSummary;
                                     
