@@ -17,123 +17,122 @@ class RecipeCard extends HTMLElement {
     this.id = `${data.name}`;
     const styles = document.createElement("style");
     styles.innerHTML = `
-      article {
-        display: flexbox;
-        position: relative;
-        font-family: 'Work Sans', sans-serif;
-        width: 300px;
-        height: 325px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        border-radius: 16px;
-        transition: all ease-out 0.3s;
-      }
+    article {
+      display: flexbox;
+      position: relative;
+      font-family: 'Work Sans', sans-serif;
+      width: 260px;
+      height: 420px;
+      border-radius: 9px;
+      transition: all ease-out 0.3s;
+    }
 
-      article:hover {
-        box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-        cursor: pointer;
-      }
+    article:hover {
+      box-shadow: 0 14px 20px -6px rgba(0,0,0,0.4);
+      cursor: pointer;
+      scale: 1.05;
+      transform: translateY(-2%);
+    }
 
-      .image-box {
-        width: 298px;
-        height: 200px;
-      }
+    .card {
+      border: none;
+      box-shadow: 0 0 1px rgba(0,0,0,0.7);
+    }
 
-      .favoriteOnCard{
-        position: relative;
-        left: 90%;
-        width: 25px;
-        height: 25px;
-      }
+    .image-box {
+      width: 260px;
+      height: 260px;
+    }
 
-      .image-box img, .image-box h1{
-          margin: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 16px 16px 0 0;
-      }
+    .favoriteOnCard{
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: 8px;
+      right: 8px;
+      z-index: 1;
+      opacity: 0.7;
+    }
 
-      .image-box h1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 7px;
-      }
-
-      .image-box .card-title {
-          position: absolute;
-          margin: 0;
-          top: 120px;
-          font-size: 16px;
-          font-weight: bolder;
-          color: white;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-      }
-      
-      .card-title {
-        word-break: break-word;
+    .image-box img, .image-box h1{
+        margin: 0;
         width: 100%;
-        height: 25%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 9px 9px 0 0;
+    }
+
+    .image-box h1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 7px;
+    }
+
+    .image-box .card-title {
+        position: absolute;
+        margin: 0;
+        top: 150px;
+        font-size: 16px;
+        font-weight: bolder;
+        color: white;
+        text-shadow: 0 2px 3px rgba(0,0,0,0.7);
+    }
+    
+    .card-title {
+      word-break: break-word;
+      width: 100%;
+      height: 25%;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+
+    .textbox {
+        border-top: solid 5px rgba(44, 95, 45, 1);
+        height: 118px;
+        position: relative;
+        vertical-align: middle;
         overflow: hidden !important;
         text-overflow: ellipsis;
-      }
+    }
 
-      .textbox {
-          border-top: solid 10px #2C5F2D;
-          height: 118px;
-          position: relative;
-          vertical-align: middle;
-          overflow: hidden !important;
-          text-overflow: ellipsis;
-      }
-
-      .textbox p{
-          position: absolute;
-          top: 25px;
-          transform: translateY(-10%);
-          font-size: 14px;
-          margin: 0;
-          padding: 12px 9px;
-          font-family: 'Open Sans', sans-serif;
-          font-weight: 400;
-      }
-
-      .textbox time {
+    .textbox p{
         position: absolute;
+        top: 30px;
+        transform: translateY(-10%);
         font-size: 14px;
         margin: 0;
-        padding: 3px 9px; 
-        color: #000000;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 700;
+        padding: 12px 9px;
+    }
 
-      }
+    .textbox time {
+      position: absolute;
+      font-size: 14px;
+      margin: 0;
+      padding: 5px 9px; 
+      color: #70757A;
+    }
 
-      .hidden {
-        display: none;
-      }
+    .hidden {
+      display: none;
+    }
 
-      .delete-modal {
-        position: fixed; 
-        z-index: 1; 
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        overflow: auto; 
-        background-color: rgb(0,0,0); 
-        background-color: rgba(0,0,0,0.4); 
-      }
+    .delete-modal {
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+    }
 
-      .delete-modal-content {
-        margin: 15% auto; 
-        padding: 20px;
-      }
-
-      .btn-primary {
-        background-color: #00AB03;
-        border-width : 0;
-      }
+    .delete-modal-content {
+      margin: 15% auto; 
+      padding: 20px;
+    }
     `;
 
     const modal = document.createElement("div");
