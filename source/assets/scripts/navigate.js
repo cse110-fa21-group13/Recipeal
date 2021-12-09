@@ -258,6 +258,7 @@ window.returnToHomePage = function () {
   } else if(returnBut.classList.contains("favorite")){
     changeView("Favorites");
   }else {
+    reset();
     changeView("My Recipes");
   }
 };

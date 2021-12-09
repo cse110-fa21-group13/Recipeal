@@ -76,7 +76,7 @@ class ExpandRecipe extends HTMLElement {
         /* Card for ingredients */
         
         #ing-card {
-            height: 98%;
+            height: 100%;
             width: 100%%;
         }
         

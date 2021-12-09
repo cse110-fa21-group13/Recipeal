@@ -275,8 +275,8 @@ section:not(section.shown) {
 /* Card for ingredients */
 
 #ing-card {
-  height: 98%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
 }
 
 /* Card for steps */
