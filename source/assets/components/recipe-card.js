@@ -154,6 +154,18 @@ class RecipeCard extends HTMLElement {
     .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgb(38 143 255 / 0%); 
     }
+
+    .btn-secondary {
+      color: #fff;
+      background-color: #2C5F2D;
+      border-color: #2C5F2D;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+      background-color: #1b3b1c;
+      border-color: #1b3b1c;
+    }
     `;
 
     
@@ -162,8 +174,8 @@ class RecipeCard extends HTMLElement {
     modal.innerHTML = `<div class="card delete-modal-content" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Are you sure you want to delete this recipe?</h5>
-      <button id="modal-close${data.name}" class="btn btn-secondary">Close</button>
       <button id="modal-delete${data.name}" class="btn btn-primary ${data.name}">Delete</button>
+      <button id="modal-close${data.name}" class="btn btn-secondary">Close</button>
     </div>
   </div>`;
   
