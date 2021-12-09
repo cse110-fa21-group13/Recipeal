@@ -421,14 +421,6 @@ if (document.getElementById(`input-steps1`)) {
   let img = document.getElementById("display-image");
   newRecipe.thumbnail = img.src;
 
-  /*
-  // Put the object into storage
-  localStorage.setItem(
-    newRecipe.name.toLowerCase(),
-    JSON.stringify(newRecipe)
-  );
-  */
-
   if (page === "create") {
     // Put the object into storage
     localStorage.setItem(
@@ -558,10 +550,9 @@ function saveDataCreate() {
   // Delete old recipe with new name
   let isFav = JSON.parse(localStorage.getItem(originalName)).favorites;
   let page = "edit";
-  if (saveBase(page) === 1) {
   // Delete old recipe with new name
   localStorage.removeItem(originalName);
-  saveBase(null, isFav);
+  saveBase(page, isFav);
   Swal.fire({
     icon: 'success',
     title: 'Recipe updated!',
@@ -573,11 +564,11 @@ function saveDataCreate() {
   for(let i = 0; i < recipeCards.length; i++) {
     if(recipeCards[i].id.toLowerCase() === originalName) {
       recipeCards[i].parentNode.removeChild(recipeCards[i]);
+      break;
     }
   }
   let saveButtonEdit = document.getElementById("save-edit-btn");
   saveButtonEdit.removeEventListener("click", functionName);
-  }
 }
 
 /**
@@ -694,6 +685,7 @@ function saveDataCreate() {
   // Save Button Edit
   let saveButtonEdit = document.getElementById("save-edit-btn");
   saveButtonEdit.addEventListener("click", function save() {
+    returnBut.classList.remove("edit");
     saveDataEdit(name, save);
   });
 }
@@ -1038,12 +1030,8 @@ export function filterTags(tag) {
     if(tagBut.classList.contains("filter-on")) {
         for(let i = 0; i < allRecipes.length; i++) {
             let currentRecipe = allRecipes[i];
-            console.log(currentRecipe);
             let currentRecipeName = currentRecipe.id.toLowerCase();
-            console.log(currentRecipeName);
             let currentRecipeJSON = JSON.parse(localStorage.getItem(currentRecipeName));
-            console.log(currentRecipeJSON);
-            console.log(currentRecipeJSON.tags);
             let tags = currentRecipeJSON.tags;
             for(let i = 0; i < tags.length; i++) {
                 tags[i] = tags[i].toLowerCase();

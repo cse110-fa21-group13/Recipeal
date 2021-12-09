@@ -35,7 +35,6 @@ window.addEventListener("DOMContentLoaded", initCards);
  *  recipe page to it
  */
 export function initCards() {
-  console.log("initiated cards");
   for (let i = 0; i < localStorage.length; i++) {
     let storedRecipe = JSON.parse(localStorage.getItem(localStorage.key(i)));
     let newCard = document.createElement("recipe-card");
