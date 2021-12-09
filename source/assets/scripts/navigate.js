@@ -53,15 +53,16 @@ let exploreCheck = 0;
  */
 export function changeView(e) {
   // reference for needed elements
-  var myRecipes = document.querySelector(".recipe-cards--wrapper");
-  var explore = document.querySelector(".explore");
-  var createRecipe = document.querySelector(".section--create-recipe");
-  var createButton = document.getElementById("create-recipe-btn");
-  var returnButton = document.getElementById("return-btn");
-  var editButton = document.getElementById("edit-btn");
-  var deleteButton = document.getElementById("delete-btn");
-  var expandRecipe = document.querySelector(".section--recipe-expand");
-  var saveButtonCreate = document.querySelector("button.save-btn-create");
+  const myRecipes = document.querySelector(".recipe-cards--wrapper");
+  const explore = document.querySelector(".explore");
+  const createRecipe = document.querySelector(".section--create-recipe");
+  const createButton = document.getElementById("create-recipe-btn");
+  const returnButton = document.getElementById("return-btn");
+  const editButton = document.getElementById("edit-btn");
+  const deleteButton = document.getElementById("delete-btn");
+  const expandRecipe = document.querySelector(".section--recipe-expand");
+  const saveButtonCreate = document.querySelector("button.save-btn-create");
+  const saveButtonEdit = document.querySelector("button.save-btn-edit");
   const delbutIcon = document.getElementById("delbut-icon");
   const deleteMode = delbutIcon.className === "arrow-left";
   const cookModeBut = document.getElementById("cook-mode-btn");
@@ -168,6 +169,7 @@ export function changeView(e) {
     switchButtonView(createButton);
     switchButtonView(returnButton);
     switchButtonView(deleteButton);
+    saveButtonEdit.style.display = "none";
     saveButtonCreate.style.display="block";
     refreshButton.className = "hidden";
   }
@@ -245,7 +247,6 @@ function refresh() {
 // Function for return to home page
 window.returnToHomePage = function () {
   const returnBut = document.getElementById("return-btn");
-  console.log(returnBut.classList);
   if(returnBut.classList.contains("explore")){
     changeView("Explore");
     returnBut.classList.remove("explore");
@@ -262,11 +263,9 @@ window.returnToHomePage = function () {
 window.showTags = function () {
   let filterBtn = document.getElementById("filter-btn");
   if(filterBtn.classList.contains("flag")) {
-    console.log("yep");
     filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
     filterBtn.classList.remove("flag");
   } else {
-    console.log("yep");
     filterBtn.style.backgroundColor = "white";
     filterBtn.classList.add("flag");
   }

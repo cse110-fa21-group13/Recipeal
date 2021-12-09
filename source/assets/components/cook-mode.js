@@ -333,7 +333,6 @@ class CookMode extends HTMLElement {
 
     set data(data) {
         this.json = data;
-        console.log(data);
         this.shadowRoot.querySelector("article").innerHTML = `
         <div id="cook-mode--input-wrapper">
             <button class="back-btn">
@@ -392,7 +391,6 @@ class CookMode extends HTMLElement {
         
         // Set directions
         const directions = data.directions;
-        console.log(directions);
         if (directions.length === 0) {
             this.shadowRoot.getElementById("step-none").innerHTML = "None";
         } else {
@@ -420,12 +418,9 @@ class CookMode extends HTMLElement {
                             </button>
                             <p id="input-steps${String(i + 1)}"  class="steps">${String(i + 1)+". "+directions[i]}</p>
                         </div>`;
-                        console.log(shadowRoot.getElementById(`${String(i + 1)}`));
                         setTimeout(() => {
                             shadowRoot.getElementById(`${String(i + 1)}`).addEventListener("click", () => {
-                                console.log(utterText.text);
                                 utterText.text = shadowRoot.getElementById(`${String(i + 1)}`).name;
-                                console.log(utterText.text);
                                 synth.speak(utterText);
                             });
                         }, 10);

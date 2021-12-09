@@ -450,7 +450,6 @@ class ExpandRecipe extends HTMLElement {
 
     // Set tags
     let tags = data.tags;
-    console.log(tags);
     if (tags.length === 0) {
         tags.push("None");
     }
