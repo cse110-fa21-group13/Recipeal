@@ -50,41 +50,24 @@
 <body>
   <main>
     <script>
-      // Introduction
-      Swal.fire({
-        title: 'Welcome to Recipeal!',
-        width: 600,
-        padding: '2em',
-        color: '#000000',
-        text: 'From saving your favorite recipes to finding new ones, Recipeal is here to make your cooking process a breeze!',
-        confirmButtonColor: '#00AB03',
-        confirmButtonText: 'Start Walkthrough',
-        showDenyButton: true,
-        denyButtonColor: '#2C5F2D',
-        denyButtonText: 'Skip',
-        backdrop: `
-        rgba(0, 0, 0, 0.5)
-        `,
-        showClass: {
-          popup: 'animate__animated animate__fadeIn'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOut'
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // My Recipes
+
+      window.onload = function () {
+        if (window.localStorage.length == 0) {
+          // Introduction
           Swal.fire({
-            title: 'My Recipes',
-            width: 800,
+            title: 'Welcome to Recipeal!',
+            width: 600,
             padding: '2em',
             color: '#000000',
-            imageUrl: "./assets/images/My_Recipes.png",
-            text: 'My Recipes is where all your saved recipes reside. You can search for any of your recipes by name or filter by their tags!',
+            text: 'From saving your favorite recipes to finding new ones, Recipeal is here to make your cooking process a breeze!',
             confirmButtonColor: '#00AB03',
-            confirmButtonText: 'Continue',
+            confirmButtonText: 'Start Walkthrough',
+            showDenyButton: true,
+            denyButtonColor: '#2C5F2D',
+            denyButtonText: 'Skip',
             backdrop: `
-              rgba(0, 0, 0, 0.5)`,
+        rgba(0, 0, 0, 0.5)
+        `,
             showClass: {
               popup: 'animate__animated animate__fadeIn'
             },
@@ -93,18 +76,18 @@
             },
           }).then((result) => {
             if (result.isConfirmed) {
-              // Favorites
+              // My Recipes
               Swal.fire({
-                title: 'Favorites',
+                title: 'My Recipes',
                 width: 800,
                 padding: '2em',
                 color: '#000000',
-                imageUrl: "./assets/images/Favorites.png",
-                text: 'Favorites is where all of your favorited recipes are displayed! You can favorite a recipe by clicking on it’s heart icon.',
+                imageUrl: "./assets/images/My_Recipes.png",
+                text: 'My Recipes is where all your saved recipes reside. You can search for any of your recipes by name or filter by their tags!',
                 confirmButtonColor: '#00AB03',
                 confirmButtonText: 'Continue',
                 backdrop: `
-                  rgba(0, 0, 0, 0.6)`,
+              rgba(0, 0, 0, 0.5)`,
                 showClass: {
                   popup: 'animate__animated animate__fadeIn'
                 },
@@ -113,18 +96,18 @@
                 },
               }).then((result) => {
                 if (result.isConfirmed) {
-                  // Explore
+                  // Favorites
                   Swal.fire({
-                    title: 'Explore',
+                    title: 'Favorites',
                     width: 800,
                     padding: '2em',
                     color: '#000000',
-                    imageUrl: "./assets/images/Explore.png",
-                    text: 'Explore is where you can find new recipes! Use the search bar if you’re looking for something specific or click the refresh button to browse random recipes.',
+                    imageUrl: "./assets/images/Favorites.png",
+                    text: 'Favorites is where all of your favorited recipes are displayed! You can favorite a recipe by clicking on it’s heart icon.',
                     confirmButtonColor: '#00AB03',
                     confirmButtonText: 'Continue',
                     backdrop: `
-                    rgba(0, 0, 0, 0.6)`,
+                  rgba(0, 0, 0, 0.6)`,
                     showClass: {
                       popup: 'animate__animated animate__fadeIn'
                     },
@@ -133,16 +116,18 @@
                     },
                   }).then((result) => {
                     if (result.isConfirmed) {
-                      // Buttons
+                      // Explore
                       Swal.fire({
-                        width: 600,
+                        title: 'Explore',
+                        width: 800,
                         padding: '2em',
                         color: '#000000',
-                        imageUrl: "./assets/images/Buttons.png",
+                        imageUrl: "./assets/images/Explore.png",
+                        text: 'Explore is where you can find new recipes! Use the search bar if you’re looking for something specific or click the refresh button to browse random recipes.',
                         confirmButtonColor: '#00AB03',
                         confirmButtonText: 'Continue',
                         backdrop: `
-                      rgba(0, 0, 0, 0.6)`,
+                    rgba(0, 0, 0, 0.6)`,
                         showClass: {
                           popup: 'animate__animated animate__fadeIn'
                         },
@@ -153,12 +138,12 @@
                         if (result.isConfirmed) {
                           // Buttons
                           Swal.fire({
-                            title: "That's all from us. Ready to get cookin'?",
-                            width: 800,
+                            width: 600,
                             padding: '2em',
                             color: '#000000',
+                            imageUrl: "./assets/images/Buttons.png",
                             confirmButtonColor: '#00AB03',
-                            confirmButtonText: "Let's start!",
+                            confirmButtonText: 'Continue',
                             backdrop: `
                       rgba(0, 0, 0, 0.6)`,
                             showClass: {
@@ -167,12 +152,32 @@
                             hideClass: {
                               popup: 'animate__animated animate__fadeOut'
                             },
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              // Buttons
+                              Swal.fire({
+                                title: "That's all from us. Ready to get cookin'?",
+                                width: 800,
+                                padding: '2em',
+                                color: '#000000',
+                                confirmButtonColor: '#00AB03',
+                                confirmButtonText: "Let's start!",
+                                backdrop: `
+                      rgba(0, 0, 0, 0.6)`,
+                                showClass: {
+                                  popup: 'animate__animated animate__fadeIn'
+                                },
+                                hideClass: {
+                                  popup: 'animate__animated animate__fadeOut'
+                                },
+                              })
+                            }
                           })
                         }
+                        else {
+                          return;
+                        }
                       })
-                    }
-                    else {
-                      return;
                     }
                   })
                 }
@@ -180,7 +185,8 @@
             }
           })
         }
-      })
+      };
+
 
     </script>
     <!-- HOME PAGE -->
