@@ -89,7 +89,7 @@ class RecipeCard extends HTMLElement {
 
     .textbox {
         border-top: solid 5px rgba(44, 95, 45, 1);
-        height: 118px;
+        height: 156px;
         position: relative;
         vertical-align: middle;
         overflow: hidden !important;
