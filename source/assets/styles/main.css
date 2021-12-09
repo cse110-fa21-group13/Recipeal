@@ -201,9 +201,9 @@ section:not(section.shown) {
 .input-card {
   margin-top: 20px;
   background-color: #f6f6f6;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 5%;
-  box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
   width: 85%;
 }
 
@@ -248,7 +248,7 @@ section:not(section.shown) {
 
 .input-card-steps {
   background-color: #f6f6f6;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 5%;
   margin-top: 5%;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
@@ -321,8 +321,8 @@ input.input-hours-mins {
 }
 
 input[type="text"] {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   outline: none;
   border-radius: 5px;
   font-size: 1.8vw;
@@ -334,8 +334,8 @@ input[type="text"]:focus {
 }
 
 input[type="number"] {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   outline: none;
   border-radius: 5px;
   font-size: 1.8vw;
@@ -352,8 +352,8 @@ input[type="number"]:focus {
   border: 3px solid #ccc;
   resize: none;
   width: 100%;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   outline: none;
   border-radius: 5px;
   font-size: 1.8vw;
@@ -379,12 +379,11 @@ input[type="number"]:focus {
   padding: 0;
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background-color: white;
   border-radius: 50%;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   color: #B8B8B8;
-
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
   outline: none;
 }
 
@@ -394,6 +393,19 @@ input[type="number"]:focus {
 
 .add-btn:hover {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
+}
+
+.add-label {
+  text-align: center;
+  color: #C4C4C4;
+}
+
+#add-tag-label {
+  font-size: 1vw;
+}
+
+#add-ing-label, #add-step-label {
+  font-size: 1.5vw;
 }
 
 .save-btn:focus {
@@ -415,7 +427,7 @@ input[type="number"]:focus {
   border-radius: 50%;
   background-color: var(--darkGreen);
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer;
 }
@@ -432,7 +444,7 @@ input[type="number"]:focus {
   border-radius: 50%;
   background-color: var(--darkGreen);
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer
 }
@@ -448,7 +460,7 @@ input[type="number"]:focus {
   border-radius: 50%;
   background-color: var(--darkGreen);
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer
 }
@@ -462,7 +474,7 @@ input[type="number"]:focus {
   border-radius: 50%;
   background-color: var(--darkGreen);
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer;
 }
@@ -493,7 +505,7 @@ input[type="number"]:focus {
   cursor: pointer;
   border: none;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
 }
 
 #cook-mode-btn {
@@ -506,7 +518,7 @@ input[type="number"]:focus {
   background-color: var(--darkGreen);
   cursor: pointer;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
 }
 
@@ -519,7 +531,7 @@ input[type="number"]:focus {
   border-radius: 50%;
   background-color: var(--darkGreen);
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   cursor: pointer;
   color: white;
@@ -762,7 +774,7 @@ button.filter-off {
   background-color: var(--darkGreen);
   cursor: pointer;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
+  transition: all 0.2s ease-in-out;
   border: none;
   outline: transparent;
 }
@@ -828,6 +840,10 @@ button.filter-off {
 
   #tag-wrapper-filter {
     width: 100%;
+  }
+
+  #add-tag-label, #add-ing-label, #add-step-label {
+    font-size: 5vw;
   }
 }
 
