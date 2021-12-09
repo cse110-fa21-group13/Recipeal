@@ -188,6 +188,7 @@
         }
       };
     </script>
+
     <!-- HOME PAGE -->
     <section class="section--recipe-cards shown">
       <nav class="navbarv2" style="background-color: rgba(148, 193, 30, 1);">
@@ -219,10 +220,8 @@
             </button>
           </div>
         </div>
-
         <!-- DISPLAY TAGS -->
         <div id="tag-wrapper-filter"></div>
-
         <div id="recipe-cards">
           <!-- Recipes Added Here -->
         </div>
@@ -243,11 +242,9 @@
         <button id="refresh-btn">
           <img src="assets/images/refresh.png" id="refresh">
         </button>
-
         <div id="explore-search-wrapper">
           <input type="text" id="explore-search-bar" placeholder="Search for recipes" />
         </div>
-
         <div id="explore-wrapper">
           <div id="card-wrapper">
           </div>
@@ -256,7 +253,6 @@
           <button id="show-more-btn">
             <img src="assets/images/arrow-down.png" id="arrow-down">
             Show More</button>
-
         </div>
       </section>
 
@@ -271,22 +267,18 @@
                 <img id="display-image"
                   src="https://www.pngkit.com/png/full/129-1298005_png-file-upload-image-icon-png.png" />
               </label>
-
               <input id="input-img" type="file" style="display: none" />
             </div>
-
             <!-- Name -->
             <div class="input-card">
               <label for="input-name" class="card-label">Name</label>
               <input type="text" id="input-name" name="input-name">
             </div>
-
             <!-- Description -->
             <div class="input-card">
               <label for="input-desc" class="card-label">Description</label>
               <textarea id="input-desc" name="input-desc" rows="5" cols="33"></textarea>
             </div>
-
             <!-- Nutrition -->
             <div class="input-card">
               <label for="nutrition-facts" class="card-label">Nutrition Information</label><br>
@@ -299,7 +291,6 @@
               <label for="input-protein" class="nut-info-label">Protein(g)</label>
               <input type="number" id="input-protein" name="input-protein" class="nutrition-cat">
             </div>
-
             <!-- Time -->
             <div class="input-card">
               <label for="input-time" class="card-label">Time</label>
@@ -309,40 +300,30 @@
                 <label for="input-minutes" class="time-label">Minute:</label>
                 <input type="number" class="input-hours-mins" id="input-mins" name="input-mins">
               </div>
-
             </div>
-
             <!-- Tags -->
             <div class="input-card">
               <label for="input-tags" class="card-label">Tags</label>
               <div id="tag-wrapper">
               </div>
               <br>
-
               <!-- Create new tag input button-->
               <button class="add-btn tag-btn" type="button">+</button>
               <p id="add-tag-label" class="add-label">Click to add tags</p>
             </div>
           </div>
-
           <!-- SECOND COLUMN -->
           <div class="input-wrapper--column">
             <!-- Ingredients -->
             <div class="input-card" id="ing-card">
               <label class="card-label">Ingredients</label><br>
-              <div id="ing-wrapper">
-
-              </div>
-
-              <br>
-
+              <div id="ing-wrapper"></div><br>
               <!-- Create new ingredient button-->
               <button class="add-btn ing-btn" type="button">+</button>
               <p id="add-ing-label" class="add-label">Click to add
                 ingredients</p>
             </div>
           </div>
-
           <!-- THIRD COLUMN -->
           <div class="input-wrapper--column">
             <div class="input-card" id="step-card">
@@ -350,26 +331,23 @@
               <div id="step-wrapper">
               </div>
               <br><br>
-
               <!-- Create new step button-->
               <button class="add-btn step-btn" type="button">+</button>
               <p id="add-step-label" class="add-label">Click to add steps</p>
             </div>
-
             <!-- Save Button for Create Recipe -->
             <button id="save-create-btn" class="save-btn-create">
               <img src="assets/images/checkmark.png" id="checkmark-icon">
             </button>
-
             <!-- Save Button for Edit Recipe -->
             <button id="save-edit-btn" class="save-btn-edit">
               <img src="assets/images/checkmark.png" id="checkmark-icon">
             </button>
-
           </div>
         </div>
       </section>
 
+      <!-- BUTTONS -->
       <button id="create-recipe-btn">
         <img src="assets/images/plus.png" id="plus-icon">
       </button>
@@ -382,7 +360,14 @@
       <button id="cook-mode-btn" class="hidden">
         <img src="assets/images/knife_fork.png" id="knife-fork">
       </button>
+      <button id="edit-btn">
+        <img src="assets/images/edit.png" id="edit-icon">
+      </button>
+      <button id="sleep-btn" class="hidden">
+        <img class="off" id="sleep-icon" src="assets/images/bi_brightness-high.png"></img>
+      </button>
 
+      <!-- DELETE MODAL -->
       <div class="delete-modal-expand hidden">
         <div class="card delete-modal-expand-content" style="width: 18rem;">
           <div class="card-body">
@@ -393,14 +378,7 @@
         </div>
       </div>
 
-      <button id="edit-btn">
-        <img src="assets/images/edit.png" id="edit-icon">
-      </button>
-
-      <button id="sleep-btn" class="hidden">
-        <img class="off" id="sleep-icon" src="assets/images/bi_brightness-high.png"></img>
-      </button>
-
+      <!-- NO SLEEP -->
       <script>
         let noSleep = new NoSleep();
         let sleepBtn = document.getElementById("sleep-btn");
@@ -418,6 +396,7 @@
         });
       </script>
 
+      <!-- NAVIGATE TO EDIT PAGE -->
       <script type="module">
         import { navEdit } from "./assets/scripts/create-edit-recipe.js";
 
@@ -427,7 +406,6 @@
       </script>
     </section>
   </main>
-
 </body>
 
 </html>

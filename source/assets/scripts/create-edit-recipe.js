@@ -707,7 +707,7 @@ function saveDataCreate() {
   tagCounter = 0;
   ingCounter = 0;
   stepCounter = 0;
-  for (let i=0; i<1; i++) {
+  for (let i=0; i<=10; i++) {
     // Array to store ings
     let ings = [];
 
@@ -1079,7 +1079,7 @@ export async function searchSpoon() {
             allRecipes[i].style.display = "none"; 
         }
         const API_KEY = "75d567c9173d40f69fad55f6870057fe";
-        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=3&apiKey=${API_KEY}`;
+        const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=10&apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
             .then(data => {

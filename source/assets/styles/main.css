@@ -1,6 +1,4 @@
-/* main.css */
-
-/** VARIABLES **/
+/* VARIABLES */
 
 :root {
   --darkGreen: #2C5F2D;
@@ -27,8 +25,7 @@ section:not(section.shown) {
   display: none;
 }
 
-
-/* Introduction */
+/* INTRODUCTION */
 
 .swal2-title {
   position: relative;
@@ -59,6 +56,8 @@ section:not(section.shown) {
   word-break: break-word;
   font-family: var(--body-font)
 }
+
+/* MODAL */
 
 #modal-delete {
   background-color: var(--neonGreen);
@@ -138,7 +137,7 @@ section:not(section.shown) {
   box-shadow: none;
 }
 
-/** EXPLORE **/
+/* Explore */
 
 #explore-wrapper {
   display: flex;
@@ -162,9 +161,7 @@ section:not(section.shown) {
   height: auto;
 }
 
-
-
-/** MY RECIPE **/
+/* My Recipe */
 
 #recipe-cards {
   display: flex;
@@ -178,7 +175,7 @@ section:not(section.shown) {
   max-width: 80%;
 }
 
-/** CREATE RECIPE SECTION **/
+/* Create Recipe */
 
 #create-recipe--input-wrapper {
   margin-top: 30px;
@@ -207,13 +204,6 @@ section:not(section.shown) {
   width: 85%;
 }
 
-/*
-.input-card label {
-  font-size: 2vw;
-  margin-bottom: 0;
-}
-*/
-
 .card-label {
   font-family: var(--header-font);
   font-size: 24px;
@@ -238,13 +228,9 @@ section:not(section.shown) {
   margin-right: 0.5vw;
 }
 
-/* Input card for ings */
-
 .input-card-ings {
   margin-top: 5%;
 }
-
-/* Input card for steps */
 
 .input-card-steps {
   background-color: #f6f6f6;
@@ -253,8 +239,6 @@ section:not(section.shown) {
   margin-top: 5%;
   box-shadow: 4px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
-
-/* Card for display image */
 
 #img-card {
   padding: 5%;
@@ -272,21 +256,15 @@ section:not(section.shown) {
   width: 250px;
 }
 
-/* Card for ingredients */
-
 #ing-card {
   height: 100%;
   width: 100%;
 }
 
-/* Card for steps */
-
 #step-card {
   background-color: transparent;
   box-shadow: none;
 }
-
-/** INPUTS **/
 
 input {
   border-radius: 1.5%;
@@ -369,8 +347,6 @@ input[type="number"]:focus {
   margin: auto;
 }
 
-/** BUTTONS **/
-
 .add-btn {
   display: block;
   margin: 0 auto;
@@ -416,7 +392,6 @@ input[type="number"]:focus {
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.18);
 }
 
-
 #edit-btn {
   bottom: 20px;
   right: 15px;
@@ -431,7 +406,6 @@ input[type="number"]:focus {
   border: none;
   cursor: pointer;
 }
-
 
 #save-create-btn {
   bottom: 10px;
@@ -559,8 +533,6 @@ input[type="number"]:focus {
   gap: 50px;
 }
 
-
-
 #show-more-btn {
   display: flex;
   justify-content: space-evenly;
@@ -581,8 +553,6 @@ input[type="number"]:focus {
 #show-more-btn:hover {
   transform: scale(1.05);
 }
-
-
 
 .save-to-rec-btn {
   display: block;
@@ -701,7 +671,6 @@ button.filter-off {
   width: 70%;
   margin: auto;
 }
-
 
 .tags-btn {
   cursor: pointer;
@@ -942,5 +911,4 @@ button.filter-off {
     text-decoration-thickness: 3px;
     text-underline-offset: 0.25em;
   }
-
 }
