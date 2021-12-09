@@ -614,7 +614,7 @@ button {
 
 #search-bar, #explore-search-bar {
   position: relative;
-  height: 5vw;
+  height: 50px;
   border-radius: 25px;
   border: solid 1px #aaaaaa;
   background: url("/source/assets/images/search.png");
@@ -624,12 +624,12 @@ button {
 
 #explore-search-bar {
   position: relative;
-  height: 2.4vw;
   border-radius: 25px;
+  border: solid 1px #aaaaaa;
   border-width: 3px;
   background: url("/source/assets/images/search.png");
   background-repeat: no-repeat;
-  background-position: 96% 5px;
+  background-position: 97% 8px;
 }
 
 #explore-search-bar:focus {
