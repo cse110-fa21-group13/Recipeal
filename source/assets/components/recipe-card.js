@@ -50,7 +50,6 @@ class RecipeCard extends HTMLElement {
       height: 32px;
       top: 8px;
       right: 8px;
-      z-index: 1;
       opacity: 0.7;
     }
 
