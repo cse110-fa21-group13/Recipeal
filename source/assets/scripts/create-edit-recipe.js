@@ -688,6 +688,12 @@ function saveDataCreate() {
     returnBut.classList.remove("edit");
     saveDataEdit(name, save);
   });
+
+  // Reset name value if return button is clicked
+  let returnButEdit = document.getElementById("return-btn");
+  returnButEdit.addEventListener("click", function resetName() {
+    name = "";
+  })
 }
 
 /**
