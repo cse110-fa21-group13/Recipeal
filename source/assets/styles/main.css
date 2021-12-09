@@ -97,10 +97,22 @@ section:not(section.shown) {
   font-size: 2.5vw;
 }
 
-.nav-label {
+.nav-label, #explore-btn {
   font-family: var(--body-font);
   font-weight: 700;
   font-size: 20px;
+}
+
+#explore-btn {
+  transition: 0.2s;
+}
+
+.nav-label:hover {
+  color: var(--darkGreen);
+}
+
+#explore-btn:hover {
+  transform: scale(1.05);
 }
 
 .navbarv2 {
@@ -554,6 +566,10 @@ input[type="number"]:focus {
   text-transform: uppercase;
 }
 
+#show-more-btn:hover {
+  transform: scale(1.05);
+}
+
 
 
 .save-to-rec-btn {
@@ -563,7 +579,7 @@ input[type="number"]:focus {
   cursor: pointer;
   color: #fff;
   border: none;
-  background-color: #00AB03;
+  background-color: var(--neonGreen);
   border-radius: 40px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.18);
   transition: 0.2s;
@@ -582,7 +598,7 @@ input[type="number"]:focus {
 }
 
 #explore-btn {
-  background-color: rgba(44, 95, 45, 1);
+  background-color: var(--darkGreen);
   color: white;
   border: transparent;
   border-radius: 30px;
@@ -593,20 +609,21 @@ input[type="number"]:focus {
   width: 40px;
   height: 40px;
   background-color: white;
+  border-radius: 50%;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.18);
 }
 
 #filter-btn:focus {
-  outline: rgba(148, 193, 30, 1);
+  outline: var(--boogerGreen);
 }
 
 .filter-on, .filter-off {
-  outline: rgba(148, 193, 30, 1);
+  outline: var(--boogerGreen);
   box-shadow: none;
 }
 
 button.filter-on {
-  background-color: #97BC62;
+  background-color: var(--boogerGreen);
 }
 
 button.filter-off {
