@@ -114,6 +114,7 @@ export function changeView(e) {
     deleteButton.className = "hidden";
     createRecipe.classList.remove("shown");
     returnButton.className = "hidden";
+    returnButton.classList.add('favorite');
     expandRecipe.classList.remove("shown");
     refreshButton.className = "hidden";
     cookModeBut.className = "hidden";
@@ -254,7 +255,9 @@ window.returnToHomePage = function () {
     reset();
     changeView("Recipe Expand");
     returnBut.classList.remove("edit");
-  } else {
+  } else if(returnBut.classList.contains("favorite")){
+    changeView("Favorites");
+  }else {
     changeView("My Recipes");
   }
 };
