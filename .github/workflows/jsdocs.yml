@@ -20,6 +20,7 @@ jobs:
         with:
           output_dir: ./jsdocs
           config_file: conf.json
+          template: jaguarjs-jsdoc
           
       - name: Add to separate repository
         id: push_directory
