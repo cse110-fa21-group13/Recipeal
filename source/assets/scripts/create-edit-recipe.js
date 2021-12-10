@@ -1077,7 +1077,7 @@ export async function searchSpoon() {
         for (let i = 0; i < allRecipes.length; i++) {
             allRecipes[i].style.display = "none"; 
         }
-        const API_KEY = "b24485ab3d4a47f696151e7134433592";
+        const API_KEY = "6b76530c7782467a8b83f2ad7ab1e35f";
         const SEARCH_URL = `https://api.spoonacular.com/recipes/complexSearch?query=${filter}&number=10&apiKey=${API_KEY}`;
         fetch (SEARCH_URL)
             .then(response => response.json())
