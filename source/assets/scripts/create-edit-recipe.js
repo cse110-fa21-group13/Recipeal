@@ -706,7 +706,7 @@ function saveDataCreate() {
   tagCounter = 0;
   ingCounter = 0;
   stepCounter = 0;
-  for (let i=0; i<=10; i++) {
+  for (let i=0; i<10; i++) {
     // Array to store ings
     let ings = [];
 
