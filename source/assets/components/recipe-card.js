@@ -193,6 +193,9 @@ class RecipeCard extends HTMLElement {
       this.parentNode.removeChild(this);
       localStorage.removeItem(curCardId.toLowerCase());
       modal.classList.add("hidden");
+      if(localStorage.length === 0) {
+        document.getElementById("no-recipes").className = "shown";
+      }
     });
 
     const card = document.createElement("article");

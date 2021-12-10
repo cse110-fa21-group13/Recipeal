@@ -70,11 +70,17 @@ export function changeView(e) {
   const navBar = document.querySelector("nav");
   const refreshButton = document.getElementById("refresh-btn");
   const sleepBtn = document.getElementById("sleep-btn");
+  let noRecipes = document.getElementById("no-recipes");
 
   const innerText = typeof e === "string" ? e : e.target.innerText;
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
+    if(window.localStorage.length === 0) {
+      noRecipes.className = "shown";
+    } else {
+      noRecipes.className = "hidden";
+    }
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -109,6 +115,7 @@ export function changeView(e) {
       }
     }
 
+    noRecipes.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     createRecipe.classList.remove("shown");
@@ -127,6 +134,7 @@ export function changeView(e) {
     expandRecipe.classList.remove("shown");
     explore.classList.remove("hidden");
     explore.classList.add("shown");
+    noRecipes.className = "hidden";
     createButton.className = "hidden";
     deleteButton.className = "hidden";
     editButton.style.display = "none";
@@ -148,6 +156,7 @@ export function changeView(e) {
     navBar.className = "navbarv2 navbar-light";
     returnButton.classList.add("ok");
     returnButton.classList.remove("hidden");
+    noRecipes.className = "hidden";
     deleteButton.className = "ok";
     cookModeBut.className = "ok";
     createButton.className = "hidden";
@@ -170,6 +179,7 @@ export function changeView(e) {
     saveButtonEdit.style.display = "none";
     saveButtonCreate.style.display="block";
     refreshButton.className = "hidden";
+    noRecipes.className = "hidden";
   }
   // navigating to cook mode page
   else if (e.target.id === "cook-mode-btn" || e.target.id === "knife-fork") {

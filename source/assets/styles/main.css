@@ -324,6 +324,18 @@ input[type="number"]:focus {
   border: 3px solid #555;
 }
 
+#no-recipes {
+  color: rgb(207, 207, 207);
+  font-size: 3vw;  
+  width: 60%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 #input-desc {
   border-radius: 5px;
   font-family: var(--body-font);
