@@ -75,7 +75,6 @@ export function changeView(e) {
 
   // navigating to My Recipes page
   if (innerText === "My Recipes") {
-    //location.reload();
     myRecipes.classList.add("shown");
     explore.classList.remove("shown");
     createRecipe.classList.remove("shown");
@@ -147,8 +146,6 @@ export function changeView(e) {
     cookMode.classList.remove("shown");
     expandRecipe.classList.add("shown");
     navBar.className = "navbarv2 navbar-light";
-    //switchButtonView(returnButton);
-    //returnButton.classList.add("btn");
     returnButton.classList.add("ok");
     returnButton.classList.remove("hidden");
     deleteButton.className = "ok";
@@ -344,11 +341,6 @@ window.showDeleteButtons = function () {
       delIcon.className = "trash";
       delIcon.src = "assets/images/trash.png";
     }
-    /*const delbutIcon = document.getElementById("delbut-icon");
-    delbutIcon.src =
-      delbutIcon.src === "assets/images/trash.png"
-        ? "assets/images/icon-park_return.png"
-        : "assets/images/trash.png";*/
   }
 };
 

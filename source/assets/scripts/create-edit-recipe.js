@@ -377,15 +377,15 @@ function saveBase(page, favoriteStatus) {
   if (document.getElementById(`input-tags1`)) {
     // Loop through all tag inputs and push them to array
     while (i <= tagCounter) {
-    let tagsValue = document.getElementById(`input-tags${i}`).value;
-    if(tagsValue == "") {
-      i++;
-      continue;
-    } else {
-      newRecipe.tags.push(tagsValue);
-      i++;
+      let tagsValue = document.getElementById(`input-tags${i}`).value;
+      if(tagsValue == "") {
+        i++;
+        continue;
+      } else {
+        newRecipe.tags.push(tagsValue);
+        i++;
+      }
     }
-  }
   }
   
 
@@ -524,17 +524,16 @@ function saveDataCreate() {
         localStorage.removeItem(checkName);
         page = "update";
         saveBase(page, 0);
-        } else  {
-          return;
-        }
-      })
-    }
-
-    // Else, create new recipe object
-    else {
-      page = "create";
-      saveBase(page, 0);
-    }
+      } else  {
+        return;
+      }
+    })
+  }
+  // Else, create new recipe object
+  else {
+    page = "create";
+    saveBase(page, 0);
+  }
 }
 
 /**
