@@ -1,3 +1,5 @@
 {
-    "projectId": "kunaii"
-}
+    "projectId": "kunaii",
+    "includeShadowDom": true
+  }
+  
