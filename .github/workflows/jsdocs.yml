@@ -19,6 +19,7 @@ jobs:
         uses: andstor/jsdoc-action@v1.2.0
         with:
           output_dir: ./jsdocs
+          config_file: conf.json
           
       - name: Add to separate repository
         id: push_directory
