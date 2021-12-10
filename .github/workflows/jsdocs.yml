@@ -20,8 +20,7 @@ jobs:
         with:
           output_dir: ./jsdocs
           config_file: conf.json
-          template: baseline
-          
+      
       - name: Add to separate repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
