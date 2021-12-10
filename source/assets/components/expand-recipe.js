@@ -271,8 +271,11 @@ class ExpandRecipe extends HTMLElement {
   }
 
   /**
-   * Sets the data for the recipe that will be put inside the <recipe-expand> element.
-   * Overwrites the previously expanded recipe.
+   * @method data 
+   *  Sets the data for the recipe that will be put inside the <recipe-expand> element.
+   *  Overwrites the previously expanded recipe.
+   * 
+   * @param {JSON} data - JSON data
    */
   set data (data) {
     this.json = data;

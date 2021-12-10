@@ -11,7 +11,7 @@ class RecipeCard extends HTMLElement {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     `;
   }
-
+  
   set data(data) {
     // if (!data) return;
     this.id = `${data.name}`;
@@ -168,7 +168,7 @@ class RecipeCard extends HTMLElement {
     }
     `;
 
-    
+    // Confirm deletion pop-up
     const modal = document.createElement("div");
     modal.className = `${data.name} hidden delete-modal`;
     modal.innerHTML = `<div class="card delete-modal-content" style="width: 18rem;">
@@ -183,12 +183,12 @@ class RecipeCard extends HTMLElement {
     const closeBut = this.shadowRoot.getElementById(`modal-close${data.name}`);
     const delBut = this.shadowRoot.getElementById(`modal-delete${data.name}`);
     
-    
+    // Does not delete recipe
     closeBut.addEventListener("click", () => {
       modal.classList.add("hidden");
     });
     
-    
+    // Deletes recipe
     delBut.addEventListener("click", (event) => {
       const curCardId = this.id;
       this.parentNode.removeChild(this);
@@ -199,9 +199,12 @@ class RecipeCard extends HTMLElement {
       }
     });
 
+    // The recipe card
     const card = document.createElement("article");
     card.className = "card";
     card.setAttribute("style", "border-radius: 16px;");
+
+    // Delete button that appears in top right corner of recipe card
     const deleteBut = document.createElement("button");
     deleteBut.className = `delbut hidden btn-primary`;
     deleteBut.id = "cardDelete";
@@ -213,12 +216,14 @@ class RecipeCard extends HTMLElement {
     deleteBut.addEventListener("click", () => {
       modal.classList.remove("hidden");
     });
+
+    // Set card image
     const imageBox = document.createElement("div");
     imageBox.setAttribute("class", "image-box");
     const image = document.createElement("img");
     image.setAttribute("src", data.thumbnail);
     
-    // Favorite
+    // Favorite button
     let storage = JSON.parse(localStorage.getItem(data.name.toLowerCase()));
     let favoriteImage;
     let love;
@@ -256,26 +261,26 @@ class RecipeCard extends HTMLElement {
       }
       localStorage.setItem(data.name.toLowerCase(), JSON.stringify(storage));
     }
-
-    // Title
   
+    // Set title
     const cardTitle = document.createElement("div");
     cardTitle.setAttribute("class", "card-title");
     const title = document.createElement("h1");
-    title.textContent = data.name;
-      //data.name.length > 34 ? data.name.substring(0, 31) + "..." : data.name;
-    
+    title.textContent = data.name; 
     title.style = "'Work Sans', sans-serif; font-size: 30px";
     cardTitle.appendChild(title);
+
     imageBox.appendChild(image);
     imageBox.appendChild(cardTitle);
 
+    // Set description
     const desBox = document.createElement("div");
     desBox.setAttribute("class", "textbox");
     const description = document.createElement("p");
     description.textContent = data.description;
     desBox.appendChild(description);
 
+    // Set time
     const time = document.createElement("time");
 
     // Hours

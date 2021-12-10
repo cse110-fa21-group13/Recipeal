@@ -7,6 +7,7 @@ let createRecipeButton = document.getElementById("create-recipe-btn");
 createRecipeButton.addEventListener("click", () => {
   changeView("Create Recipe");
 });
+
 let myRecipesButton = document.getElementById("my-recipes-btn");
 myRecipesButton.addEventListener("click", (e) => {
   changeView(e);
@@ -15,6 +16,7 @@ let favoriteButton = document.getElementById("my-fav-btn");
 favoriteButton.addEventListener("click", (e) =>{
   changeView(e);
 });
+
 let exploreButton = document.getElementById("explore-btn");
 exploreButton.addEventListener("click", (e) => {
   changeView(e);
@@ -46,10 +48,16 @@ recipeSearch.addEventListener("keyup", () => {
   searchRecipe();
 });
 
-let exploreCheck = 0;
+// Keeps track of the first time the explore page is visited
+let exploreCheck = false;
 
-/*
- * Function to switch pages
+/**
+ * @method changeView
+ *  Function that handles most of the navigation through the app. Given
+ *  the page to be navigated to, shows only the elements that are supposed
+ *  to appear on that page.
+ * 
+ * @param {string} e - The page to be navigated to
  */
 export function changeView(e) {
   // reference for needed elements
@@ -140,9 +148,9 @@ export function changeView(e) {
     editButton.style.display = "none";
     cookModeBut.className = "hidden";
     refreshButton.className = "";
-    if(exploreCheck === 0) {
+    if(exploreCheck === false) {
       refresh();
-      exploreCheck++;
+      exploreCheck = true;
     }
     returnButton.className = "hidden";
   }
@@ -201,8 +209,11 @@ export function switchButtonView(but) {
 }
 
 
-/*
- * Function to change button highlight
+/**
+ * @method switchHighlight
+ *  Switches the underline indicator to whatever page was navigated to
+ * 
+ * @param {string} innerText - The page being navigated to
  */
 function switchHighlight(innerText) {
   let nav = document.querySelector(".navbar-nav");
@@ -230,7 +241,7 @@ function switchHighlight(innerText) {
  * Function to fetch recipes from spoonacular and populate explore page
  */
 async function fetchApiRecipes() {
-  const API_KEY = "75d567c9173d40f69fad55f6870057fe";
+  const API_KEY = "b7855be92a904131a1fc088d0e40c138";
   const response = await fetch(
     `https://api.spoonacular.com/recipes/random?number=15&apiKey=${API_KEY}`
   );
@@ -239,8 +250,6 @@ async function fetchApiRecipes() {
   let data = await response.json();
 
   saveToMyRecipes(data, API_KEY);
-
-  
 }
 
 /**
@@ -252,7 +261,11 @@ function refresh() {
   fetchApiRecipes();
 }
 
-// Function for return to home page
+/**
+ * @method returnToHomePage
+ *  Helper function that will navigate the user to the correct page
+ *  when the back button is pressed 
+ */
 window.returnToHomePage = function () {
   const returnBut = document.getElementById("return-btn");
   if(returnBut.classList.contains("explore")){
@@ -270,9 +283,15 @@ window.returnToHomePage = function () {
   }
 };
 
-// Show tags when pressing filter button
+/**
+ * @method showTags
+ *  Triggers when the filter button next to the search bar is clicked.
+ *  Shows all existing tags that, when clicked, will filter recipes based
+ *  on that tag.
+ */
 window.showTags = function () {
   let filterBtn = document.getElementById("filter-btn");
+  // If the filter button is active, turn it green. If it's not, turn it white
   if(filterBtn.classList.contains("flag")) {
     filterBtn.style.backgroundColor = "rgba(148, 193, 30, 1)";
     filterBtn.classList.remove("flag");
@@ -280,6 +299,7 @@ window.showTags = function () {
     filterBtn.style.backgroundColor = "white";
     filterBtn.classList.add("flag");
   }
+  // Gets a list of all tags
   let tags = [];
   for (let i = 0; i < localStorage.length; i++) {
     const currentTags = JSON.parse(
@@ -299,6 +319,8 @@ window.showTags = function () {
     filterBtn.classList.remove("filter-on");
     filterBtn.classList.add("filter-off");
   }
+  // Creates a new button for each tag, that when clicked will filter recipes 
+  // based on that tag
   else {
   tags.forEach((element, i) => {
     filterBtn.classList.remove("filter-off");
@@ -324,7 +346,11 @@ window.showTags = function () {
   }  
 };
 
-// Show delete buttons for each card when click delete on home page
+/**
+ * @method showDeleteButtons 
+ *  Helper function that shows the recipe card delete buttons
+ *  when the My Recipes trash button is clicked
+ */
 window.showDeleteButtons = function () {
   const expandSection = document.querySelector(".section--recipe-expand");
   if (expandSection.classList.contains("shown")) {
@@ -354,11 +380,19 @@ window.showDeleteButtons = function () {
   }
 };
 
+/**
+ * @method cancelDelete
+ *  Helper function that cancels the deletion of a recipe from it's expand page
+ */
 window.cancelDelete = function () {
   const expandModal = document.querySelector(".delete-modal-expand");
   expandModal.classList.add("hidden");
 };
 
+/**
+ * @method confirmDelete 
+ *  Helper function that deletes a recipe from it's expand page
+ */
 window.confirmDelete = function () {
   const expandRecipe = document.getElementsByTagName("recipe-expand");
   const curCardId =

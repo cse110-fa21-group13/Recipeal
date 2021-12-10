@@ -1,5 +1,3 @@
-// Contains constructor for cook mode page
-
 import { changeView } from "../scripts/navigate.js";
 
 class CookMode extends HTMLElement {
@@ -331,6 +329,12 @@ class CookMode extends HTMLElement {
         this.shadowRoot.append(styles, article);
     }
 
+    /**
+     * @method data
+     *  Set's the content for the cook-mode page using the input data
+     * 
+     * @param {JSON} data - JSON data 
+     */
     set data(data) {
         this.json = data;
         this.shadowRoot.querySelector("article").innerHTML = `
@@ -397,6 +401,15 @@ class CookMode extends HTMLElement {
             let synth = window.speechSynthesis;
             let utterText = new SpeechSynthesisUtterance();
             setVoice(false, this.shadowRoot);
+            /**
+             * @method setVoice
+             *  Attaches a TTS button to each step card that, when clicked, will read out the
+             *  text for that step.
+             * 
+             * @param {boolean} flag - Used to indicate when the TTS voice has been set
+             * @param {*} shadowRoot - Allows the function to access the shadowRoot elements
+             * @returns 
+             */
             function setVoice(flag, shadowRoot) {
                 if(flag === false) {
                     setTimeout(() => {
@@ -429,10 +442,12 @@ class CookMode extends HTMLElement {
             }
         }
 
+        // Set back button to navigate to expand recipe page
         this.shadowRoot.querySelector(".back-btn").addEventListener("click", () => {
             changeView("Recipe Expand");
         });
 
+        // Timer
         let timerIcon = this.shadowRoot.getElementById("timer-icon");
 
         this.shadowRoot.getElementById("timer-btn").addEventListener("click", () => {
