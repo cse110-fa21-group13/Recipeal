@@ -7,9 +7,10 @@ describe('example to-do app', () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
-    cy.visit('https://project-cupcake.netlify.app/');
+    cy.visit('https://recipeal.netlify.app/');
+    cy.xpath('/html/body/div/div/div[6]/button[2]').click();
   });
-
+  /*
   it("search before create", ()=>{
     cy.get('input#search-bar')          
     .then($els => {
@@ -22,10 +23,11 @@ describe('example to-do app', () => {
       expect($els.length).to.eq(1);
     });
   });
+  */
 
   
   it('create', ()=>{
-    cy.get('button#create-recipe-btn').click();
+    cy.xpath('//*[@id="create-recipe-btn"]').click();
     cy.wait(500);
     
     cy.get('input#input-name').type('myfood');
@@ -52,7 +54,9 @@ describe('example to-do app', () => {
 
 describe('create one sample recipe', ()=>{
   beforeEach(() => {
-    cy.visit('https://project-cupcake.netlify.app/');
+    cy.visit('https://recipeal.netlify.app/');
+
+    cy.xpath('/html/body/div/div/div[6]/button[2]').click();
     cy.get('button#create-recipe-btn').click();
     cy.wait(500);
     
@@ -144,4 +148,148 @@ describe('create one sample recipe', ()=>{
     cy.xpath('//*[@id="input-fat"]').type('100');
     cy.xpath('//*[@id="input-protein"]').type('100');
   });
+});
+
+
+
+describe('update recipe', ()=>{
+  beforeEach(() => {
+    cy.visit('https://recipeal.netlify.app/');
+
+    cy.xpath('/html/body/div/div/div[6]/button[2]').click();
+    cy.get('button#create-recipe-btn').click();
+    cy.wait(500);
+    
+    cy.get('input#input-name').type('myfood');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.get('button#return-btn').click();
+    // check if element is being saved
+    cy.get('recipe-card#myfood').should('exist');
+
+    cy.get('button#create-recipe-btn').click();
+    cy.get('input#input-name').type('myfood-delete');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.get('button#return-btn').click();
+    cy.get('recipe-card#myfood-delete').should('exist');
+  });
+
+  it('delete', ()=>{
+    cy.xpath('//*[@id="delete-btn"]').click();
+    cy.xpath('//*[@id="myfood"]').should('be.visible');
+    //cy.xpath('//*[@id="myfood"]//article').should('be.visible');
+    
+    //cy.xpath('//*[@id="delete-btn"]').click();
+  });
+  /*
+  it('change name', ()=>{
+
+  })
+
+  it('change name', ()=>{
+
+  })
+
+  it('change name', ()=>{
+
+  })
+
+  it('change name', ()=>{
+
+  })*/
+
+});
+
+describe('update recipe', ()=>{
+  beforeEach(() => {
+    cy.visit('https://recipeal.netlify.app/');
+
+    cy.xpath('/html/body/div/div/div[6]/button[2]').click();
+    cy.get('button#create-recipe-btn').click();
+    cy.wait(500);
+    
+    cy.get('input#input-name').type('myfood');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.get('input#input-tags1').type('lunch');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    
+    cy.get('button#return-btn').click();
+    // check if element is being saved
+    cy.get('recipe-card#myfood').should('exist');
+
+    cy.get('button#create-recipe-btn').click();
+    cy.get('input#input-name').type('myfood2');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.get('input#input-tags1').type('lunch');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.get('button#return-btn').click();
+    cy.get('recipe-card#myfood2').should('exist');
+
+
+    cy.get('button#create-recipe-btn').click();
+    cy.get('input#input-name').type('myfood3');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.get('input#input-tags1').type('dinner');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.get('button#return-btn').click();
+    cy.get('recipe-card#myfood3').should('exist');
+
+    cy.get('button#create-recipe-btn').click();
+    cy.get('input#input-name').type('myfood4');
+    cy.get('textarea#input-desc').type('this is some desc');
+    cy.get('input#input-hours').type('1');
+    cy.get('input#input-mins').type('30');
+    cy.xpath('//*[@id="ing-card"]/button').click();
+    cy.get('input#input-ings1').type('1st ings');
+    cy.xpath('//*[@id="step-card"]/button').click();
+    cy.get('input#input-steps1').type('1st steps');
+
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[1]/div[6]/button').click();
+    cy.get('input#input-tags1').type('dinner');
+    cy.xpath('//*[@id="create-recipe--input-wrapper"]/div[3]/button[1]').click();
+    cy.get('button#return-btn').click();
+    cy.get('recipe-card#myfood4').should('exist');
+  });
+
+  it("4 recipes", ()=>{
+
+  })
+
 });
