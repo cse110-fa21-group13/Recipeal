@@ -14,6 +14,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: npm install
+        run: npm install
+        
+      - name: npm init
+        run: npm init -y
           
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
