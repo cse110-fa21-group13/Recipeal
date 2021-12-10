@@ -23,6 +23,7 @@ class RecipeCard extends HTMLElement {
         font-family: "Work Sans", sans-serif;
         width: 300px;
         height: 325px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         border-radius: 16px;
         transition: all ease-out 0.3s;
       }
