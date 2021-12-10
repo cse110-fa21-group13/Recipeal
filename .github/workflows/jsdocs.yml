@@ -18,9 +18,8 @@ jobs:
       - name: JSDoc Action
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source/assets/scripts
           output_dir: ./jsdocs
-      
+          
       - name: Add to separate repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main

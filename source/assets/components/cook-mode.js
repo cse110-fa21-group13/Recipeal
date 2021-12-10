@@ -407,8 +407,7 @@ class CookMode extends HTMLElement {
              *  text for that step.
              * 
              * @param {boolean} flag - Used to indicate when the TTS voice has been set
-             * @param {*} shadowRoot - Allows the function to access the shadowRoot elements
-             * @returns 
+             * @param {*} shadowRoot - Allows the function to access the shadowRoot element
              */
             function setVoice(flag, shadowRoot) {
                 if(flag === false) {
