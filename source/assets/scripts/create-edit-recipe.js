@@ -29,7 +29,7 @@ addSteps.addEventListener("click", (e) => {
   addNewStep(e);
 });
 
-// Save Button Create
+// Save Button for Create
 let saveButtonCreate = document.querySelector("button.save-btn-create");
 saveButtonCreate.addEventListener("click", () => {
   saveDataCreate();
