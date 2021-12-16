@@ -66,6 +66,7 @@ For an in-depth overview of the code, please check out our [documentation](https
 
 ## Demo
 [Website](https://recipeal.netlify.app/)
+<br>
 [Video](https://www.youtube.com/watch?v=IdlL57Bmyfw&t=40s)
 
 ## Challenges
