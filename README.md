@@ -58,15 +58,15 @@ Design 3
 ![styleguide3](https://user-images.githubusercontent.com/76819117/146275218-13ded2d6-d13b-45d8-a02f-95050acf6944.png)
 ![design3](https://user-images.githubusercontent.com/76819117/146272146-e6c43836-fdeb-4d80-967e-315af9bb5219.png)
 
-After we created a rough layout of the app, the developers were now ready to 
-start implementing features. We used HTML/CSS for the structure and styling, and 
-JavaScript for the functionalities. Following our roadmap, we first worked on implementing 
-the CRUD (Create - Read - Update - Delete) functions. After those have been fully 
-fleshed out, we started working on our extra features like exploring new recipes, cook mode, 
-timer, and text-to-speech. To get new recipes, we used the [Spoonacular API](https://spoonacular.com/food-api). 
-Upon completing our extra features, we polished the styling and made our app responsive to 
-smaller screens. During this whole process, our QA Testers implemented code quality checks and 
-coverage using Codacy, Linter, and Cypress so that everytime we pushed to main, tests would be 
+After we created a rough layout of the app, the developers were now ready to
+start implementing features. We used HTML/CSS for the structure and styling, and
+JavaScript for the functionalities. Following our roadmap, we first worked on implementing
+the CRUD (Create - Read - Update - Delete) functions. After those have been fully
+fleshed out, we started working on our extra features like exploring new recipes, cook mode,
+timer, and text-to-speech. To get new recipes, we used the [Spoonacular API](https://spoonacular.com/food-api).
+Upon completing our extra features, we polished the styling and made our app responsive to
+smaller screens. During this whole process, our QA Testers implemented code quality checks and
+coverage using Codacy, Linter, and Cypress so that everytime we pushed to main, tests would be
 run to ensure the quality of our code.
 
 ![tech stack](https://user-images.githubusercontent.com/76819117/146280503-568bae59-4c65-4456-a31d-f32d277ae014.png)
@@ -79,11 +79,11 @@ For an in-depth overview of the code, please check out our [documentation](https
 [Video](https://www.youtube.com/watch?v=IdlL57Bmyfw&t=40s)
 
 ## Challenges
-Debugging was one of the main challenges. Since everyone was working out of a different branch, 
-when it came time to merge to main, many things would break due to the differences in everyone's 
-code. Resolving these issues involved going through the code line by line to make sure the new code 
-wouldn't interfere with the old ones. Another challenge was the short amount of time we had to work 
-on the project. Given more time, we would've implemented more features, polished the styling, 
+Debugging was one of the main challenges. Since everyone was working out of a different branch,
+when it came time to merge to main, many things would break due to the differences in everyone's
+code. Resolving these issues involved going through the code line by line to make sure the new code
+wouldn't interfere with the old ones. Another challenge was the short amount of time we had to work
+on the project. Given more time, we would've implemented more features, polished the styling,
 and added more testing coverage.
 
 ## Contributing
