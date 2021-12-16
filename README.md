@@ -14,7 +14,7 @@
 6. [Meet the Team](#meet-the-team)
 
 ## Overview
-Recipeal is a recipe manager in which you can store, organize, and update your favorite recipes! This project was made for CSE 110: Software Engineering.
+Recipeal is a recipe manager that allows you to store and organize your favorite recipes, and find new ones. This project was made for CSE 110: Software Engineering.
 
 ## Features
  - **Create and edit your own recipes!**
