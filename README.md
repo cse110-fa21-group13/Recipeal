@@ -74,11 +74,10 @@ Debugging was one of the main challenges. Since everyone was working out of a di
 
 ## Contributing
 If you would like to further contribute to this project:
-1. Fork the repo.
-2. Clone the repo to your local machine.
-3. To open the development server, you can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for VSCode.
-4. Make the changes you want.
-5. After you're finished, create a pull request with a descriptive title and description of what you did.
+1. Clone the repo to your local environment.
+2. To open the development server, you can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for VSCode.
+3. Make the changes you want.
+4. After you're finished, create a pull request with a descriptive title and description of what you did.
 
 ## Meet the Team
 [Team Page](https://github.com/cse110-fa21-group13/cse110-fa21-group13/blob/main/admin/team.md)
