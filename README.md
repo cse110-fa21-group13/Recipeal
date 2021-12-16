@@ -69,7 +69,7 @@ For an in-depth overview of the code, please check out our [documentation](https
 [Video](https://www.youtube.com/watch?v=IdlL57Bmyfw&t=40s)
 
 ## Challenges
-Debugging was one of the main challenges. Since everyone was working out of a different branch, when it came time to merge to main, many things would break due to the differences in everyone's code. Resolving these issues involved going through the code line by line to make sure the new code wouldn't interfere with the old ones. Another challenge was the short amount of time we had to work on the project. Given more time, we would've implemented more features, polished the styling, and added more testing coverages. 
+Debugging was one of the main challenges. Since everyone was working out of a different branch, when it came time to merge to main, many things would break due to the differences in everyone's code. Resolving these issues involved going through the code line by line to make sure the new code wouldn't interfere with the old ones. Another challenge was the short amount of time we had to work on the project. Given more time, we would've implemented more features, polished the styling, and added more testing coverage.
 
 ## Contributing
 If you would like to further contribute to this project:
@@ -77,7 +77,7 @@ If you would like to further contribute to this project:
 2. Clone the repo to your local machine.
 3. To open the development server, you can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for VSCode.
 4. Make the changes you want.
-5. After you're finished, create a pull request with a descriptive title and description.
+5. After you're finished, create a pull request with a descriptive title and description of what you did.
 
 ## Meet the Team
 [Team Page](https://github.com/cse110-fa21-group13/cse110-fa21-group13/blob/main/admin/team.md)
