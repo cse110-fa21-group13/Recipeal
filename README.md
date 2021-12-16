@@ -65,7 +65,7 @@ After we created a rough layout of the app, the developers were now ready to sta
 For an in-depth overview of the code, please check out our [documentation](https://cse110-fa21-group13.github.io/cse110-fa21-group13-docs/).
 
 ## Demo
-[Website](recipeal.netlify.app)
+[Website](https://recipeal.netlify.app/)
 [Video](https://www.youtube.com/watch?v=IdlL57Bmyfw&t=40s)
 
 ## Challenges
