@@ -71,7 +71,7 @@ run to ensure the quality of our code.
 
 ![tech stack](https://user-images.githubusercontent.com/76819117/146280503-568bae59-4c65-4456-a31d-f32d277ae014.png)
 
-For an in-depth overview of the code, please check out our [documentation](https://cse110-fa21-group13.github.io/cse110-fa21-group13-docs/).
+For an in-depth overview of the code, please check out our [documentation](https://cse110-fa21-group13.github.io/Recipeal-docs/).
 
 ## Demo
 [Site](https://recipeal.netlify.app/)
